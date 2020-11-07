@@ -1,7 +1,17 @@
 {
-  "name": "lubycon-ui-kit",
+  "name": "@lubycon/ui-kit",
+  "description": "Lubycon UI Kit for any projects 🖌",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=10.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lubycon/lubycon-ui-kit.git"
+  },
+  "keywords": ["lubycon"],
+  "author": "Lubycon",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -39,5 +49,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "sideEffects": false
 }
