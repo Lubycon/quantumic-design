@@ -1,0 +1,7 @@
+src
+example
+.storybook
+.github
+config
+tasks
+**/stories.*
