@@ -4,3 +4,5 @@ example
 .github
 config
 tasks
+.vscode
+.idea
