@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
+    "copy": "ncp src/sass/modules dist/sass && ncp package.json dist/package.json",
     "storybook": "start-storybook -p 6006 --no-dll"
   },
   "eslintConfig": {
