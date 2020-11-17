@@ -7,4 +7,4 @@ export default {
   component: Button,
 } as Meta;
 
-export const Default: React.FC = () => <Button>기본 버튼</Button>;
+export const Default = () => <Button>기본 버튼</Button>;
