@@ -3,7 +3,10 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "jsx": "preserve",
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,12 +15,26 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "src/*": ["./src/*"],
-      "components/*": ["./components/*"],
-      "models/*": ["./models/*"],
-      "utils/*": ["./utils/*"]
-    }
+      "src/*": [
+        "./src/*"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "models/*": [
+        "./models/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ]
+    },
+    "allowJs": true
   },
-  "exclude": ["./node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "./node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
