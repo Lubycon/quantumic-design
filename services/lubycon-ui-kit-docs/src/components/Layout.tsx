@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { Button } from '@lubycon/ui-kit';
 
 type Props = {
   children?: ReactNode;
@@ -31,6 +32,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       </nav>
     </header>
     {children}
+    <Button>test</Button>
     <footer>
       <hr />
       <span>Test</span>
