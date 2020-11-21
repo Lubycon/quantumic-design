@@ -15,10 +15,28 @@ jobs:
         with:
           node-version: 10
           registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn workspace @lubycon/ui-kit build
-      - run: yarn workspace @lubycon/ui-kit version
-      - run: git push --tags
-      - run: yarn workspace @lubycon/ui-kit deploy
+      - name: Set Git Configulations
+        run: |
+          git config --global user.email "bboydart91@gmail.com"
+          git config --global user.name "evan-moon"
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Package Dependencies
+        id: yarn-cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install depedencies
+        run: yarn
+      - name: Build
+        run: yarn workspace @lubycon/ui-kit build
+      - name: Versioning
+        run: yarn workspace @lubycon/ui-kit version && git push --tags
+      - name: Publishing
+        run: yarn workspace @lubycon/ui-kit deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
