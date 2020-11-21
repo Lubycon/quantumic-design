@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.common.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "es2017"],
+    "jsx": "preserve",
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./src/*"],
+      "components/*": ["./components/*"],
+      "models/*": ["./models/*"],
+      "utils/*": ["./utils/*"]
+    }
+  },
+  "exclude": ["./node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"],
+}
