@@ -21,7 +21,6 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@semantic-release/git": "^9.0.0",
     "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
