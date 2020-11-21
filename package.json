@@ -21,6 +21,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "@semantic-release/git": "^9.0.0",
     "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
@@ -30,6 +31,7 @@
     "eslint-plugin-react": "^7.21.5",
     "postcss": "^7.0.2",
     "prettier": "^2.1.2",
+    "semantic-release": "^17.2.4",
     "typescript": "^4.0.3"
   },
   "workspaces": [

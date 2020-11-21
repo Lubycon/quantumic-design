@@ -11,38 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+          persist-credentials: false # <--- this
       - uses: actions/setup-node@v1
         with:
-          node-version: 10
+          node-version: 12
           registry-url: https://registry.npmjs.org/
       - name: Set Git Configulations
         run: |
           git config user.email "lubycon@gmail.com"
           git config user.name "lubycon"
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache Package Dependencies
-        id: yarn-cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
       - name: Install depedencies
         run: yarn
       - name: Build
         run: yarn workspace @lubycon/ui-kit build
-      - name: Publishing
-        id: publish
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          package: ./packages/ui-kit/package.json
-      - if: steps.publish.outputs.type != 'none'
-        run: |
-          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+      - name: Publish
+        run: yarn workspace @lubycon/ui-kit deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
       # - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
       #   with:
       #     status: ${{ job.status }}
