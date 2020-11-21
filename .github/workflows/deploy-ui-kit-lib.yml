@@ -1,0 +1,42 @@
+name: Release UI Kit
+
+on:
+  push:
+    branches:
+      - master
+      - chore/#11-monorepo # test
+
+jobs:
+  ui-kit-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+          persist-credentials: false # <--- this
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: Set Git Configulations
+        run: |
+          git config user.email "lubycon@gmail.com"
+          git config user.name "lubycon"
+      - name: Install depedencies
+        run: yarn
+      - name: Build
+        run: yarn workspace @lubycon/ui-kit build
+      - name: Publish
+        run: yarn workspace @lubycon/ui-kit deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+      # - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
+      #   with:
+      #     status: ${{ job.status }}
+      #     fields: repo,message,commit,author,action,eventName,ref,workflow
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_BOT_WEBHOOK_URL }}
+      #   if: always()
+        

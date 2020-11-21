@@ -15,16 +15,11 @@
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*"]
-    },
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
   },
-  "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-  ]
 }
