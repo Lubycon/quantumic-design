@@ -1,10 +1,10 @@
-{
-  "branches": [
+module.exports = {
+  branches: [
     {
       "name": "master"
     }
   ],
-  "plugins": [
+  plugins: [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
       "releaseRules": [
@@ -17,12 +17,7 @@
       }
     }],
     "@semantic-release/release-notes-generator",
-    [
-      "@semantic-release/npm",
-      {
-        "pkgRoot": "dist"
-      }
-    ],
+    "@semantic-release/npm",
     "@semantic-release/git",
     "@semantic-release/github"
   ]
