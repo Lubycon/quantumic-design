@@ -36,7 +36,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "yarn copy-version",
+        "prepareCmd": "yarn workspace @lubycon/ui-kit copy-version",
       }
     ],
     [
