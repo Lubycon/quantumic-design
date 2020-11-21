@@ -30,9 +30,6 @@ jobs:
       - run: echo "$OUTPUTS"
         env:
           OUTPUTS: ${{ toJson(steps.publish.outputs) }}
-      - uses: codfish/some-other-action@master
-        with:
-          release-version: ${{ steps.publish.outputs.release-version }}
       # - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
       #   with:
       #     status: ${{ job.status }}
