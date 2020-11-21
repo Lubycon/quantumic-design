@@ -34,23 +34,21 @@ jobs:
         run: yarn
       - name: Build
         run: yarn workspace @lubycon/ui-kit build
-      - name: Versioning
-        run: yarn workspace @lubycon/ui-kit version
-      - uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-          tags: true
       - name: Publishing
-        run: yarn workspace @lubycon/ui-kit deploy
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
-      - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
+        id: publish
+        uses: JS-DevTools/npm-publish@v1
         with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_BOT_WEBHOOK_URL }}
-        if: always()
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          package: ./packages/ui-kit/package.json
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+      # - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
+      #   with:
+      #     status: ${{ job.status }}
+      #     fields: repo,message,commit,author,action,eventName,ref,workflow
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_BOT_WEBHOOK_URL }}
+      #   if: always()
         
