@@ -1,3 +1,6 @@
+/**
+ * @desc UI Kit 시멘틱 릴리즈 설정 파일
+ */
 module.exports = {
   branches: [
     {
@@ -17,7 +20,9 @@ module.exports = {
       }
     }],
     "@semantic-release/release-notes-generator",
-    "@semantic-release/npm",
+    ["@semantic-release/npm", {
+      "pkgRoot": "./ui-kit/dist"
+    }],
     "@semantic-release/git",
     "@semantic-release/github"
   ]

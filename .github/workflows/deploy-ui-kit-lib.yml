@@ -7,12 +7,12 @@ on:
 
 jobs:
   ui-kit-publish:
+    if: "! contains(toJSON(github.event.commits.*.msg), '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-          persist-credentials: false
       - uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -20,6 +20,7 @@ jobs:
         run: yarn
       - name: Build
         run: yarn workspace @lubycon/ui-kit build
+      - run: yarn workspace @lubycon/ui-kit copy-version
       - name: Publish
         id: publish
         uses: codfish/semantic-release-action@master

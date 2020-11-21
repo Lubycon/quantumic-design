@@ -28,7 +28,7 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp src/sass/modules dist/sass && ncp package.json dist/package.json",
-    "deploy": "npx semantic-release"
+    "copy-version": "ncp dist/package.json package.json"
   },
   "eslintConfig": {
     "extends": [
@@ -67,7 +67,6 @@
     "@types/react-dom": "^16.9.8",
     "autoprefixer": "^9.0.0",
     "babel-loader": "^8.2.1",
-    "ncp": "^2.0.0",
     "postcss": "^7.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
