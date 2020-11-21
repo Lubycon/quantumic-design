@@ -1,9 +1,10 @@
-name: Release
+name: Release UI Kit
 
 on:
   push:
     branches:
       - master
+      - chore/#11-monorepo # test
 
 jobs:
   publish-npm:
@@ -14,7 +15,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm publish
+      - run: yarn
+      - run: yarn workspace @lubycon/ui-kit deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
