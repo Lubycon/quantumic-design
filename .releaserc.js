@@ -23,7 +23,12 @@ module.exports = {
     ["@semantic-release/npm", {
       "pkgRoot": "./ui-kit/dist"
     }],
-    "@semantic-release/git",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json"]
+      }
+    ],
     "@semantic-release/github"
   ]
 }
