@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - alpha
+      - beta
 
 jobs:
   ui-kit-publish:
@@ -20,7 +22,6 @@ jobs:
         run: yarn
       - name: Build
         run: yarn workspace @lubycon/ui-kit build
-      - run: yarn workspace @lubycon/ui-kit copy-version
       - name: Publish
         id: publish
         uses: codfish/semantic-release-action@master

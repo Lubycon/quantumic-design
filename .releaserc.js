@@ -5,6 +5,16 @@ module.exports = {
   branches: [
     {
       "name": "master"
+    },
+    {
+      "name": "beta",
+      "channel": "beta",
+      "prerelease": "beta"
+    },
+    {
+      "name": "alpha",
+      "channel": "alpha",
+      "prerelease": "alpha"
     }
   ],
   plugins: [
@@ -23,6 +33,12 @@ module.exports = {
     ["@semantic-release/npm", {
       "pkgRoot": "./ui-kit/dist"
     }],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "yarn workspace @lubycon/ui-kit copy-version",
+      }
+    ],
     [
       "@semantic-release/git",
       {
