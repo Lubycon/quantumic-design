@@ -1,6 +1,7 @@
 {
   "name": "@lubycon/ui-kit",
   "description": "Lubycon UI Kit for any projects 🖌",
+  "private": false,
   "license": "MIT",
   "version": "0.1.0",
   "engines": {
@@ -22,7 +23,7 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp src/sass/modules dist/sass && ncp package.json dist/package.json",
-    "deploy": "yarn publish"
+    "deploy": "yarn publish --access=public"
   },
   "eslintConfig": {
     "extends": [
