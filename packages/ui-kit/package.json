@@ -7,6 +7,11 @@
   "engines": {
     "node": ">=10.15"
   },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "esm/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Lubycon/lubycon-ui-kit.git"
