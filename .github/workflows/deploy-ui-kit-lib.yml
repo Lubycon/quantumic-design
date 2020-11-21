@@ -17,8 +17,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Set Git Configulations
         run: |
-          git config --global user.email "bboydart91@gmail.com"
-          git config --global user.name "evan-moon"
+          git config user.email "lubycon@gmail.com"
+          git config user.name "lubycon"
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -35,8 +35,21 @@ jobs:
       - name: Build
         run: yarn workspace @lubycon/ui-kit build
       - name: Versioning
-        run: yarn workspace @lubycon/ui-kit version && git push --tags
+        run: yarn workspace @lubycon/ui-kit version
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       - name: Publishing
         run: yarn workspace @lubycon/ui-kit deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+      - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_BOT_WEBHOOK_URL }}
+        if: always()
+        
