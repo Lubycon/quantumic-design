@@ -20,7 +20,10 @@
     "lubycon"
   ],
   "author": "Lubycon",
-  "dependencies": {},
+  "dependencies": {
+    "@types/classnames": "^2.2.11",
+    "classnames": "^2.2.6"
+  },
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
     "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.build.json",
