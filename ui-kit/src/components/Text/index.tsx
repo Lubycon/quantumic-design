@@ -21,8 +21,8 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     <Component
       ref={ref}
       className={clxs('lubycon-text', {
-        [`lubycon-typography-${typography}`]: typography != null,
-        [`lubycon-font-weight-${fontWeight}`]: fontWeight != null,
+        [`lubycon-typography--${typography}`]: typography != null,
+        [`lubycon-font-weight--${fontWeight}`]: fontWeight != null,
       })}
       {...props}
     />

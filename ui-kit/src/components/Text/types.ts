@@ -1,4 +1,4 @@
-const typographys = [
+export const typographys = [
   'h1',
   'h2',
   'h3',
@@ -13,7 +13,7 @@ const typographys = [
 ] as const;
 export type Typographys = typeof typographys[number];
 
-const fontWeights = ['light', 'regular', 'bold', 'black'] as const;
+export const fontWeights = ['light', 'regular', 'bold', 'black'] as const;
 export type FontWeights = typeof fontWeights[number];
 
 export const DEFAULT_ELEMENT = 'span' as const;
