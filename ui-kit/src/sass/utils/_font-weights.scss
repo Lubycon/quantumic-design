@@ -1,15 +1,24 @@
-@mixin font-weight($type, $weight) {
+$font-weights: (
+  'light': 300,
+  'regular': 400,
+  'bold': 700,
+  'black': 900,
+);
+
+@mixin font-weight($name, $value) {
+  font-weight: $value;
+  font-weight: var(--lubycon-font-weight-#{$name});
+}
+
+@mixin global-font-weight($name, $value) {
   :root {
-    --lubycon-font-weight-#{$type}: #{$weight};
+    --lubycon-font-weight-#{$name}: #{$value};
   }
-  .lubycon-font-weight--#{$type} {
-    font-weight: var(--lubycon-font-weight-#{$type});
-    // fallback
-    font-weight: $weight;
+  .lubycon-font-weight--#{$name} {
+    @include font-weight($name, $value);
   }
 }
 
-@include font-weight('light', 300);
-@include font-weight('regular', 400);
-@include font-weight('bold', 700);
-@include font-weight('black', 900);
+@each $name, $value in $font-weights {
+  @include global-font-weight($name, $value);
+}

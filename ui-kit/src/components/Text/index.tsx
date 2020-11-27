@@ -11,7 +11,7 @@ interface TextBaseProps {
 type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProps<T, TextBaseProps>;
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
-  { typography, fontWeight, as, ...props }: TextProps<T>,
+  { typography = 'content', fontWeight, as, ...props }: TextProps<T>,
   ref: Ref<HTMLButtonElement>
 ) => {
   console.log(typography, fontWeight);
@@ -22,7 +22,7 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
       ref={ref}
       className={clxs('lubycon-text', {
         [`lubycon-typography--${typography}`]: typography != null,
-        [`lubycon-font-weight--${fontWeight}`]: fontWeight != null,
+        [`lubycon-text--font-weight--${fontWeight}`]: fontWeight != null,
       })}
       {...props}
     />

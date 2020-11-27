@@ -52,3 +52,17 @@ export const FontWeight = () => {
     </ul>
   );
 };
+
+export const As = () => {
+  return (
+    <ul>
+      <li style={{ listStyle: 'none' }}>
+        <Text as="a" href="https://github.com" target="blank">
+          앵커 태그를 사용해보자
+        </Text>
+        <Text as="h1">h1으로 렌더해도 기본적으로는 Typography: content가 적용됩니다</Text>
+        <Text as="button">버튼도 가능하기는 함</Text>
+      </li>
+    </ul>
+  );
+};
