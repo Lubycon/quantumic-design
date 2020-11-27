@@ -1,13 +1,12 @@
 name: Publish Dev Storybook
 
+on: [workflow_dispatch]
+
 jobs:
-  ui-kit-publish:
-    if: "!contains(toJSON(github.event.commits.*.msg), '[skip ci]') && contains(toJSON(github.event.commits.*.msg), '(ui-kit)')"
+  storybook-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -20,7 +19,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
         with:
-          source-directory: 'storybook-static',
+          source-directory: 'storybook-static'
           destination-github-username: 'Lubycon'
           destination-repository-name: 'lubycon-ui-kit-storybook'
           user-email: lubycon@gmail.com
