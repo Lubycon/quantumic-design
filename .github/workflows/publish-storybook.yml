@@ -1,0 +1,27 @@
+name: Publish Dev Storybook
+
+jobs:
+  ui-kit-publish:
+    if: "!contains(toJSON(github.event.commits.*.msg), '[skip ci]') && contains(toJSON(github.event.commits.*.msg), '(ui-kit)')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install depedencies
+        run: yarn
+      - name: Build Storybook
+        run: yarn workspace @lubycon/ui-kit build-stories
+      - name: Publish
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          source-directory: 'storybook-static',
+          destination-github-username: 'Lubycon'
+          destination-repository-name: 'lubycon-ui-kit-storybook'
+          user-email: lubycon@gmail.com
+        
