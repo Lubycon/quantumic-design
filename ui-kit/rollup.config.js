@@ -12,8 +12,8 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 export default [
   buildCJS('src/components/index.ts'),
   buildESM('src/components/index.ts'),
-  buildCSS('src/components/index.scss', 'css/lubycon-ui-kit.css'),
-  buildCSS('src/components/index.scss', 'css/lubycon-ui-kit.min.css', {
+  buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.css'),
+  buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.min.css', {
     minimize: {
       preset: ['default'],
     },

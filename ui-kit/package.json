@@ -30,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
-    "copy": "ncp src/sass/modules dist/sass && ncp package.json dist/package.json",
+    "copy": "ncp package.json dist/package.json",
+    "copy-sass": "ncp src/sass/modules dist/sass",
     "copy-version": "ncp dist/package.json package.json"
   },
   "eslintConfig": {

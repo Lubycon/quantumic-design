@@ -1,7 +1,8 @@
 import React, { ElementType, Ref } from 'react';
 import { DEFAULT_ELEMENT, FontWeights, Typographys } from './types';
 import { forwardRef } from 'react';
-import { OverridableProps } from 'src/types/OverridableProps';
+import { OverridableProps } from 'types/OverridableProps';
+import clxs from 'classnames';
 
 interface TextBaseProps {
   typography?: Typographys;
@@ -16,7 +17,16 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   console.log(typography, fontWeight);
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
-  return <Component ref={ref} {...props} />;
+  return (
+    <Component
+      ref={ref}
+      className={clxs('lubycon-text', {
+        [`lubycon-typography-${typography}`]: typography != null,
+        [`lubycon-font-weight-${fontWeight}`]: fontWeight != null,
+      })}
+      {...props}
+    />
+  );
 };
 
 export default forwardRef(Text) as typeof Text;

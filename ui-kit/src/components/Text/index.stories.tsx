@@ -8,9 +8,5 @@ export default {
 } as Meta;
 
 export const Default = () => {
-  return (
-    <Text as="a" href="https://github.io">
-      안녕하세요
-    </Text>
-  );
+  return <Text typography="h1">안녕하세요</Text>;
 };

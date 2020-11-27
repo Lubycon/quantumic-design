@@ -1,0 +1,22 @@
+@mixin _typography($name, $font-size, $font-weight, $line-height) {
+  $font-size-number: strip-unit($font-size);
+
+  :root {
+    --lubycon-font-size-#{$font-size-number}: #{$font-size};
+    --lubycon-line-height-#{$font-size-number}: #{$line-height};
+  }
+
+  .lubycon-font-size--#{$font-size-number} {
+    font-size: $font-size;
+    font-size: var(--lubycon-font-size-#{$font-size-number});
+    line-height: $line-height;
+    line-height: var(--lubycon-line-height-#{$font-size-number});
+  }
+
+  .lubycon-typography-#{$name} {
+    @extend .lubycon-font-size--#{$font-size-number};
+    @extend .lubycon-font-weight--#{$font-weight};
+  }
+}
+
+@include _typography('h1', 42px, 'light', 56px);

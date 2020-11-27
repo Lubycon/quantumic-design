@@ -1,0 +1,15 @@
+@mixin font-weight($type, $weight) {
+  :root {
+    --lubycon-font-weight-#{$type}: #{$weight};
+  }
+  .lubycon-font-weight--#{$type} {
+    font-weight: var(--lubycon-font-weight-#{$type});
+    // fallback
+    font-weight: $weight;
+  }
+}
+
+@include font-weight('light', 300);
+@include font-weight('regular', 400);
+@include font-weight('bold', 700);
+@include font-weight('black', 900);
