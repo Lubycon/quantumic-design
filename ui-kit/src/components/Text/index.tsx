@@ -14,7 +14,6 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   { typography = 'content', fontWeight, as, ...props }: TextProps<T>,
   ref: Ref<HTMLButtonElement>
 ) => {
-  console.log(typography, fontWeight);
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
   return (
