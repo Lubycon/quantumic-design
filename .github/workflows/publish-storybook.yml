@@ -1,10 +1,6 @@
 name: Publish Dev Storybook
 
-# on: [workflow_dispatch]
-on:
-  push:
-    branches:
-      - feat/typography
+on: [workflow_dispatch]
 
 jobs:
   storybook-publish:
@@ -19,12 +15,5 @@ jobs:
       - name: Build Storybook
         run: yarn workspace @lubycon/ui-kit build-stories
       - name: Publish
-        uses: cpina/github-action-push-to-another-repository@master
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        with:
-          source-directory: 'storybook-static'
-          destination-github-username: 'Lubycon'
-          destination-repository-name: 'lubycon-ui-kit-storybook'
-          user-email: lubycon@gmail.com
+        run: yarn workspace @lubycon/ui-kit publish-stories
         
