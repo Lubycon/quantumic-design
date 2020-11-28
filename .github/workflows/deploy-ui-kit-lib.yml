@@ -9,7 +9,7 @@ on:
 
 jobs:
   ui-kit-publish:
-    if: "! contains(toJSON(github.event.commits.*.msg), '[skip ci]')"
+    if: "!contains(toJSON(github.event.commits.*.msg), '[skip ci]') && contains(toJSON(github.event.commits.*.msg), '(ui-kit)')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
