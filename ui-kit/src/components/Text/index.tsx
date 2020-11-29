@@ -12,7 +12,7 @@ type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProp
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   { typography = 'content', fontWeight = 'regular', as, ...props }: TextProps<T>,
-  ref: Ref<HTMLButtonElement>
+  ref: Ref<any>
 ) => {
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
