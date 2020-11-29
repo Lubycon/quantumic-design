@@ -6,7 +6,6 @@ export const typographys = [
   'h5',
   'h6',
   'subtitle',
-  'button',
   'content',
   'content2',
   'caption',

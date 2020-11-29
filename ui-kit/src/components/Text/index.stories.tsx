@@ -16,7 +16,6 @@ const typographyNames: { [key in Typographys]: string } = {
   h5: '머릿말 5',
   h6: '머릿말 6',
   subtitle: '부제',
-  button: '버튼',
   content: '본문 1',
   content2: '본문 2',
   caption: '캡션',
