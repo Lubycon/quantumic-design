@@ -1,4 +1,4 @@
-@mixin _typography($name, $font-size, $font-weight, $line-height) {
+@mixin _typography($name, $font-size, $line-height) {
   $font-size-number: strip-unit($font-size);
 
   :root {
@@ -15,19 +15,16 @@
 
   .lubycon-typography--#{$name} {
     @extend .lubycon-font-size--#{$font-size-number};
-    @extend .lubycon-font-weight--#{$font-weight};
   }
 }
 
-@include _typography('h1', 42px, 'light', 63px);
-@include _typography('h2', 32px, 'light', 48px);
-@include _typography('h3', 28px, 'regular', 42px);
-@include _typography('h4', 26px, 'regular', 40px);
-@include _typography('h5', 24px, 'bold', 40px);
-@include _typography('h6', 20px, 'bold', 40px);
-
-@include _typography('subtitle', 18px, 'regular', 31px);
-@include _typography('button', 16px, 'bold', 28px);
-@include _typography('content', 15px, 'regular', 26px);
-@include _typography('content2', 13px, 'regular', 22px);
-@include _typography('caption', 12px, 'regular', 21px);
+@include _typography('h1', 42px, 63px);
+@include _typography('h2', 32px, 48px);
+@include _typography('h3', 28px, 42px);
+@include _typography('h4', 26px, 40px);
+@include _typography('h5', 24px, 36px);
+@include _typography('h6', 20px, 30px);
+@include _typography('subtitle', 18px, 31px);
+@include _typography('content', 16px, 28px);
+@include _typography('content2', 15px, 26px);
+@include _typography('caption', 12px, 21px);

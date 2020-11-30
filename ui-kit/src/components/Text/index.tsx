@@ -11,8 +11,8 @@ interface TextBaseProps {
 type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProps<T, TextBaseProps>;
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
-  { typography = 'content', fontWeight, as, ...props }: TextProps<T>,
-  ref: Ref<HTMLButtonElement>
+  { typography = 'content', fontWeight = 'regular', as, ...props }: TextProps<T>,
+  ref: Ref<any>
 ) => {
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
