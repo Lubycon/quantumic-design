@@ -1,7 +1,7 @@
 import React from 'react';
-import Text from './index';
+import Text from 'components/Text';
 import { Meta } from '@storybook/react/types-6-0';
-import { typographys, Typographys, FontWeights, fontWeights } from './types';
+import { typographys, Typographys, FontWeights, fontWeights } from 'components/Text/types';
 
 export default {
   title: 'Lubycon UI Kit/Text',
