@@ -1,5 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 
-export default function Container(props: HTMLAttributes<HTMLDivElement>): JSX.Element {
+interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+  size: 'fluid' | 'sm' | 'md' | 'lg' | 'xl';
+}
+
+export default function Container({ size, ...props }: ContainerProps): JSX.Element {
   return <div>{props.children}</div>;
 }

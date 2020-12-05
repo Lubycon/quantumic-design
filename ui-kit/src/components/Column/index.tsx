@@ -1,5 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 
-export default function Column(props: HTMLAttributes<HTMLDivElement>): JSX.Element {
+interface ColumnProps extends HTMLAttributes<HTMLDivElement> {
+  gutters: boolean;
+}
+
+export default function Column({ gutters = false, ...props }: ColumnProps): JSX.Element {
   return <div>{props.children}</div>;
 }
