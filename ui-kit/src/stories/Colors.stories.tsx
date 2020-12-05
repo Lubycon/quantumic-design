@@ -6,43 +6,55 @@ export default {
   title: 'Lubycon UI Kit/Colors',
 } as Meta;
 
-const grayScale = {
-  gray100: { hex: '#1B1B1C', rgb: 'rgb(27, 27, 28)' },
-  gray90: { hex: '#2A2A2C', rgb: 'rgb(42, 42, 44)' },
-  gray80: { hex: '#4C4D53', rgb: 'rgb(27, 27, 28)' },
-  gray70: { hex: '#76777D', rgb: 'rgb(27, 27, 28)' },
-  gray60: { hex: '#8E9095', rgb: 'rgb(27, 27, 28)' },
-  gray50: { hex: '#B5B6B9', rgb: 'rgb(27, 27, 28)' },
-  gray40: { hex: '#D0D1D3', rgb: 'rgb(27, 27, 28)' },
-  gray30: { hex: '#E3E4E5', rgb: 'rgb(27, 27, 28)' },
-  gray20: { hex: '#F3F4F5', rgb: 'rgb(27, 27, 28)' },
-  gray10: { hex: '#FCFCFD', rgb: 'rgb(27, 27, 28)' },
+const grayScaleNames = [
+  'gray100',
+  'gray90',
+  'gray80',
+  'gray70',
+  'gray60',
+  'gray50',
+  'gray40',
+  'gray30',
+  'gray20',
+  'gray10',
+];
+
+type tsemanticColorMap = {
+  [key: string]: Array<string>;
 };
 
-const grayScaleNames = Object.keys(grayScale);
+const semanticColorMap: tsemanticColorMap = {
+  positive: ['green50', 'green40', 'green60'],
+  infomative: ['blue50', 'blue40', 'blue60'],
+  negative: ['red50', 'red40', 'red60'],
+  notice: ['yellow50', 'yellow40', 'yellow60'],
+};
 
-// const positive = ['green50', 'green40', 'green60'];
-// const informative = ['green50', 'green40', 'green60'];
-// const negative = ['green50', 'green40', 'green60'];
-// const notice = ['green50', 'green40', 'green60'];
+const semanticColorNames = Object.keys(semanticColorMap);
 
-const box = (bgColor: string, width: string, height: string) => (
-  <div style={{ width: width, height: height, backgroundColor: bgColor, borderRadius: '8px' }} />
-);
+type tIndexMap = {
+  [key: number]: string;
+};
 
-export const GrayScale = () => {
+const indexMap: tIndexMap = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+};
+
+export const Default = () => {
   return (
     <div>
       <Text
         as="div"
-        typography="h2"
-        style={{ color: 'var(--lubycon-gray100)', marginBottom: '16px' }}
+        typography="subtitle"
+        style={{ color: 'var(--lubycon-gray100)', marginBottom: '24px' }}
       >
-        색상
+        회색 명암(Gray Scale)
       </Text>
       <ul
         style={{
-          margin: 0,
+          margin: '0 0 120px 0',
           padding: 0,
           display: 'grid',
           gap: '10px',
@@ -55,7 +67,7 @@ export const GrayScale = () => {
               style={{
                 width: '246px',
                 height: '160px',
-                backgroundColor: grayScale[name].hex, // TODO
+                backgroundColor: `var(--lubycon-${name})`,
                 borderRadius: '8px',
                 padding: '14px',
                 boxSizing: 'border-box',
@@ -71,6 +83,59 @@ export const GrayScale = () => {
           </li>
         ))}
       </ul>
+
+      <Text
+        as="div"
+        typography="subtitle"
+        style={{ color: 'var(--lubycon-gray100)', marginBottom: '24px' }}
+      >
+        의미론적 색상(semantic Color)
+      </Text>
+      <div style={{ display: 'grid', gap: '40px', gridTemplateColumns: 'repeat(2, 615px)' }}>
+        {semanticColorNames.map((name, index) => (
+          <ul
+            key={index}
+            style={{
+              margin: 0,
+              padding: 0,
+              display: 'grid',
+              gap: '10px',
+              gridTemplateColumns: '302px 302px',
+              gridTemplateRows: '75px 75px',
+              gridTemplateAreas: `
+                'a b'
+                'a c'
+              `,
+            }}
+          >
+            {semanticColorMap[name].map((colorName, colorIndex) => (
+              <li
+                key={colorIndex}
+                style={{
+                  listStyle: 'none',
+                  width: '302px',
+                  height: `${/50/g.test(colorName) ? '160px' : '75px'}`,
+                  backgroundColor: `var(--lubycon-${colorName})`,
+                  borderRadius: '8px',
+                  padding: '14px',
+                  boxSizing: 'border-box',
+                  gridArea: `${indexMap[colorIndex]}`,
+                }}
+              >
+                <Text as="div" typography="subtitle" style={{ color: 'var(--lubycon-gray10' }}>
+                  {/50/g.test(colorName) ? name[0].toUpperCase() + name.slice(1) : ''}
+                </Text>
+                <Text
+                  typography="caption"
+                  style={{ color: `var(--lubycon-gray${/40/g.test(colorName) ? '100' : '10'})` }}
+                >
+                  {colorName}
+                </Text>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
     </div>
   );
 };
