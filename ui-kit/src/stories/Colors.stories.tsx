@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import Text from 'components/Text';
+import ColorContext from '../context/Colors';
 
 export default {
   title: 'Lubycon UI Kit/Colors',
@@ -43,13 +44,11 @@ const indexMap: tIndexMap = {
 };
 
 export const Default = () => {
+  const { gray100, gray10 } = useContext(ColorContext);
+
   return (
     <div>
-      <Text
-        as="div"
-        typography="subtitle"
-        style={{ color: 'var(--lubycon-gray100)', marginBottom: '24px' }}
-      >
+      <Text as="div" typography="subtitle" style={{ color: gray100, marginBottom: '24px' }}>
         회색 명암(Gray Scale)
       </Text>
       <ul
@@ -84,12 +83,8 @@ export const Default = () => {
         ))}
       </ul>
 
-      <Text
-        as="div"
-        typography="subtitle"
-        style={{ color: 'var(--lubycon-gray100)', marginBottom: '24px' }}
-      >
-        의미론적 색상(semantic Color)
+      <Text as="div" typography="subtitle" style={{ color: gray100, marginBottom: '24px' }}>
+        의미론적 색상(Semantic Color)
       </Text>
       <div style={{ display: 'grid', gap: '40px', gridTemplateColumns: 'repeat(2, 615px)' }}>
         {semanticColorNames.map((name, index) => (
@@ -127,7 +122,7 @@ export const Default = () => {
                 </Text>
                 <Text
                   typography="caption"
-                  style={{ color: `var(--lubycon-gray${/40/g.test(colorName) ? '100' : '10'})` }}
+                  style={{ color: `${/40/g.test(colorName) ? gray100 : gray10}` }}
                 >
                   {colorName}
                 </Text>

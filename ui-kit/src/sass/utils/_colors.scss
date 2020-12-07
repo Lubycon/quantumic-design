@@ -41,7 +41,7 @@ $colors: (
   'gray10': #FCFCFD,
 );
 
-@mixin palette($name, $value) {
+@mixin colors($name, $value) {
   :root {
     --lubycon-#{$name}: #{$value};
   }
@@ -49,24 +49,8 @@ $colors: (
   .lubycon-#{$name} {
     color: #{$value};
   }
-
-  .lubycon-color-positive--default {
-    color: var(--lubycon-green50);
-  }
-
-  .lubycon-color-informative--default {
-    color: var(--lubycon-blue50);
-  }
-
-  .lubycon-color-negative--default {
-    color: var(--lubycon-red50);
-  }
-
-  .lubycon-color-notice--default {
-    color: var(--lubycon-yellow50);
-  }
 }
 
 @each $name, $value in $colors {
-  @include palette($name, $value);
+  @include colors($name, $value);
 }
