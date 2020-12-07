@@ -19,13 +19,13 @@ const grayScaleNames = [
   'gray10',
 ];
 
-type tsemanticColorMap = {
+type tSemanticColorMap = {
   [key: string]: Array<string>;
 };
 
-const semanticColorMap: tsemanticColorMap = {
+const semanticColorMap: tSemanticColorMap = {
   positive: ['green50', 'green40', 'green60'],
-  infomative: ['blue50', 'blue40', 'blue60'],
+  informative: ['blue50', 'blue40', 'blue60'],
   negative: ['red50', 'red40', 'red60'],
   notice: ['yellow50', 'yellow40', 'yellow60'],
 };
