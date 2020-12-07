@@ -1,0 +1,15 @@
+.lubycon-radio {
+  position: relative;
+  cursor: pointer;
+
+  &--display-block {
+    display: block;
+  }
+  &--display-inline {
+    display: inline-block;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+}
