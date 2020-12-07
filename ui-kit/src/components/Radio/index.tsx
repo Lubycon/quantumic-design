@@ -11,15 +11,28 @@ interface RadioBaseProps {
 }
 type RadioProps = Omit<CombineElementProps<'input', RadioBaseProps>, 'type'>;
 
-const RadioOption = (
-  { label, display = 'block', ...props }: RadioProps,
+const Radio = (
+  { label, display = 'block', style, disabled, ...props }: RadioProps,
   ref: Ref<HTMLInputElement>
 ) => {
-  const id = generateID('radio-option');
+  const id = generateID('radio');
 
   return (
-    <span className={clxs('lubycon-radio', `lubycon-radio--display-${display}`)}>
-      <input ref={ref} type="radio" {...props} id={id} />
+    <span
+      className={clxs('lubycon-radio', `lubycon-radio--display-${display}`, {
+        'lubycon-radio--disabled': disabled,
+      })}
+      style={style}
+    >
+      <input
+        className="lubycon-radio--input"
+        ref={ref}
+        type="radio"
+        disabled={disabled}
+        {...props}
+        id={id}
+      />
+      <div className="lubycon-radio--indicator"></div>
       {label ? (
         <Text as="label" htmlFor={id}>
           {label}
@@ -29,4 +42,4 @@ const RadioOption = (
   );
 };
 
-export default forwardRef(RadioOption) as typeof RadioOption;
+export default forwardRef(Radio) as typeof Radio;
