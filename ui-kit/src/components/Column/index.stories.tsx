@@ -7,4 +7,13 @@ export default {
   component: Column,
 } as Meta;
 
-export const Default = () => <Column style={{ backgroundColor: 'red' }}>Column</Column>;
+export const Default = () => (
+  <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <Column style={{ backgroundColor: 'red' }} md={4}>
+      Column
+    </Column>
+    <Column style={{ backgroundColor: 'blue' }} md={8}>
+      Column
+    </Column>
+  </div>
+);

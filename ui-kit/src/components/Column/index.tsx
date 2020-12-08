@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { HTMLAttributes } from 'react';
+import '../../sass/components/_Column.scss';
 
 type NumberAttribute =
   | number
@@ -41,7 +42,7 @@ export default function Column({ children, ...props }: ColumnProps): JSX.Element
     const infix = size !== 'xs' ? `-${size}` : '';
 
     if (span) {
-      spans.push(span ? `column${infix}` : `column${infix}-${span}`);
+      spans.push(span ? `column${infix}-${span}`: `column${infix}`);
     }
 
     if (offset) {
