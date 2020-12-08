@@ -28,6 +28,7 @@ interface ColumnProps extends HTMLAttributes<HTMLDivElement> {
 const sizes = ['xl' as const, 'lg' as const, 'md' as const, 'sm' as const, 'xs' as const];
 
 export default function Column({ children, ...props }: ColumnProps): JSX.Element {
+  const spans: string[] = [];
   const classes: string[] = [];
 
   sizes.forEach(function (size) {
@@ -40,7 +41,7 @@ export default function Column({ children, ...props }: ColumnProps): JSX.Element
     const infix = size !== 'xs' ? `-${size}` : '';
 
     if (span) {
-      classes.push(span ? `col${infix}` : `col${infix}-${span}`);
+      spans.push(span ? `column${infix}` : `column${infix}-${span}`);
     }
 
     if (offset) {
@@ -48,8 +49,12 @@ export default function Column({ children, ...props }: ColumnProps): JSX.Element
     }
   });
 
+  if (!spans.length) {
+    spans.push('column');
+  }
+
   return (
-    <div {...props} className={classNames(...classes)}>
+    <div {...props} className={classNames(...spans, ...classes)}>
       {children}
     </div>
   );
