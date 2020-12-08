@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react';
+import { ComponentPropsWithoutRef, ComponentType, ElementType, ReactElement } from 'react';
 
 /**
  * @description T와 K에서 T의 프로퍼티를 제거한 타입을 병합합니다.
@@ -9,3 +9,5 @@ export type CombineElementProps<E extends ElementType, P = unknown> = Combine<
   P,
   ComponentPropsWithoutRef<E>
 >;
+
+export type ComponentElementType<T> = ReactElement<ComponentType<T>>;
