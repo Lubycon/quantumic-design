@@ -41,16 +41,12 @@ $colors: (
   'gray10': #FCFCFD,
 );
 
-@mixin colors($name, $value) {
+@mixin color($name, $value) {
   :root {
     --lubycon-#{$name}: #{$value};
-  }
-
-  .lubycon-#{$name} {
-    color: #{$value};
   }
 }
 
 @each $name, $value in $colors {
-  @include colors($name, $value);
+  @include color($name, $value);
 }
