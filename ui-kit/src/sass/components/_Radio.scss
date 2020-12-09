@@ -1,0 +1,74 @@
+// 추후 color로 변경
+$gray: #b5b6b9;
+$blue: #437cea;
+
+$indicator-size: 16px;
+
+.lubycon-radio {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  label {
+    cursor: pointer;
+  }
+
+  .lubycon-radio--indicator {
+    position: relative;
+    width: $indicator-size;
+    height: $indicator-size;
+    border: 1px solid $gray;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    &::before {
+      content: '';
+      width: $indicator-size / 2;
+      height: $indicator-size / 2;
+      position: absolute;
+      background-color: #ffffff;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  .lubycon-radio--input {
+    position: absolute;
+    visibility: hidden;
+    appearance: none;
+    &:checked + .lubycon-radio--indicator {
+      border-color: $blue;
+      background-color: $blue;
+      &::before {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  &:hover:not(&--disabled) {
+    .lubycon-radio--indicator {
+      border-color: $blue;
+    }
+  }
+
+  &--display-inline {
+    display: inline-flex;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    label {
+      color: $gray;
+      cursor: not-allowed;
+    }
+    .lubycon-radio--input:checked + .lubycon-radio--indicator {
+      border-color: $gray;
+      background-color: $gray;
+    }
+  }
+}
