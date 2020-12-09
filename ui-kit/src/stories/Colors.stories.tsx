@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import Text from 'components/Text';
-import ColorContext from '../context/Colors';
+import { colors, ColorProperty, SemanticColorName } from '../constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/Colors',
@@ -18,37 +18,35 @@ const grayScaleNames = [
   'gray30',
   'gray20',
   'gray10',
-];
+] as const;
 
-type tSemanticColorMap = {
-  [key: string]: Array<string>;
+type SemanticColorMap = {
+  [key in SemanticColorName]: Array<ColorProperty>;
 };
 
-const semanticColorMap: tSemanticColorMap = {
+const semanticColors: SemanticColorMap = {
   positive: ['green50', 'green40', 'green60'],
   informative: ['blue50', 'blue40', 'blue60'],
   negative: ['red50', 'red40', 'red60'],
   notice: ['yellow50', 'yellow40', 'yellow60'],
 };
 
-const semanticColorNames = Object.keys(semanticColorMap);
+const semanticColorNames = Object.keys(semanticColors) as Array<SemanticColorName>;
 
-type tIndexMap = {
-  [key: number]: string;
+type IndexMap = {
+  [key: number]: 'a' | 'b' | 'c';
 };
 
-const indexMap: tIndexMap = {
+const indexMap: IndexMap = {
   0: 'a',
   1: 'b',
   2: 'c',
 };
 
 export const Default = () => {
-  const { gray100, gray10 } = useContext(ColorContext);
-
   return (
     <div>
-      <Text as="div" typography="subtitle" style={{ color: gray100, marginBottom: '24px' }}>
+      <Text as="div" typography="subtitle" style={{ color: colors.gray100, marginBottom: '24px' }}>
         회색 명암(Gray Scale)
       </Text>
       <ul
@@ -83,7 +81,7 @@ export const Default = () => {
         ))}
       </ul>
 
-      <Text as="div" typography="subtitle" style={{ color: gray100, marginBottom: '24px' }}>
+      <Text as="div" typography="subtitle" style={{ color: colors.gray100, marginBottom: '24px' }}>
         의미론적 색상(Semantic Color)
       </Text>
       <div style={{ display: 'grid', gap: '40px', gridTemplateColumns: 'repeat(2, 615px)' }}>
@@ -103,7 +101,7 @@ export const Default = () => {
               `,
             }}
           >
-            {semanticColorMap[name].map((colorName, colorIndex) => (
+            {semanticColors[name].map((colorName, colorIndex) => (
               <li
                 key={colorIndex}
                 style={{
@@ -122,7 +120,7 @@ export const Default = () => {
                 </Text>
                 <Text
                   typography="caption"
-                  style={{ color: `${/40/g.test(colorName) ? gray100 : gray10}` }}
+                  style={{ color: `${/40/g.test(colorName) ? colors.gray100 : colors.gray10}` }}
                 >
                   {colorName}
                 </Text>
