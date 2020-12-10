@@ -26,3 +26,5 @@ export const colors = {
 export type SemanticColorName = 'positive' | 'informative' | 'negative' | 'notice';
 
 export type ColorProperty = keyof typeof colors;
+
+export type Colors = typeof colors[keyof typeof colors];
