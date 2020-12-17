@@ -2,20 +2,7 @@ import React, { HTMLAttributes } from 'react';
 
 import classNames from 'classnames';
 
-type NumberAttribute =
-  | number
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | '8'
-  | '9'
-  | '10'
-  | '11'
-  | '12';
+type NumberAttribute = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 type ColumnSize = boolean | 'auto' | NumberAttribute;
 
 interface ColumnProps extends HTMLAttributes<HTMLDivElement> {
