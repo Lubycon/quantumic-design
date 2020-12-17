@@ -13,7 +13,8 @@ interface ColumnProps extends HTMLAttributes<HTMLDivElement> {
   xl?: ColumnSize;
 }
 
-const sizes = ['xl' as const, 'lg' as const, 'md' as const, 'sm' as const, 'xs' as const];
+type ColumnResponsive = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+const sizes: ColumnResponsive[] = ['xl', 'lg', 'md', 'sm', 'xs'];
 
 export default function Column({ children, ...props }: ColumnProps): JSX.Element {
   const spans: string[] = [];
