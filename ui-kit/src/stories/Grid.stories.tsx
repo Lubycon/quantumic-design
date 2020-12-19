@@ -32,6 +32,18 @@ export const Default = () => (
   </Row>
 );
 
+export const Direction = () => (
+  <Row style={{ maxWidth: 1200 }} direction="column">
+    {columns.map((column) => (
+      <Column key={column} style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          Column{column}
+        </Text>
+      </Column>
+    ))}
+  </Row>
+);
+
 export const Responsive = () => (
   <Row style={{ maxWidth: 1200 }}>
     <Column lg={8} md={4} xs={2} style={columnStyle}>
