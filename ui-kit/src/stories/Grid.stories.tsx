@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { Column, Row } from 'components/Grid';
+import Text from 'components/Text';
 import { Meta } from '@storybook/react/types-6-0';
 import { colors } from 'src/constants/colors';
 
@@ -23,7 +24,9 @@ export const Default = () => (
   <Row style={{ maxWidth: 1200 }}>
     {columns.map((column) => (
       <Column key={column} style={columnStyle}>
-        Column{column}
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          Column{column}
+        </Text>
       </Column>
     ))}
   </Row>
@@ -38,5 +41,15 @@ export const Responsive = () => (
     <Column lg={1} md={5} xs={8} style={columnStyle}>
       lg=1, md=5, xs=8
     </Column>
+  </Row>
+);
+
+export const VariableWidth = () => (
+  <Row style={{ maxWidth: 1200 }}>
+    <Column lg="auto" style={{ ...columnStyle, width: 40 }}>
+      width: 40px
+    </Column>
+    <Column style={columnStyle}>Column</Column>
+    <Column style={columnStyle}>Column</Column>
   </Row>
 );
