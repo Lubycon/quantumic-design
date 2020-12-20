@@ -14,22 +14,19 @@ export const Default = () => {
       <Text as="h2" typography="h2" style={{ color: colors.gray100 }}>
         스위치
       </Text>
-      <ul style={{ padding: 0 }}>
-        <li
-          style={{ display: 'flex', alignItems: 'center', listStyle: 'none', marginBottom: '23px' }}
-        >
-          <Switch />
-          <Text as="span" typography="content" style={{ marginLeft: '8px', color: colors.gray100 }}>
-            Off
-          </Text>
-        </li>
-        <li style={{ display: 'flex', alignItems: 'center', listStyle: 'none' }}>
-          <Switch checked={true} />
-          <Text as="span" typography="content" style={{ marginLeft: '8px', color: colors.gray100 }}>
-            On
-          </Text>
-        </li>
-      </ul>
+      <div style={{ padding: 0 }}>
+        <Switch label={'Off'} style={{ marginBottom: '23.17px' }} />
+        <Switch defaultChecked={true} label={'On'} />
+      </div>
+    </div>
+  );
+};
+
+export const Inline = () => {
+  return (
+    <div>
+      <Switch display="inline" label="Off" style={{ marginRight: '20px' }} />
+      <Switch defaultChecked={true} display="inline" label="On" />
     </div>
   );
 };
