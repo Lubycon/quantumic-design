@@ -23,8 +23,8 @@
       position: absolute;
       width: 15px;
       height: 15px;
-      left: 3.31px;
-      top: 50%;
+      left: 8.3%;
+	  top: 50%;
       transform: translateY(-50%);
       background-color: #ffffff;
       border-radius: 50%;
@@ -37,7 +37,7 @@
   }
 
   &--input:checked + &--slider::before {
-    transform: translate(18.38px, -50%);
+    transform: translate(123%, -50%);
   }
 
   &--display-inline {
