@@ -15,7 +15,7 @@ $box-size: 16px;
     display: grid;
     grid-template-areas: 'checkbox';
 
-    > * {
+    > input, > span {
       grid-area: checkbox;
     }
     > input {

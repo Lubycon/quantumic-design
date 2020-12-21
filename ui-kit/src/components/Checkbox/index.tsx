@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 import { Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
-import clxs from 'classnames';
-import { generateID } from 'src/utils/generateID';
+import classnames from 'classnames';
+import { generateID } from 'utils/index';
 import { Text } from '..';
 
 interface CheckboxBaseProps {
@@ -20,7 +20,7 @@ const Checkbox = (
   return (
     <label
       role="checkbox"
-      className={clxs('lubycon-checkbox', `lubycon-checkbox--display-${display}`, {
+      className={classnames('lubycon-checkbox', `lubycon-checkbox--display-${display}`, {
         'lubycon-checkbox--disabled': disabled,
       })}
       style={style}
@@ -37,11 +37,11 @@ const Checkbox = (
             aria-hidden="true"
             focusable="false"
           >
-            <path fill="none" stroke="#ffffff" strokeWidth="2" d="M1 4.2L4.51852 8L11 1" />
+            <path fill="none" stroke="#ffffff" strokeWidth="2" d="M1 4.2 L4.51852 8 L11 1" />
           </svg>
         </span>
       </span>
-      {label ? <Text as="span">{label}</Text> : null}
+      {label ? <Text>{label}</Text> : null}
     </label>
   );
 };
