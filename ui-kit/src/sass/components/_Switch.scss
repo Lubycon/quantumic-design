@@ -1,0 +1,46 @@
+.lubycon-switch {
+  border-radius: 31.5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  
+  &--input {
+    display: none;
+  }
+  
+  &--slider {
+    position: relative;
+    width: 40px;
+    height: 21px;
+    margin-right: 8px;
+    border-radius: 31.5px;
+    background-color: map-get($colors, 'gray40');
+    transition: background-color 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      left: 3.31px;
+	    top: 50%;
+      transform: translateY(-50%);
+      background-color: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+  }
+
+  &--input:checked + &--slider {
+    background-color: map-get($colors, 'green50');
+  }
+
+  &--input:checked + &--slider::before {
+    transform: translate(18.38px, -50%);
+  }
+
+  &--display-inline {
+    display: inline-flex;
+  }
+}
