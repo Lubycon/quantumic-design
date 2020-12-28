@@ -1,44 +1,38 @@
 $colors: (
-/*
+  /*
   Semantic Color
   Positive
- */
-  'green50': #13BC4C,
-  'green40': #78CF81,
-  'green60': #0F933C,
-/*
+ */ 'green50': #13bc4c,
+  'green40': #78cf81,
+  'green60': #0f933c,
+  /*
   Informative
- */
-  'blue50': #135CE9,
-  'blue40': #87ADF5,
-  'blue60': #013CAD,
-/*
+ */ 'blue50': #135ce9,
+  'blue40': #87adf5,
+  'blue60': #013cad,
+  /*
   Negative
- */
-  'red50': #CB121C,
-  'red40': #F29CA1,
-  'red60': #9B0B13,
-/*
+ */ 'red50': #cb121c,
+  'red40': #f29ca1,
+  'red60': #9b0b13,
+  /*
   Notice
- */
-  'yellow50': #F0CB08,
-  'yellow40': #F9E681,
-  'yellow60': #AA8F00,
-
-/*
+ */ 'yellow50': #f0cb08,
+  'yellow40': #f9e681,
+  'yellow60': #aa8f00,
+  /*
   Gray Scale
   100-10 (단위 10)
- */
-  'gray100': #1B1B1C,
-  'gray90': #2A2A2C,
-  'gray80': #4C4D53,
-  'gray70': #76777D,
-  'gray60': #8E9095,
-  'gray50': #B5B6B9,
-  'gray40': #D0D1D3,
-  'gray30': #E3E4E5,
-  'gray20': #F3F4F5,
-  'gray10': #FCFCFD,
+ */ 'gray100': #1b1b1c,
+  'gray90': #2a2a2c,
+  'gray80': #4c4d53,
+  'gray70': #76777d,
+  'gray60': #8e9095,
+  'gray50': #b5b6b9,
+  'gray40': #d0d1d3,
+  'gray30': #e3e4e5,
+  'gray20': #f3f4f5,
+  'gray10': #fcfcfd
 );
 
 @mixin color($name, $value) {
@@ -49,4 +43,8 @@ $colors: (
 
 @each $name, $value in $colors {
   @include color($name, $value);
+}
+
+@function get-color($name) {
+  @return map-get($colors, $name);
 }

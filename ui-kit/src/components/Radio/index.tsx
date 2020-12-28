@@ -24,20 +24,18 @@ const Radio = (
       })}
       style={style}
     >
-      <input
-        className="lubycon-radio--input"
-        ref={ref}
-        type="radio"
-        disabled={disabled}
-        {...props}
-        id={id}
-      />
-      <div className="lubycon-radio--indicator"></div>
-      {label ? (
-        <Text as="label" htmlFor={id}>
-          {label}
-        </Text>
-      ) : null}
+      <label htmlFor={id} className="lubycon-radio--label">
+        <input
+          className="lubycon-radio--input"
+          ref={ref}
+          type="radio"
+          disabled={disabled}
+          {...props}
+          id={id}
+        />
+        <div className="lubycon-radio--indicator"></div>
+        {label ? <Text>{label}</Text> : null}
+      </label>
     </span>
   );
 };

@@ -7,7 +7,7 @@ $box-size: 16px;
 
   &:hover:not(&--disabled) {
     .lubycon-checkbox--control {
-      border-color: map-get($colors, 'green50');
+      border-color: get-color('green50');
     }
   }
 
@@ -15,7 +15,8 @@ $box-size: 16px;
     display: grid;
     grid-template-areas: 'checkbox';
 
-    > input, > span {
+    > input,
+    > span {
       grid-area: checkbox;
     }
     > input {
@@ -36,7 +37,7 @@ $box-size: 16px;
     height: $box-size;
     border-radius: 2px;
     box-sizing: border-box;
-    border: 1px solid map-get($colors, 'gray40');
+    border: 1px solid get-color('gray40');
     margin-right: 8px;
 
     > svg {
@@ -44,13 +45,13 @@ $box-size: 16px;
       transform: scale(0);
     }
   }
-  
+
   &--input input:checked + &--control svg {
     transform: scale(1);
   }
   &--input input:checked + &--control {
-    background-color: map-get($colors, 'green50');
-    border-color: map-get($colors, 'green50');
+    background-color: get-color('green50');
+    border-color: get-color('green50');
   }
 
   &--display-inline {
@@ -59,15 +60,15 @@ $box-size: 16px;
 
   &--disabled {
     cursor: not-allowed;
-    color: map-get($colors, 'gray50');
+    color: get-color('gray50');
 
     input {
       cursor: not-allowed;
     }
 
     .lubycon-checkbox--input > input:checked + .lubycon-checkbox--control {
-      border-color: map-get($colors, 'gray40');
-      background-color: map-get($colors, 'gray40'); 
+      border-color: get-color('gray40');
+      background-color: get-color('gray40');
     }
   }
 }
