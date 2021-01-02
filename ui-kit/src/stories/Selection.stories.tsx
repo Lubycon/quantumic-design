@@ -21,7 +21,7 @@ export const Default = () => {
 export const Placeholder = () => {
   return (
     <div>
-      <Selection placeholder="선택해주세요">
+      <Selection placeholder="옵션을 선택하세요">
         <option>Option1</option>
         <option>Option2</option>
         <option>Option3</option>
