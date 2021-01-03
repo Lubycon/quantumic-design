@@ -4,14 +4,49 @@
   background-color: white;
   border: 1px solid get-color('gray30');
   border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
 
-  .lubycon-selection--select {
+  &:hover {
+    border-color: get-color('gray100');
+  }
+
+  &--disabled {
+    border-color: get-color('gray40');
+    background-color: get-color('gray40');
+    cursor: not-allowed;
+    &:hover {
+      border-color: get-color('gray40');
+    }
+  }
+
+  &--empty select.lubycon-selection__select {
+    color: get-color('gray50');
+  }
+
+  &--size-small {
+    .lubycon-selection__select {
+      padding: 4px 32px 4px 16px;
+    }
+  }
+  &--size-medium {
+    .lubycon-selection__select {
+      padding: 8px 36px 8px 16px;
+    }
+  }
+  &--size-large {
+    .lubycon-selection__select {
+      padding: 12px 60px 12px 20px;
+    }
+  }
+
+  .lubycon-selection__select {
     width: 100%;
     background-color: transparent;
     appearance: none;
     outline: none;
     border: none;
-    padding: 8px 36px 8px 16px;
+    cursor: inherit;
   }
 
   .lubycon-icon {

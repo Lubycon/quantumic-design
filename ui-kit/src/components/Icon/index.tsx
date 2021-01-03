@@ -14,11 +14,14 @@ interface Props {
 }
 
 const Icon = ({ icon, size = 16, type, color = colors.gray100 }: Props) => {
-  const svg = useMemo(() => {
-    const tag = icon.replace(/data:image\/svg\+xml;utf8,/, '');
-    const targetAttr = type === 'outline' ? 'stroke' : 'fill';
-    return tag.replace(/(<path\s)\b/gm, `$1${targetAttr}="${color}" `);
+  const svgTag = useMemo(() => {
+    return icon.replace(/data:image\/svg\+xml;utf8,/, '');
   }, [icon]);
+
+  const coloredSvg = useMemo(() => {
+    const targetAttr = type === 'outline' ? 'stroke' : 'fill';
+    return svgTag.replace(/(<path\s)\b/gm, `$1${targetAttr}="${color}" `);
+  }, [svgTag, color]);
 
   return (
     <span
@@ -27,7 +30,7 @@ const Icon = ({ icon, size = 16, type, color = colors.gray100 }: Props) => {
         'lubycon-icon--filled': type === 'filled',
       })}
       style={{ width: size, height: size }}
-      dangerouslySetInnerHTML={{ __html: svg }}
+      dangerouslySetInnerHTML={{ __html: coloredSvg }}
     />
   );
 };
