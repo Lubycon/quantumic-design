@@ -40,4 +40,4 @@ const Radio = (
   );
 };
 
-export default forwardRef(Radio) as typeof Radio;
+export default forwardRef(Radio);

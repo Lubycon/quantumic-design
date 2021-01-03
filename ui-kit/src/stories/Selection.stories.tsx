@@ -26,7 +26,7 @@ export const Sizes = () => {
   const selections = useMemo(() => {
     return ['small', 'medium', 'large'].map((size) => (
       <li key={size} style={{ marginBottom: 16, listStyle: ' none' }}>
-        <Selection placeholder={size} size={size as any}>
+        <Selection placeholder={size} size={size as ComponentProps<typeof Selection>['size']}>
           <option>옵션1</option>
           <option>옵션2</option>
           <option>옵션3</option>

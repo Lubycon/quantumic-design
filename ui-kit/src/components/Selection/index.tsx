@@ -24,7 +24,7 @@ const Selection = (
     size = 'medium',
     ...props
   }: SelectionProps,
-  ref: Ref<any>
+  ref: Ref<HTMLSelectElement>
 ) => {
   const [innerValue, setInnerValue] = useState(value ?? '');
   const iconColor = disabled ? colors.gray60 : colors.gray40;
@@ -60,4 +60,4 @@ const Selection = (
   );
 };
 
-export default forwardRef(Selection) as typeof Selection;
+export default forwardRef(Selection);

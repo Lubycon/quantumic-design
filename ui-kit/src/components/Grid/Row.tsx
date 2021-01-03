@@ -11,9 +11,15 @@ interface RowBaseProps {
 }
 type RowProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProps<T, RowBaseProps>;
 
-const Row = (
-  { as, direction = 'row', justify = 'flex-start', alignItems = 'flex-start', ...props }: RowProps,
-  ref: Ref<any>
+const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
+  {
+    as,
+    direction = 'row',
+    justify = 'flex-start',
+    alignItems = 'flex-start',
+    ...props
+  }: RowProps<T>,
+  ref: Ref<T>
 ) => {
   const Component = as ?? DEFAULT_ELEMENT;
 
@@ -31,4 +37,4 @@ const Row = (
   );
 };
 
-export default forwardRef(Row) as typeof Row;
+export default forwardRef(Row);

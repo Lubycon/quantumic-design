@@ -30,4 +30,4 @@ const Switch = (
   );
 };
 
-export default forwardRef(Switch) as typeof Switch;
+export default forwardRef(Switch);

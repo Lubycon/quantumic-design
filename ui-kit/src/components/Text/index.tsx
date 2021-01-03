@@ -12,7 +12,7 @@ type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProp
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   { typography = 'content', fontWeight = 'regular', as, ...props }: TextProps<T>,
-  ref: Ref<any>
+  ref: Ref<T>
 ) => {
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
@@ -28,4 +28,4 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   );
 };
 
-export default forwardRef(Text) as typeof Text;
+export default forwardRef(Text);

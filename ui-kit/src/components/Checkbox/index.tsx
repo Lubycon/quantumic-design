@@ -46,4 +46,4 @@ const Checkbox = (
   );
 };
 
-export default forwardRef(Checkbox) as typeof Checkbox;
+export default forwardRef(Checkbox);
