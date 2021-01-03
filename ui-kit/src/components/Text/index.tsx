@@ -1,6 +1,5 @@
-import React, { ElementType, Ref } from 'react';
+import React, { ElementType, Ref, forwardRef } from 'react';
 import { DEFAULT_ELEMENT, FontWeights, Typographys } from './types';
-import { forwardRef } from 'react';
 import { OverridableProps } from 'types/OverridableProps';
 import clxs from 'classnames';
 
@@ -12,7 +11,7 @@ type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProp
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   { typography = 'content', fontWeight = 'regular', as, ...props }: TextProps<T>,
-  ref: Ref<T>
+  ref: Ref<any>
 ) => {
   const target = as ?? DEFAULT_ELEMENT;
   const Component = target;
@@ -28,4 +27,4 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   );
 };
 
-export default forwardRef(Text);
+export default forwardRef(Text) as typeof Text;

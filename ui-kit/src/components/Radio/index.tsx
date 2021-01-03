@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import { Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import clxs from 'classnames';
 import { generateID } from 'src/utils/generateID';
@@ -40,4 +39,4 @@ const Radio = (
   );
 };
 
-export default forwardRef(Radio);
+export default forwardRef(Radio) as typeof Radio;

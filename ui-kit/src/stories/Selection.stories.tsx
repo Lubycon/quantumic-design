@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import Selection from 'components/Selection';
 import Text from 'components/Text';
@@ -26,7 +26,7 @@ export const Sizes = () => {
   const selections = useMemo(() => {
     return ['small', 'medium', 'large'].map((size) => (
       <li key={size} style={{ marginBottom: 16, listStyle: ' none' }}>
-        <Selection placeholder={size} size={size as ComponentProps<typeof Selection>['size']}>
+        <Selection placeholder={size} size={size as any}>
           <option>옵션1</option>
           <option>옵션2</option>
           <option>옵션3</option>

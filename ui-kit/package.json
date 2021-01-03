@@ -35,7 +35,8 @@
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp package.json dist/package.json",
     "copy-sass": "ncp src/sass/modules dist/sass",
-    "copy-version": "ncp dist/package.json package.json"
+    "copy-version": "ncp dist/package.json package.json",
+    "typecheck": "tsc --noEmit"
   },
   "eslintConfig": {
     "extends": [

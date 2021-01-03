@@ -19,7 +19,7 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     alignItems = 'flex-start',
     ...props
   }: RowProps<T>,
-  ref: Ref<T>
+  ref: Ref<any>
 ) => {
   const Component = as ?? DEFAULT_ELEMENT;
 
@@ -37,4 +37,4 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   );
 };
 
-export default forwardRef(Row);
+export default forwardRef(Row) as typeof Row;

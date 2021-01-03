@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import { Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import { chevronDownOutline } from 'ionicons/icons';
@@ -60,4 +59,4 @@ const Selection = (
   );
 };
 
-export default forwardRef(Selection);
+export default forwardRef(Selection) as typeof Selection;

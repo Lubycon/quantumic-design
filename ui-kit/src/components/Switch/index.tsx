@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import { Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import clxs from 'classnames';
 import { generateID } from 'src/utils/generateID';
@@ -30,4 +29,4 @@ const Switch = (
   );
 };
 
-export default forwardRef(Switch);
+export default forwardRef(Switch) as typeof Switch;

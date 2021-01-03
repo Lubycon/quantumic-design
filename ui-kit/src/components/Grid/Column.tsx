@@ -16,7 +16,7 @@ type ColumnProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridablePr
 
 const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   { as, ...props }: ColumnProps<T>,
-  ref: React.Ref<T>
+  ref: React.Ref<any>
 ) => {
   const spanClasses = useMemo(
     () =>
@@ -35,4 +35,4 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   );
 };
 
-export default React.forwardRef(Column);
+export default React.forwardRef(Column) as typeof Column;
