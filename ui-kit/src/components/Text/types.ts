@@ -6,8 +6,8 @@ export const typographys = [
   'h5',
   'h6',
   'subtitle',
-  'content',
-  'content2',
+  'p1',
+  'p2',
   'caption',
 ] as const;
 export type Typographys = typeof typographys[number];

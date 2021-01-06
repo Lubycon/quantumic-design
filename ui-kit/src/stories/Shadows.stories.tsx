@@ -25,7 +25,7 @@ export const Default = () => {
               padding: 34,
             }}
           >
-            <Text typography="content2">{shadow}</Text>
+            <Text typography="p2">{shadow}</Text>
           </div>
         </li>
       ))}
