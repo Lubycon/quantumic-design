@@ -16,8 +16,8 @@ const typographyNames: { [key in Typographys]: string } = {
   h5: '머릿말 5',
   h6: '머릿말 6',
   subtitle: '부제',
-  content: '본문 1',
-  content2: '본문 2',
+  p1: '본문 1',
+  p2: '본문 2',
   caption: '캡션',
 };
 
@@ -59,7 +59,7 @@ export const As = () => {
         <Text as="a" href="https://github.com" target="blank">
           앵커 태그를 사용해보자
         </Text>
-        <Text as="h1">h1으로 렌더해도 기본적으로는 Typography: content가 적용됩니다</Text>
+        <Text as="h1">h1으로 렌더해도 기본적으로는 Typography: p1이 적용됩니다</Text>
         <Text as="button">버튼도 가능하기는 함</Text>
       </li>
     </ul>
