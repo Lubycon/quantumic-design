@@ -2,21 +2,19 @@
   position: relative;
   display: inline-block;
   background-color: white;
-  border: 1px solid get-color('gray30');
   border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    border-color: get-color('gray100');
+    background-color: get-color('gray20');
   }
 
   &--disabled {
-    border-color: get-color('gray40');
     background-color: get-color('gray40');
     cursor: not-allowed;
     &:hover {
-      border-color: get-color('gray40');
+      background-color: get-color('gray40');
     }
   }
 
