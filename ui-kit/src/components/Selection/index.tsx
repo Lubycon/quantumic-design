@@ -7,6 +7,7 @@ import { colors } from 'src/constants/colors';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Typographys } from '../Text/types';
+
 interface SelectionBaseProps {
   placeholder?: string;
   size?: 'small' | 'medium' | 'large';
