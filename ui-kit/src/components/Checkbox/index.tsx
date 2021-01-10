@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import { Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import { generateID } from 'utils/index';

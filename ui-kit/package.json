@@ -22,7 +22,8 @@
   "author": "Lubycon",
   "dependencies": {
     "@types/classnames": "^2.2.11",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "ionicons": "^5.2.3"
   },
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
@@ -34,7 +35,8 @@
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp package.json dist/package.json",
     "copy-sass": "ncp src/sass/modules dist/sass",
-    "copy-version": "ncp dist/package.json package.json"
+    "copy-version": "ncp dist/package.json package.json",
+    "typecheck": "tsc --noEmit"
   },
   "eslintConfig": {
     "extends": [
@@ -74,8 +76,8 @@
     "@types/react-dom": "^16.9.8",
     "autoprefixer": "^9.0.0",
     "babel-loader": "^8.2.1",
-    "gh-pages": "^3.1.0",
     "classnames": "^2.2.6",
+    "gh-pages": "^3.1.0",
     "postcss": "^7.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -1,0 +1,17 @@
+.lubycon-icon {
+  display: inline-block;
+  &--outline {
+    path {
+      fill: transparent;
+    }
+  }
+  &--filled {
+    path {
+      stroke: transparent;
+    }
+  }
+  svg {
+    width: 100%;
+    vertical-align: top;
+  }
+}
