@@ -28,7 +28,7 @@ const Selection = (
 ) => {
   const [innerValue, setInnerValue] = useState(value ?? '');
   const iconColor = disabled ? colors.gray60 : colors.gray40;
-  const typography: Typographys = size === 'large' ? 'content' : 'content2';
+  const typography: Typographys = size === 'large' ? 'p1' : 'p2';
 
   useEffect(() => setInnerValue(value ?? ''), [value]);
 
