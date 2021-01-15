@@ -1,17 +1,18 @@
-import React, { isValidElement, ReactNode } from 'react';
-import classnames from 'classnames';
-import Text from '../Text';
+import React, { HTMLAttributes, ReactNode } from 'react';
+import { Portal } from 'src/contexts/Portal';
+import ToastBody from './ToastBody';
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+  show: boolean;
   children: ReactNode;
+  onShow?: () => void;
+  onHide?: () => void;
 }
-const Toast = ({ children }: Props) => {
+const Toast = ({ show, children, onShow, onHide, ...rest }: Props) => {
   return (
-    <div className={classnames('lubycon-toast')}>
-      <div className={classnames('lubycon-toast--inbox', 'lubycon-shadow--3')}>
-        {isValidElement(children) ? children : <Text typography="p2">{children}</Text>}
-      </div>
-    </div>
+    <Portal>
+      <ToastBody>{children}</ToastBody>
+    </Portal>
   );
 };
 
