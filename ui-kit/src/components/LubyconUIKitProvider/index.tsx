@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { PortalProvider } from '../../providers/PortalContext';
+import { PortalProvider } from '../../contexts/Portal';
 
 interface Props {
   children: ReactNode;
