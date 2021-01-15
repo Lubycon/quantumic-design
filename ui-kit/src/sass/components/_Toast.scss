@@ -1,0 +1,18 @@
+.lubycon-toast {
+  overflow: visible;
+
+  &--inbox {
+    display: inline-block;
+    padding: 8px 16px;
+    min-width: 336px;
+    border-radius: 4px;
+  }
+
+  .lubycon-text {
+    white-space: pre;
+  }
+
+  & + & {
+    margin-top: 24px;
+  }
+}
