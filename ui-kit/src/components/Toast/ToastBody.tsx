@@ -1,15 +1,15 @@
-import React, { isValidElement, ReactNode } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import Text from '../Text';
+import Text from 'components/Text';
 
 interface Props {
-  children: ReactNode;
+  message: string;
 }
 
-const ToastBody = ({ children }: Props) => {
+const ToastBody = ({ message }: Props) => {
   return (
     <div className={classnames('lubycon-toast--inbox', 'lubycon-shadow--3')}>
-      {isValidElement(children) ? children : <Text typography="p2">{children}</Text>}
+      <Text typography="p2">{message}</Text>
     </div>
   );
 };

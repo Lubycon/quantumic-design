@@ -1,58 +1,36 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import { animated, useSpring } from 'react-spring';
 import classnames from 'classnames';
 import { Portal } from 'contexts/Portal';
 import ToastBody from './ToastBody';
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   show: boolean;
-  children: ReactNode;
+  message: string;
   duration?: number;
   onShow?: () => void;
   onHide?: () => void;
 }
-const Toast = ({
-  show,
-  children,
-  duration = 3000,
-  onShow,
-  onHide,
-  className,
-  style,
-  ...rest
-}: Props) => {
-  const [isOpen, setOpen] = useState(show);
+const Toast = ({ show, message, onShow, onHide, className, style, ...rest }: ToastProps) => {
   const animation = useSpring<{
     progress: number;
     opacity: number;
     translateY: number;
     onFrame: (props: { progress: number }) => void;
   }>({
-    progress: isOpen ? 1 : 0,
-    opacity: isOpen ? 1 : 0,
-    translateY: isOpen ? 0 : 100,
+    progress: show ? 1 : 0,
+    opacity: show ? 1 : 0,
+    translateY: show ? 0 : 100,
     onFrame: ({ progress }) => {
-      if (isOpen && progress === 1) {
+      if (show && progress === 1) {
         onShow?.();
       }
 
-      if (!isOpen && progress === 0) {
+      if (!show && progress === 0) {
         onHide?.();
       }
     },
   });
-
-  useEffect(() => {
-    if (isOpen === true) {
-      setTimeout(() => {
-        setOpen(false);
-      }, duration);
-    }
-  }, [isOpen]);
-
-  useEffect(() => setOpen(show), [show]);
-
-  console.log(show);
 
   return (
     <Portal>
@@ -66,7 +44,7 @@ const Toast = ({
         }}
         {...rest}
       >
-        <ToastBody>{children}</ToastBody>
+        <ToastBody message={message} />
       </animated.div>
     </Portal>
   );

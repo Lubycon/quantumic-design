@@ -1,12 +1,17 @@
 import React, { ReactNode } from 'react';
-import { PortalProvider } from '../../contexts/Portal';
+import { ToastProvider } from 'contexts/Toast';
+import { PortalProvider } from 'contexts/Portal';
 
 interface Props {
   children: ReactNode;
 }
 
 function LubyconUIKitProvider({ children }: Props) {
-  return <PortalProvider>{children}</PortalProvider>;
+  return (
+    <ToastProvider>
+      <PortalProvider>{children}</PortalProvider>
+    </ToastProvider>
+  );
 }
 
 export default LubyconUIKitProvider;
