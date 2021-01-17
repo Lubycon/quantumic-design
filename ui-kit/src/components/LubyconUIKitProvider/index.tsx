@@ -8,9 +8,9 @@ interface Props {
 
 function LubyconUIKitProvider({ children }: Props) {
   return (
-    <ToastProvider>
-      <PortalProvider>{children}</PortalProvider>
-    </ToastProvider>
+    <PortalProvider>
+      <ToastProvider>{children}</ToastProvider>
+    </PortalProvider>
   );
 }
 
