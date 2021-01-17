@@ -1,11 +1,4 @@
-import React, {
-  ReactNode,
-  createContext,
-  useState,
-  useCallback,
-  useContext,
-  useEffect,
-} from 'react';
+import React, { ReactNode, createContext, useState, useCallback, useContext } from 'react';
 import classnames from 'classnames';
 import Toast, { ToastProps } from 'components/Toast';
 import { generateID } from 'src/utils';
