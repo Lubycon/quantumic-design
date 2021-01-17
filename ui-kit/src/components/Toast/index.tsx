@@ -25,16 +25,23 @@ const Toast = ({
   const transition = useTransition(isOpen, null, {
     from: {
       opacity: 0,
-      transform: 'translateY(100%)',
+      transform: 'translateX(-100%)',
+      height: 60,
     },
-    enter: {
-      opacity: 1,
-      transform: 'translateY(0)',
-    },
-    leave: {
-      opacity: 0,
-      transform: 'translateY(-100%)',
-    },
+    enter: [
+      { height: 60 },
+      {
+        opacity: 1,
+        transform: 'translateX(0)',
+      },
+    ],
+    leave: [
+      {
+        opacity: 0,
+        transform: 'translateX(-100%)',
+      },
+      { height: 0 },
+    ],
     onStart: () => {
       onShow?.();
     },
@@ -67,7 +74,9 @@ const Toast = ({
             }}
             {...rest}
           >
-            <ToastBody message={message} />
+            <div>
+              <ToastBody message={message} />
+            </div>
           </animated.div>
         ) : null;
       })}

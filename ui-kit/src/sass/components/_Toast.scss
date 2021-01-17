@@ -1,19 +1,32 @@
 .lubycon-toast {
   overflow: visible;
 
-  &--inbox {
+  .lubycon-toast--inbox {
     display: inline-block;
     padding: 8px 16px;
     min-width: 336px;
     border-radius: 4px;
     background-color: white;
+    margin: 12px 0;
   }
 
   .lubycon-text {
     white-space: pre;
   }
 
-  & + & {
-    margin-top: 24px;
+  &:first-of-type {
+    .lubycon-toast--inbox {
+      margin-bottom: 0;
+    }
   }
+}
+
+.lubycon-toast--context-container {
+  display: flex;
+  position: fixed;
+  flex-direction: column-reverse;
+  top: auto;
+  right: auto;
+  bottom: 40px;
+  left: 40px;
 }

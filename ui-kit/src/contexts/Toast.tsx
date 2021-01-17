@@ -6,10 +6,10 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
+import classnames from 'classnames';
 import Toast, { ToastProps } from 'components/Toast';
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
-import ToastStories from 'src/stories/Toast.stories';
 
 interface ToastOptions extends Omit<ToastProps, 'show'> {
   duration?: number;
@@ -28,44 +28,29 @@ interface ToastProviderProps {
   maxStack?: number;
 }
 export function ToastProvider({ children, maxStack = 3 }: ToastProviderProps) {
-  const [waitToastsQueue, setWaitToastsQueue] = useState<ToastOptions[]>([]);
   const [openedToastsQueue, setOpenedToastsQueue] = useState<ToastOptions[]>([]);
 
   const openToast = useCallback(
     (option: ToastOptions) => {
       const id = option.id ?? generateID('lubycon-toast');
-      setWaitToastsQueue([...waitToastsQueue, { id, ...option }]);
+      const toast = { id, ...option };
+      const [, ...rest] = openedToastsQueue;
+
+      if (openedToastsQueue.length >= maxStack) {
+        setOpenedToastsQueue([...rest, toast]);
+      } else {
+        setOpenedToastsQueue([...openedToastsQueue, toast]);
+      }
     },
-    [waitToastsQueue]
+    [openedToastsQueue]
   );
 
   const closeToast = useCallback(
     (closedToastId: string) => {
       setOpenedToastsQueue(openedToastsQueue.filter((toast) => toast.id !== closedToastId));
-      moveToastFromWaitQueueToOpenedQueue();
     },
     [openedToastsQueue]
   );
-
-  const moveToastFromWaitQueueToOpenedQueue = () => {
-    const currentToast = waitToastsQueue[0];
-    if (currentToast) {
-      setWaitToastsQueue((toasts) => toasts.filter((toast) => toast.id !== currentToast.id));
-      setOpenedToastsQueue((toasts) => [...toasts, currentToast]);
-    }
-  };
-
-  useEffect(() => {
-    if (openedToastsQueue.length >= maxStack) {
-      return;
-    }
-    console.log('wait queue -> ', waitToastsQueue);
-    moveToastFromWaitQueueToOpenedQueue();
-  }, [waitToastsQueue]);
-
-  useEffect(() => {
-    console.log('open queue -> ', openedToastsQueue);
-  }, [openedToastsQueue]);
 
   return (
     <ToastContext.Provider
@@ -76,18 +61,20 @@ export function ToastProvider({ children, maxStack = 3 }: ToastProviderProps) {
     >
       {children}
       <Portal>
-        {openedToastsQueue.map(({ id, onHide, duration = 3000, ...toastProps }) => (
-          <Toast
-            key={id}
-            show={true}
-            autoHideDuration={duration}
-            onHide={() => {
-              closeToast(id ?? '');
-              onHide?.();
-            }}
-            {...toastProps}
-          />
-        ))}
+        <div className={classnames('lubycon-toast--context-container')}>
+          {openedToastsQueue.map(({ id, onHide, duration = 3000, ...toastProps }) => (
+            <Toast
+              key={id}
+              show={true}
+              autoHideDuration={duration}
+              onHide={() => {
+                closeToast(id ?? '');
+                onHide?.();
+              }}
+              {...toastProps}
+            />
+          ))}
+        </div>
       </Portal>
     </ToastContext.Provider>
   );
