@@ -6,7 +6,7 @@ import { Text } from '..';
 interface ButtonBaseProps {
   size?: 'small' | 'medium' | 'large';
 }
-type ButtonProps = Omit<CombineElementProps<'button', ButtonBaseProps>, 'type'>;
+type ButtonProps = CombineElementProps<'button', ButtonBaseProps>;
 
 const Button = (
   { size = 'small', disabled, style, ...props }: ButtonProps,
@@ -14,7 +14,7 @@ const Button = (
 ) => {
   return (
     <button
-      className={classnames('lubycon-button', `${size}`)}
+      className={classnames('lubycon-button', `lubycon-button__${size}`)}
       disabled={disabled}
       style={style}
       ref={ref}
