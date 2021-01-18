@@ -1,11 +1,9 @@
 import path from 'path';
-
 import autoprefixer from 'autoprefixer';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import typescript from 'rollup-plugin-typescript2';
-// import babel from 'rollup-plugin-babel';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
@@ -29,11 +27,6 @@ function buildJS(input, output, format) {
       typescript({
         tsconfig: 'tsconfig.json',
       }),
-      // babel({
-      //   extensions,
-      //   runtimeHelpers: true,
-      //   include: ['src/**'],
-      // }),
       resolve({ extensions }),
       commonjs({
         namedExports: {
