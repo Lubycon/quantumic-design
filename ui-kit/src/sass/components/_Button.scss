@@ -1,3 +1,33 @@
-.button {
-  outline: 0;
+.lubycon-button {
+  font: inherit;
+  text-align: inherit;
+  outline: none;
+  border: 0;
+  margin: 0;
+  background-color: get-color('blue50');
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+
+  &__small {
+    height: 32px;
+    padding: 4px 16px;
+  }
+  &__medium {
+    height: 40px;
+    padding: 8px 16px;
+  }
+  &__large {
+    height: 56px;
+    padding: 12px 32px;
+  }
+
+  &:hover, &:active {
+    background-color: get-color('blue60');
+  }
+  &:disabled {
+    color: get-color('gray60');
+    background-color: get-color('gray40');
+    cursor: not-allowed;
+  }
 }
