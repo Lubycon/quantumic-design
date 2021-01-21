@@ -31,8 +31,18 @@
     }
   }
 
-  .lubycon-bar {
-    height: 2px;
-    background-color: get-color('blue50');
+  .lubycon-nav-wrap {
+    position: relative;
+
+    .lubycon-bar {
+      height: 2px;
+      background-color: get-color('blue50');
+      position: absolute;
+      bottom: 0;
+
+      &.lubycon-bar-animated {
+        pointer-events: none;
+      }
+    }
   }
 }

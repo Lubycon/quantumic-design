@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext, useState, useEffect, useMemo, useRef } from 'react';
 import classnames from 'classnames';
 import TabNode from './TabNode';
 import TabContext from './TabContext';
 import { TabOffsetMap, TabOffset, TabSizeMap } from './types';
+import { useRefs } from '../../hooks';
 
 const DEFAULT_SIZE = { width: 0, height: 0, left: 0, top: 0 };
 
@@ -20,9 +21,15 @@ export interface TabNavListProps {
 
 function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
   const { tabs } = useContext(TabContext);
-  const { id, activeKey, animated } = props;
+  const { id, activeKey, animated, onTabClick } = props;
+
+  const tabsWrapperRef = useRef<HTMLDivElement>();
+  const tabListRef = useRef<HTMLDivElement>();
+  const getTabRef = useRefs<HTMLDivElement>();
 
   const [wrapperScrollWidth, setWrapperScrollWidth] = useState<number>(0);
+  const [wrapperContentWidth, setWrapperContentWidth] = useState<number>(0);
+  const [wrapperWidth, setWrapperWidth] = useState<number>(0);
   const [barStyle, setBarStyle] = useState<React.CSSProperties>();
   const [tabSizes, setTabSizes] = useState<TabSizeMap>(new Map());
 
@@ -61,20 +68,54 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
     setBarStyle(newBarStyle);
   }, [activeTabOffset]);
 
+  useEffect(() => {
+    const offsetWidth = tabsWrapperRef.current?.offsetWidth || 0;
+
+    setWrapperWidth(offsetWidth);
+
+    const newWrapperScrollWidth = tabListRef.current?.offsetWidth || 0;
+
+    setWrapperScrollWidth(newWrapperScrollWidth);
+
+    setWrapperContentWidth(newWrapperScrollWidth);
+
+    setTabSizes(() => {
+      const newSizes: TabSizeMap = new Map();
+      tabs.forEach(({ key }) => {
+        const tabNode = getTabRef(key).current;
+
+        if (tabNode) {
+          newSizes.set(key, {
+            width: tabNode.offsetWidth,
+            height: tabNode.offsetHeight,
+            left: tabNode.offsetLeft,
+            top: tabNode.offsetTop,
+          });
+        }
+      });
+
+      return newSizes;
+    });
+  }, []);
+
   function scrollToTab(key = activeKey) {}
 
   const tabNodes: React.ReactElement[] = tabs.map((tab) => {
     const { key } = tab;
-    console.log(key, activeKey);
-
     return (
       <TabNode
         id={id}
         tab={tab}
         key={key}
+        ref={getTabRef(key)}
         active={key === activeKey}
+        onClick={(e) => {
+          onTabClick(key, e);
+        }}
         onFocus={() => {
           scrollToTab(key);
+
+          tabsWrapperRef.current.scrollToLeft = 0;
         }}
       />
     );
@@ -82,8 +123,10 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
 
   return (
     <div ref={ref} role="tablist" className={classnames('lubycon-tab-nav')}>
-      <div>
-        <div className="lubycon-nav-list">{tabNodes}</div>
+      <div ref={tabsWrapperRef} className={classnames('lubycon-nav-wrap')}>
+        <div ref={tabListRef} className="lubycon-nav-list">
+          {tabNodes}
+        </div>
 
         <div
           className={classnames(`lubycon-bar`, {
