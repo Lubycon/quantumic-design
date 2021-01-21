@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import TabPane, { TabPaneProps } from './TabPane';
 import TabNavList from './TabNavList';
 import { Tab } from './types';
+import { useMergedState } from '../../hooks';
+import { toArray } from '../../utils';
+import TabContext from './TabContext';
 
 export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   children?: React.ReactNode;
@@ -36,24 +39,21 @@ function Tabs(
 ) {
   const tabs = parseTabList(children);
 
-  const [selectedKey, setSelectedKey] = useState<string>(() => {
-    if (tabs) {
-      return tabs[0].key;
-    } else {
-      return activeKey ? activeKey : defaultActiveKey;
-    }
+  const [mergedActiveKey, setMergedActiveKey] = useMergedState<string>(() => tabs[0]?.key, {
+    value: activeKey,
+    defaultValue: defaultActiveKey,
   });
 
   function onInternalTabClick(key: string, e: React.MouseEvent) {
     onTabClick?.(key, e);
 
-    setSelectedKey(key);
+    setMergedActiveKey(key);
     onChange?.(key);
   }
 
   const tabNavBarProps = {
     id: '',
-    activeKey: selectedKey,
+    activeKey: mergedActiveKey,
     animated,
     panes: children,
     onTabClick: onInternalTabClick,
@@ -62,9 +62,11 @@ function Tabs(
   const tabNavBar: React.ReactElement = <TabNavList {...tabNavBarProps} />;
 
   return (
-    <div ref={ref} className={classnames('lubycon-tabs')}>
-      {tabNavBar}
-    </div>
+    <TabContext.Provider value={{ tabs }}>
+      <div ref={ref} className={classnames('lubycon-tabs')}>
+        {tabNavBar}
+      </div>
+    </TabContext.Provider>
   );
 }
 

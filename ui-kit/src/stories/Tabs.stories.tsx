@@ -10,9 +10,15 @@ export default {
 export const Default = () => {
   return (
     <div>
-      <Tabs>
-        <TabPane>
-          <div></div>
+      <Tabs defaultActiveKey="1">
+        <TabPane tab="첫번째 탭 Active" key="1">
+          first
+        </TabPane>
+        <TabPane tab="두번째 탭 normal" key="2">
+          second
+        </TabPane>
+        <TabPane tab="세번째 탭 Hover" key="3">
+          third
         </TabPane>
       </Tabs>
     </div>

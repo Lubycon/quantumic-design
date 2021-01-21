@@ -1,0 +1,38 @@
+.lubycon-tabs {
+  .lubycon-nav-list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    .lubycon-tab {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 40px;
+      line-height: 24px;
+      font-size: 14px;
+      cursor: pointer;
+
+      border-bottom: 1px solid get-color('gray30');
+      box-sizing: border-box;
+
+      height: 44px;
+      @include font-weight('regular', 400);
+
+      &.lubycon-tab-active {
+        color: get-color('gray100');
+        @include font-weight('bold', 700);
+      }
+
+      &:hover {
+        color: get-color('gray80');
+        border-bottom: 1px solid get-color('gray80');
+      }
+    }
+  }
+
+  .lubycon-bar {
+    height: 2px;
+    background-color: get-color('blue50');
+  }
+}

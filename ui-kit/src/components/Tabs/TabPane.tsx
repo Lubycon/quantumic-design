@@ -2,9 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 
 export interface TabPaneProps {
+  tab?: React.ReactNode;
   children?: React.ReactNode;
   active?: boolean;
   animated?: boolean;
+  disabled?: boolean;
 }
 
 export default function TabPane({ active, animated, children }: TabPaneProps) {

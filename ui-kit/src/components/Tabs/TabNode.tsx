@@ -1,14 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Tab, EditableConfig } from './types';
+import { Tab } from './types';
 
 export interface TabNodeProps {
   id: string;
   tab: Tab;
   active: boolean;
-  closable?: boolean;
-  editable?: EditableConfig;
-  onClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
   onResize?: (width: number, height: number, left: number, top: number) => void;
   tabBarGutter?: number;
   renderWrapper?: (node: React.ReactElement) => React.ReactElement;
@@ -21,9 +19,7 @@ function TabNode(
     active,
     tab: { key, tab, disabled },
     tabBarGutter,
-    closable,
     renderWrapper,
-    editable,
     onClick,
     onFocus,
   }: TabNodeProps,
@@ -33,10 +29,8 @@ function TabNode(
 
   const nodeStyle: React.CSSProperties = { marginLeft: tabBarGutter };
 
-  const removable = editable && closable !== false && !disabled;
-
-  function onInternalClick(e: React.MouseEvent | React.KeyboardEvent) {
-    if (disabled) return;
+  function onInternalClick(e: React.MouseEvent) {
+    if (disabled || !onClick) return;
 
     onClick(e);
   }
@@ -46,14 +40,12 @@ function TabNode(
       key={key}
       ref={ref}
       className={classNames(tabPrefix, {
-        [`${tabPrefix}-with-remove`]: removable,
         [`${tabPrefix}-active`]: active,
         [`${tabPrefix}-disabled`]: disabled,
       })}
       style={nodeStyle}
       onClick={onInternalClick}
     >
-      {/* Primary Tab Button */}
       <div
         role="tab"
         aria-selected={active}
@@ -61,7 +53,7 @@ function TabNode(
         className={`${tabPrefix}-btn`}
         aria-controls={id && `${id}-panel-${key}`}
         aria-disabled={disabled}
-        tabIndex={disabled ? null : 0}
+        tabIndex={disabled ? undefined : 0}
         onClick={(e) => {
           e.stopPropagation();
           onInternalClick(e);
