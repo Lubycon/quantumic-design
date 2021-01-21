@@ -6,6 +6,7 @@ import { Tab } from './types';
 import { useMergedState } from '../../hooks';
 import { toArray } from '../../utils';
 import TabContext from './TabContext';
+import TabPanelList from './TabPanelList';
 
 export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   children?: React.ReactNode;
@@ -67,6 +68,8 @@ function Tabs(
     <TabContext.Provider value={{ tabs }}>
       <div ref={ref} className={classnames('lubycon-tabs')}>
         {tabNavBar}
+
+        <TabPanelList activeKey={mergedActiveKey} animated={animated} />
       </div>
     </TabContext.Provider>
   );
