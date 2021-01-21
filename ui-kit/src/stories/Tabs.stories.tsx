@@ -20,6 +20,15 @@ export const Default = () => {
         <TabPane tab="세번째 탭 Hover" key="3">
           third
         </TabPane>
+        <TabPane tab="네번째 탭 normal" key="4">
+          fourth
+        </TabPane>
+        <TabPane tab="다섯번째 탭 normal" key="5">
+          fifth
+        </TabPane>
+        <TabPane tab="여섯번째 탭 normal" key="6">
+          sixth
+        </TabPane>
       </Tabs>
     </div>
   );

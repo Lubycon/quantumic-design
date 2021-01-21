@@ -130,7 +130,7 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
 
         <div
           className={classnames(`lubycon-bar`, {
-            ['lubycon-bar-animated']: animated,
+            ['lubycon-bar-animated']: animated ? animated : true,
           })}
           style={barStyle}
         />
