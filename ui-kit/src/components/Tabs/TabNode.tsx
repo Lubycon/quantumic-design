@@ -6,10 +6,9 @@ export interface TabNodeProps {
   id: string;
   tab: Tab;
   active: boolean;
+  tabWidth?: number;
   onClick?: (e: React.MouseEvent) => void;
-  onResize?: (width: number, height: number, left: number, top: number) => void;
   tabBarGutter?: number;
-  renderWrapper?: (node: React.ReactElement) => React.ReactElement;
   onFocus: React.FocusEventHandler;
 }
 
@@ -19,7 +18,7 @@ function TabNode(
     active,
     tab: { key, tab, disabled },
     tabBarGutter,
-    renderWrapper,
+    tabWidth,
     onClick,
     onFocus,
   }: TabNodeProps,
@@ -27,7 +26,7 @@ function TabNode(
 ) {
   const tabPrefix = 'lubycon-tab';
 
-  const nodeStyle: React.CSSProperties = { marginLeft: tabBarGutter };
+  const nodeStyle: React.CSSProperties = { marginLeft: tabBarGutter, width: tabWidth };
 
   function onInternalClick(e: React.MouseEvent) {
     if (disabled || !onClick) return;
@@ -35,7 +34,7 @@ function TabNode(
     onClick(e);
   }
 
-  let node: React.ReactElement = (
+  return (
     <div
       key={key}
       ref={ref}
@@ -64,12 +63,6 @@ function TabNode(
       </div>
     </div>
   );
-
-  if (renderWrapper) {
-    node = renderWrapper(node);
-  }
-
-  return node;
 }
 
 export default React.forwardRef(TabNode);

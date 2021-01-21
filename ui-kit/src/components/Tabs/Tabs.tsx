@@ -12,6 +12,7 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
   activeKey?: string;
   defaultActiveKey?: string;
   animated?: boolean;
+  tabWidth?: number;
   onTabClick?: (activeKey: string, e: React.MouseEvent) => void;
   onChange?: (activeKey: string) => void;
 }
@@ -34,7 +35,7 @@ function parseTabList(children: React.ReactNode): Tab[] {
 }
 
 function Tabs(
-  { children, activeKey, defaultActiveKey, animated, onTabClick, onChange }: TabsProps,
+  { children, activeKey, defaultActiveKey, animated, tabWidth, onTabClick, onChange }: TabsProps,
   ref: React.Ref<HTMLDivElement>
 ) {
   const tabs = parseTabList(children);
@@ -55,6 +56,7 @@ function Tabs(
     id: '',
     activeKey: mergedActiveKey,
     animated,
+    tabWidth,
     panes: children,
     onTabClick: onInternalTabClick,
   };

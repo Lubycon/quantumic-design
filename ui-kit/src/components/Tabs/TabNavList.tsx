@@ -13,15 +13,14 @@ export interface TabNavListProps {
   panes: React.ReactNode;
   animated?: boolean;
   tabBarGutter?: number;
-  className?: string;
-  style?: React.CSSProperties;
+  tabWidth?: number;
   onTabClick: (activeKey: string, e: React.MouseEvent) => void;
   children?: (node: React.ReactElement) => React.ReactElement;
 }
 
 function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
   const { tabs } = useContext(TabContext);
-  const { id, activeKey, animated, onTabClick } = props;
+  const { id, activeKey, animated, tabWidth, onTabClick } = props;
 
   const tabsWrapperRef = useRef<HTMLDivElement>();
   const tabListRef = useRef<HTMLDivElement>();
@@ -62,11 +61,11 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
 
     if (activeTabOffset) {
       newBarStyle.left = activeTabOffset.left;
-      newBarStyle.width = activeTabOffset.width;
+      newBarStyle.width = tabWidth ? tabWidth : activeTabOffset.width;
     }
 
     setBarStyle(newBarStyle);
-  }, [activeTabOffset]);
+  }, [activeTabOffset, tabWidth]);
 
   useEffect(() => {
     const offsetWidth = tabsWrapperRef.current?.offsetWidth || 0;
@@ -108,6 +107,7 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
         tab={tab}
         key={key}
         ref={getTabRef(key)}
+        tabWidth={tabWidth}
         active={key === activeKey}
         onClick={(e) => {
           onTabClick(key, e);
