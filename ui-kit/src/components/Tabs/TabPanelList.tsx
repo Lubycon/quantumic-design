@@ -14,10 +14,10 @@ export default function TabPanelList({ activeKey, animated }: TabPanelListProps)
   const activeIndex = tabs.findIndex((tab) => tab.key === activeKey);
 
   return (
-    <div className={classnames('lubycon-content-holder')}>
+    <div className={classnames('lubycon-tab__content__holder')}>
       <div
-        className={classnames('lubycon-content', {
-          ['lubycon-content-animated']: tabPaneAnimated,
+        className={classnames('lubycon-tab__content', {
+          ['lubycon-tab__content__animated']: tabPaneAnimated,
         })}
         style={
           activeIndex && tabPaneAnimated ? { ['marginLeft']: `-${activeIndex}00%` } : undefined

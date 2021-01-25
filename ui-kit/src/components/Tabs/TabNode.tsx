@@ -8,30 +8,23 @@ export interface TabNodeProps {
   active: boolean;
   tabWidth?: number;
   onClick?: (e: React.MouseEvent) => void;
-  tabBarGutter?: number;
   onFocus: React.FocusEventHandler;
 }
 
 function TabNode(
-  {
-    id,
-    active,
-    tab: { key, tab, disabled },
-    tabBarGutter,
-    tabWidth,
-    onClick,
-    onFocus,
-  }: TabNodeProps,
+  { id, active, tab: { key, tab, disabled }, tabWidth, onClick, onFocus }: TabNodeProps,
   ref: React.Ref<HTMLDivElement>
 ) {
   const tabPrefix = 'lubycon-tab';
 
-  const nodeStyle: React.CSSProperties = { marginLeft: tabBarGutter, width: tabWidth };
+  const nodeStyle: React.CSSProperties = { width: tabWidth };
 
   function onInternalClick(e: React.MouseEvent) {
-    if (disabled || !onClick) return;
+    if (disabled) {
+      return;
+    }
 
-    onClick(e);
+    onClick?.(e);
   }
 
   return (
@@ -39,8 +32,8 @@ function TabNode(
       key={key}
       ref={ref}
       className={classNames(tabPrefix, {
-        [`${tabPrefix}-active`]: active,
-        [`${tabPrefix}-disabled`]: disabled,
+        [`${tabPrefix}__active`]: active,
+        [`${tabPrefix}__disabled`]: disabled,
       })}
       style={nodeStyle}
       onClick={onInternalClick}
@@ -48,9 +41,9 @@ function TabNode(
       <div
         role="tab"
         aria-selected={active}
-        id={id && `${id}-tab-${key}`}
-        className={`${tabPrefix}-btn`}
-        aria-controls={id && `${id}-panel-${key}`}
+        id={id !== null ? `${id}-tab-${key}` : ''}
+        className={`${tabPrefix}__btn`}
+        aria-controls={id !== null ? `${id}-panel-${key}` : ''}
         aria-disabled={disabled}
         tabIndex={disabled ? undefined : 0}
         onClick={(e) => {

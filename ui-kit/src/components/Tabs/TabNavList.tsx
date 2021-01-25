@@ -35,7 +35,7 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
   const tabOffsets = useMemo(() => {
     const map: TabOffsetMap = new Map();
 
-    const lastOffset = tabSizes.get(tabs[0]?.key) || DEFAULT_SIZE;
+    const lastOffset = tabSizes.get(tabs[0].key) ?? DEFAULT_SIZE;
     const rightOffset = lastOffset.left + lastOffset.width;
 
     for (let i = 0; i < tabs.length; i += 1) {
@@ -122,15 +122,15 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
   });
 
   return (
-    <div ref={ref} role="tablist" className={classnames('lubycon-tab-nav')}>
-      <div ref={tabsWrapperRef} className={classnames('lubycon-nav-wrap')}>
+    <div ref={ref} role="tablist" className={classnames('lubycon-tab__nav')}>
+      <div ref={tabsWrapperRef} className={classnames('lubycon-tab__nav__wrap')}>
         <div ref={tabListRef} className="lubycon-nav-list">
           {tabNodes}
         </div>
 
         <div
-          className={classnames(`lubycon-bar`, {
-            ['lubycon-bar-animated']: animated ? animated : true,
+          className={classnames(`lubycon-tab__bar`, {
+            ['lubycon-tab__bar__animated']: animated ? animated : true,
           })}
           style={barStyle}
         />

@@ -19,7 +19,7 @@
       height: 44px;
       @include font-weight('regular', 400);
 
-      &.lubycon-tab-active {
+      &.lubycon-tab__active {
         color: get-color('gray100');
         @include font-weight('bold', 700);
       }
@@ -29,7 +29,7 @@
         border-bottom: 1px solid get-color('gray80');
       }
 
-      .lubycon-tab-btn {
+      .lubycon-tab__btn {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,16 +40,16 @@
     }
   }
 
-  .lubycon-nav-wrap {
+  .lubycon-tab__nav__wrap {
     position: relative;
 
-    .lubycon-bar {
+    .lubycon-tab__bar {
       height: 2px;
       background-color: get-color('blue50');
       position: absolute;
       bottom: 0;
 
-      &.lubycon-bar-animated {
+      &.lubycon-tab__bar__animated {
         pointer-events: none;
         transition: all 0.3s;
       }

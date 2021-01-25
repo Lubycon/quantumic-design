@@ -26,7 +26,7 @@ export default function TabPane({ active, animated, children }: TabPaneProps) {
       role="tabpanel"
       tabIndex={active ? 0 : -1}
       aria-hidden={!active}
-      className={classnames('lubycon-tab-pane', active && `lubycon-tab-pane--active`)}
+      className={classnames('lubycon-tab__pane', active && `lubycon-tab__pane__active`)}
       style={{ ...mergedStyle }}
     >
       {active && children}
