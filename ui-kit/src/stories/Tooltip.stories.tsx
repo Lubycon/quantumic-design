@@ -21,7 +21,7 @@ const positions: TooltipPosition[] = [
 
 export const Default = () => {
   return (
-    <div>
+    <div style={{ paddingTop: 40 }}>
       <Tooltip message="툴팁입니다.">
         <Button>버튼입니다</Button>
       </Tooltip>

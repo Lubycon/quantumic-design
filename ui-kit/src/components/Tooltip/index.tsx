@@ -1,13 +1,9 @@
-import React, {
-  cloneElement,
-  ReactElement,
-  useRef,
-  useLayoutEffect,
-  useState,
-  useMemo,
-} from 'react';
+import React, { cloneElement, ReactElement, useState, useMemo, useCallback } from 'react';
 import { Portal } from 'src/contexts/Portal';
 import TooltipBody, { TooltipArrowDirection } from './TooltipBody';
+
+const arrowHeight = 8;
+const tooltipPadding = 8;
 
 export type TooltipPosition =
   | 'top-left'
@@ -47,25 +43,34 @@ interface Props {
   position?: TooltipPosition;
 }
 const Tooltip = ({ children, message, position = 'top-center' }: Props) => {
-  const childRef = useRef<HTMLElement>(null);
-  const [childrenOffset, setChildrenOffset] = useState({
+  const [tooltipSize, setTooltipSize] = useState({ width: 0, height: 0 });
+  const [tooltipOffset, setTooltipOffset] = useState({
     top: -1,
     left: -1,
   });
   const arrowDirection = useMemo(() => getArrowDirection(position), [position]);
-  console.log(position, arrowDirection);
 
-  useLayoutEffect(() => {
-    if (childRef.current != null) {
-      const childrenElement = childRef.current;
-      setChildrenOffset({
-        top: childrenElement.offsetTop,
-        left: childrenElement.offsetLeft,
+  const childRef = useCallback(
+    (node: HTMLElement | null) => {
+      if (node !== null) {
+        const tooltipHeight = tooltipSize.height;
+        setTooltipOffset({
+          top: node.offsetTop - tooltipHeight - arrowHeight - tooltipPadding,
+          left: node.offsetLeft,
+        });
+      }
+    },
+    [tooltipSize]
+  );
+
+  const tooltipRef = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null) {
+      setTooltipSize({
+        width: node.clientWidth,
+        height: node.clientHeight,
       });
     }
-  }, [childRef]);
-
-  console.log(childrenOffset);
+  }, []);
 
   return (
     <>
@@ -73,8 +78,10 @@ const Tooltip = ({ children, message, position = 'top-center' }: Props) => {
         ref: childRef,
       })}
       <Portal>
-        <div className="lubycon-tooltip__positioner" style={childrenOffset}>
-          <TooltipBody arrowDirection={arrowDirection}>{message}</TooltipBody>
+        <div className="lubycon-tooltip__positioner" style={tooltipOffset}>
+          <TooltipBody ref={tooltipRef} arrowDirection={arrowDirection}>
+            {message}
+          </TooltipBody>
         </div>
       </Portal>
     </>

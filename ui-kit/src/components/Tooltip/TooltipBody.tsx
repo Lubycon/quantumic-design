@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, Ref } from 'react';
 import classnames from 'classnames';
 import Text from '../Text';
 
@@ -16,9 +16,13 @@ interface Props {
   children: string;
   arrowDirection: TooltipArrowDirection;
 }
-const TooltipBody = ({ children, arrowDirection }: Props) => {
+const TooltipBody = forwardRef(function TooltipBody(
+  { children, arrowDirection }: Props,
+  forwardedRef: Ref<HTMLDivElement>
+) {
   return (
     <div
+      ref={forwardedRef}
       className={classnames(
         'lubycon-tooltip__body',
         `lubycon-tooltip__body--arrow-${arrowDirection}`
@@ -27,6 +31,6 @@ const TooltipBody = ({ children, arrowDirection }: Props) => {
       <Text typography="caption">{children}</Text>
     </div>
   );
-};
+});
 
 export default TooltipBody;
