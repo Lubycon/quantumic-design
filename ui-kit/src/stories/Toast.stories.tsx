@@ -53,3 +53,40 @@ export const ToastHooks = () => {
     </div>
   );
 };
+
+export const Align = () => {
+  const { openToast } = useToast();
+  return (
+    <div>
+      <Button
+        onClick={() =>
+          openToast({
+            message: `데이터 전송이 완료되었습니다`,
+          })
+        }
+      >
+        Left
+      </Button>
+      <Button
+        onClick={() =>
+          openToast({
+            message: `데이터 전송이 완료되었습니다`,
+            align: 'center',
+          })
+        }
+      >
+        Center
+      </Button>
+      <Button
+        onClick={() =>
+          openToast({
+            message: `데이터 전송이 완료되었습니다`,
+            align: 'right',
+          })
+        }
+      >
+        Right
+      </Button>
+    </div>
+  );
+};

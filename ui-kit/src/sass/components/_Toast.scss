@@ -1,32 +1,59 @@
 .lubycon-toast {
   overflow: visible;
 
-  .lubycon-toast--inbox {
+  .lubycon-toast__body {
     display: inline-block;
     padding: 8px 16px;
     min-width: 336px;
     border-radius: 4px;
     background-color: white;
     margin: 12px 0;
+    &--align-left {
+      text-align: left;
+    }
+    &--align-center {
+      text-align: center;
+      min-width: auto;
+    }
+    &--align-right {
+      text-align: right;
+    }
   }
 
-  .lubycon-text {
+  .lubycon-toast__text {
     white-space: pre;
   }
 
   &:first-of-type {
-    .lubycon-toast--inbox {
+    .lubycon-toast__body {
       margin-bottom: 0;
     }
   }
 }
 
-.lubycon-toast--context-container {
-  display: flex;
+%context-container {
   position: fixed;
+  display: flex;
   flex-direction: column-reverse;
   top: auto;
-  right: auto;
   bottom: 40px;
-  left: 40px;
+}
+
+.lubycon-toast__context-container {
+  &--align-left {
+    @extend %context-container;
+    left: 40px;
+    right: auto;
+  }
+  &--align-center {
+    @extend %context-container;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+  &--align-right {
+    @extend %context-container;
+    left: auto;
+    right: 40px;
+  }
 }
