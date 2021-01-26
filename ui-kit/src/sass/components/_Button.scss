@@ -8,6 +8,7 @@
   border-radius: 4px;
   color: #ffffff;
   cursor: pointer;
+  -webkit-font-smoothing: antialiased;
 
   &__small {
     height: 32px;
@@ -22,7 +23,8 @@
     padding: 12px 32px;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     background-color: get-color('blue60');
   }
   &:disabled {
