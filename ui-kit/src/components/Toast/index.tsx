@@ -2,6 +2,29 @@ import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import classnames from 'classnames';
 import ToastBody from './ToastBody';
+import { useMemo } from 'react';
+
+export type ToastAlign = 'left' | 'center' | 'right';
+
+const getTranslateAnimation = (align: ToastAlign) => {
+  switch (align) {
+    case 'left':
+      return {
+        from: 'translateX(-100%)',
+        to: 'translateX(0)',
+      };
+    case 'center':
+      return {
+        from: 'translateY(100%)',
+        to: 'translateY(0)',
+      };
+    case 'right':
+      return {
+        from: 'translateX(100%)',
+        to: 'translateX(0)',
+      };
+  }
+};
 
 export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   show: boolean;
@@ -9,6 +32,7 @@ export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childr
   autoHideDuration?: number;
   onShow?: () => void;
   onHide?: () => void;
+  align?: ToastAlign;
 }
 const Toast = ({
   show,
@@ -18,27 +42,29 @@ const Toast = ({
   onHide,
   className,
   style,
+  align = 'left',
   ...rest
 }: ToastProps) => {
   const [isOpen, setOpen] = useState(show);
+  const translateAnimation = useMemo(() => getTranslateAnimation(align), [align]);
 
   const transition = useTransition(isOpen, null, {
     from: {
       opacity: 0,
-      transform: 'translateX(-100%)',
+      transform: translateAnimation.from,
       height: 60,
     },
     enter: [
       { height: 60 },
       {
         opacity: 1,
-        transform: 'translateX(0)',
+        transform: translateAnimation.to,
       },
     ],
     leave: [
       {
         opacity: 0,
-        transform: 'translateX(-100%)',
+        transform: translateAnimation.from,
       },
       { height: 0 },
     ],
@@ -74,9 +100,7 @@ const Toast = ({
             }}
             {...rest}
           >
-            <div>
-              <ToastBody message={message} />
-            </div>
+            <ToastBody message={message} textAlign={align} />
           </animated.div>
         ) : null;
       })}
