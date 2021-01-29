@@ -27,6 +27,7 @@ const TooltipBody = forwardRef(function TooltipBody(
         'lubycon-tooltip__body',
         `lubycon-tooltip__body--arrow-${arrowDirection}`
       )}
+      tabIndex={-1}
     >
       <Text typography="caption">{children}</Text>
     </div>

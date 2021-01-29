@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import Button from 'components/Button';
 import Tooltip, { TooltipPosition } from 'src/components/Tooltip';
+import { useState } from 'react';
 
 export default {
   title: 'Lubycon UI Kit/Tooltip',
@@ -22,21 +23,29 @@ const positions: TooltipPosition[] = [
 export const Default = () => {
   return (
     <div style={{ paddingTop: 40 }}>
-      <Tooltip message="툴팁입니다.">
+      <Tooltip show={true} message="툴팁입니다.">
         <Button>버튼입니다</Button>
       </Tooltip>
     </div>
   );
 };
 
+const TooltipButton = ({ children }: { children: TooltipPosition }) => {
+  const [show, setShow] = useState(false);
+  return (
+    <Tooltip show={show} message="툴팁입니다." position={children}>
+      <Button onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+        {children}
+      </Button>
+    </Tooltip>
+  );
+};
 export const Position = () => {
   return (
-    <ul style={{ padding: 0, paddingTop: 40, margin: 0 }}>
+    <ul style={{ padding: 100, margin: 0 }}>
       {positions.map((p) => (
-        <li key={p} style={{ listStyle: 'none', marginBottom: 40 }}>
-          <Tooltip message="툴팁입니다." position={p}>
-            <Button>{p}</Button>
-          </Tooltip>
+        <li key={p} style={{ listStyle: 'none', marginBottom: 60 }}>
+          <TooltipButton>{p}</TooltipButton>
         </li>
       ))}
     </ul>
