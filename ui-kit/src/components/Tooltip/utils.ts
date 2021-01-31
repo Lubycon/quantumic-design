@@ -39,7 +39,7 @@ export function getTooltipPosition(
 
   const topPosition = offsetTop - tooltipHeight - arrowHeight - spacing;
   const bottomPosition = offsetBottom + arrowHeight + spacing;
-  const horizentalCenterOfChildren = offsetLeft + clientWidth / 2 - tooltipWidth / 2;
+  const horizontalCenterOfChildren = offsetLeft + clientWidth / 2 - tooltipWidth / 2;
   const verticalCenterOfChildren = offsetTop + clientHeight / 2 - tooltipHeight / 2;
 
   switch (position) {
@@ -51,7 +51,7 @@ export function getTooltipPosition(
     case 'top-center':
       return {
         top: topPosition,
-        left: horizentalCenterOfChildren,
+        left: horizontalCenterOfChildren,
       };
     case 'top-right':
       return {
@@ -66,7 +66,7 @@ export function getTooltipPosition(
     case 'bottom-center':
       return {
         top: bottomPosition,
-        left: horizentalCenterOfChildren,
+        left: horizontalCenterOfChildren,
       };
     case 'bottom-right':
       return {
