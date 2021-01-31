@@ -39,7 +39,6 @@ function Tabs(
   ref: React.Ref<HTMLDivElement>
 ) {
   const tabs = parseTabList(children);
-  console.log(tabs);
 
   const [mergedActiveKey, setMergedActiveKey] = useMergedState<string>(() => tabs[0]?.key, {
     value: activeKey,
