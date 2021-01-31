@@ -21,7 +21,7 @@ function parseTabList(children: React.ReactNode): Tab[] {
   return React.Children.toArray(children)
     .map((node) => {
       if (React.isValidElement(node)) {
-        const key = node.key !== undefined ? String(node.key) : undefined;
+        const key = node.key !== undefined ? String(node.key).replace(/\.\$/, '') : undefined;
         return {
           key,
           ...node.props,
@@ -39,6 +39,7 @@ function Tabs(
   ref: React.Ref<HTMLDivElement>
 ) {
   const tabs = parseTabList(children);
+  console.log(tabs);
 
   const [mergedActiveKey, setMergedActiveKey] = useMergedState<string>(() => tabs[0]?.key, {
     value: activeKey,
