@@ -18,17 +18,20 @@ export interface TabNavListProps {
   children?: (node: React.ReactElement) => React.ReactElement;
 }
 
-function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
+function TabNavList(
+  { animated = true, ...props }: TabNavListProps,
+  ref: React.Ref<HTMLDivElement>
+) {
   const { tabs } = useContext(TabContext);
-  const { id, activeKey, animated, tabWidth, onTabClick } = props;
+  const { id, activeKey, tabWidth, onTabClick } = props;
 
-  const tabsWrapperRef = useRef<HTMLDivElement>();
-  const tabListRef = useRef<HTMLDivElement>();
+  const tabsWrapperRef = useRef<HTMLDivElement>(null);
+  const tabListRef = useRef<HTMLDivElement>(null);
   const getTabRef = useRefs<HTMLDivElement>();
 
   const [wrapperScrollWidth, setWrapperScrollWidth] = useState<number>(0);
-  const [wrapperContentWidth, setWrapperContentWidth] = useState<number>(0);
-  const [wrapperWidth, setWrapperWidth] = useState<number>(0);
+  const [, setWrapperContentWidth] = useState<number>(0);
+  const [, setWrapperWidth] = useState<number>(0);
   const [barStyle, setBarStyle] = useState<React.CSSProperties>();
   const [tabSizes, setTabSizes] = useState<TabSizeMap>(new Map());
 
@@ -38,18 +41,19 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
     const lastOffset = tabSizes.get(tabs[0].key) ?? DEFAULT_SIZE;
     const rightOffset = lastOffset.left + lastOffset.width;
 
-    for (let i = 0; i < tabs.length; i += 1) {
-      const { key } = tabs[i];
+    tabs.forEach(({ key }, i) => {
+      const prevTab = tabs[i - 1];
+
       let data = tabSizes.get(key);
 
       if (!data) {
-        data = tabSizes.get(tabs[i - 1]?.key) || DEFAULT_SIZE;
+        data = tabSizes.get(prevTab?.key) ?? DEFAULT_SIZE;
       }
 
-      const entity = (map.get(key) || { ...data }) as TabOffset;
+      const entity = (map.get(key) ?? { ...data }) as TabOffset;
       entity.right = rightOffset - entity.left - entity.width;
       map.set(key, entity);
-    }
+    });
 
     return map;
   }, [tabs.map((tab) => tab.key).join('_'), tabSizes, wrapperScrollWidth]);
@@ -61,18 +65,18 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
 
     if (activeTabOffset) {
       newBarStyle.left = activeTabOffset.left;
-      newBarStyle.width = tabWidth ? tabWidth : activeTabOffset.width;
+      newBarStyle.width = tabWidth ?? activeTabOffset.width;
     }
 
     setBarStyle(newBarStyle);
   }, [activeTabOffset, tabWidth]);
 
   useEffect(() => {
-    const offsetWidth = tabsWrapperRef.current?.offsetWidth || 0;
+    const offsetWidth = tabsWrapperRef.current?.offsetWidth ?? 0;
 
     setWrapperWidth(offsetWidth);
 
-    const newWrapperScrollWidth = tabListRef.current?.offsetWidth || 0;
+    const newWrapperScrollWidth = tabListRef.current?.offsetWidth ?? 0;
 
     setWrapperScrollWidth(newWrapperScrollWidth);
 
@@ -81,7 +85,7 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
     setTabSizes(() => {
       const newSizes: TabSizeMap = new Map();
       tabs.forEach(({ key }) => {
-        const tabNode = getTabRef(key).current;
+        const tabNode = getTabRef(key)?.current;
 
         if (tabNode) {
           newSizes.set(key, {
@@ -97,8 +101,6 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
     });
   }, []);
 
-  function scrollToTab(key = activeKey) {}
-
   const tabNodes: React.ReactElement[] = tabs.map((tab) => {
     const { key } = tab;
     return (
@@ -113,9 +115,9 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
           onTabClick(key, e);
         }}
         onFocus={() => {
-          scrollToTab(key);
-
-          tabsWrapperRef.current.scrollToLeft = 0;
+          if (tabsWrapperRef?.current != null) {
+            tabsWrapperRef.current.scrollLeft = 0;
+          }
         }}
       />
     );
@@ -130,7 +132,7 @@ function TabNavList(props: TabNavListProps, ref: React.Ref<HTMLDivElement>) {
 
         <div
           className={classnames(`lubycon-tab__bar`, {
-            ['lubycon-tab__bar__animated']: animated ? animated : true,
+            ['lubycon-tab__bar__animated']: animated,
           })}
           style={barStyle}
         />

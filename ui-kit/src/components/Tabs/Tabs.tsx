@@ -1,10 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
-import TabPane, { TabPaneProps } from './TabPane';
+import TabPane from './TabPane';
 import TabNavList from './TabNavList';
 import { Tab } from './types';
 import { useMergedState } from '../../hooks';
-import { toArray } from '../../utils';
 import TabContext from './TabContext';
 import TabPanelList from './TabPanelList';
 
@@ -19,8 +18,8 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
 }
 
 function parseTabList(children: React.ReactNode): Tab[] {
-  return toArray(children)
-    .map((node: React.ReactElement<TabPaneProps>) => {
+  return React.Children.toArray(children)
+    .map((node) => {
       if (React.isValidElement(node)) {
         const key = node.key !== undefined ? String(node.key) : undefined;
         return {
