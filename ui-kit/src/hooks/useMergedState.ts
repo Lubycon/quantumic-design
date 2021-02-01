@@ -9,7 +9,7 @@ export default function useMergedState<T, R = T>(
     postState?: (value: T) => T;
   }
 ): [R, (value: T) => void] {
-  const { defaultValue, value, onChange, postState } = option || {};
+  const { defaultValue, value, onChange, postState } = option ?? {};
   const [innerValue, setInnerValue] = React.useState<T>(() => {
     if (value !== undefined) {
       return value;
@@ -42,7 +42,7 @@ export default function useMergedState<T, R = T>(
     }
 
     if (value === undefined) {
-      setInnerValue(value);
+      setInnerValue(value as any);
     }
   }, [value]);
 

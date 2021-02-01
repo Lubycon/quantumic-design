@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classnames from 'classnames';
 
 export interface TabPaneProps {
@@ -9,17 +9,27 @@ export interface TabPaneProps {
   disabled?: boolean;
 }
 
-export default function TabPane({ active, animated, children }: TabPaneProps) {
-  const mergedStyle: React.CSSProperties = {};
-  if (!active) {
-    if (animated) {
-      mergedStyle.visibility = 'hidden';
-      mergedStyle.height = 0;
-      mergedStyle.overflowY = 'hidden';
+const animatedInvisibleStyle = {
+  visibility: 'hidden',
+  height: 0,
+  overflowY: 'hidden',
+};
+const notAnimatedInvisibleStyle = {
+  display: 'none',
+};
+
+export default function TabPane({ active = false, animated, children }: TabPaneProps) {
+  const style = useMemo(() => {
+    if (active) {
+      return {};
     } else {
-      mergedStyle.display = 'none';
+      if (animated === true) {
+        return animatedInvisibleStyle;
+      } else {
+        return notAnimatedInvisibleStyle;
+      }
     }
-  }
+  }, [active, animated]);
 
   return (
     <div
@@ -27,7 +37,7 @@ export default function TabPane({ active, animated, children }: TabPaneProps) {
       tabIndex={active ? 0 : -1}
       aria-hidden={!active}
       className={classnames('lubycon-tab__pane', active && `lubycon-tab__pane__active`)}
-      style={{ ...mergedStyle }}
+      style={style}
     >
       {active && children}
     </div>
