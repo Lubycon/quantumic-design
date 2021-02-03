@@ -1,3 +1,4 @@
+import { getAbsoluteOffset } from 'utils/dom';
 import { TooltipArrowDirection } from './TooltipBody';
 import { OffsetPosition, TooltipElementSize, TooltipPosition } from './types';
 
@@ -31,7 +32,9 @@ export function getTooltipPosition(
 ): OffsetPosition {
   const arrowHeight = 8;
   const spacing = 8;
-  const { offsetTop, offsetLeft, clientWidth, clientHeight } = childElement;
+  const { clientWidth, clientHeight } = childElement;
+
+  const { top: offsetTop, left: offsetLeft } = getAbsoluteOffset(childElement);
   const offsetRight = offsetLeft + clientWidth;
   const offsetBottom = offsetTop + clientHeight;
 

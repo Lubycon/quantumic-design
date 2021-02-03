@@ -41,6 +41,7 @@ const TooltipButton = ({ children }: { children: TooltipPosition }) => {
     </Tooltip>
   );
 };
+
 export const Position = () => {
   return (
     <ul style={{ padding: 100, margin: 0 }}>
@@ -50,5 +51,17 @@ export const Position = () => {
         </li>
       ))}
     </ul>
+  );
+};
+
+export const AbsolutePositionTest = () => {
+  return (
+    <div style={{ position: 'absolute', top: 500, left: 500 }}>
+      <div style={{ position: 'relative' }}>
+        <Tooltip show={true} message="툴팁입니다.">
+          <Button>버튼입니다</Button>
+        </Tooltip>
+      </div>
+    </div>
   );
 };
