@@ -1,23 +1,18 @@
 $colors: (
-  /*
-  Semantic Color
-  Positive
- */ 'green50': #13bc4c,
+  // Positive
+  'green50': #13bc4c,
   'green40': #78cf81,
   'green60': #0f933c,
-  /*
-  Informative
- */ 'blue50': #135ce9,
+  // Informative
+  'blue50': #135ce9,
   'blue40': #87adf5,
   'blue60': #013cad,
-  /*
-  Negative
- */ 'red50': #cb121c,
+  // Negative
+  'red50': #cb121c,
   'red40': #f29ca1,
   'red60': #9b0b13,
-  /*
-  Notice
- */ 'yellow50': #f0cb08,
+  // Notice
+  'yellow50': #f0cb08,
   'yellow40': #f9e681,
   'yellow60': #aa8f00,
   /*
@@ -32,7 +27,10 @@ $colors: (
   'gray40': #d0d1d3,
   'gray30': #e3e4e5,
   'gray20': #f3f4f5,
-  'gray10': #fcfcfd
+  'gray10': #fcfcfd,
+  // Mono Tone
+  'white': #ffffff,
+  'black': #000000
 );
 
 @mixin color($name, $value) {
