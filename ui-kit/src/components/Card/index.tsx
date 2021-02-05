@@ -15,3 +15,7 @@ const Card = forwardRef<HTMLDivElement, Props>(function Card({ children }, ref) 
 });
 
 export default Card;
+export { default as CardHeader } from './CardHeader';
+export { default as CardContent } from './CardContent';
+export { default as CardImageContent } from './CardImageContent';
+export { default as CardFooter } from './CardFooter';

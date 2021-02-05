@@ -1,15 +1,19 @@
 import React from 'react';
-import Card from 'components/Card';
-import { Meta } from '@storybook/react/types-6-0';
-import CardHeader from 'components/Card/CardHeader';
-import CardContent from 'components/Card/CardContent';
-import CardImageContent from 'components/Card/CardImageContent';
-import CardFooter from 'components/Card/CardFooter';
-import Text from 'components/Text';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardImageContent,
+  CardFooter,
+  Text,
+  Button,
+  Column,
+  Row,
+} from 'components/index';
 import Icon from 'components/Icon';
+import { Meta } from '@storybook/react/types-6-0';
 import { colors } from 'constants/colors';
 import { arrowForward } from 'ionicons/icons';
-import { Button, Column, Row } from 'src/components';
 
 export default {
   title: 'Lubycon UI Kit/Card',
