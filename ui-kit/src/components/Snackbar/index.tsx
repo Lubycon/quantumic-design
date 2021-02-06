@@ -14,7 +14,7 @@ export type SnackbarProps = Combine<
     onHide?: () => void;
     onClick?: () => void;
   },
-  HTMLAttributes<HTMLDivElement>
+  Omit<HTMLAttributes<HTMLDivElement>, 'children'>
 >;
 
 const Snackbar = ({
