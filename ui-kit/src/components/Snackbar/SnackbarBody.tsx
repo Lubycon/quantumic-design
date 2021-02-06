@@ -1,7 +1,6 @@
 import React, { ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import Text from 'components/Text';
-import {} from 'react';
 import Button from '../Button';
 
 interface Props {
