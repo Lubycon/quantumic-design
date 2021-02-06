@@ -40,8 +40,9 @@ export const AutoHide = () => {
 export const ToastHooks = () => {
   const { openToast } = useToast();
   return (
-    <div>
+    <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
+        size="large"
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다 - ${generateID('toast-test')}`,
@@ -57,13 +58,14 @@ export const ToastHooks = () => {
 export const Align = () => {
   const { openToast } = useToast();
   return (
-    <div>
+    <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다`,
           })
         }
+        size="large"
       >
         Left
       </Button>
@@ -74,6 +76,7 @@ export const Align = () => {
             align: 'center',
           })
         }
+        size="large"
       >
         Center
       </Button>
@@ -84,6 +87,7 @@ export const Align = () => {
             align: 'right',
           })
         }
+        size="large"
       >
         Right
       </Button>
