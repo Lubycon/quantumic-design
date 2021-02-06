@@ -2,15 +2,21 @@ import React, { HTMLAttributes, useEffect, useState, ReactNode } from 'react';
 import { animated, useTransition } from 'react-spring';
 import classnames from 'classnames';
 import SnackbarBody from './SnackbarBody';
+import { Combine } from 'src/types/utils';
 
-export interface SnackbarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
-  show: boolean;
-  message: string;
-  button: ReactNode;
-  autoHideDuration?: number;
-  onShow?: () => void;
-  onHide?: () => void;
-}
+export type SnackbarProps = Combine<
+  {
+    show: boolean;
+    message: string;
+    button: ReactNode;
+    autoHideDuration?: number;
+    onShow?: () => void;
+    onHide?: () => void;
+    onClick?: () => void;
+  },
+  HTMLAttributes<HTMLDivElement>
+>;
+
 const Snackbar = ({
   show,
   message,
@@ -18,6 +24,7 @@ const Snackbar = ({
   autoHideDuration,
   onShow,
   onHide,
+  onClick,
   className,
   style,
   ...rest
@@ -75,7 +82,7 @@ const Snackbar = ({
             }}
             {...rest}
           >
-            <SnackbarBody message={message} button={button} />
+            <SnackbarBody message={message} button={button} onClick={onClick} />
           </animated.div>
         ) : null;
       })}

@@ -3,7 +3,6 @@ import { Meta } from '@storybook/react/types-6-0';
 import Snackbar from 'components/Snackbar';
 import Button from 'components/Button';
 import { useSnackbar } from 'contexts/Snackbar';
-import { generateID } from 'src/utils';
 
 export default {
   title: 'Lubycon UI Kit/Snackbar',
@@ -16,7 +15,7 @@ export const Default = () => {
       <Snackbar show={true} message="데이터 전송이 완료되었습니다." button="실행취소" />
       <Snackbar
         show={true}
-        message={`사용하시는 단말기의 네트워크 상태가 좋지 않습니다.\nWIFI 혹은 3G/LTE 연결 상태를 확인해주세요.`}
+        message={`16개의 이미지가\n“동물" 폴더에 추가되었습니다.`}
         button="실행취소"
       />
     </div>
@@ -32,7 +31,7 @@ export const AutoHide = () => {
         show={show}
         autoHideDuration={3000}
         onHide={() => setShow(true)}
-        message={`사용하시는 단말기의 네트워크 상태가 좋지 않습니다.\nWIFI 혹은 3G/LTE 연결 상태를 확인해주세요.`}
+        message={`16개의 이미지가\n“동물" 폴더에 추가되었습니다.`}
         button="실행취소"
       />
     </div>
@@ -46,8 +45,50 @@ export const SnackbarHooks = () => {
       <Button
         onClick={() =>
           openSnackbar({
-            message: `데이터 전송이 완료되었습니다 - ${generateID('snackbar-test')}`,
+            message: `파일이 휴지통으로 이동되었습니다.`,
             button: '실행취소',
+          })
+        }
+      >
+        스낵바 열기
+      </Button>
+    </div>
+  );
+};
+
+export const onClick = () => {
+  const { openSnackbar } = useSnackbar();
+  return (
+    <div>
+      <Button
+        onClick={() =>
+          openSnackbar({
+            message: `파일이 휴지통으로 이동되었습니다.`,
+            button: '실행취소',
+            onClick: () => alert('실행 취소 완료'),
+          })
+        }
+      >
+        스낵바 열기
+      </Button>
+    </div>
+  );
+};
+
+export const multipleButton = () => {
+  const { openSnackbar } = useSnackbar();
+  return (
+    <div>
+      <Button
+        onClick={() =>
+          openSnackbar({
+            message: `메세지가 전송되었습니다.`,
+            button: (
+              <>
+                <Button onClick={() => alert('실행 취소 완료')}>실행취소</Button>
+                <Button onClick={() => alert('메세지 보기 클릭')}>메세지 보기</Button>
+              </>
+            ),
           })
         }
       >
