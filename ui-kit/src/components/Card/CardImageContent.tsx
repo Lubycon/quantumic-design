@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import { Combine } from 'src/types/utils';
 
 type CardImageContentProps = Combine<
-  HTMLAttributes<HTMLImageElement>,
   {
     src: string;
     alt: string;
-  }
+  },
+  HTMLAttributes<HTMLImageElement>
 >;
 const CardImageContent = ({ className, ...props }: CardImageContentProps) => {
   return (
