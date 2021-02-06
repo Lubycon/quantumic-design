@@ -18,6 +18,9 @@
 
   .lubycon-snackbar__body__buttons {
     margin-left: 16px;
+    .lubycon-button + .lubycon-button {
+      margin-left: 8px;
+    }
   }
 
   &:first-of-type {

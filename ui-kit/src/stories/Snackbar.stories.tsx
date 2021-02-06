@@ -82,7 +82,7 @@ export const multipleButton = () => {
       <Button
         onClick={() =>
           openSnackbar({
-            message: `메세지가 전송되었습니다.`,
+            message: '메세지가 전송되었습니다.',
             button: (
               <>
                 <Button onClick={() => alert('실행 취소 완료')}>실행취소</Button>
