@@ -1,0 +1,38 @@
+.lubycon-snackbar {
+  overflow: visible;
+
+  .lubycon-snackbar__body {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    min-width: 336px;
+    border-radius: 4px;
+    background-color: white;
+    margin: 12px 0;
+  }
+
+  .lubycon-snackbar__text {
+    white-space: pre;
+  }
+
+  .lubycon-snackbar__body__buttons {
+    margin-left: 6px;
+  }
+
+  &:first-of-type {
+    .lubycon-snackbar__body {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.lubycon-snackbar__context-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+  top: auto;
+  bottom: 40px;
+  left: 40px;
+  right: auto;
+}
