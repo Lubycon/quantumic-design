@@ -3,7 +3,6 @@ import { Meta } from '@storybook/react/types-6-0';
 import Toast from 'components/Toast';
 import Button from 'components/Button';
 import { useToast } from 'contexts/Toast';
-import { generateID } from 'src/utils';
 
 export default {
   title: 'Lubycon UI Kit/Toast',
@@ -45,7 +44,7 @@ export const ToastHooks = () => {
         size="large"
         onClick={() =>
           openToast({
-            message: `데이터 전송이 완료되었습니다 - ${generateID('toast-test')}`,
+            message: `데이터 전송이 완료되었습니다`,
           })
         }
       >

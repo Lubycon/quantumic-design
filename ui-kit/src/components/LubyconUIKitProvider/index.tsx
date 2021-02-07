@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ToastProvider } from 'contexts/Toast';
 import { PortalProvider } from 'contexts/Portal';
+import { SnackbarProvider } from 'src/contexts/Snackbar';
 
 interface Props {
   children: ReactNode;
@@ -9,7 +10,9 @@ interface Props {
 function LubyconUIKitProvider({ children }: Props) {
   return (
     <PortalProvider>
-      <ToastProvider>{children}</ToastProvider>
+      <SnackbarProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </SnackbarProvider>
     </PortalProvider>
   );
 }
