@@ -1,3 +1,6 @@
+$toast-margin: 12px;
+$toast-container-padding: 48px;
+
 .lubycon-toast {
   overflow: visible;
 
@@ -6,8 +9,10 @@
     padding: 8px 16px;
     min-width: 336px;
     border-radius: 4px;
-    background-color: white;
-    margin: 12px 0;
+    background-color: get-color('gray80');
+    margin: $toast-margin 0;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
     &--align-left {
       text-align: left;
     }
@@ -34,15 +39,16 @@
 %context-container {
   position: fixed;
   display: flex;
-  flex-direction: column-reverse;
-  top: auto;
-  bottom: 40px;
+  flex-direction: column;
+  top: $toast-container-padding;
+  bottom: auto;
+  margin: -$toast-margin 0;
 }
 
 .lubycon-toast__context-container {
   &--align-left {
     @extend %context-container;
-    left: 40px;
+    left: $toast-container-padding;
     right: auto;
   }
   &--align-center {
@@ -54,6 +60,6 @@
   &--align-right {
     @extend %context-container;
     left: auto;
-    right: 40px;
+    right: $toast-container-padding;
   }
 }

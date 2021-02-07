@@ -3,7 +3,6 @@ import { Meta } from '@storybook/react/types-6-0';
 import Toast from 'components/Toast';
 import Button from 'components/Button';
 import { useToast } from 'contexts/Toast';
-import { generateID } from 'src/utils';
 
 export default {
   title: 'Lubycon UI Kit/Toast',
@@ -40,11 +39,12 @@ export const AutoHide = () => {
 export const ToastHooks = () => {
   const { openToast } = useToast();
   return (
-    <div>
+    <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
+        size="large"
         onClick={() =>
           openToast({
-            message: `데이터 전송이 완료되었습니다 - ${generateID('toast-test')}`,
+            message: `데이터 전송이 완료되었습니다`,
           })
         }
       >
@@ -57,13 +57,14 @@ export const ToastHooks = () => {
 export const Align = () => {
   const { openToast } = useToast();
   return (
-    <div>
+    <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다`,
           })
         }
+        size="large"
       >
         Left
       </Button>
@@ -74,6 +75,7 @@ export const Align = () => {
             align: 'center',
           })
         }
+        size="large"
       >
         Center
       </Button>
@@ -84,6 +86,7 @@ export const Align = () => {
             align: 'right',
           })
         }
+        size="large"
       >
         Right
       </Button>
