@@ -1,6 +1,6 @@
 import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
-import clxs from 'classnames';
+import classnames from 'classnames';
 import { generateID } from 'src/utils/generateID';
 import { Text } from '..';
 
@@ -19,12 +19,12 @@ const Switch = (
   return (
     <label
       role="switch"
-      className={clxs('lubycon-switch', `lubycon-switch--display-${display}`)}
+      className={classnames('lubycon-switch', `lubycon-switch--display-${display}`)}
       style={style}
     >
-      <input className="lubycon-switch--input" ref={ref} type="checkbox" {...props} id={id} />
-      <span className="lubycon-switch--slider" />
-      {label ? <Text as="span">{label}</Text> : null}
+      <input className="lubycon-switch__input" ref={ref} type="checkbox" {...props} id={id} />
+      <span className="lubycon-switch__slider" />
+      <span className="lubycon-switch__label">{label ? <Text as="span">{label}</Text> : null}</span>
     </label>
   );
 };
