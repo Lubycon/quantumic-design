@@ -9,7 +9,7 @@ interface ButtonBaseProps {
 type ButtonProps = CombineElementProps<'button', ButtonBaseProps>;
 
 const Button = (
-  { size = 'small', disabled, style, ...props }: ButtonProps,
+  { size = 'small', disabled, style, onClick, ...props }: ButtonProps,
   ref: Ref<HTMLButtonElement>
 ) => {
   return (
@@ -18,6 +18,7 @@ const Button = (
       disabled={disabled}
       style={style}
       ref={ref}
+      onClick={onClick}
     >
       <Text typography={size === 'large' ? 'p1' : 'p2'} fontWeight="bold" {...props}></Text>
     </button>
