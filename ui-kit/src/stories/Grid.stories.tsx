@@ -23,12 +23,26 @@ const columnStyle: CSSProperties = {
 export const Default = () => (
   <Row style={{ maxWidth: 1200 }}>
     {columns.map((column) => (
-      <Column key={column} style={columnStyle}>
+      <Column key={column} style={columnStyle} xs={1}>
         <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
           Column{column}
         </Text>
       </Column>
     ))}
+  </Row>
+);
+
+export const Stretched = () => (
+  <Row style={{ maxWidth: 1200 }}>
+    {columns
+      .filter((v) => v % 2 === 0)
+      .map((column) => (
+        <Column key={column} style={columnStyle}>
+          <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+            Column{column}
+          </Text>
+        </Column>
+      ))}
   </Row>
 );
 
@@ -47,11 +61,19 @@ export const Direction = () => (
 export const Responsive = () => (
   <Row style={{ maxWidth: 1200 }}>
     <Column lg={8} md={4} xs={2} style={columnStyle}>
-      lg=8 md=4, xs=2
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        lg=8 md=4, xs=2
+      </Text>
     </Column>
-    <Column style={columnStyle}>auto</Column>
+    <Column style={columnStyle}>
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        auto
+      </Text>
+    </Column>
     <Column lg={1} md={5} xs={8} style={columnStyle}>
-      lg=1, md=5, xs=8
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        lg=1, md=5, xs=8
+      </Text>
     </Column>
   </Row>
 );
@@ -59,9 +81,19 @@ export const Responsive = () => (
 export const VariableWidth = () => (
   <Row style={{ maxWidth: 1200 }}>
     <Column lg="auto" style={{ ...columnStyle, width: 40 }}>
-      width: 40px
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        width: 40px
+      </Text>
     </Column>
-    <Column style={columnStyle}>Column</Column>
-    <Column style={columnStyle}>Column</Column>
+    <Column style={columnStyle}>
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        Column
+      </Text>
+    </Column>
+    <Column style={columnStyle}>
+      <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+        Column
+      </Text>
+    </Column>
   </Row>
 );
