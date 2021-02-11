@@ -31,34 +31,14 @@ export const Default = () => {
   return (
     <>
       <Row style={{ marginBottom: 80, width: 1200 }}>
-        <Column xs={6}>
-          <Alert type="negative" title="오류메세지">
-            서브 타이틀을 넣어주세요
-          </Alert>
-          <br />
-          <Alert type="negative">오류메세지를 넣어주세요</Alert>
-        </Column>
-        <Column xs={6}>
-          <Alert type="notice" title="경고메세지">
-            서브 타이틀을 넣어주세요
-          </Alert>
-          <br />
-          <Alert type="notice">경고메세지를 넣어주세요</Alert>
-        </Column>
-        <Column xs={6}>
-          <Alert type="informative" title="정보메세지">
-            서브 타이틀을 넣어주세요
-          </Alert>
-          <br />
-          <Alert type="informative">정보메세지를 넣어주세요</Alert>
-        </Column>
-        <Column xs={6}>
-          <Alert type="positive" title="완료메세지">
-            서브 타이틀을 넣어주세요
-          </Alert>
-          <br />
-          <Alert type="positive">완료메세지를 넣어주세요</Alert>
-        </Column>
+        {alerts.map(({ type, title }) => (
+          <Column xs={6} key={type} style={{ marginBottom: 32 }}>
+            <Alert style={{ marginBottom: 16 }} type={type} title={`${title} 메세지`}>
+              서브 타이틀을 넣어주세요
+            </Alert>
+            <Alert type={type}>{title} 메세지를 넣어주세요</Alert>
+          </Column>
+        ))}
       </Row>
     </>
   );
