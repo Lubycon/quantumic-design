@@ -4,16 +4,19 @@
   padding-left: ($gutter / 2);
   flex-basis: 0;
   flex-grow: 1;
-  // flex: 0 0 auto;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
 }
 
 @each $breakpoint, $size in $breakpoints {
+  .lubycon-grid-column--#{$breakpoint}--auto {
+    flex: 0 0 auto;
+  }
+
   @for $i from 1 through $max-columns {
-    .lubycon-grid-column--#{$breakpoint}__#{$i} {
-      @include media-breakpoint($size) {
+    .lubycon-grid-column--#{$breakpoint}--#{$i} {
+      @include media-breakpoint($breakpoint) {
         flex: 0 0 percentage($i / $max-columns);
         width: percentage($i / $max-columns);
       }

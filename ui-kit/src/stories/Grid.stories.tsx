@@ -21,7 +21,7 @@ const columnStyle: CSSProperties = {
 };
 
 export const Default = () => (
-  <Row style={{ maxWidth: 1200 }}>
+  <Row>
     {columns.map((column) => (
       <Column key={column} style={columnStyle} xs={1}>
         <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
@@ -33,7 +33,7 @@ export const Default = () => (
 );
 
 export const Stretched = () => (
-  <Row style={{ maxWidth: 1200 }}>
+  <Row>
     {columns
       .filter((v) => v % 2 === 0)
       .map((column) => (
@@ -47,7 +47,7 @@ export const Stretched = () => (
 );
 
 export const Direction = () => (
-  <Row style={{ maxWidth: 1200 }} direction="column">
+  <Row direction="column">
     {columns.map((column) => (
       <Column key={column} style={columnStyle}>
         <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
@@ -59,7 +59,7 @@ export const Direction = () => (
 );
 
 export const Responsive = () => (
-  <Row style={{ maxWidth: 1200 }}>
+  <Row>
     <Column lg={8} md={4} xs={2} style={columnStyle}>
       <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
         lg=8 md=4, xs=2
@@ -79,7 +79,7 @@ export const Responsive = () => (
 );
 
 export const VariableWidth = () => (
-  <Row style={{ maxWidth: 1200 }}>
+  <Row>
     <Column lg="auto" style={{ ...columnStyle, width: 40 }}>
       <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
         width: 40px
