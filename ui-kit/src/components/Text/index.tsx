@@ -18,10 +18,14 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      className={`${classnames('lubycon-text', {
-        [`lubycon-typography--${typography}`]: typography != null,
-        [`lubycon-text--font-weight--${fontWeight}`]: fontWeight != null,
-      })} ${className}`}
+      className={classnames(
+        'lubycon-text',
+        {
+          [`lubycon-typography--${typography}`]: typography != null,
+          [`lubycon-text--font-weight--${fontWeight}`]: fontWeight != null,
+        },
+        className
+      )}
       {...props}
     />
   );

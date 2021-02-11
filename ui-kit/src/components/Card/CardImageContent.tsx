@@ -11,7 +11,7 @@ type CardImageContentProps = Combine<
 >;
 const CardImageContent = ({ className, ...props }: CardImageContentProps) => {
   return (
-    <div className={`${classnames('lubycon-card__image-content')} ${className}`}>
+    <div className={classnames('lubycon-card__image-content', className)}>
       <img {...props} />
     </div>
   );

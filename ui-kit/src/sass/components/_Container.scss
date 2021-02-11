@@ -1,0 +1,11 @@
+.lubycon-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  &--fluid {
+    max-width: auto;
+  }
+  @include media-breakpoint(sm) {
+    max-width: 1200px;
+  }
+}
