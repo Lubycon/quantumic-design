@@ -1,29 +1,17 @@
 $colors: (
-  /*
-  Semantic Color
-  Positive
- */ 'green50': #13bc4c,
   'green40': #dff6e7,
+  'green50': #13bc4c,
   'green60': #00a438,
-  /*
-  Informative
- */ 'blue50': #135ce9,
+  'blue50': #135ce9,
   'blue40': #e6effe,
   'blue60': #013cad,
-  /*
-  Negative
- */ 'red50': #cb121c,
+  'red50': #cb121c,
   'red40': #fae7e8,
   'red60': #9b0b13,
-  /*
-  Notice
- */ 'yellow50': #f0ca08,
+  'yellow50': #f0ca08,
   'yellow40': #fdf5ce,
   'yellow60': #aa8f00,
-  /*
-  Gray Scale
-  100-10 (단위 10)
- */ 'gray100': #1b1b1c,
+  'gray100': #1b1b1c,
   'gray90': #2a2a2c,
   'gray80': #4c4d53,
   'gray70': #76777d,
@@ -32,7 +20,9 @@ $colors: (
   'gray40': #d0d1d3,
   'gray30': #e3e4e5,
   'gray20': #f3f4f5,
-  'gray10': #fcfcfd
+  'gray10': #fcfcfd,
+  'white': #ffffff,
+  'black': #000000,
 );
 
 @mixin color($name, $value) {
