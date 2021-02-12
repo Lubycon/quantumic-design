@@ -1,18 +1,18 @@
 import React from 'react';
 import {
+  Text,
+  Button,
+  Row,
+  Column,
   Card,
   CardHeader,
   CardContent,
   CardImageContent,
   CardFooter,
-  Text,
-  Button,
-  Column,
-  Row,
-} from 'components/index';
+  colors,
+} from 'src';
 import Icon from 'components/Icon';
 import { Meta } from '@storybook/react/types-6-0';
-import { colors } from 'constants/colors';
 import { arrowForward } from 'ionicons/icons';
 
 export default {

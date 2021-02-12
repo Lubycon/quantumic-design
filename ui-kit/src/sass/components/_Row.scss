@@ -1,22 +1,22 @@
 @mixin direction($direction) {
-  &--direction__#{$direction} {
+  &--direction-#{$direction} {
     flex-direction: $direction;
   }
 }
 @mixin justify($align) {
-  &--justify__#{$align} {
+  &--justify-#{$align} {
     justify-content: $align;
   }
 }
 @mixin alignItems($align) {
-  &--align-items__#{$align} {
+  &--align-items-#{$align} {
     align-items: $align;
   }
 }
 
-.lubycon-grid-row {
+.lubycon-grid__row {
   display: flex;
-  margin: #{-$gutter / 2};
+  margin: #{-$grid-gutter / 2};
   flex-wrap: wrap;
   box-sizing: border-box;
 

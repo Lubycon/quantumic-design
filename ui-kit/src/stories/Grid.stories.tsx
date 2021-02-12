@@ -1,8 +1,6 @@
 import React, { CSSProperties } from 'react';
-import { Column, Row } from 'components/Grid';
-import Text from 'components/Text';
+import { Column, Row, Text, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
-import { colors } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/Grid',

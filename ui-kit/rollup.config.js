@@ -8,8 +8,8 @@ import typescript from 'rollup-plugin-typescript2';
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default [
-  buildCJS('src/components/index.ts'),
-  buildESM('src/components/index.ts'),
+  buildCJS('src/index.ts'),
+  buildESM('src/index.ts'),
   buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.css'),
   buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.min.css', {
     minimize: {

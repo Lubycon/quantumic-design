@@ -21,8 +21,8 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
       className={classnames(
         'lubycon-text',
         {
-          [`lubycon-typography--${typography}`]: typography != null,
-          [`lubycon-text--font-weight--${fontWeight}`]: fontWeight != null,
+          [`lubycon-typography-${typography}`]: typography != null,
+          [`lubycon-text--font-weight-${fontWeight}`]: fontWeight != null,
         },
         className
       )}

@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Button from 'components/Button';
-import Tooltip from 'src/components/Tooltip';
-import { useState } from 'react';
+import { Tooltip, Button } from 'src';
 import { TooltipPosition } from 'src/components/Tooltip/types';
 
 export default {
