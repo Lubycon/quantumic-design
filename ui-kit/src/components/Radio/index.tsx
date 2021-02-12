@@ -1,6 +1,6 @@
 import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
-import clxs from 'classnames';
+import classnames from 'classnames';
 import { generateID } from 'src/utils/generateID';
 import Text from '../Text';
 
@@ -18,7 +18,7 @@ const Radio = (
 
   return (
     <span
-      className={clxs('lubycon-radio', `lubycon-radio--display-${display}`, {
+      className={classnames('lubycon-radio', `lubycon-radio--display-${display}`, {
         'lubycon-radio--disabled': disabled,
       })}
       style={style}

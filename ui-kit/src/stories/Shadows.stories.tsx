@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import clxs from 'classnames';
+import classnames from 'classnames';
 import Text from 'components/Text';
 
 export default {
@@ -15,7 +15,7 @@ export const Default = () => {
       {shadows.map((shadow, index) => (
         <li key={index} style={{ listStyle: 'none', marginBottom: 30 }}>
           <div
-            className={clxs([`lubycon-shadow--${index}`])}
+            className={classnames([`lubycon-shadow--${index}`])}
             style={{
               display: 'flex',
               alignItems: 'flex-end',
