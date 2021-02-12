@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardImageContent,
-  CardFooter,
-  Text,
-  Button,
-  Column,
-  Row,
-} from 'components/index';
+import Card, { CardHeader, CardContent, CardImageContent, CardFooter } from 'components/Card';
+import Text from 'components/Text';
+import Button from 'components/Button';
+import { Row, Column } from 'components/Grid';
 import Icon from 'components/Icon';
 import { Meta } from '@storybook/react/types-6-0';
 import { colors } from 'constants/colors';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert from 'components/Alert';
 import { Meta } from '@storybook/react/types-6-0';
-import { Column, Row } from 'src/components';
+import { Column, Row } from 'src/components/Grid';
 import { SemanticColor } from 'src/constants/colors';
 
 export default {

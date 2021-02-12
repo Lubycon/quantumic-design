@@ -2,7 +2,7 @@ import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import clxs from 'classnames';
 import { generateID } from 'src/utils/generateID';
-import { Text } from '..';
+import Text from '../Text';
 
 interface RadioBaseProps {
   label?: string;

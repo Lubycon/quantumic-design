@@ -1,7 +1,7 @@
 import React, { Ref, forwardRef } from 'react';
 import classnames from 'classnames';
 import { CombineElementProps } from 'src/types/utils';
-import { Text } from '..';
+import Text from '../Text';
 
 interface ButtonBaseProps {
   size?: 'small' | 'medium' | 'large';
