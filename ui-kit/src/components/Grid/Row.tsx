@@ -27,10 +27,10 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     <Component
       ref={ref}
       className={classnames(
-        'lubycon-grid-row',
-        `lubycon-grid-row--direction__${direction}`,
-        `lubycon-grid-row--justify__${justify}`,
-        `lubycon-grid-row--align-items__${alignItems}`
+        'lubycon-grid__row',
+        `lubycon-grid__row--direction-${direction}`,
+        `lubycon-grid__row--justify-${justify}`,
+        `lubycon-grid__row--align-items-${alignItems}`
       )}
       {...props}
     />

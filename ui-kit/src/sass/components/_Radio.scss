@@ -11,7 +11,7 @@ $indicator-size: 16px;
     cursor: pointer;
   }
 
-  .lubycon-radio--indicator {
+  .lubycon-radio__indicator {
     position: relative;
     width: $indicator-size;
     height: $indicator-size;
@@ -33,16 +33,16 @@ $indicator-size: 16px;
     }
   }
 
-  .lubycon-radio--label {
+  .lubycon-radio__label {
     display: flex;
     align-items: center;
   }
 
-  .lubycon-radio--input {
+  .lubycon-radio__input {
     position: absolute;
     visibility: hidden;
     appearance: none;
-    &:checked + .lubycon-radio--indicator {
+    &:checked + .lubycon-radio__indicator {
       border-color: get-color('green50');
       background-color: get-color('green50');
       &::before {
@@ -52,7 +52,7 @@ $indicator-size: 16px;
   }
 
   &:hover:not(&--disabled) {
-    .lubycon-radio--indicator {
+    .lubycon-radio__indicator {
       border-color: get-color('green50');
     }
   }
@@ -67,7 +67,7 @@ $indicator-size: 16px;
       color: get-color('gray40');
       cursor: not-allowed;
     }
-    .lubycon-radio--input:checked + .lubycon-radio--indicator {
+    .lubycon-radio__input:checked + .lubycon-radio__indicator {
       border-color: get-color('gray40');
       background-color: get-color('gray40');
     }

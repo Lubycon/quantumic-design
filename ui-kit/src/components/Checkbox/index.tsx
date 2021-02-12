@@ -24,9 +24,9 @@ const Checkbox = (
       })}
       style={style}
     >
-      <span className="lubycon-checkbox--input">
+      <span className="lubycon-checkbox__input">
         <input id={id} name="checkbox" ref={ref} type="checkbox" {...props} disabled={disabled} />
-        <span className="lubycon-checkbox--control">
+        <span className="lubycon-checkbox__control">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="12"

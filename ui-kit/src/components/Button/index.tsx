@@ -14,7 +14,7 @@ const Button = (
 ) => {
   return (
     <button
-      className={classnames('lubycon-button', `lubycon-button__${size}`)}
+      className={classnames('lubycon-button', `lubycon-button--${size}`)}
       disabled={disabled}
       style={style}
       ref={ref}

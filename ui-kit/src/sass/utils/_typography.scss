@@ -6,15 +6,15 @@
     --lubycon-line-height-#{$font-size-number}: #{$line-height};
   }
 
-  .lubycon-font-size--#{$font-size-number} {
+  .lubycon-font-size-#{$font-size-number} {
     font-size: $font-size;
     font-size: var(--lubycon-font-size-#{$font-size-number});
     line-height: $line-height;
     line-height: var(--lubycon-line-height-#{$font-size-number});
   }
 
-  .lubycon-typography--#{$name} {
-    @extend .lubycon-font-size--#{$font-size-number};
+  .lubycon-typography-#{$name} {
+    @extend .lubycon-font-size-#{$font-size-number};
   }
 }
 

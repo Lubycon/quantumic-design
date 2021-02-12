@@ -23,16 +23,16 @@ const Radio = (
       })}
       style={style}
     >
-      <label htmlFor={id} className="lubycon-radio--label">
+      <label htmlFor={id} className="lubycon-radio__label">
         <input
-          className="lubycon-radio--input"
+          className="lubycon-radio__input"
           ref={ref}
           type="radio"
           disabled={disabled}
           {...props}
           id={id}
         />
-        <div className="lubycon-radio--indicator"></div>
+        <div className="lubycon-radio__indicator"></div>
         {label ? <Text>{label}</Text> : null}
       </label>
     </span>

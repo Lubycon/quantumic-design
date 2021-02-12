@@ -11,13 +11,13 @@
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.2s ease-in-out;
 
-  &__small {
+  &--small {
     padding: 4px 16px;
   }
-  &__medium {
+  &--medium {
     padding: 8px 16px;
   }
-  &__large {
+  &--large {
     padding: 12px 32px;
     border-radius: 8px;
   }
