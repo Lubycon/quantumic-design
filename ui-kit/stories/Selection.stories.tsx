@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Selection from 'components/Selection';
-import Text from 'components/Text';
+import { Selection, Text } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Selection',

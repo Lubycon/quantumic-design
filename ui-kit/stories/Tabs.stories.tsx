@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Tabs, TabPane } from 'components/Tabs';
+import { Tabs, TabPane } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Tab',

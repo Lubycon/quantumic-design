@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Text from 'components/Text';
-import { colors, ColorProperty, SemanticColor } from '../constants/colors';
+import { colors, Text } from 'src';
+import { ColorProperty, SemanticColor } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/Colors',

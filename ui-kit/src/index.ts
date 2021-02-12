@@ -22,3 +22,4 @@ export { default as Snackbar } from './components/Snackbar';
 export { Portal } from './contexts/Portal';
 export { useToast } from './contexts/Toast';
 export { useSnackbar } from './contexts/Snackbar';
+export { colors } from './constants/colors';

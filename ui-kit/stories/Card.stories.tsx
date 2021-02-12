@@ -1,11 +1,18 @@
 import React from 'react';
-import Card, { CardHeader, CardContent, CardImageContent, CardFooter } from 'components/Card';
-import Text from 'components/Text';
-import Button from 'components/Button';
-import { Row, Column } from 'components/Grid';
+import {
+  Text,
+  Button,
+  Row,
+  Column,
+  Card,
+  CardHeader,
+  CardContent,
+  CardImageContent,
+  CardFooter,
+  colors,
+} from 'src';
 import Icon from 'components/Icon';
 import { Meta } from '@storybook/react/types-6-0';
-import { colors } from 'constants/colors';
 import { arrowForward } from 'ionicons/icons';
 
 export default {

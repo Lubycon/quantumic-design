@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio from 'components/Radio';
+import { Radio } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {

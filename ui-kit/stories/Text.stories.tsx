@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from 'components/Text';
+import { Text } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 import { typographys, Typographys, FontWeights, fontWeights } from 'components/Text/types';
 

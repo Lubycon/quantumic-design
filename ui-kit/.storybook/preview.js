@@ -1,6 +1,6 @@
 import '../src/sass/index.scss';
 import React from 'react';
-import { LubyconUIKitProvider, Container } from '../src/index';
+import { LubyconUIKitProvider, Container } from 'src';
 
 export const decorators = [(Story => (
   <LubyconUIKitProvider>

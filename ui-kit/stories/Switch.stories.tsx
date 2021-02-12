@@ -1,8 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Text from 'components/Text';
-import Switch from 'components/Switch';
-import { colors } from '../constants/colors';
+import { Text, Switch, colors } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Switch',
