@@ -21,7 +21,6 @@
   ],
   "author": "Lubycon",
   "dependencies": {
-    "@types/classnames": "^2.2.11",
     "classnames": "^2.2.6",
     "ionicons": "^5.2.3",
     "react-spring": "^8.0.27"

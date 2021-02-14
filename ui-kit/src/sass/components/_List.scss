@@ -1,0 +1,41 @@
+.lubycon-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lubycon-list__item {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 13px 16px;
+  & + & {
+    border-top: 1px solid get-color('gray20');
+  }
+  &--clickable {
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      background-color: get-color('gray10');
+    }
+    &:active {
+      background-color: get-color('gray20');
+    }
+  }
+
+  &__title {
+    color: get-color('gray90');
+  }
+  &__content {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+  }
+  &__caption {
+    margin-top: 4px;
+    color: get-color('gray60');
+  }
+}
