@@ -14,4 +14,5 @@ const List = forwardRef<HTMLUListElement, Props>(function List(
 });
 
 export default List;
-export { default as ListItem } from './Item';
+export { default as ListItem } from './ListItem';
+export { default as ListItemImage } from './ListItemImage';

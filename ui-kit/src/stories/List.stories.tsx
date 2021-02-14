@@ -1,6 +1,10 @@
 import React from 'react';
-import { List, ListItem } from 'src';
+import { Button, List, ListItem } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
+import { ListItemImage } from 'src/components/List';
+import Icon from 'src/components/Icon';
+import { chevronForward } from 'ionicons/icons';
+import { colors } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/List',
@@ -54,6 +58,54 @@ export const WithoutTitle = () => {
       <DummyItemWithoutTitle />
       <DummyItemWithoutTitle />
       <DummyItemWithoutTitle />
+    </List>
+  );
+};
+
+export const LeftRight = () => {
+  return (
+    <List>
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 조합형"
+        content="UI Kit에서 제공되는 이미지 컴포넌트를 사용한 예시입니다"
+      />
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 조합형"
+        content="UI Kit에서 제공되는 이미지 컴포넌트를 사용한 예시입니다"
+        caption="5일전"
+      />
+      <ListItem
+        left={
+          <img
+            src="http://cogulmars.cafe24.com/img/04about_img01.png"
+            style={{ width: 48, borderRadius: 4 }}
+          />
+        }
+        title="썸네일 조합형"
+        content="일반 img 태그를 사용한 예시입니다"
+        caption="5일전"
+      />
+      <ListItem
+        title="버튼 조합형"
+        content="자세히 보려면 클릭하세요"
+        right={<Icon icon={chevronForward} type="outline" size={24} color={colors.gray60} />}
+        onClick={noop}
+      />
+      <ListItem
+        title="버튼 조합형 자유"
+        content="자세히 보려면 클릭하세요"
+        right={<Button size="small">보러가기</Button>}
+        onClick={noop}
+      />
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 + 버튼 조합형"
+        content="자세히 보려면 클릭하세요"
+        right={<Icon icon={chevronForward} type="outline" size={24} color={colors.gray60} />}
+        onClick={noop}
+      />
     </List>
   );
 };

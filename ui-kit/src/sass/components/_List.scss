@@ -7,10 +7,10 @@
 
 .lubycon-list__item {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   list-style: none;
   margin: 0;
-  padding: 13px 16px;
+  padding: 13px 0;
   & + & {
     border-top: 1px solid get-color('gray20');
   }
@@ -25,17 +25,45 @@
     }
   }
 
-  &__title {
-    color: get-color('gray90');
+  &__left {
+    padding-left: 12px;
+    width: auto;
+    flex: 0 0 auto;
   }
-  &__content {
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
+  &__center {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    &__title {
+      color: get-color('gray90');
+    }
+    &__content {
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      overflow: hidden;
+    }
+    &__caption {
+      margin-top: 4px;
+      color: get-color('gray60');
+    }
+  }
+  &__right {
+    padding-right: 8px;
+  }
+
+  &__image {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
     overflow: hidden;
-  }
-  &__caption {
-    margin-top: 4px;
-    color: get-color('gray60');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    > img {
+      display: none;
+    }
   }
 }
