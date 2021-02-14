@@ -97,7 +97,6 @@ export const LeftRight = () => {
         title="버튼 조합형 자유"
         content="자세히 보려면 클릭하세요"
         right={<Button size="small">보러가기</Button>}
-        onClick={noop}
       />
       <ListItem
         left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
