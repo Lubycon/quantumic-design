@@ -19,11 +19,9 @@ export const Default = () => {
 };
 
 export const Label = () => {
-  const [value, setValue] = useState('');
   return (
     <div>
-      <Text style={{ marginBottom: 16, display: 'block' }}>입력된 값: {value}</Text>
-      <Input label="라벨이에요" value={value} onChange={(e) => setValue(e.target.value)} />
+      <Input label="라벨이에요" />
     </div>
   );
 };
