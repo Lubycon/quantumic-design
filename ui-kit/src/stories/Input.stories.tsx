@@ -3,6 +3,7 @@ import { Input, Text, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 import Icon from 'src/components/Icon';
 import { checkmarkCircle } from 'ionicons/icons';
+import { TextInputType } from 'components/Input';
 
 export default {
   title: 'Lubycon UI Kit/Input',
@@ -52,5 +53,25 @@ export const Error = () => {
         )
       }
     />
+  );
+};
+
+const types: TextInputType[] = ['text', 'email', 'number', 'password', 'search', 'tel', 'url'];
+const covertToTitlecase = (s: string) => `${s.charAt(0).toUpperCase()}${s.slice(1, s.length)}`;
+export const Types = () => {
+  return (
+    <div>
+      <Text>
+        모바일에서는 인풋의 타입에 따라 다른 키보드가 노출되니, 모바일 환경에서 확인해보시는 것을
+        추천합니다.
+      </Text>
+      <ul>
+        {types.map((type) => (
+          <li key={type}>
+            <Input label={covertToTitlecase(type)} type={type} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

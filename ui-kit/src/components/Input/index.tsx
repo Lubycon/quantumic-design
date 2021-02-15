@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import { Combine } from 'src/types/utils';
 import Text from '../Text';
 
-type TextInputType = 'text' | 'tel' | 'url' | 'email' | 'number' | 'password' | 'search';
+export type TextInputType = 'text' | 'tel' | 'url' | 'email' | 'number' | 'password' | 'search';
 type Props = Combine<
   {
     label?: ReactNode;
