@@ -19,6 +19,7 @@ export {
   CardFooter,
 } from './components/Card';
 export { default as Snackbar } from './components/Snackbar';
+export { default as Input } from './components/Input';
 export { Portal } from './contexts/Portal';
 export { useToast } from './contexts/Toast';
 export { useSnackbar } from './contexts/Snackbar';
