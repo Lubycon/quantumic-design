@@ -18,7 +18,11 @@ export const Default = () => {
         <br />
       </Accordion>
       <Accordion label="🔥 이미지가 숨겨져 있어요">
-        <img src="http://cogulmars.cafe24.com/img/04about_img01.png" alt="귀여운 에비츄" />
+        <img
+          src="http://cogulmars.cafe24.com/img/04about_img01.png"
+          alt="귀여운 에비츄"
+          width="300"
+        />
       </Accordion>
       <Accordion label="제목을 입력하세요">
         아코디언이 펼쳐지면 아래에 내용이 나옵니다.

@@ -5,6 +5,7 @@ import Icon from '../Icon';
 import { chevronDown } from 'ionicons/icons';
 import Text from '../Text';
 import { useResizeObserver } from 'src/hooks/useResizeObserver';
+import { colors } from 'src/constants/colors';
 
 type Props = Combine<
   {
@@ -48,6 +49,7 @@ const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
           type="outline"
           size={20}
           className="lubycon-accordion__label__icon"
+          color={colors.gray90}
         />
         <Text typography="subtitle" className="lubycon-accordion__label__text">
           {label}
