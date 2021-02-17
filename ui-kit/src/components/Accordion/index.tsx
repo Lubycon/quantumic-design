@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, useRef, useState } from 'react';
+import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { Combine } from 'src/types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';
@@ -11,11 +11,14 @@ type Props = Combine<
   {
     label: string;
     defaultOpen?: boolean;
+    onChange?: (state: boolean) => void;
+    onOpen?: () => void;
+    onClose?: () => void;
   },
   HTMLAttributes<HTMLDivElement>
 >;
 const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
-  { label, className, children, defaultOpen = false, ...props },
+  { label, className, children, defaultOpen = false, onChange, onOpen, onClose, ...props },
   ref
 ) {
   const [open, setOpen] = useState(defaultOpen);
@@ -30,6 +33,18 @@ const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
     setBodyHeight(contentRef.current?.getBoundingClientRect().height ?? 0);
 
   useResizeObserver(contentRef, updateContentHeight);
+
+  useEffect(() => {
+    onChange?.(open);
+  }, [open]);
+
+  useEffect(() => {
+    if (open === true) {
+      onOpen?.();
+    } else {
+      onClose?.();
+    }
+  }, [open]);
 
   return (
     <div

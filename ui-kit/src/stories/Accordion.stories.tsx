@@ -9,7 +9,12 @@ export default {
 export const Default = () => {
   return (
     <>
-      <Accordion label="👀 텍스트가 숨겨져 있어요">
+      <Accordion
+        label="👀 텍스트가 숨겨져 있어요"
+        onChange={(v) => console.log(`onChange: ${v}`)}
+        onOpen={() => console.log('handleOpen')}
+        onClose={() => console.log('handleClose')}
+      >
         아코디언이 펼쳐지면 아래에 내용이 나옵니다.
         <br />
         아코디언이 펼쳐지면 아래에 내용이 나옵니다.
