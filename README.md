@@ -69,7 +69,12 @@ import { Toast } from '@lubycon/ui-kit';
 function Foo() {
   const [show, setShow] = useState(false);
 
-  return <Toast show={show} message="토스트입니다" />;
+  return (
+    <>
+      <Button onClick={() => setShow(true)}>토스트 열기</Button>
+      <Toast show={show} message="토스트입니다" />
+    </>
+  );
 }
 
 export default Foo;
@@ -78,18 +83,21 @@ export default Foo;
 #### Hooks
 
 ```jsx
-import React, { useState } from 'react';
-import { Toast, Button } from '@lubycon/ui-kit';
+import React from 'react';
+import { useToast, Button } from '@lubycon/ui-kit';
 
 function Foo() {
   const { openToast } = useToast();
-  const handleClick = () => {
-    openToast({
-      message: '토스트입니다',
-    });
-  };
 
-  return <Button onClick={handleClick}>토스트 열기</Button>;
+  return (
+    <Button onClick={() => {
+      openToast({
+        message: '토스트입니다',
+      });
+    }}>
+      토스트 열기
+    </Button>
+  );
 }
 
 export default Foo;
