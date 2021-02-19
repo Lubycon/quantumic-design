@@ -23,7 +23,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "ionicons": "^5.2.3",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
