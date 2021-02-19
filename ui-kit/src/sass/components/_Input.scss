@@ -7,7 +7,7 @@ $description-position: 30px;
   background-color: get-color('gray20');
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
   box-sizing: border-box;
 
@@ -25,7 +25,7 @@ $description-position: 30px;
   }
 
   &--focused {
-    border-color: get-color('gray50');
+    border-color: get-color('gray100');
     background-color: get-color('gray10');
   }
 
