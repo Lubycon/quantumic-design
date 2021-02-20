@@ -7,7 +7,7 @@ $breakpoints: (
 ) !default;
 
 @mixin media-breakpoint($size) {
-  @media (min-width: $size) {
+  @media (min-width: map-get($breakpoints, $size)) {
     @content;
   }
 }

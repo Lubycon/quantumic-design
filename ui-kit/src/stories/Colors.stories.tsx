@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Text from 'components/Text';
-import { colors, ColorProperty, SemanticColorName } from '../constants/colors';
+import { colors, Text } from 'src';
+import { ColorProperty, SemanticColor } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/Colors',
@@ -21,7 +21,7 @@ const grayScaleNames = [
 ] as const;
 
 type SemanticColorMap = {
-  [key in SemanticColorName]: Array<ColorProperty>;
+  [key in SemanticColor]: Array<ColorProperty>;
 };
 
 const semanticColors: SemanticColorMap = {
@@ -31,7 +31,7 @@ const semanticColors: SemanticColorMap = {
   notice: ['yellow50', 'yellow40', 'yellow60'],
 };
 
-const semanticColorNames = Object.keys(semanticColors) as Array<SemanticColorName>;
+const semanticColorNames = Object.keys(semanticColors) as Array<SemanticColor>;
 
 type IndexMap = {
   [key: number]: 'a' | 'b' | 'c';

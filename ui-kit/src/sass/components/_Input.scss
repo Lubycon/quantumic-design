@@ -1,0 +1,80 @@
+$label-position: 34px;
+$description-position: 30px;
+
+.lubycon-input {
+  position: relative;
+  display: inline-block;
+  background-color: get-color('gray20');
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  box-sizing: border-box;
+
+  &--disabled {
+    background-color: get-color('gray30');
+    .lubycon-input__form__input-element {
+      cursor: not-allowed;
+      &::placeholder {
+        color: get-color('gray60');
+      }
+    }
+    .lubycon-input__label {
+      color: get-color('gray60');
+    }
+  }
+
+  &--focused {
+    border-color: get-color('gray100');
+    background-color: get-color('gray10');
+  }
+
+  &--with-label {
+    margin-top: $label-position;
+  }
+  &--with-description {
+    margin-bottom: $description-position;
+  }
+  &--has-error {
+    border-color: get-color('red50');
+    .lubycon-input__label {
+      color: get-color('red50');
+    }
+    .lubycon-input__description {
+      color: get-color('red50');
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: -$label-position;
+    transition: color 0.1s ease-in-out;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    &__input-element {
+      flex-grow: 1;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      line-height: 16px;
+      margin-top: 3px;
+      &::placeholder {
+        color: get-color('gray70');
+      }
+    }
+    &__right {
+      display: inline-flex;
+    }
+  }
+
+  &__description {
+    position: absolute;
+    left: 0;
+    bottom: -$description-position;
+    color: get-color('gray70');
+  }
+}

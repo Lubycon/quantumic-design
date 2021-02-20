@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Checkbox from 'components/Checkbox';
+import { Checkbox } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Checkbox',

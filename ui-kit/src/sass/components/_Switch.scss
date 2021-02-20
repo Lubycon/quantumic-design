@@ -1,20 +1,20 @@
 .lubycon-switch {
-  border-radius: 31.5px;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
 
-  &--input {
+  &__input {
     display: none;
   }
 
-  &--slider {
+  &__slider {
     position: relative;
     width: 40px;
-    height: 21px;
+    height: 22px;
     margin-right: 8px;
-    border-radius: 31.5px;
+    border-radius: 32px;
     background-color: get-color('gray40');
     transition: background-color 0.3s;
 
@@ -23,7 +23,7 @@
       position: absolute;
       width: 15px;
       height: 15px;
-      left: 3.31px;
+      left: 4px;
       top: 50%;
       transform: translateY(-50%);
       background-color: #ffffff;
@@ -32,15 +32,18 @@
     }
   }
 
-  &--input:checked + &--slider {
+  &__input:checked + &__slider {
     background-color: get-color('green50');
   }
 
-  &--input:checked + &--slider::before {
-    transform: translate(18.38px, -50%);
+  &__input:checked + &__slider::before {
+    transform: translate(17px, -50%);
   }
 
   &--display-inline {
     display: inline-flex;
+  }
+  &__label {
+    margin-top: -2px;
   }
 }

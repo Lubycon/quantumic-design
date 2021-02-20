@@ -22,7 +22,7 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
     () =>
       sizes.map((size) => {
         const { [size]: sizeValue } = props;
-        return sizeValue ? `lubycon-grid-column--${size}__${sizeValue}` : '';
+        return sizeValue ? `lubycon-grid__column--${size}--${sizeValue}` : '';
       }),
     []
   );
@@ -31,7 +31,11 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   const Component = target;
 
   return (
-    <Component ref={ref} className={classNames(`lubycon-grid-column`, ...spanClasses)} {...props} />
+    <Component
+      ref={ref}
+      className={classNames(`lubycon-grid__column`, ...spanClasses)}
+      {...props}
+    />
   );
 };
 

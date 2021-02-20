@@ -12,10 +12,6 @@ export default {
 export const Default = () => {
   const { openModal } = useModal();
 
-  const fn = (e) => {
-    console.info(e);
-  };
-
   return (
     <div
       style={{
@@ -88,7 +84,6 @@ export const Default = () => {
             message: '본문 텍스트와 타이틀은 용도에 따라\n별도로 구성이 가능합니다',
             size: 'medium',
             cancelButton: true,
-            handleClick: () => fn,
           })
         }
       >

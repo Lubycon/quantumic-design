@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from 'components/Button';
-import Text from 'components/Text';
+import { Button, Text } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {

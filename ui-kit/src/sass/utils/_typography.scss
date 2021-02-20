@@ -6,15 +6,15 @@
     --lubycon-line-height-#{$font-size-number}: #{$line-height};
   }
 
-  .lubycon-font-size--#{$font-size-number} {
+  .lubycon-font-size-#{$font-size-number} {
     font-size: $font-size;
     font-size: var(--lubycon-font-size-#{$font-size-number});
     line-height: $line-height;
     line-height: var(--lubycon-line-height-#{$font-size-number});
   }
 
-  .lubycon-typography--#{$name} {
-    @extend .lubycon-font-size--#{$font-size-number};
+  .lubycon-typography-#{$name} {
+    @extend .lubycon-font-size-#{$font-size-number};
   }
 }
 
@@ -25,6 +25,6 @@
 @include _typography('h5', 24px, 36px);
 @include _typography('h6', 20px, 30px);
 @include _typography('subtitle', 18px, 30px);
-@include _typography('p1', 16px, 28px);
+@include _typography('p1', 16px, 32px);
 @include _typography('p2', 14px, 24px);
 @include _typography('caption', 12px, 20px);

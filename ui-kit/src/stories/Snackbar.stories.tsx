@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Snackbar from 'components/Snackbar';
-import Button from 'components/Button';
-import { useSnackbar } from 'contexts/Snackbar';
+import { Snackbar, Button, useSnackbar } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Snackbar',

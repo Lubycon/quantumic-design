@@ -6,12 +6,12 @@ $box-size: 16px;
   cursor: pointer;
 
   &:hover:not(&--disabled) {
-    .lubycon-checkbox--control {
+    .lubycon-checkbox__control {
       border-color: get-color('green50');
     }
   }
 
-  &--input {
+  &__input {
     display: grid;
     grid-template-areas: 'checkbox';
 
@@ -29,7 +29,7 @@ $box-size: 16px;
     }
   }
 
-  &--control {
+  &__control {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,10 +46,10 @@ $box-size: 16px;
     }
   }
 
-  &--input input:checked + &--control svg {
+  &__input input:checked + &__control svg {
     transform: scale(1);
   }
-  &--input input:checked + &--control {
+  &__input input:checked + &__control {
     background-color: get-color('green50');
     border-color: get-color('green50');
   }
@@ -66,7 +66,7 @@ $box-size: 16px;
       cursor: not-allowed;
     }
 
-    .lubycon-checkbox--input > input:checked + .lubycon-checkbox--control {
+    .lubycon-checkbox__input > input:checked + .lubycon-checkbox__control {
       border-color: get-color('gray40');
       background-color: get-color('gray40');
     }

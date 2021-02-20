@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import Toast from 'components/Toast';
-import Button from 'components/Button';
-import { useToast } from 'contexts/Toast';
+import { Toast, useToast, Button } from 'src';
 
 export default {
   title: 'Lubycon UI Kit/Toast',
