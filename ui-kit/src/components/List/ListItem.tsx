@@ -1,17 +1,20 @@
-import React, { HTMLAttributes, forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import classnames from 'classnames';
-import { Combine } from 'src/types/utils';
+import { CombineElementProps } from 'src/types/utils';
 import Text from '../Text';
 
-type Props = Combine<
-  {
-    left?: ReactNode;
-    right?: ReactNode;
-    title?: string;
-    content: string;
-    caption?: string;
-  },
-  Omit<HTMLAttributes<HTMLLIElement>, 'children' | 'role'>
+type Props = Omit<
+  CombineElementProps<
+    'li',
+    {
+      left?: ReactNode;
+      right?: ReactNode;
+      title?: string;
+      content: string;
+      caption?: string;
+    }
+  >,
+  'children' | 'role'
 >;
 const ListItem = forwardRef<HTMLLIElement, Props>(function ListItem(
   { className, left, right, title, content, caption, onClick, ...props },

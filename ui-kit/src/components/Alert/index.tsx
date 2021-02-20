@@ -1,10 +1,10 @@
-import React, { forwardRef, HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import { colors, SemanticColor } from 'src/constants/colors';
 import classnames from 'classnames';
 import Text from '../Text';
 import Icon from '../Icon';
 import { informationCircle, closeCircle, alertCircle, checkmarkCircle } from 'ionicons/icons';
-import { Combine } from 'src/types/utils';
+import { CombineElementProps } from 'src/types/utils';
 
 interface AlertIcon {
   icon: string;
@@ -31,12 +31,12 @@ const alertIconMap: {
   },
 };
 
-type AlertProps = Combine<
+type AlertProps = CombineElementProps<
+  'div',
   {
     type?: SemanticColor;
     title?: string;
-  },
-  HTMLAttributes<HTMLDivElement>
+  }
 >;
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
