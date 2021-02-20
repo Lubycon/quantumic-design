@@ -67,9 +67,9 @@ const Modal = ({
           style={style}
         >
           {title && (
-            <h2 className={classnames('lubycon-modal__title', 'lubycon-typography--subtitle')}>
+            <div className={classnames('lubycon-modal__title', 'lubycon-typography--subtitle')}>
               <Text typography={size === 'small' ? 'subtitle' : 'h6'}>{title}</Text>
-            </h2>
+            </div>
           )}
           <div className={classnames('lubycon-modal__message', 'lubycon-typography--p2')}>
             <Text typography={size === 'small' ? 'p2' : 'p1'}>{message}</Text>
