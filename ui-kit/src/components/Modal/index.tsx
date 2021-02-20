@@ -1,62 +1,87 @@
-import React, { ReactNode } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Button from 'components/Button';
+import Text from 'components/Text';
 import classnames from 'classnames';
 import { colors } from 'constants/colors';
+import ModalBackdrop from './ModalBackdrop';
 
-interface ModalProps {
-  open: boolean;
+export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
+  show: boolean;
+  modalIsNested?: boolean;
   title?: string;
+  message?: string;
   size?: 'small' | 'medium';
+  cancelButton?: boolean;
+  cancelButtonText?: string;
   buttonText?: string;
-  children?: ReactNode;
-  cancel?: boolean;
+  handleClick?: () => void;
   onClose?: () => void;
-  handleClick: () => void;
 }
 
 const Modal = ({
-  open = false,
-  size = 'small',
-  children,
+  show = false,
+  modalIsNested = false,
   title,
+  message,
+  size = 'small',
+  cancelButton = false,
+  cancelButtonText = '취소',
   buttonText = '저장하기',
-  cancel = true,
-  onClose,
   handleClick,
+  onClose,
+  style,
 }: ModalProps) => {
-  const visibleClass = open ? 'lubycon-modal__visible' : undefined;
+  const visibleClass = show ? 'lubycon-modal--visible' : null;
+
+  const onKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') onClose?.();
+  };
+  useEffect(() => {
+    window.addEventListener('keydown', onKeydown);
+    return () => {
+      window.removeEventListener('keydown', onKeydown);
+    };
+  }, []);
+
+  const modalWindowRef = useRef<HTMLDivElement>(null);
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === modalWindowRef.current) onClose?.();
+  };
 
   return (
     <>
+      {!modalIsNested && <ModalBackdrop visibleClass={visibleClass} />}
       <div
-        className={classnames('lubycon-modal', 'lubycon-modal__overlay', visibleClass)}
-        aria-hidden={true}
+        ref={modalWindowRef}
+        onClick={handleBackdropClick}
+        className={classnames('lubycon-modal', visibleClass)}
         tabIndex={-1}
-      />
-      <div className={classnames('lubycon-modal', visibleClass)} tabIndex={-1}>
+        aria-hidden={true}
+      >
         <div
           className={classnames(
-            'lubycon-modal__content',
-            `lubycon-modal__content__${size}`,
+            'lubycon-modal__window',
+            `lubycon-modal__window--${size}`,
             'lubycon-shadow--3'
           )}
+          style={style}
         >
           {title && (
             <h2 className={classnames('lubycon-modal__title', 'lubycon-typography--subtitle')}>
-              {title}
+              <Text typography={size === 'small' ? 'subtitle' : 'h6'}>{title}</Text>
             </h2>
           )}
-          <p className={classnames('lubycon-modal__description', 'lubycon-typography--p2')}>
-            {children}
-          </p>
+          <div className={classnames('lubycon-modal__message', 'lubycon-typography--p2')}>
+            <Text typography={size === 'small' ? 'p2' : 'p1'}>{message}</Text>
+          </div>
           <div className="lubycon-modal__buttons">
-            {cancel && (
+            {cancelButton && (
               <Button
                 size={size}
                 style={{ color: colors.gray80, background: 'transparent', marginRight: '4px' }}
                 onClick={onClose}
               >
-                취소
+                {cancelButtonText}
               </Button>
             )}
             <Button size={size} onClick={handleClick}>

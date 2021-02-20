@@ -8,7 +8,7 @@
   overflow: auto;
   z-index: 1000;
 
-  &__visible {
+  &--visible {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,28 +18,29 @@
     background-color: get-color('gray100');
     opacity: 0.5;
   }
-  &__content {
+  &__window {
     background-color: get-color('gray10');
     border-radius: 4px;
-    &__small {
-      min-width: 280px;
+    box-sizing: border-box;
+    &--small {
+      width: 280px;
       padding: 16px 20px;
     }
-    &__medium {
-      min-width: 400px;
+    &--medium {
+      width: 400px;
       padding: 20px 24px;
     }
   }
   &__title {
     color: get-color('gray100');
-    font-weight: normal;
     margin-top: 0;
     margin-bottom: 12px;
   }
-  &__description {
+  &__message {
     color: get-color('gray70');
     margin-top: 0;
     margin-bottom: 24px;
+    white-space: pre-wrap;
   }
   &__buttons {
     display: flex;
