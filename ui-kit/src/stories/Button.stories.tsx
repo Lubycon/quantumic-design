@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Text } from 'src';
+import { Button, Text, Column, Row } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
+import { SemanticColor } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/Button',
@@ -12,35 +13,43 @@ const btnText = '버튼 텍스트';
 export const Default = () => {
   return (
     <div>
-      <Text as="div" typography="h5" style={{ marginBottom: '40px' }}>
-        Rounded Button
-      </Text>
-      <ul style={{ listStyle: 'none' }}>
-        {sizeList.map((size, index) => (
-          <li
-            key={index}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '100px 150px 150px',
-              gridGap: '50px',
-              marginBottom: '30px',
-              alignItems: 'center',
-            }}
-          >
-            <Text style={{ width: '100px' }}>{size.charAt(0).toUpperCase() + size.slice(1)}</Text>
-            <div>
-              <Button size={size} key={index}>
-                {btnText}
-              </Button>
-            </div>
-            <div>
-              <Button size={size} key={index + 'disabled'} disabled>
-                {btnText}
-              </Button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {sizeList.map((size, index) => (
+        <Row key={index} alignItems="center" style={{ marginBottom: 20 }}>
+          <Column xs="auto" style={{ width: '100px', marginRight: 40 }}>
+            <Text>{size.charAt(0).toUpperCase() + size.slice(1)}</Text>
+          </Column>
+          <Column>
+            <Button size={size} key={index}>
+              {btnText}
+            </Button>
+          </Column>
+          <Column>
+            <Button size={size} key={index + 'disabled'} disabled>
+              {btnText}
+            </Button>
+          </Column>
+        </Row>
+      ))}
+    </div>
+  );
+};
+
+const semanticColors: SemanticColor[] = ['informative', 'negative', 'notice', 'positive'];
+export const Types = () => {
+  return (
+    <div>
+      {semanticColors.map((type, index) => (
+        <Row key={index} alignItems="center" style={{ marginBottom: 20 }}>
+          <Column xs="auto" style={{ width: '100px', marginRight: 40 }}>
+            <Text>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+          </Column>
+          <Column>
+            <Button key={index} type={type}>
+              {btnText}
+            </Button>
+          </Column>
+        </Row>
+      ))}
     </div>
   );
 };

@@ -23,7 +23,7 @@ export const Default = () => {
   return (
     <div style={{ paddingTop: 40 }}>
       <Tooltip show={true} message="툴팁입니다.">
-        <Button>버튼입니다</Button>
+        <Button type="informative">버튼입니다</Button>
       </Tooltip>
     </div>
   );
@@ -33,7 +33,11 @@ const TooltipButton = ({ children }: { children: TooltipPosition }) => {
   const [show, setShow] = useState(false);
   return (
     <Tooltip show={show} message="툴팁입니다." position={children}>
-      <Button onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <Button
+        type="informative"
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+      >
         {children}
       </Button>
     </Tooltip>
