@@ -1,5 +1,8 @@
 .lubycon-modal {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   right: 0;
@@ -8,12 +11,6 @@
   overflow: auto;
   z-index: 1000;
 
-  &--visible {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
   &__overlay {
     background-color: get-color('gray100');
     opacity: 0.5;
@@ -22,6 +19,7 @@
     background-color: get-color('gray10');
     border-radius: 4px;
     box-sizing: border-box;
+    z-index: 1001;
     &--small {
       width: 280px;
       padding: 16px 20px;
@@ -36,13 +34,12 @@
     margin-top: 0;
     margin-bottom: 12px;
   }
-  &__message {
+  &__content {
     color: get-color('gray70');
-    margin-top: 0;
     margin-bottom: 24px;
     white-space: pre-wrap;
   }
-  &__buttons {
+  &__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;

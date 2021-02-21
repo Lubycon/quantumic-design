@@ -1,37 +1,19 @@
-import React, { useEffect, useRef } from 'react';
-import Button from 'components/Button';
-import Text from 'components/Text';
-import classnames from 'classnames';
-import { colors } from 'constants/colors';
+import React, { ReactElement, cloneElement, useRef } from 'react';
 import ModalBackdrop from './ModalBackdrop';
+import ModalWindow from './ModalWindow';
+import classnames from 'classnames';
+import { generateID } from 'utils/index';
+import { useEffect } from 'react';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
-  modalIsNested?: boolean;
-  title?: string;
-  message?: string;
   size?: 'small' | 'medium';
-  cancelButton?: boolean;
-  cancelButtonText?: string;
-  buttonText?: string;
-  handleClick?: () => void;
+  children: ReactElement[];
+  onOpen?: () => void;
   onClose?: () => void;
 }
 
-const Modal = ({
-  show = false,
-  modalIsNested = false,
-  title,
-  message,
-  size = 'small',
-  cancelButton = false,
-  cancelButtonText = '취소',
-  buttonText = '저장하기',
-  handleClick,
-  onClose,
-  style,
-}: ModalProps) => {
-  const visibleClass = show ? 'lubycon-modal--visible' : null;
+const Modal = ({ show, size = 'small', children, onClose }: ModalProps) => {
   const backdropRef = useRef(null);
   const onBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!backdropRef.current) return;
@@ -48,56 +30,19 @@ const Modal = ({
     };
   }, []);
 
-  const modalWindowRef = useRef<HTMLDivElement>(null);
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === modalWindowRef.current) onClose?.();
-  };
-
-  return (
-    <>
-      {!modalIsNested && <ModalBackdrop visibleClass={visibleClass} />}
-      <div
-        ref={modalWindowRef}
-        onClick={handleBackdropClick}
-        className={classnames('lubycon-modal', visibleClass)}
-        tabIndex={-1}
-        aria-hidden={true}
-      >
-        <div
-          className={classnames(
-            'lubycon-modal__window',
-            `lubycon-modal__window--${size}`,
-            'lubycon-shadow--3'
-          )}
-          style={style}
-        >
-          {title && (
-            <div className={classnames('lubycon-modal__title', 'lubycon-typography--subtitle')}>
-              <Text typography={size === 'small' ? 'subtitle' : 'h6'}>{title}</Text>
-            </div>
-          )}
-          <div className={classnames('lubycon-modal__message', 'lubycon-typography--p2')}>
-            <Text typography={size === 'small' ? 'p2' : 'p1'}>{message}</Text>
-          </div>
-          <div className="lubycon-modal__buttons">
-            {cancelButton && (
-              <Button
-                size={size}
-                style={{ color: colors.gray80, background: 'transparent', marginRight: '4px' }}
-                onClick={onClose}
-              >
-                {cancelButtonText}
-              </Button>
-            )}
-            <Button size={size} onClick={handleClick}>
-              {buttonText}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return show ? (
+    <div className={classnames('lubycon-modal')} tabIndex={-1} aria-hidden={true}>
       <ModalBackdrop onClick={onBackdropClick} ref={backdropRef} />
+      <ModalWindow size={size}>
+        {children.map((element) => {
+          return cloneElement(element, { key: generateID('lubycon-modal__children'), size: size });
+        })}
+      </ModalWindow>
+    </div>
+  ) : null;
 };
 
 export default Modal;
+export { default as ModalHeader } from './ModalHeader';
+export { default as ModalContent } from './ModalContent';
+export { default as ModalFooter } from './ModalFooter';

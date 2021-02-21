@@ -23,7 +23,12 @@ export { default as List, ListItem } from './components/List';
 export { default as Input } from './components/Input';
 export { default as ProgressBar } from './components/ProgressBar';
 export { default as Accordion } from './components/Accordion';
-export { default as Modal } from './components/Modal';
+export {
+  default as Modal,
+  ModalHeader,
+  ModalContent,
+  ModalFooter,
+} from './components/Modal';
 export { Portal } from './contexts/Portal';
 export { useToast } from './contexts/Toast';
 export { useSnackbar } from './contexts/Snackbar';
