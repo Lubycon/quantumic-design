@@ -39,6 +39,7 @@ export const ToastHooks = () => {
   return (
     <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
+        type="informative"
         size="large"
         onClick={() =>
           openToast({
@@ -57,6 +58,7 @@ export const Align = () => {
   return (
     <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
       <Button
+        type="informative"
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다`,
@@ -67,6 +69,7 @@ export const Align = () => {
         Left
       </Button>
       <Button
+        type="informative"
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다`,
@@ -78,6 +81,7 @@ export const Align = () => {
         Center
       </Button>
       <Button
+        type="informative"
         onClick={() =>
           openToast({
             message: `데이터 전송이 완료되었습니다`,

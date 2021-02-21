@@ -1,5 +1,5 @@
-import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react';
-import { Combine } from 'src/types/utils';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';
 import { chevronDown } from 'ionicons/icons';
@@ -7,15 +7,15 @@ import Text from '../Text';
 import { useResizeObserver } from 'src/hooks/useResizeObserver';
 import { colors } from 'src/constants/colors';
 
-type Props = Combine<
+type Props = CombineElementProps<
+  'div',
   {
     label: string;
     defaultOpen?: boolean;
     onChange?: (state: boolean) => void;
     onOpen?: () => void;
     onClose?: () => void;
-  },
-  HTMLAttributes<HTMLDivElement>
+  }
 >;
 const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
   { label, className, children, defaultOpen = false, onChange, onOpen, onClose, ...props },

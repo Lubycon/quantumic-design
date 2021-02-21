@@ -1,20 +1,23 @@
-import React, { HTMLAttributes, useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode } from 'react';
 import { animated, useTransition } from 'react-spring';
 import classnames from 'classnames';
 import SnackbarBody from './SnackbarBody';
-import { Combine } from 'src/types/utils';
+import { CombineElementProps } from 'src/types/utils';
 
-export type SnackbarProps = Combine<
-  {
-    show: boolean;
-    message: string;
-    button: ReactNode;
-    autoHideDuration?: number;
-    onShow?: () => void;
-    onHide?: () => void;
-    onClick?: () => void;
-  },
-  Omit<HTMLAttributes<HTMLDivElement>, 'children'>
+export type SnackbarProps = Omit<
+  CombineElementProps<
+    'div',
+    {
+      show: boolean;
+      message: string;
+      button: ReactNode;
+      autoHideDuration?: number;
+      onShow?: () => void;
+      onHide?: () => void;
+      onClick?: () => void;
+    }
+  >,
+  'children'
 >;
 
 const Snackbar = ({
