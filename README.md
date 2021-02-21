@@ -33,10 +33,12 @@
 
 ## Installation
 
+Lubycon UI Kit은 아직 알파 버전만 배포된 상태입니다. 따라서 문서 상단의 버전을 확인하고 `latest`가 아닌 정확한 버전을 명시하여 설치하시는 것을 추천합니다.
+
 ```sh
-$ npm install @lubycon/ui-kit
+$ npm install @lubycon/ui-kit@v1.1.0-alpha.24
 // or
-$ yarn add @lubycon/ui-kit
+$ yarn add @lubycon/ui-kit@v1.1.0-alpha.24
 ```
 
 ## Usage
