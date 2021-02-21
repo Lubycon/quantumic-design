@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Ref, forwardRef } from 'react';
 import classnames from 'classnames';
 
-interface OverlayProps {
-  visibleClass: string | null;
+interface ModalBackdropProps {
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const ModalBackdrop = ({ visibleClass }: OverlayProps) => {
+const ModalBackdrop = ({ onClick }: ModalBackdropProps, ref: Ref<HTMLDivElement>) => {
   return (
     <div
-      className={classnames('lubycon-modal', 'lubycon-modal__overlay', visibleClass)}
+      ref={ref}
+      className={classnames('lubycon-modal', 'lubycon-modal__overlay')}
       aria-hidden={true}
       tabIndex={-1}
+      onClick={onClick}
     />
   );
 };
 
-export default ModalBackdrop;
+export default forwardRef(ModalBackdrop);

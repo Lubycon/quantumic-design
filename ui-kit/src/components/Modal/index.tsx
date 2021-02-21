@@ -32,6 +32,11 @@ const Modal = ({
   style,
 }: ModalProps) => {
   const visibleClass = show ? 'lubycon-modal--visible' : null;
+  const backdropRef = useRef(null);
+  const onBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!backdropRef.current) return;
+    if (event.target === backdropRef.current) onClose?.();
+  };
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') onClose?.();
@@ -92,6 +97,7 @@ const Modal = ({
       </div>
     </>
   );
+      <ModalBackdrop onClick={onBackdropClick} ref={backdropRef} />
 };
 
 export default Modal;
