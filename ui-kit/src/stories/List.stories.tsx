@@ -1,10 +1,8 @@
 import React from 'react';
-import { Button, List, ListItem } from 'src';
+import { Button, List, ListItem, ListItemImage, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
-import { ListItemImage } from 'src/components/List';
 import Icon from 'src/components/Icon';
 import { chevronForward } from 'ionicons/icons';
-import { colors } from 'src/constants/colors';
 
 export default {
   title: 'Lubycon UI Kit/List',
