@@ -5,7 +5,6 @@ import { closeCircle } from 'ionicons/icons';
 import Icon from '../Icon';
 import Input from '../Input';
 import Tag, { TagType } from '../Tag';
-import { generateID } from 'src/utils';
 
 const tagTypes: Array<SemanticColor | 'default'> = [
   'default',
