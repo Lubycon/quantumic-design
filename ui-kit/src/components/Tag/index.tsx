@@ -1,4 +1,4 @@
-import React, { isValidElement } from 'react';
+import React, { isValidElement, ReactText } from 'react';
 import { colors, SemanticColor } from 'src/constants/colors';
 import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
@@ -6,13 +6,14 @@ import Text from '../Text';
 import Icon from '../Icon';
 import { close } from 'ionicons/icons';
 
-type TagChildren = string | number;
+export type TagType = SemanticColor | 'default';
+
 type Props = CombineElementProps<
   'div',
   {
-    type?: SemanticColor | 'default';
-    onDelete?: (label: TagChildren) => void;
-    children: TagChildren;
+    type?: TagType;
+    onDelete?: (label: ReactText) => void;
+    children: ReactText;
   }
 >;
 
@@ -25,7 +26,6 @@ const Tag = ({
   ...props
 }: Props) => {
   const isClickable = onClick != null || onDelete != null;
-
   return (
     <div
       className={classnames(

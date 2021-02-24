@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { SemanticColor } from 'src/constants/colors';
 
 export default {
-  title: 'Lubycon UI Kit/Tags',
+  title: 'Lubycon UI Kit/Tag',
 } as Meta;
 
 const samples: Array<{ label: string; type?: SemanticColor }> = [
