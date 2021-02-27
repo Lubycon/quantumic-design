@@ -1,11 +1,14 @@
-import React, { Ref, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 interface ModalBackdropProps {
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const ModalBackdrop = ({ onClick }: ModalBackdropProps, ref: Ref<HTMLDivElement>) => {
+const ModalBackdrop = forwardRef<HTMLDivElement, ModalBackdropProps>(function ModalBackdrop(
+  { onClick },
+  ref
+) {
   return (
     <div
       ref={ref}
@@ -15,6 +18,6 @@ const ModalBackdrop = ({ onClick }: ModalBackdropProps, ref: Ref<HTMLDivElement>
       onClick={onClick}
     />
   );
-};
+});
 
-export default forwardRef(ModalBackdrop);
+export default ModalBackdrop;
