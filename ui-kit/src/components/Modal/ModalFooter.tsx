@@ -5,11 +5,7 @@ interface ModalFooterProps {
 }
 
 const ModalFooter = ({ children }: ModalFooterProps) => {
-  return (
-    <div className="lubycon-modal__footer">
-      {children}
-    </div>
-  );
+  return <div className="lubycon-modal__footer">{children}</div>;
 };
 
 export default ModalFooter;
