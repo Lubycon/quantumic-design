@@ -13,10 +13,10 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
 }
 
-const Modal = ({ show, size = 'small', children, onClose }: ModalProps) => {
+const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) => {
   const backdropRef = useRef(null);
-  const onBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!backdropRef.current) return;
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (backdropRef.current == null) return;
     if (event.target === backdropRef.current) onClose?.();
   };
 
@@ -30,9 +30,15 @@ const Modal = ({ show, size = 'small', children, onClose }: ModalProps) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (show === true) {
+      onOpen?.();
+    }
+  }, [show]);
+
   return show ? (
     <div className={classnames('lubycon-modal')} tabIndex={-1} aria-hidden={true}>
-      <ModalBackdrop onClick={onBackdropClick} ref={backdropRef} />
+      <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
       <ModalWindow size={size}>
         {children.map((element) => {
           return cloneElement(element, { key: generateID('lubycon-modal__children'), size: size });
