@@ -1,19 +1,22 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import Text from 'components/Text';
+import { Typographys } from 'components/Text/types';
+import { CombineElementProps } from 'types/utils';
 
-interface ModalContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface BaseProps {
   size?: 'small' | 'medium';
   children?: ReactNode;
-  isCustom?: boolean;
 }
 
-const ModalContent = ({ children, isCustom = false, size }: ModalContentProps) => {
-  const typography = size === 'small' ? 'p2' : 'p1';
+type ModalContentProps = CombineElementProps<'div', BaseProps>;
+
+const ModalContent = ({ children, size }: ModalContentProps) => {
+  const typography: Typographys = size === 'small' ? 'p2' : 'p1';
 
   return (
     <div className={classnames('lubycon-modal__content')}>
-      {isCustom ? children : <Text typography={typography}>{children}</Text>}
+      {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
     </div>
   );
 };
