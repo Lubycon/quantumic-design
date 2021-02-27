@@ -1,25 +1,18 @@
-import React, {
-  forwardRef,
-  InputHTMLAttributes,
-  isValidElement,
-  ReactNode,
-  useMemo,
-  useState,
-} from 'react';
+import React, { forwardRef, isValidElement, ReactNode, useMemo, useState } from 'react';
 import classnames from 'classnames';
-import { Combine } from 'src/types/utils';
+import { CombineElementProps } from 'src/types/utils';
 import Text from '../Text';
 
 export type TextInputType = 'text' | 'tel' | 'url' | 'email' | 'number' | 'password' | 'search';
-type Props = Combine<
+type Props = CombineElementProps<
+  'input',
   {
     label?: ReactNode;
     type?: TextInputType;
     right?: ReactNode;
     hasError?: boolean;
     description?: string;
-  },
-  InputHTMLAttributes<HTMLInputElement>
+  }
 >;
 const Input = forwardRef<HTMLInputElement, Props>(function Input(
   {
