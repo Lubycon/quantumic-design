@@ -45,14 +45,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <Portal>
-        {openedModalStack.map(({ id, handleClick, ...modalProps }) => (
-          <Modal
-            show={true}
-            key={id}
-            onClose={() => closeModal(id ?? '')}
-            handleClick={() => handleClick?.()}
-            {...modalProps}
-          />
+        {openedModalStack.map(({ id, ...modalProps }) => (
+          <Modal show={true} key={id} onClose={() => closeModal(id ?? '')} {...modalProps} />
         ))}
       </Portal>
     </ModalContext.Provider>
