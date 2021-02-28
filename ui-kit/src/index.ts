@@ -23,7 +23,6 @@ export { default as List, ListItem, ListItemImage } from './components/List';
 export { default as Input } from './components/Input';
 export { default as ProgressBar } from './components/ProgressBar';
 export { default as Accordion } from './components/Accordion';
-export { default as TagsInput } from './components/TagsInput';
 export { default as Tag } from './components/Tag';
 export { Portal } from './contexts/Portal';
 export { useToast } from './contexts/Toast';
