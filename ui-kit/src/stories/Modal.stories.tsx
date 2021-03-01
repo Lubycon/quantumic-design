@@ -2,7 +2,35 @@ import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalContent, ModalFooter } from 'src';
 import Button from 'components/Button';
-import { colors } from 'constants/colors';
+import { useModal } from 'contexts/Modal';
+import { Column, Row } from 'src/components/Grid';
+
+interface FooterProps {
+  size: 'small' | 'medium';
+  showCancelBtn?: boolean;
+  closeModal: () => void;
+}
+
+const DefaultModalHeader = () => <ModalHeader>타이틀입니다</ModalHeader>;
+const DefaultModdalFooter = ({ size, showCancelBtn = true, closeModal }: FooterProps) => {
+  return (
+    <ModalFooter>
+      {showCancelBtn ? (
+        <Button size={size} onClick={closeModal}>
+          취소
+        </Button>
+      ) : null}
+      <Button size={size} type="informative" onClick={closeModal}>
+        저장하기
+      </Button>
+    </ModalFooter>
+  );
+};
+
+const margin = {
+  marginRight: 16,
+  marginBottom: 32,
+};
 
 export default {
   title: 'Lubycon UI kit/Modal',
@@ -11,32 +39,175 @@ export default {
 
 export const Default = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
   const closeModal = () => setShowModal(false);
+  const closeModal2 = () => setShowModal2(false);
   const handleOpen = () => console.info('open');
 
   return (
-    <>
-      <Button onClick={() => setShowModal(true)}>모달 열기</Button>
-      <Modal show={showModal} onClose={closeModal} onOpen={handleOpen}>
-        <ModalHeader>타이틀입니다</ModalHeader>
-        <ModalContent className="Test">
+    <Column xs={6} style={{ marginBottom: 32 }}>
+      <Button type="informative" onClick={() => setShowModal(true)} style={margin}>
+        Small 사이즈 모달 열기
+      </Button>
+      <Modal show={showModal} onOpen={handleOpen} onClose={closeModal}>
+        <DefaultModalHeader />
+        <ModalContent>
           <div>여기에 본문 텍스트가 들어갑니다</div>
           <div>여기에 본문 텍스트가 들어갑니다</div>
         </ModalContent>
-        <ModalFooter>
-          <Button
-            size="small"
-            style={{ color: colors.gray80, background: 'transparent', marginRight: '4px' }}
-            onClick={closeModal}
-          >
-            취소
-          </Button>
-          <Button size="small" onClick={closeModal}>
-            저장하기
-          </Button>
-        </ModalFooter>
+        <DefaultModdalFooter size="small" closeModal={closeModal} />
       </Modal>
-    </>
+
+      <Button size="medium" type="informative" onClick={() => setShowModal2(true)}>
+        Medium 사이즈 모달 열기
+      </Button>
+      <Modal size="medium" show={showModal2} onOpen={handleOpen} onClose={closeModal2}>
+        <DefaultModalHeader />
+        <ModalContent>
+          텍스트 내용이 많을 경우에는 중간 크기의 모달 사용을 권장합니다. 여기에 본문 텍스트를
+          입력해 주세요.
+        </ModalContent>
+        <DefaultModdalFooter size="medium" closeModal={closeModal2} />
+      </Modal>
+    </Column>
+  );
+};
+
+export const ModalHooks = () => {
+  const { openModal, closeModal } = useModal();
+
+  return (
+    <Row>
+      <Column xs={8} style={{ marginBottom: 32 }}>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              content: (
+                <ModalContent>
+                  본문 텍스트와 타이틀은 용도에 따라 별도로 구성이 가능합니다
+                </ModalContent>
+              ),
+              footer: <DefaultModdalFooter size="small" closeModal={() => closeModal(modalId)} />,
+            });
+          }}
+        >
+          small 타이틀 제외
+        </Button>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              header: <DefaultModalHeader />,
+              content: (
+                <ModalContent>
+                  <div>여기에 본문 텍스트가 들어갑니다</div>
+                  <div>여기에 본문 텍스트가 들어갑니다</div>
+                </ModalContent>
+              ),
+              footer: (
+                <DefaultModdalFooter
+                  size="small"
+                  showCancelBtn={false}
+                  closeModal={() => closeModal(modalId)}
+                />
+              ),
+            });
+          }}
+        >
+          small 취소 버튼 제외
+        </Button>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              content: (
+                <ModalContent>
+                  본문 텍스트와 타이틀은 용도에 따라 별도로 구성이 가능합니다
+                </ModalContent>
+              ),
+              footer: (
+                <DefaultModdalFooter
+                  size="small"
+                  showCancelBtn={false}
+                  closeModal={() => closeModal(modalId)}
+                />
+              ),
+            });
+          }}
+        >
+          small 타이틀, 취소 버튼 제외
+        </Button>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              content: (
+                <ModalContent>
+                  텍스트 내용이 많을 경우에는 중간 크기의 모달 사용을 권장합니다. 여기에 본문
+                  텍스트를 입력해주세요.
+                </ModalContent>
+              ),
+              footer: (
+                <DefaultModdalFooter
+                  size="medium"
+                  showCancelBtn={true}
+                  closeModal={() => closeModal(modalId)}
+                />
+              ),
+              size: 'medium',
+            });
+          }}
+        >
+          medium 타이틀 제외
+        </Button>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              header: <DefaultModalHeader />,
+              content: (
+                <ModalContent>
+                  텍스트 내용이 많을 경우에는 중간 크기의 모달 사용을 권장합니다. 여기에 본문
+                  텍스트를 입력해주세요.
+                </ModalContent>
+              ),
+              footer: (
+                <DefaultModdalFooter
+                  size="medium"
+                  showCancelBtn={false}
+                  closeModal={() => closeModal(modalId)}
+                />
+              ),
+              size: 'medium',
+            });
+          }}
+        >
+          medium 취소 버튼 제외
+        </Button>
+        <Button
+          style={margin}
+          onClick={() => {
+            const modalId = openModal({
+              content: (
+                <ModalContent>
+                  본문 텍스트와 타이틀은 용도에 따라 별도로 구성이 가능합니다
+                </ModalContent>
+              ),
+              footer: (
+                <DefaultModdalFooter
+                  size="small"
+                  showCancelBtn={false}
+                  closeModal={() => closeModal(modalId)}
+                />
+              ),
+            });
+          }}
+        >
+          medium 타이틀, 취소 버튼 제외
+        </Button>
+      </Column>
+    </Row>
   );
 };
