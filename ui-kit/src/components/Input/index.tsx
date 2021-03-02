@@ -9,6 +9,7 @@ type Props = CombineElementProps<
   {
     label?: ReactNode;
     type?: TextInputType;
+    left?: ReactNode;
     right?: ReactNode;
     hasError?: boolean;
     description?: string;
@@ -21,6 +22,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
     className,
     disabled,
     type = 'text',
+    left,
     right,
     hasError,
     description,
@@ -33,6 +35,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
   const [isFocused, setFocus] = useState(false);
   const hasLabel = label != null;
   const hasDescription = description != null;
+  const hasLeftArea = left != null;
   const hasRightArea = right != null;
 
   const labelElement = useMemo(() => {
@@ -64,9 +67,11 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
       {labelElement}
       <div
         className={classnames('lubycon-input__form', {
+          'lubycon-input__form--with-left-area': hasLeftArea,
           'lubycon-input__form--with-right-area': hasRightArea,
         })}
       >
+        {left != null ? <span className="lubycon-input__form__left">{left}</span> : null}
         <input
           ref={ref}
           className={classnames('lubycon-input__form__input-element', 'lubycon-typography-p1')}
