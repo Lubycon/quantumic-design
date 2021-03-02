@@ -29,7 +29,7 @@
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
     "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.build.json",
-    "build-stories": "yarn build-storybook -o ./storybook-static",
+    "build-stories": "yarn build-storybook -o ./storybook-static -s ./public",
     "publish-stories": "node ./.storybook/deploy.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
