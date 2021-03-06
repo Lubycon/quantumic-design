@@ -38,16 +38,16 @@ export default {
 } as Meta;
 
 export const Default = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+  const [showModal, setShowSmallModal] = useState(false);
+  const [showModal2, setShowMediumModal] = useState(false);
 
-  const closeModal = () => setShowModal(false);
-  const closeModal2 = () => setShowModal2(false);
+  const closeModal = () => setShowSmallModal(false);
+  const closeModal2 = () => setShowMediumModal(false);
   const handleOpen = () => console.info('open');
 
   return (
     <Column xs={6} style={{ marginBottom: 32 }}>
-      <Button type="informative" onClick={() => setShowModal(true)} style={margin}>
+      <Button type="informative" onClick={() => setShowSmallModal(true)} style={margin}>
         Small 사이즈 모달 열기
       </Button>
       <Modal show={showModal} onOpen={handleOpen} onClose={closeModal}>
@@ -59,7 +59,7 @@ export const Default = () => {
         <DefaultModdalFooter size="small" closeModal={closeModal} />
       </Modal>
 
-      <Button size="medium" type="informative" onClick={() => setShowModal2(true)}>
+      <Button size="medium" type="informative" onClick={() => setShowMediumModal(true)}>
         Medium 사이즈 모달 열기
       </Button>
       <Modal size="medium" show={showModal2} onOpen={handleOpen} onClose={closeModal2}>

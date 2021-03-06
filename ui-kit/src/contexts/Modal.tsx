@@ -64,7 +64,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
         {openedModalStack.map(({ id, reactElements, size = 'small', ...modalProps }) => (
           <Modal
             show={true}
-            key={id} onClose={() => closeModal(id ?? '')}
+            key={id}
+            onClose={() => closeModal(id ?? '')}
             size={size}
             {...modalProps}
           >
