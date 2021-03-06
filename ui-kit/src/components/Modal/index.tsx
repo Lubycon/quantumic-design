@@ -1,4 +1,4 @@
-import React, { ReactElement, cloneElement, useRef } from 'react';
+import React, { Children, ReactElement, cloneElement, useRef } from 'react';
 import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
 import classnames from 'classnames';
@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
   size?: 'small' | 'medium';
-  children: ReactElement[];
+  children: ReactElement | ReactElement[];
   onOpen?: () => void;
   onClose?: () => void;
 }
@@ -40,9 +40,9 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
     <div className={classnames('lubycon-modal')} tabIndex={-1} aria-hidden={true}>
       <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
       <ModalWindow size={size}>
-        {children.map((element) => {
-          return cloneElement(element, { key: generateID('lubycon-modal__children'), size: size });
-        })}
+        {Children.map(children, (child) =>
+          cloneElement(child, { size: size, key: generateID('lubycon-modal__children') })
+        )}
       </ModalWindow>
     </div>
   ) : null;
