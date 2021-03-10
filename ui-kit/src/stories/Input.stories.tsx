@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input, Text, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 import Icon from 'src/components/Icon';
-import { checkmarkCircle } from 'ionicons/icons';
+import { checkmarkCircle, closeCircle, musicalNote } from 'ionicons/icons';
 import { TextInputType } from 'components/Input';
 
 export default {
@@ -72,6 +72,20 @@ export const Types = () => {
           </li>
         ))}
       </ul>
+    </div>
+  );
+};
+
+export const LeftAndRight = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 300 }}>
+      <Input label={'Left Area'} left={<Icon icon={musicalNote} type="filled" />} />
+      <Input label={'Right Area'} right={<Icon icon={closeCircle} type="filled" />} />
+      <Input
+        label={'Left And Right'}
+        left={<Icon icon={musicalNote} type="filled" />}
+        right={<Icon icon={closeCircle} type="filled" />}
+      />
     </div>
   );
 };

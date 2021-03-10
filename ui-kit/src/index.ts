@@ -19,10 +19,11 @@ export {
   CardFooter,
 } from './components/Card';
 export { default as Snackbar } from './components/Snackbar';
-export { default as List, ListItem } from './components/List';
+export { default as List, ListItem, ListItemImage } from './components/List';
 export { default as Input } from './components/Input';
 export { default as ProgressBar } from './components/ProgressBar';
 export { default as Accordion } from './components/Accordion';
+export { default as Tag } from './components/Tag';
 export { default as Modal, ModalHeader, ModalContent, ModalFooter } from './components/Modal';
 export {
   default as Table,
