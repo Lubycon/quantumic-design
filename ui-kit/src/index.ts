@@ -25,6 +25,13 @@ export { default as ProgressBar } from './components/ProgressBar';
 export { default as Accordion } from './components/Accordion';
 export { default as Tag } from './components/Tag';
 export { default as Modal, ModalHeader, ModalContent, ModalFooter } from './components/Modal';
+export {
+  default as Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from './components/Table';
 export { Portal } from './contexts/Portal';
 export { useToast } from './contexts/Toast';
 export { useSnackbar } from './contexts/Snackbar';
