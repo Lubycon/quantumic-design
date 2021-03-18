@@ -1,25 +1,24 @@
 .lubycon-modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  z-index: 1000;
-
   &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: get-color('gray100');
     opacity: 0.5;
+    z-index: 1000;
+  }
+  &__window-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1001;
   }
   &__window {
     background-color: get-color('gray10');
     border-radius: 4px;
     box-sizing: border-box;
-    z-index: 1001;
     &--small {
       width: 280px;
       padding: 16px 20px;

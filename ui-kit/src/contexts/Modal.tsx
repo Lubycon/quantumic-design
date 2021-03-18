@@ -1,10 +1,12 @@
 import React, { useContext, ReactNode, createContext, useState, useCallback } from 'react';
-import Modal, { ModalProps } from 'components/Modal';
+import Modal, { ModalContent, ModalFooter, ModalHeader, ModalProps } from 'components/Modal';
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
 
-interface ModalOptions extends Omit<ModalProps, 'show'> {
-  test?: boolean;
+interface ModalOptions extends Omit<ModalProps, 'show' | 'children' | 'title'> {
+  title?: ReactNode;
+  contents?: ReactNode;
+  footer?: ReactNode;
 }
 interface ModalGlobalState {
   openModal: (option: ModalOptions) => void;
@@ -24,11 +26,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   const openModal = useCallback(
     ({ id = generateID('lubycon-modal'), ...option }: ModalOptions) => {
-      const modal = { id, ...option };
+      const modal = { id, show: true, ...option };
       setOpenedModalStack([...openedModalStack, modal]);
     },
     [openedModalStack]
   );
+
   const closeModal = useCallback(
     (closedModalId: string) => {
       setOpenedModalStack(openedModalStack.filter((modal) => modal.id !== closedModalId));
@@ -45,8 +48,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <Portal>
-        {openedModalStack.map(({ id, ...modalProps }) => (
-          <Modal show={true} key={id} onClose={() => closeModal(id ?? '')} {...modalProps} />
+        {openedModalStack.map(({ id, title, contents, footer, ...modalProps }) => (
+          <Modal show={true} key={id} onClose={() => closeModal(id ?? '')} {...modalProps}>
+            <ModalHeader>{title}</ModalHeader>
+            <ModalContent>{contents}</ModalContent>
+            <ModalFooter>{footer}</ModalFooter>
+          </Modal>
         ))}
       </Portal>
     </ModalContext.Provider>

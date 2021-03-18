@@ -1,9 +1,8 @@
-import React, { ReactElement, cloneElement, useRef } from 'react';
+import React, { ReactElement, cloneElement, useRef, useCallback, useEffect } from 'react';
 import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
-import classnames from 'classnames';
 import { generateID } from 'utils/index';
-import { useEffect } from 'react';
+import { animated, useTransition } from 'react-spring';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
@@ -15,14 +14,34 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) => {
   const backdropRef = useRef(null);
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (backdropRef.current == null) return;
-    if (event.target === backdropRef.current) onClose?.();
-  };
+  const backdropTransition = useTransition(show, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
+  const modalTransition = useTransition(show, null, {
+    from: { transform: 'translate(-50%, 100%)', opacity: 0 },
+    enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
+    leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
+  });
+
+  const handleBackdropClick = useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (backdropRef.current == null) {
+        return;
+      } else if (event.target === backdropRef.current) {
+        onClose?.();
+      }
+    },
+    [onClose]
+  );
 
   const onKeydown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') onClose?.();
+    if (event.key === 'Escape') {
+      onClose?.();
+    }
   };
+
   useEffect(() => {
     window.addEventListener('keydown', onKeydown);
     return () => {
@@ -36,16 +55,33 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
     }
   }, [show]);
 
-  return show ? (
-    <div className={classnames('lubycon-modal')} tabIndex={-1} aria-hidden={true}>
-      <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
-      <ModalWindow size={size}>
-        {children.map((element) => {
-          return cloneElement(element, { key: generateID('lubycon-modal__children'), size: size });
-        })}
-      </ModalWindow>
+  return (
+    <div className="lubycon-modal" tabIndex={-1} aria-hidden={true}>
+      {backdropTransition.map(
+        ({ item: show, key, props }) =>
+          show && (
+            <animated.div key={key} style={props}>
+              <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
+            </animated.div>
+          )
+      )}
+      {modalTransition.map(
+        ({ item: show, key, props }) =>
+          show && (
+            <animated.div key={key} style={props} className="lubycon-modal__window-wrapper">
+              <ModalWindow size={size}>
+                {children.map((element) => {
+                  return cloneElement(element, {
+                    key: generateID('lubycon-modal__children'),
+                    size: size,
+                  });
+                })}
+              </ModalWindow>
+            </animated.div>
+          )
+      )}
     </div>
-  ) : null;
+  );
 };
 
 export default Modal;
