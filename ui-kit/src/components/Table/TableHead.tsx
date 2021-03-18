@@ -7,9 +7,7 @@ const TableHeadContext = createContext({ variant: '' });
 const TableHead = ({ children }: TableProps) => {
   return (
     <TableHeadContext.Provider value={{ variant: 'head' }}>
-      <thead className="lubycon-table__head">
-        {children}
-      </thead>
+      <thead className="lubycon-table__head">{children}</thead>
     </TableHeadContext.Provider>
   );
 };

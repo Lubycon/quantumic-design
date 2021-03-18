@@ -13,7 +13,7 @@ const TableCell = ({ children, align = 'left', as }: TableCellProps) => {
   const Component = as ?? isHeadCell;
 
   return (
-    <Component className={classnames("lubycon-table__cell", `lubycon-table--align-${align}`)}>
+    <Component className={classnames('lubycon-table__cell', `lubycon-table--align-${align}`)}>
       {children}
     </Component>
   );
