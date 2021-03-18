@@ -3,13 +3,13 @@ import Modal, { ModalContent, ModalFooter, ModalHeader, ModalProps } from 'compo
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
 
-interface ModalOptions extends Omit<ModalProps, 'show' | 'children' | 'title'> {
-  title?: ReactNode;
-  contents?: ReactNode;
+interface ModalOptions extends Omit<ModalProps, 'show' | 'children'> {
+  header?: ReactNode;
+  content?: ReactNode;
   footer?: ReactNode;
 }
 interface ModalGlobalState {
-  openModal: (option: ModalOptions) => void;
+  openModal: (option: ModalOptions) => string;
   closeModal: (modalId: string) => void;
 }
 interface ModalProviderProps {
@@ -17,7 +17,7 @@ interface ModalProviderProps {
 }
 
 const ModalContext = createContext<ModalGlobalState>({
-  openModal: () => {},
+  openModal: () => '',
   closeModal: () => {},
 });
 
@@ -28,6 +28,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
     ({ id = generateID('lubycon-modal'), ...option }: ModalOptions) => {
       const modal = { id, ...option };
       setOpenedModalStack([...openedModalStack, modal]);
+      return id;
     },
     [openedModalStack]
   );
@@ -48,10 +49,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <Portal>
-        {openedModalStack.map(({ id, title, contents, footer, ...modalProps }) => (
+        {openedModalStack.map(({ id, title, content, footer, ...modalProps }) => (
           <Modal show={true} key={id} onClose={() => closeModal(id ?? '')} {...modalProps}>
             <ModalHeader>{title}</ModalHeader>
-            <ModalContent>{contents}</ModalContent>
+            <ModalContent>{content}</ModalContent>
             <ModalFooter>{footer}</ModalFooter>
           </Modal>
         ))}
