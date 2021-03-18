@@ -26,7 +26,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   const openModal = useCallback(
     ({ id = generateID('lubycon-modal'), ...option }: ModalOptions) => {
-      const modal = { id, show: true, ...option };
+      const modal = { id, ...option };
       setOpenedModalStack([...openedModalStack, modal]);
     },
     [openedModalStack]
