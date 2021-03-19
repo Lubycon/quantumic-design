@@ -3,6 +3,7 @@ import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
 import { generateID } from 'utils/index';
 import { animated, useTransition } from 'react-spring';
+import { useState } from 'react';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
@@ -13,16 +14,19 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) => {
+  const [showModal, setShowModal] = useState(show);
   const backdropRef = useRef(null);
-  const backdropTransition = useTransition(show, null, {
+  const backdropTransition = useTransition(showModal, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
-  const modalTransition = useTransition(show, null, {
+  const modalTransition = useTransition(showModal, null, {
     from: { transform: 'translate(-50%, 100%)', opacity: 0 },
     enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
     leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
+    onStart: () => onOpen?.(),
+    onDestroyed: () => onClose?.(),
   });
 
   const handleBackdropClick = useCallback(
@@ -30,7 +34,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
       if (backdropRef.current == null) {
         return;
       } else if (event.target === backdropRef.current) {
-        onClose?.();
+        setShowModal(false);
       }
     },
     [onClose]
@@ -38,7 +42,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      onClose?.();
+      setShowModal(false);
     }
   };
 
@@ -51,7 +55,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
 
   useEffect(() => {
     if (show === true) {
-      onOpen?.();
+      setShowModal(true);
     }
   }, [show]);
 
