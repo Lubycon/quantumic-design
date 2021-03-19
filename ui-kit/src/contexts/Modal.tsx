@@ -40,7 +40,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const closeModal = useCallback((closedModalId: string) => {
     setOpenedModalStack((stack) =>
       stack.map((modal) => {
-        return modal.id == closedModalId
+        return modal.id === closedModalId
           ? {
               ...modal,
               show: false,
