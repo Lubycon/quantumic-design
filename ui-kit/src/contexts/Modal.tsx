@@ -3,11 +3,15 @@ import Modal, { ModalContent, ModalFooter, ModalHeader, ModalProps } from 'compo
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
 
-interface ModalOptions extends Omit<ModalProps, 'show' | 'children'> {
+interface ModalHookOption {
   header?: ReactNode;
   content?: ReactNode;
   footer?: ReactNode;
 }
+
+type ModalOptions = ModalHookOption & Omit<ModalProps, 'show' | 'children'>;
+type ModalStackOptions = ModalHookOption & Omit<ModalProps, 'children'>;
+
 interface ModalGlobalState {
   openModal: (option: ModalOptions) => string;
   closeModal: (modalId: string) => void;
@@ -22,23 +26,33 @@ const ModalContext = createContext<ModalGlobalState>({
 });
 
 export function ModalProvider({ children }: ModalProviderProps) {
-  const [openedModalStack, setOpenedModalStack] = useState<ModalOptions[]>([]);
+  const [openedModalStack, setOpenedModalStack] = useState<ModalStackOptions[]>([]);
 
   const openModal = useCallback(
     ({ id = generateID('lubycon-modal'), ...option }: ModalOptions) => {
-      const modal = { id, ...option };
+      const modal = { id, show: true, ...option };
       setOpenedModalStack([...openedModalStack, modal]);
       return id;
     },
     [openedModalStack]
   );
 
-  const closeModal = useCallback(
-    (closedModalId: string) => {
-      setOpenedModalStack(openedModalStack.filter((modal) => modal.id !== closedModalId));
-    },
-    [openedModalStack]
-  );
+  const closeModal = useCallback((closedModalId: string) => {
+    setOpenedModalStack((stack) =>
+      stack.map((modal) => {
+        return modal.id == closedModalId
+          ? {
+              ...modal,
+              show: false,
+            }
+          : modal;
+      })
+    );
+  }, []);
+
+  const removeModalFromStack = (closedModalId: string) => {
+    setOpenedModalStack((stack) => stack.filter((modal) => modal.id !== closedModalId));
+  };
 
   return (
     <ModalContext.Provider
@@ -49,8 +63,13 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <Portal>
-        {openedModalStack.map(({ id, title, content, footer, ...modalProps }) => (
-          <Modal show={true} key={id} onClose={() => closeModal(id ?? '')} {...modalProps}>
+        {openedModalStack.map(({ id, show, title, content, footer, ...modalProps }) => (
+          <Modal
+            show={show}
+            key={id}
+            onClose={() => removeModalFromStack(id ?? '')}
+            {...modalProps}
+          >
             <ModalHeader>{title}</ModalHeader>
             <ModalContent>{content}</ModalContent>
             <ModalFooter>{footer}</ModalFooter>

@@ -54,9 +54,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
   }, []);
 
   useEffect(() => {
-    if (show === true) {
-      setShowModal(true);
-    }
+    setShowModal(show);
   }, [show]);
 
   return (
