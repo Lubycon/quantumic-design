@@ -1,25 +1,17 @@
-import React, {
-  ReactElement,
-  useContext,
-  ReactNode,
-  createContext,
-  useState,
-  useCallback,
-  isValidElement,
-} from 'react';
-import Modal, { ModalProps } from 'components/Modal';
+import React, { useContext, ReactNode, createContext, useState, useCallback } from 'react';
+import Modal, { ModalContent, ModalFooter, ModalHeader, ModalProps } from 'components/Modal';
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
-import { cloneElement } from 'react';
 
-interface ModalOptions extends Omit<ModalProps, 'show' | 'children'> {
-  header?: ReactElement;
-  content: ReactElement;
-  footer: ReactElement;
+interface ModalHookOption {
+  header?: ReactNode;
+  content?: ReactNode;
+  footer?: ReactNode;
 }
-interface ModalStackOptions extends Omit<ModalOptions, 'header' | 'content' | 'footer'> {
-  reactElements: ReactElement[];
-}
+
+type ModalOptions = ModalHookOption & Omit<ModalProps, 'show' | 'children'>;
+type ModalStackOptions = ModalHookOption & Omit<ModalProps, 'children'>;
+
 interface ModalGlobalState {
   openModal: (option: ModalOptions) => string;
   closeModal: (modalId: string) => void;
@@ -37,20 +29,30 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [openedModalStack, setOpenedModalStack] = useState<ModalStackOptions[]>([]);
 
   const openModal = useCallback(
-    ({ id = generateID('lubycon-modal'), header, content, footer, ...option }: ModalOptions) => {
-      const reactElements = isValidElement(header) ? [header, content, footer] : [content, footer];
-      const modal = { id, reactElements, ...option };
+    ({ id = generateID('lubycon-modal'), ...option }: ModalOptions) => {
+      const modal = { id, show: true, ...option };
       setOpenedModalStack([...openedModalStack, modal]);
       return id;
     },
     [openedModalStack]
   );
-  const closeModal = useCallback(
-    (closedModalId: string) => {
-      setOpenedModalStack(openedModalStack.filter((modal) => modal.id !== closedModalId));
-    },
-    [openedModalStack]
-  );
+
+  const closeModal = useCallback((closedModalId: string) => {
+    setOpenedModalStack((stack) =>
+      stack.map((modal) => {
+        return modal.id === closedModalId
+          ? {
+              ...modal,
+              show: false,
+            }
+          : modal;
+      })
+    );
+  }, []);
+
+  const removeModalFromStack = (closedModalId: string) => {
+    setOpenedModalStack((stack) => stack.filter((modal) => modal.id !== closedModalId));
+  };
 
   return (
     <ModalContext.Provider
@@ -61,20 +63,16 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <Portal>
-        {openedModalStack.map(({ id, reactElements, size = 'small', ...modalProps }) => (
+        {openedModalStack.map(({ id, show, title, content, footer, ...modalProps }) => (
           <Modal
-            show={true}
+            show={show}
             key={id}
-            onClose={() => closeModal(id ?? '')}
-            size={size}
+            onClose={() => removeModalFromStack(id ?? '')}
             {...modalProps}
           >
-            {reactElements.map((element) => {
-              return cloneElement(element, {
-                key: generateID('lubycon-modal__children'),
-                size: size,
-              });
-            })}
+            <ModalHeader>{title}</ModalHeader>
+            <ModalContent>{content}</ModalContent>
+            <ModalFooter>{footer}</ModalFooter>
           </Modal>
         ))}
       </Portal>

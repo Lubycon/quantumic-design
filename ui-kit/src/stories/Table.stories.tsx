@@ -21,7 +21,7 @@ export const Default = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {iterator.map((v, rowIdx) => (
+        {iterator.map((_, rowIdx) => (
           <TableRow key={`tbody-row-${rowIdx}`}>
             {contents.map((content, contentIdx) => (
               <TableCell key={`td-${contentIdx}`}>{content}</TableCell>
