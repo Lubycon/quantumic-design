@@ -1,58 +1,58 @@
+@mixin tab-indicator-position {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
 .lubycon-tabs {
-  .lubycon-nav-list {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  @include remove-scroll-bar;
+
+  &__item {
     position: relative;
+    padding: 12px 24px;
+    transition: color 0.2s ease-out;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+    white-space: nowrap;
 
-    .lubycon-tab {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 40px;
-      line-height: 24px;
-      font-size: 14px;
-      cursor: pointer;
+    &__text {
+      color: get-color('gray80');
+    }
 
-      border-bottom: 1px solid get-color('gray30');
-      box-sizing: border-box;
+    &--selected .lubycon-tabs__item__text {
+      font-weight: bold;
+      color: get-color('gray100');
+    }
 
-      height: 44px;
-      @include font-weight('regular', 400);
+    &--disabled .lubycon-tabs__item__text {
+      cursor: not-allowed;
+      color: get-color('gray40');
+    }
 
-      &.lubycon-tab__active {
-        color: get-color('gray100');
-        @include font-weight('bold', 700);
-      }
+    &::after {
+      @include tab-indicator-position;
+      background-color: get-color('gray30');
+      height: 1px;
+      transition: background-color 0.2s ease-out;
+    }
 
-      &:hover {
-        color: get-color('gray80');
-        border-bottom: 1px solid get-color('gray80');
-      }
-
-      .lubycon-tab__btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 44px;
-        white-space: nowrap;
-      }
+    &:not([aria-disabled='true']):hover::after {
+      background-color: get-color('gray80');
     }
   }
 
-  .lubycon-tab__nav__wrap {
-    position: relative;
-
-    .lubycon-tab__bar {
-      height: 2px;
-      background-color: get-color('blue50');
-      position: absolute;
-      bottom: 0;
-
-      &.lubycon-tab__bar__animated {
-        pointer-events: none;
-        transition: all 0.3s;
-      }
-    }
+  &__indicator {
+    @include tab-indicator-position;
+    background-color: get-color('blue50');
+    border-radius: 1px;
+    height: 2px;
   }
 }

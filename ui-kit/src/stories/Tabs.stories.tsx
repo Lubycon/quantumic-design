@@ -1,62 +1,61 @@
-import React from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Tabs, TabPane } from 'src';
+import { Tabs, TabsItem } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Tab',
+  title: 'Lubycon UI Kit/Tabs',
   component: Tabs,
 } as Meta;
 
-export const Default = () => {
-  return (
-    <div>
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="첫번째 탭 Active" key="1">
-          first
-        </TabPane>
-        <TabPane tab="두번째 탭 normal" key="2">
-          second
-        </TabPane>
-        <TabPane tab="세번째 탭 Hover" key="3">
-          third
-        </TabPane>
-        <TabPane tab="네번째 탭 normal" key="4">
-          fourth
-        </TabPane>
-        <TabPane tab="다섯번째 탭 normal" key="5">
-          fifth
-        </TabPane>
-        <TabPane tab="여섯번째 탭 normal" key="6">
-          sixth
-        </TabPane>
-      </Tabs>
-    </div>
-  );
+const tabs = [
+  {
+    value: 'first',
+    text: '첫번째 탭',
+    disabled: false,
+  },
+  {
+    value: 'second',
+    text: '두번째 태애애애애앱',
+    disabled: false,
+  },
+  {
+    value: 'third',
+    text: '세번째 탭',
+    disabled: false,
+  },
+  {
+    value: 'forth',
+    text: '네번째 탭',
+    disabled: true,
+  },
+  {
+    value: 'fifth',
+    text: '다섯번째 탭',
+    disabled: false,
+  },
+];
+
+const TabContent = ({ children }: PropsWithChildren<unknown>) => {
+  return <div style={{ padding: 20 }}>{children}</div>;
 };
 
-export const FixedTab = () => {
+export const Default = () => {
+  const [selectedTab, selectTab] = useState(tabs[0].value);
+
   return (
     <div>
-      <Tabs defaultActiveKey="1" tabWidth={80}>
-        <TabPane tab="첫번째" key="1">
-          first
-        </TabPane>
-        <TabPane tab="두번째" key="2">
-          second
-        </TabPane>
-        <TabPane tab="세번째" key="3">
-          third
-        </TabPane>
-        <TabPane tab="네번째" key="4">
-          fourth
-        </TabPane>
-        <TabPane tab="다섯번째" key="5">
-          fifth
-        </TabPane>
-        <TabPane tab="여섯번째" key="6">
-          sixth
-        </TabPane>
+      <Tabs selectedValue={selectedTab} onChange={selectTab}>
+        {tabs.map((item) => (
+          <TabsItem key={item.value} value={item.value} disabled={item.disabled}>
+            {item.text}
+          </TabsItem>
+        ))}
       </Tabs>
+      {tabs.map((item) => {
+        return item.value === selectedTab ? (
+          <TabContent key={item.value}>{item.text}이 선택되었습니다!</TabContent>
+        ) : null;
+      })}
     </div>
   );
 };
