@@ -10,7 +10,7 @@ export { default as Text } from './components/Text';
 export { default as LubyconUIKitProvider } from './components/LubyconUIKitProvider';
 export { default as Toast } from './components/Toast';
 export { default as Tooltip } from './components/Tooltip';
-export { Tabs, TabPane } from './components/Tabs';
+export { default as Tabs, TabsItem } from './components/Tabs';
 export {
   default as Card,
   CardHeader,
