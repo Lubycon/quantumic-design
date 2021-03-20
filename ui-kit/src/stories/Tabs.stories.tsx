@@ -15,7 +15,7 @@ const tabs = [
   },
   {
     value: 'second',
-    text: '두번째 탭',
+    text: '두번째 태애애애애앱',
     disabled: false,
   },
   {

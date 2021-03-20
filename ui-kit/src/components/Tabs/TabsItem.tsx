@@ -2,6 +2,7 @@ import React, { ReactNode, useRef, HTMLProps, Ref, forwardRef, useContext, useEf
 import classnames from 'classnames';
 import useCombinedRefs from 'src/hooks/useCombinedRefs';
 import TabsContext from './TabsContext';
+import Text from 'components/Text';
 
 export interface Props
   extends Omit<HTMLProps<HTMLDivElement>, 'role' | 'aria-disabled' | 'aria-selected'> {
@@ -64,7 +65,9 @@ function TabItem(
         onSelect(value);
       }}
     >
-      {children}
+      <Text className="lubycon-tabs__item__text" typography="p2">
+        {children}
+      </Text>
     </div>
   );
 }

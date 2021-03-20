@@ -23,12 +23,16 @@
     cursor: pointer;
     white-space: nowrap;
 
-    &--selected {
+    &__text {
+      color: get-color('gray80');
+    }
+
+    &--selected .lubycon-tabs__item__text {
       font-weight: bold;
       color: get-color('gray100');
     }
 
-    &--disabled {
+    &--disabled .lubycon-tabs__item__text {
       cursor: not-allowed;
       color: get-color('gray40');
     }
