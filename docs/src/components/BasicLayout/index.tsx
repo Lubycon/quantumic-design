@@ -1,14 +1,13 @@
 import { Row, Column, Container } from '@lubycon/ui-kit';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalSidebar from 'components/GlobalSidebar';
-import React, { PropsWithChildren } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import React, { PropsWithChildren, useState, useEffect, useRef } from 'react';
 
 const BasicLayout = ({ children }: PropsWithChildren<unknown>) => {
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+
+  const contentsHeight = `calc(100vh - ${headerHeight}px)`;
 
   useEffect(() => {
     if (headerRef.current != null) {
@@ -43,11 +42,20 @@ const BasicLayout = ({ children }: PropsWithChildren<unknown>) => {
               xs="auto"
               css={{
                 width: 375,
+                boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.1)',
+                overflowY: 'scroll',
+                height: '100%',
               }}
             >
               <GlobalSidebar />
             </Column>
-            <Column>{children}</Column>
+            <Column
+              css={{
+                overflowY: 'scroll',
+              }}
+            >
+              {children}
+            </Column>
           </Row>
         </Container>
       </div>

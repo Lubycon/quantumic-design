@@ -1790,10 +1790,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lubycon/ui-kit@^1.1.0-alpha.28":
-  version "1.1.0-alpha.28"
-  resolved "https://registry.yarnpkg.com/@lubycon/ui-kit/-/ui-kit-1.1.0-alpha.28.tgz#8191ff0b34086a11e5a2d81dbaf39b8d44970495"
-  integrity sha512-WK1zOAWaRq2k1ejs6S3l0qdcWXaxw4s3K2/3bRp1CliwuqIe+or58AZQiTe2TlrodJPklq7Dueij/rJ8BfuIOQ==
+"@lubycon/ui-kit@^1.1.0-alpha.29":
+  version "1.1.0-alpha.29"
+  resolved "https://registry.yarnpkg.com/@lubycon/ui-kit/-/ui-kit-1.1.0-alpha.29.tgz#134bf778f122ace6d29f79a199d90a1e9058ab5e"
+  integrity sha512-Q6LXL8i+KMnKtDM7h7KArPVznx5OSouMw0ysURZYfsDo2gh8ondwk9AOO2Ot6eZQoSvSlltPyyhAdkfHqIAwSw==
   dependencies:
     classnames "^2.2.6"
     ionicons "^5.2.3"

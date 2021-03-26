@@ -1,6 +1,7 @@
 import React from 'react';
-import { Row, Column, Container, colors } from '@lubycon/ui-kit';
+import { Row, Column, Container } from '@lubycon/ui-kit';
 import Link from 'next/link';
+import { logoSrc } from 'constants/resources';
 
 const GlobalHeader = () => {
   return (
@@ -19,10 +20,7 @@ const GlobalHeader = () => {
           <Column>
             <Link href="/">
               <a>
-                <img
-                  css={{ width: 100 }}
-                  src="https://d2x9jxyr47nlkc.cloudfront.net/logo/logo-color.svg"
-                />
+                <img css={{ width: 100 }} src={logoSrc} />
               </a>
             </Link>
           </Column>
