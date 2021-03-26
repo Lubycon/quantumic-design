@@ -4,11 +4,11 @@ import { menu } from 'constants/menu';
 
 const GlobalSidebar = () => {
   return (
-    <aside>
+    <div>
       {menu.map((item, index) => (
         <Accordion key={index} label={item.title} />
       ))}
-    </aside>
+    </div>
   );
 };
 
