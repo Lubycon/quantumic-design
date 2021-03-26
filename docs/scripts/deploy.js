@@ -1,5 +1,6 @@
 const ghpages = require('gh-pages');
 const path = require('path');
+const fs = require('fs');
 const token = process.env.ACCESS_TOKEN;
 const deployTarget = env === 'alpha' ? 'ui-kit.alpha.lubycon.io' : 'ui-kit.lubycon.io';
 
