@@ -1,12 +1,8 @@
-import GlobalHeader from 'components/GlobalHeader';
+import BasicLayout from 'components/BasicLayout';
 import React from 'react';
 
 const HomePage = () => {
-  return (
-    <div>
-      <GlobalHeader />
-    </div>
-  );
+  return <BasicLayout>하아힝</BasicLayout>;
 };
 
 export default HomePage;

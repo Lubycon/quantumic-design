@@ -1790,6 +1790,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@lubycon/ui-kit@^1.1.0-alpha.28":
+  version "1.1.0-alpha.28"
+  resolved "https://registry.yarnpkg.com/@lubycon/ui-kit/-/ui-kit-1.1.0-alpha.28.tgz#8191ff0b34086a11e5a2d81dbaf39b8d44970495"
+  integrity sha512-WK1zOAWaRq2k1ejs6S3l0qdcWXaxw4s3K2/3bRp1CliwuqIe+or58AZQiTe2TlrodJPklq7Dueij/rJ8BfuIOQ==
+  dependencies:
+    classnames "^2.2.6"
+    ionicons "^5.2.3"
+    react-spring "^8.0.27"
+    resize-observer-polyfill "^1.5.1"
+
 "@mdx-js/loader@^1.6.19":
   version "1.6.21"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.21.tgz#e5b2b5c48d182e495d36104b0c7a5da96964a2dd"
