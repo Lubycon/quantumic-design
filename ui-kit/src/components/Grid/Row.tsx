@@ -17,6 +17,7 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     direction = 'row',
     justify = 'flex-start',
     alignItems = 'flex-start',
+    className,
     ...props
   }: RowProps<T>,
   ref: Ref<any>
@@ -30,7 +31,8 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
         'lubycon-grid__row',
         `lubycon-grid__row--direction-${direction}`,
         `lubycon-grid__row--justify-${justify}`,
-        `lubycon-grid__row--align-items-${alignItems}`
+        `lubycon-grid__row--align-items-${alignItems}`,
+        className
       )}
       {...props}
     />
