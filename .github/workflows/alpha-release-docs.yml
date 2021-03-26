@@ -18,6 +18,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Set Git Configulations
+        run: |
+          git config --global user.email "lubycon@gmail.com"
+          git config --global user.name "lubycon"
       - name: Caching Node Modules
         uses: actions/cache@v2
         with:
