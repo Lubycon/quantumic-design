@@ -7,7 +7,7 @@ console.log('📦 개발용 스토리북 배포를 준비 중 입니다...');
 ghpages.publish(path.join(__dirname, '../storybook-static'), {
   branch: 'master',
   remote: 'origin',
-  repo: `https://${token}@github.com/Lubycon/ui-kit.alpha.lubycon.io.git`,
+  repo: `https://${token}@github.com/Lubycon/ui-kit.storybook.lubycon.io.git`,
   message: `개발용 스토리북 배포`,
 }, (err) => {
   if (err) {
