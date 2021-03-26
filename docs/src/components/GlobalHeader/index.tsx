@@ -1,37 +1,31 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { Row, Column, Container } from '@lubycon/ui-kit';
+import Link from 'next/link';
+import { logoSrc } from 'constants/resources';
 
 const GlobalHeader = () => {
-  const router = useRouter();
-  const handleLogoClick = (e: MouseEvent) => {
-    e.preventDefault();
-    router.push('/');
-  };
-
   return (
     <nav
       css={{
         display: 'flex',
         width: '100%',
         justifyContent: 'center',
+        padding: '12px 0',
+        boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#ffffff',
       }}
     >
-      <div
-        css={{
-          display: 'flex',
-          width: 1200,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '12px 0',
-        }}
-      >
-        <a href="/" onClick={handleLogoClick}>
-          <img
-            css={{ width: 100 }}
-            src="https://d2x9jxyr47nlkc.cloudfront.net/logo/logo-color.svg"
-          />
-        </a>
-      </div>
+      <Container>
+        <Row css={{ width: '100%' }}>
+          <Column>
+            <Link href="/">
+              <a>
+                <img css={{ width: 100 }} src={logoSrc} />
+              </a>
+            </Link>
+          </Column>
+        </Row>
+      </Container>
     </nav>
   );
 };
