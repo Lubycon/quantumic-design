@@ -16,7 +16,7 @@
 
 .lubycon-grid__row {
   display: flex;
-  margin: #{-$grid-gutter / 2};
+  margin: 0 #{-$grid-gutter / 2};
   flex-wrap: wrap;
   box-sizing: border-box;
 
