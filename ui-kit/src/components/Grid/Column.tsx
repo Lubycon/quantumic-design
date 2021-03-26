@@ -15,7 +15,7 @@ type ColumnProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridablePr
 >;
 
 const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
-  { as, ...props }: ColumnProps<T>,
+  { as, className, ...props }: ColumnProps<T>,
   ref: React.Ref<any>
 ) => {
   const spanClasses = useMemo(
@@ -33,7 +33,7 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      className={classNames(`lubycon-grid__column`, ...spanClasses)}
+      className={classNames(`lubycon-grid__column`, className, ...spanClasses)}
       {...props}
     />
   );
