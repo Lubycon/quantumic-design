@@ -36,13 +36,12 @@ const BasicLayout = ({ children }: PropsWithChildren<unknown>) => {
         }}
       >
         <Container>
-          <Row>
+          <Row css={{ height: contentsHeight }}>
             <Column
               as="aside"
               xs="auto"
               css={{
-                width: 375,
-                boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.1)',
+                width: 300,
                 overflowY: 'scroll',
                 height: '100%',
               }}
@@ -52,6 +51,7 @@ const BasicLayout = ({ children }: PropsWithChildren<unknown>) => {
             <Column
               css={{
                 overflowY: 'scroll',
+                height: '100%',
               }}
             >
               {children}

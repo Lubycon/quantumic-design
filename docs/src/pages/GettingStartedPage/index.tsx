@@ -1,15 +1,11 @@
 import BasicLayout from 'components/BasicLayout';
 import PostSection from 'components/PostSection';
-import { logoSrc } from 'constants/resources';
 import React from 'react';
 
-const HomePage = () => {
+const GettingStartedPage = () => {
   return (
     <BasicLayout>
       <div css={{ paddingTop: 94, paddingLeft: 50, paddingRight: 30 }}>
-        <div css={{ display: 'flex', justifyContent: 'center' }}>
-          <img src={logoSrc} css={{ width: 320, marginBottom: 94 }} />
-        </div>
         <div>
           <PostSection title={<PostSection.Title>Introduction</PostSection.Title>}>
             Lubycon UI Kit은 한국의 고유 문자인 한글을 기반으로 설계된 UI 라이브러리입니다. 국내
@@ -47,4 +43,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default GettingStartedPage;

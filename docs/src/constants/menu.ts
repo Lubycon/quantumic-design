@@ -1,23 +1,30 @@
-interface Menu {
+export interface LinkMenu {
+  type: 'link';
   title: string;
   link: string;
 }
 
+export interface LabelMenu {
+  type: 'label';
+  title: string;
+  children: LinkMenu[];
+}
+
+export type Menu = LinkMenu | LabelMenu;
+
 export const menu: Menu[] = [
   {
-    title: 'Alert',
-    link: '/',
+    type: 'link',
+    title: 'Getting Started',
+    link: '/getting-started',
   },
   {
-    title: 'Button',
-    link: '/',
-  },
-  {
-    title: 'Card',
-    link: '/',
-  },
-  {
-    title: 'Checkbox',
-    link: '/',
+    type: 'label',
+    title: 'Components',
+    children: [
+      { type: 'link', title: 'Alert', link: '/components/alert' },
+      { type: 'link', title: 'Button', link: '/components/button' },
+      { type: 'link', title: 'Card', link: '/components/card' },
+    ],
   },
 ];
