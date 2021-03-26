@@ -1,11 +1,9 @@
-name: Alpha Release UI Kit Docs
+name: Live Release UI Kit Docs
 
 on:
   push:
     branches:
       - master
-      - alpha
-      - feat/create-docs-layout
 
 jobs:
   alpha-release-ui-kit-docs:
@@ -35,7 +33,7 @@ jobs:
         run: yarn workspace lubycon-ui-kit-docs deploy
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          ENV: 'alpha'
+          ENV: 'live'
       - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
         with:
           status: ${{ job.status }}

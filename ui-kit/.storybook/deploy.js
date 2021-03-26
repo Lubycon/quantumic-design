@@ -11,8 +11,7 @@ ghpages.publish(path.join(__dirname, '../storybook-static'), {
   message: `개발용 스토리북 배포`,
 }, (err) => {
   if (err) {
-    console.log('😢 배포에 실패하였습니다.');
-    console.error(err);
+    throw err;
   } else {
     console.log('🚀 개발용 스토리북 배포가 완료되었습니다!')
   }
