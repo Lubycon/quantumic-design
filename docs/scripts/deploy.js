@@ -9,7 +9,7 @@ const deployTarget = env === 'alpha' ? 'ui-kit.alpha.lubycon.io' : 'ui-kit.lubyc
 console.log('📦 UI Kit 문서 알파 배포를 준비 중 입니다...');
 
 console.log('🌱 CNAME 만드는 중...');
-fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./public/CNAME'));
+fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./out/CNAME'));
 console.log('🌱 CNAME 생성 완료');
 
 ghpages.publish(
