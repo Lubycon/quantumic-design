@@ -18,12 +18,17 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Caching Node Modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install depedencies
         run: yarn
       - name: Build
         run: yarn workspace lubycon-ui-kit-docs build
       - name: Publish
-        run: yarn workspace @lubycon-ui-kit-docs deploy
+        run: yarn workspace lubycon-ui-kit-docs deploy
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - uses: 8398a7/action-slack@v3 # 슬랙 노티피케이션
