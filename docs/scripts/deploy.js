@@ -20,6 +20,7 @@ ghpages.publish(
     remote: 'origin',
     repo: `https://${token}@github.com/Lubycon/${deployTarget}`,
     message: `UI Kit 문서 배포`,
+    dotfiles: true,
   },
   (err) => {
     if (err) {
