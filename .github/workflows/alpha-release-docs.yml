@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - alpha
+      - fix/static-resource-serve
 
 jobs:
   alpha-release-ui-kit-docs:
