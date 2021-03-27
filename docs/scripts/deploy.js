@@ -13,6 +13,12 @@ fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./out/CNAME'));
 fs.closeSync(fs.openSync(path.resolve('./out/.nojekyll'), 'w'));
 console.log('🌱 CNAME 생성 완료');
 
+fs.readdirSync(path.resolve('./out'), (_, files) => {
+  files.forEach((file) => {
+    console.log(file);
+  });
+});
+
 ghpages.publish(
   path.join(__dirname, '../out'),
   {
