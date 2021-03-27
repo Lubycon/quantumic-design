@@ -10,7 +10,7 @@ console.log('📦 UI Kit 문서 알파 배포를 준비 중 입니다...');
 
 console.log('🌱 CNAME 만드는 중...');
 fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./out/CNAME'));
-fs.writeFileSync(path.resolve('./out/.nojekyll'));
+fs.closeSync(fs.openSync(path.resolve('./out/.nojekyll'), 'w'));
 console.log('🌱 CNAME 생성 완료');
 
 ghpages.publish(
