@@ -41,12 +41,6 @@ $snackbar-container-mobile-padding: 12px;
       }
     }
   }
-
-  &:first-of-type {
-    .lubycon-snackbar__body {
-      margin-bottom: 0;
-    }
-  }
 }
 
 %context-container {
