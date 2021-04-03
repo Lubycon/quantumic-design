@@ -9,7 +9,7 @@ export const getTranslateAnimation = (align: SnackbarAlign) => {
       };
     case 'center':
       return {
-        from: 'translateY(-100%)',
+        from: 'translateY(100%)',
         to: 'translateY(0)',
       };
     case 'right':

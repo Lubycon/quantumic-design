@@ -7,9 +7,9 @@ $snackbar-container-padding: 48px;
   .lubycon-snackbar__body {
     display: inline-flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 8px 16px;
-    min-width: 400px;
+    align-items: flex-end;
+    padding: 12px 8px 12px 16px;
+    width: 400px;
     border-radius: 4px;
     margin: 12px 0;
     -webkit-font-smoothing: antialiased;
@@ -18,13 +18,14 @@ $snackbar-container-padding: 48px;
   }
 
   .lubycon-snackbar__text {
-    white-space: pre;
+    white-space: pre-line;
   }
 
   .lubycon-snackbar__body__buttons {
     margin-left: 16px;
     .lubycon-button {
       color: get-color('blue40');
+      white-space: pre;
       &:hover {
         background-color: get-color('gray100');
       }
