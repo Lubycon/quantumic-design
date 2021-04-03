@@ -1,20 +1,27 @@
 $snackbar-margin: 12px;
 $snackbar-container-padding: 48px;
+$snackbar-container-mobile-padding: 12px;
 
 .lubycon-snackbar {
   overflow: visible;
+  & + & {
+    padding-bottom: $snackbar-margin;
+  }
 
   .lubycon-snackbar__body {
     display: inline-flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: 12px 8px 12px 16px;
-    width: 400px;
+    width: 100%;
     border-radius: 4px;
-    margin: 12px 0;
     -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
     background-color: get-color('gray90');
     color: get-color('white');
+    @include media-breakpoint(sm) {
+      width: 400px;
+    }
   }
 
   .lubycon-snackbar__text {
@@ -47,27 +54,49 @@ $snackbar-container-padding: 48px;
   display: flex;
   flex-direction: column-reverse;
   top: auto;
-  bottom: $snackbar-container-padding;
-  left: $snackbar-container-padding;
-  right: auto;
-  margin: -$snackbar-margin 0;
+  bottom: 0;
+  margin-bottom: $snackbar-container-mobile-padding;
+  z-index: 5000;
+  box-sizing: border-box;
+  @include media-breakpoint(sm) {
+    margin-bottom: $snackbar-container-padding;
+  }
 }
 
 .lubycon-snackbar__context-container {
   &--align-left {
     @extend %context-container;
-    left: $snackbar-container-padding;
+    left: 0;
     right: auto;
+    margin-left: $snackbar-container-mobile-padding;
+    @include media-breakpoint(sm) {
+      margin-left: $snackbar-container-padding;
+    }
   }
   &--align-center {
     @extend %context-container;
     left: 50%;
     transform: translateX(-50%);
-    right: auto;
+    width: 100%;
+    padding: {
+      left: $snackbar-container-mobile-padding;
+      right: $snackbar-container-mobile-padding;
+    }
+    @include media-breakpoint(sm) {
+      width: auto;
+      padding: {
+        left: 0;
+        right: 0;
+      }
+    }
   }
   &--align-right {
     @extend %context-container;
     left: auto;
-    right: $snackbar-container-padding;
+    right: 0;
+    margin-right: $snackbar-container-mobile-padding;
+    @include media-breakpoint(sm) {
+      margin-right: $snackbar-container-padding;
+    }
   }
 }

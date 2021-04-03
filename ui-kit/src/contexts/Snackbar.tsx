@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Snackbar, { SnackbarAlign, SnackbarProps } from 'components/Snackbar';
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
+import { isMatchedSM } from 'src/utils/mediaQuery';
 
 type SnackbarOptions = Omit<SnackbarProps, 'show'>;
 
@@ -25,7 +26,12 @@ export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderPro
   const [openedSnackbarQueue, setOpenedSnackbarQueue] = useState<SnackbarOptions[]>([]);
 
   const openSnackbar = useCallback(
-    ({ id = generateID('lubycon-snackbar'), align = 'left', ...option }: SnackbarOptions) => {
+    ({
+      id = generateID('lubycon-snackbar'),
+      align: rawAlign = 'left',
+      ...option
+    }: SnackbarOptions) => {
+      const align = isMatchedSM() ? 'center' : rawAlign;
       const snackbar = { id, align, ...option };
       const [, ...rest] = openedSnackbarQueue;
 
