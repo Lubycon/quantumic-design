@@ -45,10 +45,20 @@ export const SnackbarHooks = () => {
           openSnackbar({
             message: `파일이 휴지통으로 이동되었습니다.`,
             button: '실행취소',
+            autoHideDuration: 1000000,
           })
         }
       >
-        스낵바 열기
+        버튼 스낵바 열기
+      </Button>
+      <Button
+        onClick={() =>
+          openSnackbar({
+            message: `파일이 휴지통으로 이동되었습니다.`,
+          })
+        }
+      >
+        일반 스낵바 열기
       </Button>
     </div>
   );

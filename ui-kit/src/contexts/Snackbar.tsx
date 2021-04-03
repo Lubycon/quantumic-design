@@ -1,11 +1,12 @@
 import React, { ReactNode, createContext, useState, useCallback, useContext } from 'react';
 import classnames from 'classnames';
-import Snackbar, { SnackbarProps } from 'components/Snackbar';
+import Snackbar, { SnackbarAlign, SnackbarProps } from 'components/Snackbar';
 import { generateID } from 'src/utils';
 import { Portal } from './Portal';
-interface SnackbarOptions extends Omit<SnackbarProps, 'show'> {
-  duration?: number;
-}
+
+type SnackbarOptions = Omit<SnackbarProps, 'show'>;
+
+const aligns: SnackbarAlign[] = ['left', 'center', 'right'];
 
 interface SnackbarGlobalState {
   openSnackbar: (option: SnackbarOptions) => void;
@@ -20,12 +21,12 @@ interface SnackbarProviderProps {
   children: ReactNode;
   maxStack?: number;
 }
-export function SnackbarProvider({ children, maxStack = 1 }: SnackbarProviderProps) {
+export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderProps) {
   const [openedSnackbarQueue, setOpenedSnackbarQueue] = useState<SnackbarOptions[]>([]);
 
   const openSnackbar = useCallback(
-    ({ id = generateID('lubycon-snackbar'), ...option }: SnackbarOptions) => {
-      const snackbar = { id, ...option };
+    ({ id = generateID('lubycon-snackbar'), align = 'left', ...option }: SnackbarOptions) => {
+      const snackbar = { id, align, ...option };
       const [, ...rest] = openedSnackbarQueue;
 
       if (openedSnackbarQueue.length >= maxStack) {
@@ -55,20 +56,31 @@ export function SnackbarProvider({ children, maxStack = 1 }: SnackbarProviderPro
     >
       {children}
       <Portal>
-        <div className={classnames('lubycon-snackbar__context-container')}>
-          {openedSnackbarQueue.map(({ id, onHide, duration = 3000, ...snackbarProps }) => (
-            <Snackbar
-              key={id}
-              show={true}
-              autoHideDuration={duration}
-              onHide={() => {
-                closeSnackbar(id ?? '');
-                onHide?.();
-              }}
-              {...snackbarProps}
-            />
-          ))}
-        </div>
+        {aligns.map((align) => (
+          <div
+            key={align}
+            className={classnames(
+              'lubycon-snackbar__context-container',
+              `lubycon-snackbar__context-container--align-${align}`
+            )}
+          >
+            {openedSnackbarQueue
+              .filter((snackbar) => snackbar.align === align)
+              .map(({ id, onHide, autoHideDuration = 3000, ...snackbarProps }) => (
+                <Snackbar
+                  key={id}
+                  show={true}
+                  autoHideDuration={autoHideDuration}
+                  onHide={() => {
+                    closeSnackbar(id ?? '');
+                    onHide?.();
+                  }}
+                  align={align}
+                  {...snackbarProps}
+                />
+              ))}
+          </div>
+        ))}
       </Portal>
     </SnackbarContext.Provider>
   );

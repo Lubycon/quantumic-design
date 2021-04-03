@@ -20,7 +20,7 @@ const Button = (
       className={classnames(
         'lubycon-button',
         `lubycon-button--${size}`,
-        `lubycon-button--type-${type}`
+        `lubycon-button--type-${type ?? 'default'}`
       )}
       disabled={disabled}
       style={{ ...style }}

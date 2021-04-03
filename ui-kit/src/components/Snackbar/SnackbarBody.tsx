@@ -1,30 +1,27 @@
-import React, { ReactNode, isValidElement } from 'react';
+import React, { ReactNode, isValidElement, useMemo } from 'react';
 import classnames from 'classnames';
 import Text from 'components/Text';
 import Button from '../Button';
-import { colors } from 'src/constants/colors';
 
 interface Props {
   message: string;
-  button: ReactNode;
+  button?: ReactNode;
   onClick?: () => void;
 }
 
-const SnackbarBody = ({ message, button, onClick }: Props) => {
+const SnackbarBody = ({ message, button: buttonProp, onClick }: Props) => {
+  const button = useMemo(
+    () =>
+      isValidElement(buttonProp) ? buttonProp : <Button onClick={onClick}>{buttonProp}</Button>,
+    [buttonProp]
+  );
+
   return (
     <div className={classnames('lubycon-snackbar__body', 'lubycon-shadow--3')}>
       <Text typography="p2" className="lubycon-snackbar__text">
         {message}
       </Text>
-      <div className="lubycon-snackbar__body__buttons">
-        {isValidElement(button) ? (
-          button
-        ) : (
-          <Button onClick={onClick} style={{ color: colors.blue50 }}>
-            {button}
-          </Button>
-        )}
-      </div>
+      <div className="lubycon-snackbar__body__buttons">{buttonProp == null ? null : button}</div>
     </div>
   );
 };

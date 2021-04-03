@@ -1,8 +1,11 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode, useMemo } from 'react';
 import { animated, useTransition } from 'react-spring';
 import classnames from 'classnames';
 import SnackbarBody from './SnackbarBody';
 import { CombineElementProps } from 'src/types/utils';
+import { getTranslateAnimation } from './utils';
+
+export type SnackbarAlign = 'left' | 'center' | 'right';
 
 export type SnackbarProps = Omit<
   CombineElementProps<
@@ -10,11 +13,12 @@ export type SnackbarProps = Omit<
     {
       show: boolean;
       message: string;
-      button: ReactNode;
+      button?: ReactNode;
       autoHideDuration?: number;
       onShow?: () => void;
       onHide?: () => void;
       onClick?: () => void;
+      align?: SnackbarAlign;
     }
   >,
   'children'
@@ -30,26 +34,28 @@ const Snackbar = ({
   onClick,
   className,
   style,
+  align = 'left',
   ...rest
 }: SnackbarProps) => {
   const [isOpen, setOpen] = useState(show);
+  const translateAnimation = useMemo(() => getTranslateAnimation(align), [align]);
   const transition = useTransition(isOpen, null, {
     from: {
       opacity: 0,
-      transform: 'translateX(-100%)',
+      transform: translateAnimation.from,
       height: 60,
     },
     enter: [
       { height: 60 },
       {
         opacity: 1,
-        transform: 'translateX(0)',
+        transform: translateAnimation.to,
       },
     ],
     leave: [
       {
         opacity: 0,
-        transform: 'translateX(-100%)',
+        transform: translateAnimation.from,
       },
       { height: 0 },
     ],

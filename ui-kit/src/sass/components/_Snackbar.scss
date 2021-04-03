@@ -1,3 +1,6 @@
+$snackbar-margin: 12px;
+$snackbar-container-padding: 48px;
+
 .lubycon-snackbar {
   overflow: visible;
 
@@ -8,8 +11,10 @@
     padding: 8px 16px;
     min-width: 400px;
     border-radius: 4px;
-    background-color: white;
     margin: 12px 0;
+    -webkit-font-smoothing: antialiased;
+    background-color: get-color('gray90');
+    color: get-color('white');
   }
 
   .lubycon-snackbar__text {
@@ -18,8 +23,14 @@
 
   .lubycon-snackbar__body__buttons {
     margin-left: 16px;
-    .lubycon-button + .lubycon-button {
-      margin-left: 8px;
+    .lubycon-button {
+      color: get-color('blue40');
+      &:hover {
+        background-color: get-color('gray100');
+      }
+      & + & {
+        margin-left: 8px;
+      }
     }
   }
 
@@ -30,12 +41,32 @@
   }
 }
 
-.lubycon-snackbar__context-container {
+%context-container {
   position: fixed;
   display: flex;
   flex-direction: column-reverse;
   top: auto;
-  bottom: 40px;
-  left: 40px;
+  bottom: $snackbar-container-padding;
+  left: $snackbar-container-padding;
   right: auto;
+  margin: -$snackbar-margin 0;
+}
+
+.lubycon-snackbar__context-container {
+  &--align-left {
+    @extend %context-container;
+    left: $snackbar-container-padding;
+    right: auto;
+  }
+  &--align-center {
+    @extend %context-container;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+  &--align-right {
+    @extend %context-container;
+    left: auto;
+    right: $snackbar-container-padding;
+  }
 }
