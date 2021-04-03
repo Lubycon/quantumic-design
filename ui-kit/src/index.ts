@@ -8,7 +8,6 @@ export { default as Selection } from './components/Selection';
 export { default as Switch } from './components/Switch';
 export { default as Text } from './components/Text';
 export { default as LubyconUIKitProvider } from './components/LubyconUIKitProvider';
-export { default as Toast } from './components/Toast';
 export { default as Tooltip } from './components/Tooltip';
 export { default as Tabs, TabsItem } from './components/Tabs';
 export {
@@ -27,6 +26,5 @@ export { default as Tag } from './components/Tag';
 export { default as Modal, ModalHeader, ModalContent, ModalFooter } from './components/Modal';
 export { default as Table, TableHead, TableBody, TableRow, TableCell } from './components/Table';
 export { Portal } from './contexts/Portal';
-export { useToast } from './contexts/Toast';
 export { useSnackbar } from './contexts/Snackbar';
 export { colors } from './constants/colors';
