@@ -8,7 +8,7 @@ const breakpoints = {
 type MediaQueryKeys = keyof typeof breakpoints;
 
 /**
- * 미디어쿼리가 주어진 쿼리 키에 지정된 width보다 클 경우 true를 반환한다
+ * 미디어쿼리가 주어진 쿼리 키에 지정된 width보다 클 경우 true를 반환한다.
  **/
 function isMatchMinWidth(key: MediaQueryKeys) {
   if (window == null) {
