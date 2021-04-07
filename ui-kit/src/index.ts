@@ -28,3 +28,4 @@ export { default as Table, TableHead, TableBody, TableRow, TableCell } from './c
 export { Portal } from './contexts/Portal';
 export { useSnackbar } from './contexts/Snackbar';
 export { colors } from './constants/colors';
+export { default as Icon } from './components/Icon';

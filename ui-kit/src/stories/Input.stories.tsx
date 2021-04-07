@@ -49,7 +49,7 @@ export const Error = () => {
       onChange={(e) => setValue(e.target.value)}
       right={
         isError ? null : (
-          <Icon icon={checkmarkCircle} type="filled" color={colors.green50} size={20} />
+          <Icon name="checkmark-circle" type="filled" color={colors.green50} size={20} />
         )
       }
     />
@@ -79,12 +79,12 @@ export const Types = () => {
 export const LeftAndRight = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 300 }}>
-      <Input label={'Left Area'} left={<Icon icon={musicalNote} type="filled" />} />
-      <Input label={'Right Area'} right={<Icon icon={closeCircle} type="filled" />} />
+      <Input label={'Left Area'} left={<Icon name="musical-note" type="filled" />} />
+      <Input label={'Right Area'} right={<Icon name="close-circle" type="filled" />} />
       <Input
         label={'Left And Right'}
-        left={<Icon icon={musicalNote} type="filled" />}
-        right={<Icon icon={closeCircle} type="filled" />}
+        left={<Icon name="musical-note" type="filled" />}
+        right={<Icon name="close-circle" type="filled" />}
       />
     </div>
   );

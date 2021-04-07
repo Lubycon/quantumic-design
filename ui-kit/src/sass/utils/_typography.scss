@@ -2,29 +2,29 @@
   $font-size-number: strip-unit($font-size);
 
   :root {
-    --lubycon-font-size-#{$font-size-number}: #{$font-size};
-    --lubycon-line-height-#{$font-size-number}: #{$line-height};
+    --lubycon-font-size-#{$name}: #{$font-size};
+    --lubycon-line-height-#{$name}: #{$line-height};
   }
 
-  .lubycon-font-size-#{$font-size-number} {
+  .lubycon-font-size-#{$name} {
     font-size: $font-size;
-    font-size: var(--lubycon-font-size-#{$font-size-number});
+    font-size: var(--lubycon-font-size-#{$name});
     line-height: $line-height;
-    line-height: var(--lubycon-line-height-#{$font-size-number});
+    line-height: var(--lubycon-line-height-#{$name});
   }
 
   .lubycon-typography-#{$name} {
-    @extend .lubycon-font-size-#{$font-size-number};
+    @extend .lubycon-font-size-#{$name};
   }
 }
 
-@include _typography('h1', 42px, 64px);
-@include _typography('h2', 32px, 48px);
-@include _typography('h3', 28px, 42px);
-@include _typography('h4', 26px, 40px);
-@include _typography('h5', 24px, 36px);
-@include _typography('h6', 20px, 30px);
-@include _typography('subtitle', 18px, 30px);
-@include _typography('p1', 16px, 32px);
-@include _typography('p2', 14px, 24px);
-@include _typography('caption', 12px, 20px);
+@include _typography('h1', 2.625rem, 1.5);
+@include _typography('h2', 2rem, 1.5);
+@include _typography('h3', 1.75rem, 1.5);
+@include _typography('h4', 1.625rem, 1.5);
+@include _typography('h5', 1.5rem, 1.5);
+@include _typography('h6', 1.25rem, 1.5);
+@include _typography('subtitle', 1.125rem, 1.7);
+@include _typography('p1', 1rem, 2);
+@include _typography('p2', 0.9375rem, 1.7);
+@include _typography('caption', 0.75rem, 1.6);

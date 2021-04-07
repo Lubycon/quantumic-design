@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, List, ListItem, ListItemImage, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 import Icon from 'src/components/Icon';
-import { chevronForward } from 'ionicons/icons';
 
 export default {
   title: 'Lubycon UI Kit/List',
@@ -88,7 +87,7 @@ export const LeftRight = () => {
       <ListItem
         title="버튼 조합형"
         content="자세히 보려면 클릭하세요"
-        right={<Icon icon={chevronForward} type="outline" size={24} color={colors.gray60} />}
+        right={<Icon name="chevron-forward" type="outline" size={24} color={colors.gray60} />}
         onClick={noop}
       />
       <ListItem
@@ -100,7 +99,7 @@ export const LeftRight = () => {
         left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
         title="썸네일 + 버튼 조합형"
         content="자세히 보려면 클릭하세요"
-        right={<Icon icon={chevronForward} type="outline" size={24} color={colors.gray60} />}
+        right={<Icon name="chevron-forward" type="outline" size={24} color={colors.gray60} />}
         onClick={noop}
       />
     </List>

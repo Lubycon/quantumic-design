@@ -1,28 +1,62 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { colors } from 'src/constants/colors';
+import { CombineElementProps } from 'src/types/utils';
 
-/**
- * UI Kit 내부에서만 사용
+const iconCache: Record<string, string> = {};
+
+export type IconType = 'outline' | 'filled' | 'sharp';
+type Props = CombineElementProps<
+  'span',
+  {
+    name: string;
+    size?: number;
+    type?: IconType;
+    color?: string;
+    className?: string;
+  }
+>;
+
+/** ionicons의 아이콘을 사용합니다
+ *  https://ionicons.com/
  */
+const Icon = ({
+  name,
+  size = 16,
+  type = 'filled',
+  color = colors.gray100,
+  className,
+  ...rest
+}: Props) => {
+  const targetAttr = type === 'outline' ? 'stroke' : 'fill';
+  const iconName = getIconName(name, type);
 
-interface Props {
-  icon: string;
-  size?: number;
-  type: 'outline' | 'filled';
-  color?: string;
-  className?: string;
-}
+  const [iconHTML, setIconHTML] = useState<string | undefined>(iconCache[iconName]);
+  const [showFallbackIcon, setShowFallbackIcon] = useState(false);
 
-const Icon = ({ icon, size = 16, type, color = colors.gray100, className }: Props) => {
-  const svgTag = useMemo(() => {
-    return icon.replace(/data:image\/svg\+xml;utf8,/, '');
-  }, [icon]);
+  useEffect(() => {
+    if (iconHTML != null) {
+      return;
+    }
 
-  const coloredSvg = useMemo(() => {
-    const targetAttr = type === 'outline' ? 'stroke' : 'fill';
-    return svgTag.replace(/(<path\s)\b/gm, `$1${targetAttr}="${color}" `);
-  }, [svgTag, color]);
+    let ignore = false;
+
+    (async function () {
+      try {
+        const data = await fetchIcon(iconName);
+        if (!ignore) {
+          setIconHTML(data);
+          iconCache[iconName] = data;
+        }
+      } catch {
+        setShowFallbackIcon(true);
+      }
+    })();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   return (
     <span
@@ -35,9 +69,45 @@ const Icon = ({ icon, size = 16, type, color = colors.gray100, className }: Prop
         className
       )}
       style={{ width: size, height: size }}
-      dangerouslySetInnerHTML={{ __html: coloredSvg }}
-    />
+      {...rest}
+    >
+      <span
+        style={{ width: size, height: size, [targetAttr]: color, color }}
+        className={classnames('lubycon-icon__icon-body', {
+          'lubycon-icon__icon-body--hide-origin-icon': showFallbackIcon,
+        })}
+        aria-label={name}
+        aria-hidden={iconHTML == null}
+        dangerouslySetInnerHTML={iconHTML ? { __html: iconHTML } : undefined}
+        role="img"
+      />
+      <img
+        src={getIconUrl(iconName)}
+        className={classnames('lubycon-icon__fallback-icon', {
+          'lubycon-icon__fallback-icon--show-fallback-icon': showFallbackIcon,
+        })}
+        alt={name}
+      />
+    </span>
   );
 };
 
 export default Icon;
+
+async function fetchIcon(name: string) {
+  const response = await fetch(getIconUrl(name));
+  const body = await response.text();
+  if (response.ok) {
+    return body;
+  } else {
+    throw new Error(body);
+  }
+}
+
+function getIconName(name: string, type: IconType) {
+  return type === 'filled' ? name : `${name}-${type}`;
+}
+
+function getIconUrl(name: string) {
+  return `https://icons.lubycon.io/${name}.svg`;
+}

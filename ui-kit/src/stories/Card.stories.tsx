@@ -13,7 +13,6 @@ import {
 } from 'src';
 import Icon from 'components/Icon';
 import { Meta } from '@storybook/react/types-6-0';
-import { arrowForward } from 'ionicons/icons';
 
 export default {
   title: 'Lubycon UI Kit/Card',
@@ -44,7 +43,7 @@ export const Default = () => {
             <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
               더보기
             </Text>
-            <Icon icon={arrowForward} type="outline" color={colors.gray60} />
+            <Icon name="arrow-forward" type="outline" color={colors.gray60} />
           </span>
         </CardFooter>
       </Card>
@@ -67,7 +66,7 @@ export const ImageCard = () => {
               <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
                 더보기
               </Text>
-              <Icon icon={arrowForward} type="outline" color={colors.gray60} />
+              <Icon name="arrow-forward" type="outline" color={colors.gray60} />
             </span>
           </CardFooter>
         </Card>
