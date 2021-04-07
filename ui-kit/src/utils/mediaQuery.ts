@@ -22,7 +22,6 @@ export function isMatchedXS() {
   return !isMatchMinWidth('xs');
 }
 export function isMatchedSM() {
-  console.log(!isMatchMinWidth('sm'));
   return !isMatchMinWidth('sm');
 }
 export function isMatchedMD() {

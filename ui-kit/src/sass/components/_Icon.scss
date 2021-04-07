@@ -10,6 +10,17 @@
       stroke: transparent;
     }
   }
+  &__icon-body {
+    &--hide-origin-icon {
+      display: none;
+    }
+  }
+  &__fallback-icon {
+    display: none;
+    &--show-fallback-icon {
+      display: inline;
+    }
+  }
   svg {
     width: 100%;
     vertical-align: top;
