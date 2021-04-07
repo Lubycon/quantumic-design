@@ -1,7 +1,6 @@
 import React, { forwardRef, Ref } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
-import { chevronDownOutline } from 'ionicons/icons';
 import Icon from 'components/Icon';
 import { colors } from 'src/constants/colors';
 import { useState } from 'react';
@@ -55,7 +54,7 @@ const Selection = (
         </option>
         {children}
       </select>
-      <Icon icon={chevronDownOutline} type="outline" color={iconColor} />
+      <Icon name="chevron-down" type="outline" color={iconColor} />
     </div>
   );
 };

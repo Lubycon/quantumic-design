@@ -17,8 +17,9 @@
   }
   &__fallback-icon {
     display: none;
+    vertical-align: top;
     &--show-fallback-icon {
-      display: inline;
+      display: inline-block;
     }
   }
   svg {

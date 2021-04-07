@@ -60,7 +60,7 @@ const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
     >
       <div className="lubycon-accordion__label" onClick={toggleContentOpen} role="button">
         <Icon
-          icon={chevronDown}
+          name="chevron-down"
           type="outline"
           size={20}
           className="lubycon-accordion__label__icon"

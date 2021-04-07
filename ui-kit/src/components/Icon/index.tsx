@@ -17,7 +17,10 @@ type Props = CombineElementProps<
   }
 >;
 
-const TestIcon = ({
+/** ionicons의 아이콘을 사용합니다
+ *  https://ionicons.com/
+ */
+const Icon = ({
   name,
   size = 16,
   type = 'filled',
@@ -89,7 +92,7 @@ const TestIcon = ({
   );
 };
 
-export default TestIcon;
+export default Icon;
 
 async function fetchIcon(name: string) {
   const response = await fetch(getIconUrl(name));

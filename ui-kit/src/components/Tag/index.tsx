@@ -4,7 +4,6 @@ import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import Text from '../Text';
 import Icon from '../Icon';
-import { close } from 'ionicons/icons';
 
 export type TagType = SemanticColor | 'default';
 
@@ -44,7 +43,7 @@ const Tag = ({
       </span>
       {onDelete != null ? (
         <a className="lubycon-tag__delete-button" onClick={() => onDelete?.(label)}>
-          <Icon icon={close} type="filled" color={colors.gray70} />
+          <Icon name="close" type="filled" color={colors.gray70} />
         </a>
       ) : null}
     </div>
