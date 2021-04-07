@@ -21,12 +21,11 @@
 
 <div align="center">
   
-  <!--[![npm latest package](https://img.shields.io/npm/v/@lubycon/ui-kit/latest.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)-->
-  
   [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mui-org/material-ui/blob/master/LICENSE)
+  [![node version](https://badgen.net/npm/node/@lubycon/ui-kit)](https://github.com/Lubycon/lubycon-ui-kit/blob/master/ui-kit/package.json#L8)
   [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Release%20UI%20Kit/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)
   [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Publish%20Dev%20Storybook/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)  
-  [![npm alpha package](https://img.shields.io/npm/v/@lubycon/ui-kit/alpha.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)
+  [![npm latest package](https://img.shields.io/npm/v/@lubycon/ui-kit/latest.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)
   [![npm downloads](https://img.shields.io/npm/dm/@lubycon/ui-kit.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)
   
 </div>
@@ -34,9 +33,9 @@
 ## Installation
 
 ```sh
-$ npm install @lubycon/ui-kit@v1.1.0-alpha.24
+$ npm install @lubycon/ui-kit
 // or
-$ yarn add @lubycon/ui-kit@v1.1.0-alpha.24
+$ yarn add @lubycon/ui-kit
 ```
 
 ## Usage
@@ -64,15 +63,15 @@ Lubycon UI Kit의 많은 컴포넌트들은 선언적 렌더링을 지원하지�
 
 ```jsx
 import React, { useState } from 'react';
-import { Toast } from '@lubycon/ui-kit';
+import { Snackbar } from '@lubycon/ui-kit';
 
 function Foo() {
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setShow(true)}>토스트 열기</Button>
-      <Toast show={show} message="토스트입니다" />
+      <Button onClick={() => setShow(true)}>스낵바 열기</Button>
+      <Snackbar show={show} message="스낵바입니다" />
     </>
   );
 }
@@ -84,28 +83,18 @@ export default Foo;
 
 ```jsx
 import React from 'react';
-import { useToast, Button } from '@lubycon/ui-kit';
+import { useSnackbar, Button } from '@lubycon/ui-kit';
 
 function Foo() {
-  const { openToast } = useToast();
+  const { openSnackbar } = useSnackbar();
 
   return (
-<<<<<<< HEAD
     <Button onClick={() => {
-      openToast({
-        message: '토스트입니다',
+      openSnackbar({
+        message: '스낵바입니다',
       });
     }}>
-=======
-    <Button
-      onClick={() => {
-        openToast({
-          message: '토스트입니다',
-        });
-      }}
-    >
->>>>>>> 6bd80a7f14487fffe364385cf644c5a37560c9ef
-      토스트 열기
+      스낵바 열기
     </Button>
   );
 }
