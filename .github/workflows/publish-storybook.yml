@@ -1,0 +1,25 @@
+name: Publish Dev Storybook
+
+on: [workflow_dispatch]
+
+jobs:
+  storybook-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Set Git Configulations
+        run: |
+          git config --global user.email "lubycon@gmail.com"
+          git config --global user.name "lubycon"
+      - name: Install depedencies
+        run: yarn
+      - name: Build Storybook
+        run: yarn workspace @lubycon/ui-kit build-stories
+      - name: Publish
+        run: yarn workspace @lubycon/ui-kit publish-stories
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        

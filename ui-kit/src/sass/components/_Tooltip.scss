@@ -1,0 +1,93 @@
+$tooltip-h-padding: 12px;
+
+.lubycon-tooltip__positioner {
+  position: absolute;
+}
+
+.lubycon-tooltip__body {
+  position: relative;
+  display: inline-flex;
+  background-color: get-color('gray100');
+  color: #ffffff;
+  padding: 4px $tooltip-h-padding;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+}
+
+%tooltip-arrow-position {
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: '';
+}
+%tooltip-bottom-arrow {
+  @extend %tooltip-arrow-position;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid get-color('gray100');
+}
+%tooltip-left-arrow {
+  @extend %tooltip-arrow-position;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid get-color('gray100');
+  border-top: 6px solid transparent;
+}
+%tooltip-right-arrow {
+  @extend %tooltip-arrow-position;
+  border-left: 8px solid get-color('gray100');
+  border-bottom: 6px solid transparent;
+  border-top: 6px solid transparent;
+}
+%tooltip-top-arrow {
+  @extend %tooltip-arrow-position;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid get-color('gray100');
+}
+
+.lubycon-tooltip__body--arrow {
+  &-bottom-center::before {
+    @extend %tooltip-bottom-arrow;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &-bottom-left::before {
+    @extend %tooltip-bottom-arrow;
+    top: 100%;
+    left: $tooltip-h-padding;
+  }
+  &-bottom-right::before {
+    @extend %tooltip-bottom-arrow;
+    top: 100%;
+    right: $tooltip-h-padding;
+  }
+  &-right::before {
+    @extend %tooltip-right-arrow;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+  }
+  &-left::before {
+    @extend %tooltip-left-arrow;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 100%;
+  }
+  &-top-center::before {
+    @extend %tooltip-top-arrow;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &-top-left::before {
+    @extend %tooltip-top-arrow;
+    bottom: 100%;
+    left: $tooltip-h-padding;
+  }
+  &-top-right::before {
+    @extend %tooltip-top-arrow;
+    bottom: 100%;
+    right: $tooltip-h-padding;
+  }
+}

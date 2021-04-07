@@ -1,0 +1,46 @@
+.lubycon-modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: get-color('gray100');
+    opacity: 0.5;
+    z-index: 1000;
+  }
+  &__window-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1001;
+  }
+  &__window {
+    background-color: get-color('gray10');
+    border-radius: 4px;
+    box-sizing: border-box;
+    &--small {
+      width: 280px;
+      padding: 16px 20px;
+    }
+    &--medium {
+      width: 400px;
+      padding: 20px 24px;
+    }
+  }
+  &__title {
+    color: get-color('gray100');
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+  &__content {
+    color: get-color('gray70');
+    margin-bottom: 24px;
+    white-space: pre-wrap;
+  }
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

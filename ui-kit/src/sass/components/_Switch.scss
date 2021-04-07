@@ -1,0 +1,49 @@
+.lubycon-switch {
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  &__input {
+    display: none;
+  }
+
+  &__slider {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    margin-right: 8px;
+    border-radius: 32px;
+    background-color: get-color('gray40');
+    transition: background-color 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+  }
+
+  &__input:checked + &__slider {
+    background-color: get-color('green50');
+  }
+
+  &__input:checked + &__slider::before {
+    transform: translate(17px, -50%);
+  }
+
+  &--display-inline {
+    display: inline-flex;
+  }
+  &__label {
+    margin-top: -2px;
+  }
+}

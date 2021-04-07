@@ -1,9 +1,14 @@
 {
   "extends": "../tsconfig.common.json",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"]
-    },
+      "src/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "types/*": ["./src/types/*"],
+      "constants/*": ["./src/constants/*"],
+      "utils/*": ["./src/utils/*"],
+      "contexts/*": ["./src/contexts/*"]
+    }
   }
 }
