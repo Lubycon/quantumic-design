@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Input, Text, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 import Icon from 'src/components/Icon';
-import { checkmarkCircle, closeCircle, musicalNote } from 'ionicons/icons';
 import { TextInputType } from 'components/Input';
 
 export default {
