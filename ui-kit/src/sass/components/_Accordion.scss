@@ -1,0 +1,42 @@
+$animation-duration: 0.3s ease-in-out;
+
+.lubycon-accordion {
+  border: {
+    top: 1px solid get-color('gray20');
+    bottom: 1px solid get-color('gray20');
+  }
+  & + & {
+    border-top: none;
+  }
+  &--opened {
+    .lubycon-accordion__label__icon {
+      transform: rotate(180deg);
+    }
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    &:hover {
+      background-color: get-color('gray10');
+    }
+    &__icon {
+      margin-right: 16px;
+      transition: transform $animation-duration;
+    }
+    &__text {
+      color: get-color('gray90');
+    }
+  }
+  &__cover {
+    transition: height $animation-duration;
+    overflow: hidden;
+    &__content {
+      padding: 8px 16px 16px 50px;
+      transition: opacity $animation-duration;
+    }
+  }
+}

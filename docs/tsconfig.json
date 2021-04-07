@@ -29,6 +29,7 @@
       ]
     },
     "allowJs": true
+    // "jsxImportSource": "@emotion/react"
   },
   "exclude": [
     "./node_modules"

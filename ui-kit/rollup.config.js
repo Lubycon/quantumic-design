@@ -1,19 +1,17 @@
 import path from 'path';
-
 import autoprefixer from 'autoprefixer';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import typescript from 'rollup-plugin-typescript2';
-// import babel from 'rollup-plugin-babel';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default [
-  buildCJS('src/components/index.ts'),
-  buildESM('src/components/index.ts'),
-  buildCSS('src/components/index.scss', 'css/lubycon-ui-kit.css'),
-  buildCSS('src/components/index.scss', 'css/lubycon-ui-kit.min.css', {
+  buildCJS('src/index.ts'),
+  buildESM('src/index.ts'),
+  buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.css'),
+  buildCSS('src/sass/index.scss', 'css/lubycon-ui-kit.min.css', {
     minimize: {
       preset: ['default'],
     },
@@ -29,11 +27,6 @@ function buildJS(input, output, format) {
       typescript({
         tsconfig: 'tsconfig.json',
       }),
-      // babel({
-      //   extensions,
-      //   runtimeHelpers: true,
-      //   include: ['src/**'],
-      // }),
       resolve({ extensions }),
       commonjs({
         namedExports: {

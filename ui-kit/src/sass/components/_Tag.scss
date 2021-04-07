@@ -1,0 +1,64 @@
+@mixin tagColor($color, $hover-color) {
+  background-color: $color;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.lubycon-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 4px 12px;
+  border-radius: 4px;
+  transition: background-color 0.1s ease-in-out;
+
+  &--type {
+    &-default {
+      background-color: get-color('gray30');
+    }
+    &-positive {
+      background-color: get-color('green40');
+    }
+    &-informative {
+      background-color: get-color('blue40');
+    }
+    &-notice {
+      background-color: get-color('yellow40');
+    }
+    &-negative {
+      background-color: get-color('red40');
+    }
+  }
+
+  &--clickable {
+    cursor: pointer;
+    &.lubycon-tag--type-default:hover {
+      background-color: get-color('gray40');
+    }
+    &.lubycon-tag--type-positive:hover {
+      background-color: #c9f5d8;
+    }
+    &.lubycon-tag--type-informative:hover {
+      background-color: #d0e1fe;
+    }
+    &.lubycon-tag--type-notice:hover {
+      background-color: #fdf1b6;
+    }
+    &.lubycon-tag--type-negative:hover {
+      background-color: #fad2d4;
+    }
+  }
+
+  &__label {
+    margin-right: 12px;
+    color: get-color('gray90');
+    user-select: none;
+  }
+
+  &__delete-button {
+    cursor: pointer;
+    display: flex;
+    margin-right: 8px;
+  }
+}
