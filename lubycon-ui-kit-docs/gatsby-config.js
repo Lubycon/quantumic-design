@@ -18,29 +18,37 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-responsive-iframe',
+            resolve: `gatsby-remark-images`,
             options: {
-              wrapperStyle: 'margin-bottom: 1rem',
+              maxWidth: 800,
             },
           },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
           {
-            resolve: 'gatsby-remark-images',
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              maxWidth: 1140,
-              quality: 90,
-              linkImagesToOriginal: false,
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: '_blank',
+              rel: 'nofollow',
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
         ],
+        plugins: [`gatsby-remark-images`],
       },
     },
+    
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
@@ -58,10 +66,10 @@ module.exports = {
         utils: path.join(__dirname, 'src/utils'),
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
   ],
 };
