@@ -42,6 +42,7 @@
   },
   "workspaces": [
     "docs",
+    "lubycon-ui-kit-docs",
     "ui-kit"
   ]
 }
