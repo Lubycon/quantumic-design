@@ -26,10 +26,21 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Caching Gatsby Build
+        uses: actions/cache@v2
+        with:
+          path: |
+            public
+            .cache
+          key: ${{ runner.os }}-gatsby-alpha-build-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-alpha-build-
       - name: Install depedencies
         run: yarn
       - name: Build
         run: yarn workspace lubycon-ui-kit-docs build
+        env:
+          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
       - name: Publish
         run: yarn workspace lubycon-ui-kit-docs deploy
         env:
