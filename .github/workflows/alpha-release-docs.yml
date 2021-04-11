@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - alpha
+      - chore/docs-deploy
 
 jobs:
   alpha-release-ui-kit-docs:

@@ -8,3 +8,5 @@ import 'src/styles/prism-theme.css';
 export const wrapRootElement = ({ element }) => {
   return <App>{element}</App>;
 };
+
+export const onClientEntry = () => {};

@@ -38,10 +38,6 @@ function SEO() {
       name: `twitter:description`,
       content: description,
     },
-    {
-      name: 'google-site-verification',
-      content: 'YAV889Ju0hL7GVty8_u0QAk_34_T9ZBVGtJeppmDSec',
-    },
   ];
 
   const siteData = {
