@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, menu } from 'constants/menu';
-import Link from 'next/link';
+import { Link } from 'gatsby';
 import { isLinkMenu } from 'utils/menu';
 import { colors, Text } from '@lubycon/ui-kit';
 import styled from '@emotion/styled';
@@ -17,10 +17,8 @@ const StyledListItem = styled.li`
 
 const Item = ({ menu }: { menu: Menu }) => {
   return isLinkMenu(menu) ? (
-    <Link href={menu.link}>
-      <Text as="a" css={{ cursor: 'pointer' }}>
-        {menu.title}
-      </Text>
+    <Link to={menu.link}>
+      <Text css={{ cursor: 'pointer' }}>{menu.title}</Text>
     </Link>
   ) : (
     <div>
