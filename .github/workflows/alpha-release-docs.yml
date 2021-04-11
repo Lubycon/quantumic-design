@@ -40,8 +40,8 @@ jobs:
         run: yarn
       - name: Build
         run: yarn workspace lubycon-ui-kit-docs build
-        env:
-          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
+        # env:
+          # GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
       - name: Publish
         run: yarn workspace lubycon-ui-kit-docs deploy
         env:
