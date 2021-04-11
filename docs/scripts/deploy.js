@@ -15,7 +15,7 @@ fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./public/CNAME'));
 console.log('🌱 CNAME 생성 완료');
 
 ghpages.publish(
-  path.join(__dirname, '../public'),
+  '../public',
   {
     branch: 'master',
     remote: 'origin',
