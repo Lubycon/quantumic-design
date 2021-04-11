@@ -55,7 +55,6 @@ function buildCSS(inputFile, outputFile, postCSSOptions = {}) {
     plugins: [
       postcss({
         plugins: [autoprefixer],
-        sourceMap: true,
         extract: true,
         extensions: ['.scss', '.css'],
         ...postCSSOptions,
