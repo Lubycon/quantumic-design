@@ -32,7 +32,7 @@
 
 ## Installation
 
-```sh
+```bash
 $ npm install @lubycon/ui-kit
 // or
 $ yarn add @lubycon/ui-kit
