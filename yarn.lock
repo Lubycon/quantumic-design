@@ -2499,10 +2499,10 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@lubycon/ui-kit@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@lubycon/ui-kit/-/ui-kit-1.1.0.tgz#3368e2d449de5e485ed9e61a00153cecf3dd0ae0"
-  integrity sha512-7Eac9KOVxL/lTtMOVhltaYlaGiMsOjsWUhOETJFQj+uyykFujrp4kY7Cdf/jPQAGOLgUJTEmmXLFlrHhC4bABQ==
+"@lubycon/ui-kit@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@lubycon/ui-kit/-/ui-kit-1.2.0.tgz#d0899f2958e81bb758ea5773e9a97f9ec21ad0be"
+  integrity sha512-swExavYRB3ShhL9ruYAy7wy+ezgwmPZljqqz1eNhXMuM7d/efPpYlXs96hF9ABugCKEABmZlG+BmYkS4GnTGFQ==
   dependencies:
     classnames "^2.2.6"
     react-spring "^8.0.27"
