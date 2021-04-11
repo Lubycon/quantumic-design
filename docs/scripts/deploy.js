@@ -14,12 +14,15 @@ console.log(path.resolve(`./CNAME.${env}`));
 fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./public/CNAME'));
 console.log('🌱 CNAME 생성 완료');
 
+console.log('build -> ', path.join(__dirname, '../public'));
+console.log(`"https://${token}@github.com/Lubycon/${deployTarget}"로 배포를 시작합니다`);
+
 ghpages.publish(
-  '../public',
+  path.join(__dirname, '../public'),
   {
     branch: 'master',
     remote: 'origin',
-    repo: `https://${token}@github.com/Lubycon/${deployTarget}`,
+    repo: `https://${token}@github.com/Lubycon/${deployTarget}.git`,
     message: `UI Kit 문서 배포`,
     dotfiles: true,
   },
