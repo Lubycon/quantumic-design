@@ -48,7 +48,6 @@ module.exports = {
         plugins: [`gatsby-remark-images`],
       },
     },
-    
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',

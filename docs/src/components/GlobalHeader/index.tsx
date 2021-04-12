@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Column, Container } from '@lubycon/ui-kit';
-import Link from 'next/link';
+import { Link } from 'gatsby';
 import { logoSrc } from 'constants/resources';
 
 const GlobalHeader = () => {
@@ -18,10 +18,8 @@ const GlobalHeader = () => {
       <Container>
         <Row css={{ width: '100%' }}>
           <Column>
-            <Link href="/">
-              <a>
-                <img css={{ width: 100 }} src={logoSrc} />
-              </a>
+            <Link to="/">
+              <img css={{ width: 100 }} src={logoSrc} />
             </Link>
           </Column>
         </Row>

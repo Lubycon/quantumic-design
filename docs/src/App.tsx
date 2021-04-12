@@ -5,7 +5,9 @@ import { Text } from '@lubycon/ui-kit';
 import { MDXProvider } from '@mdx-js/react';
 
 const H1 = ({ ...props }) => <Text typography="h1" css={{ display: 'block' }} {...props} />;
-const H2 = ({ ...props }) => <Text as="h2" typography="h5" fontWeight="bold" css={{ display: 'block' }} {...props} />;
+const H2 = ({ ...props }) => (
+  <Text as="h2" typography="h5" fontWeight="bold" css={{ display: 'block' }} {...props} />
+);
 const H3 = ({ ...props }) => <Text as="h3" typography="h6" css={{ display: 'block' }} {...props} />;
 const P = ({ ...props }) => <Text typography="p1" css={{ display: 'block' }} {...props} />;
 

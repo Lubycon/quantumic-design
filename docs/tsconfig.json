@@ -1,41 +1,28 @@
 {
   "extends": "../tsconfig.common.json",
   "compilerOptions": {
+    "module": "commonjs",
     "target": "esnext",
-    "module": "esnext",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
     "jsx": "preserve",
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "lib": ["dom", "es2015", "es2017"],
+    "strict": true,
     "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "baseUrl": ".",
     "paths": {
-      "src/*": [
-        "./src/*"
-      ],
-      "components/*": [
-        "./components/*"
-      ],
-      "models/*": [
-        "./models/*"
-      ],
-      "utils/*": [
-        "./utils/*"
-      ]
-    },
-    "allowJs": true
-    // "jsxImportSource": "@emotion/react"
+      "src/*": ["./src/*"],
+      "pages/*": ["./src/pages/*"],
+      "components/*": ["./src/components/*"],
+      "constants/*": ["./src/constants/*"],
+      "utils/*": ["./src/utils/*"]
+    }
   },
-  "exclude": [
-    "./node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["./src/**/*"],
+  "typeRoots": ["./node_modules/@types", "./src/typings.d.ts"]
 }
