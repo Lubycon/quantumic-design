@@ -1,15 +1,15 @@
-code[class*='language-'],
-pre[class*='language-'] {
-  color: #f8f8f2;
-  background: none;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Menlo, 'Nanum Gothic Coding', Monaco, 'Source Code Pro', monospace, 'Microsoft YaHei';
+pre[class*="language-"],
+code[class*="language-"] {
+  color: #4c4d53;
+  font-size: 13px;
+  text-shadow: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  word-wrap: normal;
-  line-height: 1.7;
+  line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -17,100 +17,63 @@ pre[class*='language-'] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  font-size: 0.9rem;
-  text-shadow: none;
-  text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
 }
 
-/* Code blocks */
-pre[class*='language-'] {
-  margin: 1rem 0;
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection,
+pre[class*="language-"]::mozselection,
+code[class*="language-"]::mozselection {
+  text-shadow: none;
+  background: #e3e4e5;
+}
+
+@media print {
+  pre[class*="language-"],
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
   overflow: auto;
-  border-radius: 8px;
-  padding: 1rem 2rem;
+  background: #f3f4f5;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: #282a36;
+:not(pre) > code[class*="language-"] {
+  padding: .1em .3em;
+  border-radius: .3em;
+  color: CB121C;
+  background: #f9f2f4;
 }
 
-pre[class*='language-'].line-numbers {
-  padding-left: 2.9rem;
-}
-
-pre[class*='language-'].line-numbers span.line-numbers-rows {
-  padding: 1rem 0 1rem 0.6rem;
-  background-color: rgba(200, 200, 200, 0.15);
-  border: none;
-}
-
-/* language type in code block */
-div.gatsby-highlight[data-language] {
-  position: relative;
-}
-div.gatsby-highlight[data-language]::before {
-  content: attr(data-language);
-  color: #ffffff;
-  background-color: #616161;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 1rem;
-  font-size: 0.9em;
-  border-radius: 0 0 5px 5px;
-  padding: 0 0.7rem;
-  text-shadow: none;
-  z-index: 1;
-}
-
-/* Inline code */
-:not(pre) > code[class*='language-'] {
-  color: #ff3860;
-  background-color: #f9f1f3;
-  padding: 1px 4px;
-  border-radius: 4px;
-  font-size: 0.85em;
-  word-break: break-all;
-  white-space: pre-line;
-}
-
+/*********************************************************
+* Tokens
+*/
 .namespace {
-  opacity: 0.7;
+  opacity: .7;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #6272a4;
+  color: #b5b6b9;
 }
 
 .token.punctuation {
-  color: #f8f8f2;
-}
-
-.token.regex-delimiter {
-  color: #ff3860;
+  color: #76777d;
 }
 
 .token.property,
 .token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted,
-.token.quantifier,
-.token.backreference,
-.token.anchor,
-.token.regex-flags {
-  color: #ff79c6;
-}
-
 .token.boolean,
 .token.number,
-.token.charclass {
-  color: #bd93f9;
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #cb121c;
 }
 
 .token.selector,
@@ -118,36 +81,33 @@ div.gatsby-highlight[data-language]::before {
 .token.string,
 .token.char,
 .token.builtin,
-.token.inserted,
-.token.group {
-  color: #50fa7b;
+.token.inserted {
+  color: #13bc4c;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: #f8f8f2;
+.style .token.string {
+  color: #aa8f00;
+  background: #ffffff;
 }
 
 .token.atrule,
 .token.attr-value,
-.token.function,
-.token.class-name {
-  color: #f1fa8c;
+.token.keyword {
+  color: #135ce9;
 }
 
-.token.keyword,
-.token.charset .token.charset-punctuation {
-  color: #8be9fd;
+.token.function {
+  color: #9b0b13;
 }
 
 .token.regex,
 .token.important,
-.token.charset .token.range {
-  color: #ffb86c;
+.token.variable {
+  color: #f0ca05;
 }
 
 .token.important,
@@ -161,4 +121,28 @@ div.gatsby-highlight[data-language]::before {
 
 .token.entity {
   cursor: help;
+}
+
+/*********************************************************
+* Line highlighting
+*/
+pre[data-line] {
+  position: relative;
+}
+pre[class*="language-"] > code[class*="language-"] {
+  position: relative;
+  z-index: 1;
+}
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: #e3e4e5;
+  box-shadow: inset 5px 0 0 #135ce9;
+  z-index: 0;
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
 }
