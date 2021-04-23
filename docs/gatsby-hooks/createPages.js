@@ -30,10 +30,20 @@ async function createPages({ actions, graphql, reporter }) {
   }
 
   const pages = query.data.allMdx.edges;
-  pages.forEach(({ node: page }) => {
+  pages.forEach(({ node: page }, index) => {
+    const previous = index === 0 ? null : pages[index - 1].node;
+    const next = index === pages.length - 1 ? null : pages[index + 1].node;
+
+    console.log('prev', previous);
+    console.log('next', next);
+
     createPage({
       path: page.fields.path,
       component: pageTemplate,
+      context: {
+        previous,
+        next,
+      },
     });
   });
 }
