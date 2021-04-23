@@ -12,7 +12,17 @@ interface ButtonBaseProps {
 type ButtonProps = CombineElementProps<'button', ButtonBaseProps>;
 
 const Button = (
-  { size = 'small', disabled, style, type, htmlType, onClick, children, ...props }: ButtonProps,
+  {
+    size = 'small',
+    disabled,
+    style,
+    type,
+    htmlType,
+    onClick,
+    children,
+    className,
+    ...props
+  }: ButtonProps,
   ref: Ref<HTMLButtonElement>
 ) => {
   return (
@@ -20,7 +30,8 @@ const Button = (
       className={classnames(
         'lubycon-button',
         `lubycon-button--${size}`,
-        `lubycon-button--type-${type ?? 'default'}`
+        `lubycon-button--type-${type ?? 'default'}`,
+        className
       )}
       disabled={disabled}
       style={{ ...style }}
