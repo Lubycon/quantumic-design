@@ -22,6 +22,7 @@ module.exports = {
       "preset": "angular",
       "releaseRules": [
         {"type": "feat", "release": "minor"},
+        {"type": "fix", "release": "patch"},
         {"type": "chore", "release": "patch"},
         {"type": "refactor", "release": "patch"},
         {"type": "fix", "release": "patch"},
