@@ -21,6 +21,7 @@ const Selection = (
     value,
     onChange,
     size = 'medium',
+    className,
     ...props
   }: SelectionProps,
   ref: Ref<HTMLSelectElement>
@@ -33,10 +34,15 @@ const Selection = (
 
   return (
     <div
-      className={classnames('lubycon-selection', `lubycon-selection--size-${size}`, {
-        'lubycon-selection--disabled': disabled,
-        'lubycon-selection--empty': innerValue === '',
-      })}
+      className={classnames(
+        'lubycon-selection',
+        `lubycon-selection--size-${size}`,
+        {
+          'lubycon-selection--disabled': disabled,
+          'lubycon-selection--empty': innerValue === '',
+        },
+        className
+      )}
     >
       <select
         ref={ref}

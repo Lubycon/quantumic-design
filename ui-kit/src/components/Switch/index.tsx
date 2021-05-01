@@ -11,7 +11,7 @@ interface SwitchBaseProps {
 type SwitchProps = Omit<CombineElementProps<'input', SwitchBaseProps>, 'type'>;
 
 const Switch = (
-  { label, display = 'block', style, ...props }: SwitchProps,
+  { label, display = 'block', style, className, ...props }: SwitchProps,
   ref: Ref<HTMLInputElement>
 ) => {
   const id = generateID('switch');
@@ -19,7 +19,7 @@ const Switch = (
   return (
     <label
       role="switch"
-      className={classnames('lubycon-switch', `lubycon-switch--display-${display}`)}
+      className={classnames('lubycon-switch', `lubycon-switch--display-${display}`, className)}
       style={style}
     >
       <input className="lubycon-switch__input" ref={ref} type="checkbox" {...props} id={id} />

@@ -1,12 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { TableProps } from './props';
 
-export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, 'align' | 'bgcolor'> {
-  align?: 'left' | 'center' | 'right';
-}
-
-const Table = ({ children }: TableProps) => {
-  return <table className={classnames('lubycon-table', 'lubycon-shadow--2')}>{children}</table>;
+const Table = ({ children, className, ...props }: TableProps<HTMLTableElement>) => {
+  return (
+    <table className={classnames('lubycon-table', 'lubycon-shadow--2', className)} {...props}>
+      {children}
+    </table>
+  );
 };
 
 export default Table;

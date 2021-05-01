@@ -1,13 +1,15 @@
-import React, { createContext } from 'react';
-import { useContext } from 'react';
-import { TableProps } from './index';
+import React, { createContext, useContext } from 'react';
+import classnames from 'classnames';
+import { TableProps } from './props';
 
 const TableHeadContext = createContext({ variant: '' });
 
-const TableHead = ({ children }: TableProps) => {
+const TableHead = ({ children, className, ...props }: TableProps<HTMLTableSectionElement>) => {
   return (
     <TableHeadContext.Provider value={{ variant: 'head' }}>
-      <thead className="lubycon-table__head">{children}</thead>
+      <thead className={classnames('lubycon-table__head', className)} {...props}>
+        {children}
+      </thead>
     </TableHeadContext.Provider>
   );
 };

@@ -11,16 +11,21 @@ interface RadioBaseProps {
 type RadioProps = Omit<CombineElementProps<'input', RadioBaseProps>, 'type'>;
 
 const Radio = (
-  { label, display = 'block', style, disabled, ...props }: RadioProps,
+  { label, display = 'block', style, disabled, className, ...props }: RadioProps,
   ref: Ref<HTMLInputElement>
 ) => {
   const id = generateID('radio');
 
   return (
     <span
-      className={classnames('lubycon-radio', `lubycon-radio--display-${display}`, {
-        'lubycon-radio--disabled': disabled,
-      })}
+      className={classnames(
+        'lubycon-radio',
+        `lubycon-radio--display-${display}`,
+        {
+          'lubycon-radio--disabled': disabled,
+        },
+        className
+      )}
       style={style}
     >
       <label htmlFor={id} className="lubycon-radio__label">
