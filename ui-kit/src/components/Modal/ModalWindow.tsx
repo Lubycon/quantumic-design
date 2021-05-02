@@ -1,14 +1,21 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
+import { CombineElementProps } from 'src/types/utils';
 
-interface ModalWindowProps {
-  children: ReactNode;
-  size: 'small' | 'medium';
-}
+type ModalWindowProps = CombineElementProps<
+  'div',
+  {
+    children: ReactNode;
+    size: 'small' | 'medium';
+  }
+>;
 
-const ModalWindow = ({ children, size }: ModalWindowProps) => {
+const ModalWindow = ({ children, size, className, ...props }: ModalWindowProps) => {
   return (
-    <div className={classnames('lubycon-modal__window', `lubycon-modal__window--${size}`)}>
+    <div
+      className={classnames('lubycon-modal__window', `lubycon-modal__window--${size}`, className)}
+      {...props}
+    >
       {children}
     </div>
   );

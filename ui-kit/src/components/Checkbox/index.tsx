@@ -11,7 +11,7 @@ interface CheckboxBaseProps {
 type CheckboxProps = Omit<CombineElementProps<'input', CheckboxBaseProps>, 'type'>;
 
 const Checkbox = (
-  { label, display = 'block', style, disabled, ...props }: CheckboxProps,
+  { label, display = 'block', style, disabled, className, ...props }: CheckboxProps,
   ref: Ref<HTMLInputElement>
 ) => {
   const id = generateID('checkbox');
@@ -19,9 +19,14 @@ const Checkbox = (
   return (
     <label
       role="checkbox"
-      className={classnames('lubycon-checkbox', `lubycon-checkbox--display-${display}`, {
-        'lubycon-checkbox--disabled': disabled,
-      })}
+      className={classnames(
+        'lubycon-checkbox',
+        `lubycon-checkbox--display-${display}`,
+        {
+          'lubycon-checkbox--disabled': disabled,
+        },
+        className
+      )}
       style={style}
     >
       <span className="lubycon-checkbox__input">

@@ -1,12 +1,20 @@
 import React from 'react';
 import { ReactNode } from 'react';
 import classnames from 'classnames';
+import { CombineElementProps } from 'src/types/utils';
 
-interface CardContentProps {
-  children?: ReactNode;
-}
-const CardContent = ({ children }: CardContentProps) => {
-  return <div className={classnames('lubycon-card__content')}>{children}</div>;
+type CardContentProps = CombineElementProps<
+  'div',
+  {
+    children?: ReactNode;
+  }
+>;
+const CardContent = ({ children, className, ...props }: CardContentProps) => {
+  return (
+    <div className={classnames('lubycon-card__content', className)} {...props}>
+      {children}
+    </div>
+  );
 };
 
 export default CardContent;

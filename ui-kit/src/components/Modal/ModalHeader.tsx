@@ -1,17 +1,22 @@
 import React, { ReactNode, isValidElement } from 'react';
 import Text from 'components/Text';
 import { Typographys } from 'components/Text/types';
+import { CombineElementProps } from 'src/types/utils';
+import classnames from 'classnames';
 
-interface ModalHeaderProps {
-  size?: 'small' | 'medium';
-  children?: ReactNode;
-}
+type ModalHeaderProps = CombineElementProps<
+  'div',
+  {
+    size?: 'small' | 'medium';
+    children?: ReactNode;
+  }
+>;
 
-const ModalHeader = ({ size, children }: ModalHeaderProps) => {
+const ModalHeader = ({ size, children, className, ...props }: ModalHeaderProps) => {
   const typography: Typographys = size === 'small' ? 'subtitle' : 'h6';
 
   return (
-    <header className="lubycon-modal__title">
+    <header className={classnames('lubycon-modal__title', className)} {...props}>
       {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
     </header>
   );

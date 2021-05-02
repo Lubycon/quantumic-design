@@ -4,16 +4,28 @@ import ModalWindow from './ModalWindow';
 import { generateID } from 'utils/index';
 import { animated, useTransition } from 'react-spring';
 import { useState } from 'react';
+import { CombineElementProps } from 'src/types/utils';
 
-export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
-  show: boolean;
-  size?: 'small' | 'medium';
-  children: ReactElement | ReactElement[];
-  onOpen?: () => void;
-  onClose?: () => void;
-}
+export type ModalProps = CombineElementProps<
+  'div',
+  {
+    show: boolean;
+    size?: 'small' | 'medium';
+    children: ReactElement | ReactElement[];
+    onOpen?: () => void;
+    onClose?: () => void;
+  }
+>;
 
-const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) => {
+const Modal = ({
+  show,
+  size = 'small',
+  children,
+  onOpen,
+  onClose,
+  className,
+  ...props
+}: ModalProps) => {
   const [showModal, setShowModal] = useState(show);
   const backdropRef = useRef(null);
   const backdropTransition = useTransition(showModal, null, {
@@ -68,10 +80,14 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
           )
       )}
       {modalTransition.map(
-        ({ item: show, key, props }) =>
+        ({ item: show, key, props: animationProps }) =>
           show && (
-            <animated.div key={key} style={props} className="lubycon-modal__window-wrapper">
-              <ModalWindow size={size}>
+            <animated.div
+              key={key}
+              style={animationProps}
+              className="lubycon-modal__window-wrapper"
+            >
+              <ModalWindow size={size} className={className} {...props}>
                 {Children.map(children, (child) => {
                   return cloneElement(child, {
                     key: generateID('lubycon-modal__children'),

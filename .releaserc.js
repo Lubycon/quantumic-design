@@ -25,6 +25,7 @@ module.exports = {
         {"type": "fix", "release": "patch"},
         {"type": "chore", "release": "patch"},
         {"type": "refactor", "release": "patch"},
+        {"type": "fix", "release": "patch"},
         {"type": "style", "release": "patch"}
       ],
       "parserOpts": {

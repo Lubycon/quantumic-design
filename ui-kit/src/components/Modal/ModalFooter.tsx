@@ -1,11 +1,20 @@
 import React, { ReactNode } from 'react';
+import { CombineElementProps } from 'src/types/utils';
+import classnames from 'classnames';
 
-interface ModalFooterProps {
-  children?: ReactNode;
-}
+type ModalFooterProps = CombineElementProps<
+  'div',
+  {
+    children?: ReactNode;
+  }
+>;
 
-const ModalFooter = ({ children }: ModalFooterProps) => {
-  return <div className="lubycon-modal__footer">{children}</div>;
+const ModalFooter = ({ children, className, ...props }: ModalFooterProps) => {
+  return (
+    <div className={classnames('lubycon-modal__footer', className)} {...props}>
+      {children}
+    </div>
+  );
 };
 
 export default ModalFooter;

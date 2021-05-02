@@ -1,8 +1,13 @@
 import React from 'react';
-import { TableProps } from './index';
+import classnames from 'classnames';
+import { TableProps } from './props';
 
-const TableRow = ({ children }: TableProps) => {
-  return <tr className="lubycon-table__row">{children}</tr>;
+const TableRow = ({ children, className, ...props }: TableProps<HTMLTableRowElement>) => {
+  return (
+    <tr className={classnames('lubycon-table__row', className)} {...props}>
+      {children}
+    </tr>
+  );
 };
 
 export default TableRow;
