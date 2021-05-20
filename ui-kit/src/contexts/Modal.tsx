@@ -9,8 +9,8 @@ interface ModalHookOption {
   footer?: ReactNode;
 }
 
-type ModalOptions = ModalHookOption & Omit<ModalProps, 'show' | 'children'>;
-type ModalStackOptions = ModalHookOption & Omit<ModalProps, 'children'>;
+type ModalOptions = ModalHookOption & Omit<ModalProps, 'show' | 'children' | 'onClose'>;
+type ModalStackOptions = ModalHookOption & Omit<ModalProps, 'children' | 'onClose'>;
 
 interface ModalGlobalState {
   openModal: (option: ModalOptions) => string;
@@ -67,7 +67,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
           <Modal
             show={show}
             key={id}
-            onClose={() => removeModalFromStack(id ?? '')}
+            onClose={() => closeModal(id ?? '')}
+            onHide={() => removeModalFromStack(id ?? '')}
             {...modalProps}
           >
             <ModalHeader>{title}</ModalHeader>
