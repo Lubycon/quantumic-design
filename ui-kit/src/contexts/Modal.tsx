@@ -68,7 +68,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
             show={show}
             key={id}
             onClose={() => closeModal(id ?? '')}
-            onHide={() => removeModalFromStack(id ?? '')}
+            onCloseTransitionEnd={() => removeModalFromStack(id ?? '')}
             {...modalProps}
           >
             <ModalHeader>{title}</ModalHeader>
