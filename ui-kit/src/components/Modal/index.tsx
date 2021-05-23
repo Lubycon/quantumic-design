@@ -43,7 +43,7 @@ const Modal = ({
       if (backdropRef.current == null) {
         return;
       } else if (event.target === backdropRef.current) {
-        onClose?.();
+        onClose();
       }
     },
     [onClose]
@@ -51,7 +51,7 @@ const Modal = ({
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      onClose?.();
+      onClose();
     }
   };
 
