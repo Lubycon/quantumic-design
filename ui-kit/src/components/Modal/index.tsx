@@ -3,7 +3,6 @@ import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
 import { generateID } from 'utils/index';
 import { animated, useTransition } from 'react-spring';
-import { useState } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 
 export type ModalProps = CombineElementProps<
@@ -12,8 +11,8 @@ export type ModalProps = CombineElementProps<
     show: boolean;
     size?: 'small' | 'medium';
     children: ReactElement | ReactElement[];
-    onOpen?: () => void;
-    onClose?: () => void;
+    onClose: () => void;
+    onCloseTransitionEnd?: () => void;
   }
 >;
 
@@ -21,24 +20,22 @@ const Modal = ({
   show,
   size = 'small',
   children,
-  onOpen,
   onClose,
+  onCloseTransitionEnd,
   className,
   ...props
 }: ModalProps) => {
-  const [showModal, setShowModal] = useState(show);
   const backdropRef = useRef(null);
-  const backdropTransition = useTransition(showModal, null, {
+  const backdropTransition = useTransition(show, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
-  const modalTransition = useTransition(showModal, null, {
+  const modalTransition = useTransition(show, null, {
     from: { transform: 'translate(-50%, 100%)', opacity: 0 },
     enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
     leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
-    onStart: () => onOpen?.(),
-    onDestroyed: () => onClose?.(),
+    onDestroyed: () => onCloseTransitionEnd?.(),
   });
 
   const handleBackdropClick = useCallback(
@@ -46,7 +43,7 @@ const Modal = ({
       if (backdropRef.current == null) {
         return;
       } else if (event.target === backdropRef.current) {
-        setShowModal(false);
+        onClose();
       }
     },
     [onClose]
@@ -54,7 +51,7 @@ const Modal = ({
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setShowModal(false);
+      onClose();
     }
   };
 
@@ -64,10 +61,6 @@ const Modal = ({
       window.removeEventListener('keydown', onKeydown);
     };
   }, []);
-
-  useEffect(() => {
-    setShowModal(show);
-  }, [show]);
 
   return (
     <div className="lubycon-modal" tabIndex={-1} aria-hidden={true}>
