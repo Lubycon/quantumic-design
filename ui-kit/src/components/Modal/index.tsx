@@ -12,7 +12,7 @@ export type ModalProps = CombineElementProps<
     size?: 'small' | 'medium';
     children: ReactElement | ReactElement[];
     onClose: () => void;
-    onHide?: () => void;
+    onCloseTransitionEnd?: () => void;
   }
 >;
 
@@ -21,7 +21,7 @@ const Modal = ({
   size = 'small',
   children,
   onClose,
-  onHide,
+  onCloseTransitionEnd,
   className,
   ...props
 }: ModalProps) => {
@@ -35,7 +35,7 @@ const Modal = ({
     from: { transform: 'translate(-50%, 100%)', opacity: 0 },
     enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
     leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
-    onDestroyed: () => onHide?.(),
+    onDestroyed: () => onCloseTransitionEnd?.(),
   });
 
   const handleBackdropClick = useCallback(
@@ -43,7 +43,7 @@ const Modal = ({
       if (backdropRef.current == null) {
         return;
       } else if (event.target === backdropRef.current) {
-        onClose?.();
+        onClose();
       }
     },
     [onClose]
@@ -51,7 +51,7 @@ const Modal = ({
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      onClose?.();
+      onClose();
     }
   };
 
