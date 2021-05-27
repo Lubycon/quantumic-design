@@ -9,13 +9,17 @@ export default {
 } as Meta;
 
 export const Default = () => {
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   return (
     <div>
       <Snackbar show={true} message="데이터 전송이 완료되었습니다." />
       <Snackbar
-        show={true}
+        show={show}
         message={`16개의 이미지가\n“동물" 폴더에 추가되었습니다.`}
         button="실행취소"
+        onClick={handleClose}
       />
     </div>
   );
@@ -42,6 +46,7 @@ export const AutoHide = () => {
         show={show}
         autoHideDuration={3000}
         onHide={() => setShow(true)}
+        onClose={() => setShow(false)}
         message={`16개의 이미지가\n“동물" 폴더에 추가되었습니다.`}
         button="실행취소"
       />
