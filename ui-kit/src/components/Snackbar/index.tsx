@@ -69,6 +69,12 @@ const Snackbar = ({
   });
 
   useEffect(() => {
+    if (autoHideDuration && onClose == undefined) {
+      throw Error('autoHideDuration prop은 onClose prop을 함께 제공해야만 합니다.');
+    }
+  }, [autoHideDuration]);
+
+  useEffect(() => {
     let timer: NodeJS.Timeout;
     if (autoHideDuration != null && show === true) {
       timer = setTimeout(() => {
