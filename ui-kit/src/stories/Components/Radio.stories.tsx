@@ -3,7 +3,7 @@ import { Radio } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {
-  title: 'Lubycon UI Kit/Radio',
+  title: 'Components/Radio',
   component: Radio,
 } as Meta;
 

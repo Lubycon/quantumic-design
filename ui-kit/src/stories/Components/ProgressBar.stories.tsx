@@ -4,7 +4,7 @@ import { ProgressBar, Text } from 'src';
 import { ProgressBarLabelPosition } from 'src/components/ProgressBar';
 
 export default {
-  title: 'Lubycon UI Kit/ProgressBar',
+  title: 'Components/ProgressBar',
 } as Meta;
 
 const MAX_VALUE = 100;

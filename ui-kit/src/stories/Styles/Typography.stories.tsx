@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { typographys, Typographys, FontWeights, fontWeights } from 'components/Text/types';
 
 export default {
-  title: 'Lubycon UI Kit/Text',
+  title: 'Styles/Typography',
   component: Text,
 } as Meta;
 

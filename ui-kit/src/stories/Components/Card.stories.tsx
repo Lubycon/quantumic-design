@@ -15,7 +15,7 @@ import Icon from 'components/Icon';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {
-  title: 'Lubycon UI Kit/Card',
+  title: 'Components/Card',
 } as Meta;
 
 export const Default = () => {

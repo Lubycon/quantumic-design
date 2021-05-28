@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Table, TableHead, TableBody, TableRow, TableCell } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Table',
+  title: 'Components/Table',
 } as Meta;
 
 const header = ['제목', '제목', '제목', '제목', '제목'];

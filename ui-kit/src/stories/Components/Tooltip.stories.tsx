@@ -4,7 +4,7 @@ import { Tooltip, Button } from 'src';
 import { TooltipPosition } from 'src/components/Tooltip/types';
 
 export default {
-  title: 'Lubycon UI Kit/Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
 } as Meta;
 

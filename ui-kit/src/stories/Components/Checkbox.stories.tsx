@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Checkbox } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Checkbox',
+  title: 'Components/Checkbox',
 } as Meta;
 
 export const Default = () => {

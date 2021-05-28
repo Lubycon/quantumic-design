@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Text } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Shadows',
+  title: 'Styles/Shadows',
 } as Meta;
 
 const shadows = ['0px', '2px 드랍다운', '3px 버튼, 카드', '6px 토스트', '8px 탭', '24px 모달 팝업'];

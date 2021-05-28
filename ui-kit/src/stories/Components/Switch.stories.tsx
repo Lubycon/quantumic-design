@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Text, Switch, colors } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Switch',
+  title: 'Components/Switch',
 } as Meta;
 
 export const Default = () => {

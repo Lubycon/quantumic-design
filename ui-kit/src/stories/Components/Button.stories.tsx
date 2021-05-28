@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { SemanticColor } from 'src/constants/colors';
 
 export default {
-  title: 'Lubycon UI Kit/Button',
+  title: 'Components/Button',
 } as Meta;
 
 const sizeList = ['small', 'medium', 'large'] as const;

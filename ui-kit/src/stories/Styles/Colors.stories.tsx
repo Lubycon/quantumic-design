@@ -4,7 +4,7 @@ import { colors, Text } from 'src';
 import { ColorProperty, SemanticColor } from 'src/constants/colors';
 
 export default {
-  title: 'Lubycon UI Kit/Colors',
+  title: 'Styles/Colors',
 } as Meta;
 
 const grayScaleNames = [

@@ -3,7 +3,7 @@ import { Accordion } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {
-  title: 'Lubycon UI Kit/Accordion',
+  title: 'Components/Accordion',
 } as Meta;
 
 export const Default = () => {

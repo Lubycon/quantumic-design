@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import Icon from 'src/components/Icon';
 
 export default {
-  title: 'Lubycon UI Kit/List',
+  title: 'Components/List',
 } as Meta;
 
 const DummyItem = ({ onClick }: { onClick?: () => void }) => (

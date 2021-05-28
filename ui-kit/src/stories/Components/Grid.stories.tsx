@@ -3,7 +3,7 @@ import { Column, Row, Text, colors } from 'src';
 import { Meta } from '@storybook/react/types-6-0';
 
 export default {
-  title: 'Lubycon UI Kit/Grid',
+  title: 'Components/Grid',
   subcomponents: { Column, Row },
 } as Meta;
 

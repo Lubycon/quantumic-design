@@ -5,7 +5,7 @@ import { Column, Row } from 'src/components/Grid';
 import { SemanticColor } from 'src/constants/colors';
 
 export default {
-  title: 'Lubycon UI Kit/Alert',
+  title: 'Components/Alert',
 } as Meta;
 
 const alerts: Array<{ type: SemanticColor; title: string }> = [

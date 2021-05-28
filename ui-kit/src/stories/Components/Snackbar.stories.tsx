@@ -4,7 +4,7 @@ import { Snackbar, Button, useSnackbar } from 'src';
 import { SnackbarAlign } from 'src/components/Snackbar';
 
 export default {
-  title: 'Lubycon UI Kit/Snackbar',
+  title: 'Components/Snackbar',
   component: Snackbar,
 } as Meta;
 

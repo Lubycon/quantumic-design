@@ -26,6 +26,7 @@
     "resize-observer-polyfill": "^1.5.1"
   },
   "scripts": {
+    "dev": "yarn start",
     "start": "start-storybook -p 6006 --no-dll",
     "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.build.json",
     "build-stories": "yarn build-storybook -o ./storybook-static -s ./public",
