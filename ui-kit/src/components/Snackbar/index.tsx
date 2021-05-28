@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactNode, useMemo } from 'react';
+import React, { useEffect, ReactNode, useMemo } from 'react';
 import { animated, useTransition } from 'react-spring';
 import classnames from 'classnames';
 import SnackbarBody from './SnackbarBody';
@@ -15,6 +15,7 @@ export type SnackbarProps = Omit<
       message: string;
       button?: ReactNode;
       autoHideDuration?: number;
+      onClose?: () => void;
       onShow?: () => void;
       onHide?: () => void;
       onClick?: () => void;
@@ -29,6 +30,7 @@ const Snackbar = ({
   message,
   button,
   autoHideDuration,
+  onClose,
   onShow,
   onHide,
   onClick,
@@ -37,9 +39,8 @@ const Snackbar = ({
   align = 'left',
   ...rest
 }: SnackbarProps) => {
-  const [isOpen, setOpen] = useState(show);
   const translateAnimation = useMemo(() => getTranslateAnimation(align), [align]);
-  const transition = useTransition(isOpen, null, {
+  const transition = useTransition(show, null, {
     from: {
       opacity: 0,
       transform: translateAnimation.from,
@@ -68,10 +69,16 @@ const Snackbar = ({
   });
 
   useEffect(() => {
+    if (autoHideDuration && onClose == undefined) {
+      throw Error('autoHideDuration prop은 onClose prop을 함께 제공해야만 합니다.');
+    }
+  }, [autoHideDuration]);
+
+  useEffect(() => {
     let timer: NodeJS.Timeout;
-    if (autoHideDuration != null && isOpen === true) {
+    if (autoHideDuration != null && show === true) {
       timer = setTimeout(() => {
-        setOpen(false);
+        onClose?.();
       }, autoHideDuration);
     }
 
