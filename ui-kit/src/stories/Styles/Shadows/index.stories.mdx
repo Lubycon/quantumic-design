@@ -1,0 +1,30 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import classnames from 'classnames';
+import { Text } from 'src';
+import { shadowTypes } from './data';
+
+<Meta title="Styles/Shadows" />
+
+# 그림자 (Shadows)
+
+<Story name="Shadows">
+  <ul style={{ margin: 0, padding: 0 }}>
+    {shadowTypes.map((shadow, index) => (
+      <li key={index} style={{ listStyle: 'none', marginBottom: 30 }}>
+        <div
+          className={classnames([`lubycon-shadow--${index}`])}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            height: 80,
+            borderRadius: 8,
+            backgroundColor: '#fcfcfd',
+            padding: 34,
+          }}
+        >
+          <Text typography="p2">{shadow}</Text>
+        </div>
+      </li>
+    ))}
+  </ul>
+</Story>

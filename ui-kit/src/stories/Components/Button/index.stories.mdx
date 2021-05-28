@@ -1,0 +1,51 @@
+import { Button, Text, Column, Row } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { SemanticColor } from 'src/constants/colors';
+import { sizeList, buttonText, semanticColors } from './data';
+
+<Meta title="Components/Button" />
+
+# Button
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    {sizeList.map((size, index) => (
+      <Row key={index} alignItems="center" style={{ marginBottom: 20 }}>
+        <Column xs="auto" style={{ width: '100px', marginRight: 40 }}>
+          <Text>{size.charAt(0).toUpperCase() + size.slice(1)}</Text>
+        </Column>
+        <Column>
+          <Button size={size} key={index}>
+            {buttonText}
+          </Button>
+        </Column>
+        <Column>
+          <Button size={size} key={index + 'disabled'} disabled>
+            {buttonText}
+          </Button>
+        </Column>
+      </Row>
+    ))}
+  </Story>
+</Canvas>
+
+## Types
+
+<Canvas>
+  <Story name="Types">
+    {semanticColors.map((type, index) => (
+      <Row key={index} alignItems="center" style={{ marginBottom: 20 }}>
+        <Column xs="auto" style={{ width: '100px', marginRight: 40 }}>
+          <Text>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+        </Column>
+        <Column>
+          <Button key={index} type={type}>
+            {buttonText}
+          </Button>
+        </Column>
+      </Row>
+    ))}
+  </Story>
+</Canvas>
