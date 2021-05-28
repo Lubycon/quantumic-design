@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Text,
   Button,
@@ -9,17 +8,19 @@ import {
   CardContent,
   CardImageContent,
   CardFooter,
+  Icon,
   colors,
 } from 'src';
-import Icon from 'components/Icon';
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
-export default {
-  title: 'Components/Card',
-} as Meta;
+<Meta title="Components/Card" components={Card} />
 
-export const Default = () => {
-  return (
+# Card
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
     <div style={{ width: 240 }}>
       <Card>
         <CardHeader>제목</CardHeader>
@@ -48,11 +49,13 @@ export const Default = () => {
         </CardFooter>
       </Card>
     </div>
-  );
-};
+  </Story>
+</Canvas>
 
-export const ImageCard = () => {
-  return (
+## Image Card
+
+<Canvas>
+  <Story name="Image Card">
     <Row style={{ width: 900 }}>
       <Column>
         <Card>
@@ -93,5 +96,5 @@ export const ImageCard = () => {
         </Card>
       </Column>
     </Row>
-  );
-};
+  </Story>
+</Canvas>
