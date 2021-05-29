@@ -10,11 +10,11 @@ type SnackbarOptions = Omit<SnackbarProps, 'show'>;
 const aligns: SnackbarAlign[] = ['left', 'center', 'right'];
 
 interface SnackbarGlobalState {
-  openSnackbar: (option: SnackbarOptions) => void;
+  openSnackbar: (option: SnackbarOptions) => string;
   closeSnackbar: (toastId: string) => void;
 }
 const SnackbarContext = createContext<SnackbarGlobalState>({
-  openSnackbar: () => {},
+  openSnackbar: () => '',
   closeSnackbar: () => {},
 });
 
@@ -40,6 +40,7 @@ export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderPro
       } else {
         setOpenedSnackbarQueue([...openedSnackbarQueue, snackbar]);
       }
+      return id;
     },
     [openedSnackbarQueue]
   );
