@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Selection, Text } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Selection',
+  title: 'Components/Selection',
 } as Meta;
 
 export const Default = () => {

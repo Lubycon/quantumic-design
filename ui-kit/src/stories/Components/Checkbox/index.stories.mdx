@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Checkbox } from 'src';
+
+<Meta title="Components/Checkbox" components={Checkbox} />
+
+# Checkbox
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Checkbox label={'체크박스1'} />
+    <Checkbox label={'체크박스2'} />
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Checkbox label={'체크박스'} />
+    <Checkbox label={'체크박스2'} />
+    <Checkbox label={'체크박스3'} disabled />
+    <Checkbox label={'체크박스4'} disabled defaultChecked={true} />
+  </Story>
+</Canvas>
+
+## Inline
+
+<Canvas>
+  <Story name="Inline">
+    <Checkbox label={'체크박스'} display="inline" style={{ marginRight: '20px' }} />
+    <Checkbox label={'체크박스2'} display="inline" />
+  </Story>
+</Canvas>

@@ -5,7 +5,7 @@ import Icon from 'src/components/Icon';
 import { TextInputType } from 'components/Input';
 
 export default {
-  title: 'Lubycon UI Kit/Input',
+  title: 'Components/Input',
 } as Meta;
 
 export const Default = () => {

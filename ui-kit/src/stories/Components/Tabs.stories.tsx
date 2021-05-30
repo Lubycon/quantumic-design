@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Tabs, TabsItem } from 'src';
 
 export default {
-  title: 'Lubycon UI Kit/Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
 } as Meta;
 

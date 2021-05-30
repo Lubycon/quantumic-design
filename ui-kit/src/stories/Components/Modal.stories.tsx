@@ -34,7 +34,7 @@ const margin = {
 };
 
 export default {
-  title: 'Lubycon UI kit/Modal',
+  title: 'Components/Modal',
   component: Modal,
 } as Meta;
 

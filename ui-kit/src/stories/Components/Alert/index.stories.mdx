@@ -1,0 +1,25 @@
+import Alert from 'components/Alert';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Column, Row } from 'src/components/Grid';
+import { alerts } from './data';
+
+<Meta title="Components/Alert" components={Alert} />
+
+# Alert
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Row style={{ marginBottom: 80, width: 1200 }}>
+      {alerts.map(({ type, title }) => (
+        <Column xs={6} key={type} style={{ marginBottom: 32 }}>
+          <Alert style={{ marginBottom: 16 }} type={type} title={`${title} 메세지`}>
+            서브 타이틀을 넣어주세요
+          </Alert>
+          <Alert type={type}>{title} 메세지를 넣어주세요</Alert>
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>

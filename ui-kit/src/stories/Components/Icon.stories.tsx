@@ -6,7 +6,7 @@ import { ColorProperty, colors } from 'src/constants/colors';
 import { Fragment } from 'react';
 
 export default {
-  title: 'Lubycon UI Kit/Icon',
+  title: 'Components/Icon',
   component: Icon,
 } as Meta;
 
