@@ -4,18 +4,19 @@ import Text from 'components/Text';
 import { Typographys } from 'components/Text/types';
 import { CombineElementProps } from 'types/utils';
 
-interface BaseProps {
-  size?: 'small' | 'medium';
-  children?: ReactNode;
-}
+type ModalContentProps = CombineElementProps<
+  'div',
+  {
+    size?: 'small' | 'medium';
+    children?: ReactNode;
+  }
+>;
 
-type ModalContentProps = CombineElementProps<'div', BaseProps>;
-
-const ModalContent = ({ children, size }: ModalContentProps) => {
+const ModalContent = ({ children, size, className, ...props }: ModalContentProps) => {
   const typography: Typographys = size === 'small' ? 'p2' : 'p1';
 
   return (
-    <div className={classnames('lubycon-modal__content')}>
+    <div className={classnames('lubycon-modal__content', className)} {...props}>
       {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
     </div>
   );

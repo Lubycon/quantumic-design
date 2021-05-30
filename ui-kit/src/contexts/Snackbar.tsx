@@ -10,11 +10,11 @@ type SnackbarOptions = Omit<SnackbarProps, 'show'>;
 const aligns: SnackbarAlign[] = ['left', 'center', 'right'];
 
 interface SnackbarGlobalState {
-  openSnackbar: (option: SnackbarOptions) => void;
+  openSnackbar: (option: SnackbarOptions) => string;
   closeSnackbar: (toastId: string) => void;
 }
 const SnackbarContext = createContext<SnackbarGlobalState>({
-  openSnackbar: () => {},
+  openSnackbar: () => '',
   closeSnackbar: () => {},
 });
 
@@ -23,7 +23,7 @@ interface SnackbarProviderProps {
   maxStack?: number;
 }
 export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderProps) {
-  const [openedSnackbarQueue, setOpenedSnackbarQueue] = useState<SnackbarOptions[]>([]);
+  const [openedSnackbarQueue, setOpenedSnackbarQueue] = useState<SnackbarProps[]>([]);
 
   const openSnackbar = useCallback(
     ({
@@ -32,7 +32,7 @@ export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderPro
       ...option
     }: SnackbarOptions) => {
       const align = isMatchedSM() ? 'center' : rawAlign;
-      const snackbar = { id, align, ...option };
+      const snackbar = { id, align, show: true, ...option };
       const [, ...rest] = openedSnackbarQueue;
 
       if (openedSnackbarQueue.length >= maxStack) {
@@ -40,11 +40,25 @@ export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderPro
       } else {
         setOpenedSnackbarQueue([...openedSnackbarQueue, snackbar]);
       }
+      return id;
     },
     [openedSnackbarQueue]
   );
 
-  const closeSnackbar = useCallback(
+  const closeSnackbar = useCallback((closeSnackbarId?: string) => {
+    setOpenedSnackbarQueue((queue) =>
+      queue.map((snackbar) => {
+        return snackbar.id === closeSnackbarId
+          ? {
+              ...snackbar,
+              show: false,
+            }
+          : snackbar;
+      })
+    );
+  }, []);
+
+  const removeSnackbarFromQueue = useCallback(
     (closedSnackbarId: string) => {
       setOpenedSnackbarQueue(
         openedSnackbarQueue.filter((snackbar) => snackbar.id !== closedSnackbarId)
@@ -72,16 +86,17 @@ export function SnackbarProvider({ children, maxStack = 3 }: SnackbarProviderPro
           >
             {openedSnackbarQueue
               .filter((snackbar) => snackbar.align === align)
-              .map(({ id, onHide, autoHideDuration = 3000, ...snackbarProps }) => (
+              .map(({ id, show, onHide, autoHideDuration = 3000, ...snackbarProps }) => (
                 <Snackbar
                   key={id}
-                  show={true}
+                  show={show}
                   autoHideDuration={autoHideDuration}
                   onHide={() => {
-                    closeSnackbar(id ?? '');
+                    removeSnackbarFromQueue(id ?? '');
                     onHide?.();
                   }}
                   align={align}
+                  onClose={() => closeSnackbar(id ?? '')}
                   {...snackbarProps}
                 />
               ))}

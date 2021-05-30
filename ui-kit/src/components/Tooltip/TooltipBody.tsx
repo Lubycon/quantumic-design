@@ -1,6 +1,7 @@
 import React, { forwardRef, Ref } from 'react';
 import classnames from 'classnames';
 import Text from '../Text';
+import { CombineElementProps } from 'src/types/utils';
 
 export type TooltipArrowDirection =
   | 'top-left'
@@ -12,12 +13,15 @@ export type TooltipArrowDirection =
   | 'bottom-center'
   | 'bottom-right';
 
-interface Props {
-  children: string;
-  arrowDirection: TooltipArrowDirection;
-}
+type Props = CombineElementProps<
+  'div',
+  {
+    children: string;
+    arrowDirection: TooltipArrowDirection;
+  }
+>;
 const TooltipBody = forwardRef(function TooltipBody(
-  { children, arrowDirection }: Props,
+  { children, arrowDirection, className, ...props }: Props,
   forwardedRef: Ref<HTMLDivElement>
 ) {
   return (
@@ -25,9 +29,11 @@ const TooltipBody = forwardRef(function TooltipBody(
       ref={forwardedRef}
       className={classnames(
         'lubycon-tooltip__body',
-        `lubycon-tooltip__body--arrow-${arrowDirection}`
+        `lubycon-tooltip__body--arrow-${arrowDirection}`,
+        className
       )}
       tabIndex={-1}
+      {...props}
     >
       <Text typography="caption">{children}</Text>
     </div>

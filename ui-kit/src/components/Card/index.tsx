@@ -1,14 +1,25 @@
 import React, { forwardRef } from 'react';
 import { ReactNode } from 'react';
 import classnames from 'classnames';
+import { CombineElementProps } from 'src/types/utils';
 
-interface Props {
-  children: ReactNode;
-}
+type Props = CombineElementProps<
+  'div',
+  {
+    children: ReactNode;
+  }
+>;
 
-const Card = forwardRef<HTMLDivElement, Props>(function Card({ children }, ref) {
+const Card = forwardRef<HTMLDivElement, Props>(function Card(
+  { children, className, ...props },
+  ref
+) {
   return (
-    <div ref={ref} className={classnames('lubycon-card', 'lubycon-shadow--2')}>
+    <div
+      ref={ref}
+      className={classnames('lubycon-card', 'lubycon-shadow--2', className)}
+      {...props}
+    >
       {children}
     </div>
   );

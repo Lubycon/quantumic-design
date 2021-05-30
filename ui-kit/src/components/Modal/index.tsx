@@ -3,30 +3,39 @@ import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
 import { generateID } from 'utils/index';
 import { animated, useTransition } from 'react-spring';
-import { useState } from 'react';
+import { CombineElementProps } from 'src/types/utils';
 
-export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
-  show: boolean;
-  size?: 'small' | 'medium';
-  children: ReactElement | ReactElement[];
-  onOpen?: () => void;
-  onClose?: () => void;
-}
+export type ModalProps = CombineElementProps<
+  'div',
+  {
+    show: boolean;
+    size?: 'small' | 'medium';
+    children: ReactElement | ReactElement[];
+    onClose: () => void;
+    onCloseTransitionEnd?: () => void;
+  }
+>;
 
-const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) => {
-  const [showModal, setShowModal] = useState(show);
+const Modal = ({
+  show,
+  size = 'small',
+  children,
+  onClose,
+  onCloseTransitionEnd,
+  className,
+  ...props
+}: ModalProps) => {
   const backdropRef = useRef(null);
-  const backdropTransition = useTransition(showModal, null, {
+  const backdropTransition = useTransition(show, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
-  const modalTransition = useTransition(showModal, null, {
+  const modalTransition = useTransition(show, null, {
     from: { transform: 'translate(-50%, 100%)', opacity: 0 },
     enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
     leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
-    onStart: () => onOpen?.(),
-    onDestroyed: () => onClose?.(),
+    onDestroyed: () => onCloseTransitionEnd?.(),
   });
 
   const handleBackdropClick = useCallback(
@@ -34,7 +43,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
       if (backdropRef.current == null) {
         return;
       } else if (event.target === backdropRef.current) {
-        setShowModal(false);
+        onClose();
       }
     },
     [onClose]
@@ -42,7 +51,7 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
 
   const onKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setShowModal(false);
+      onClose();
     }
   };
 
@@ -52,10 +61,6 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
       window.removeEventListener('keydown', onKeydown);
     };
   }, []);
-
-  useEffect(() => {
-    setShowModal(show);
-  }, [show]);
 
   return (
     <div className="lubycon-modal" tabIndex={-1} aria-hidden={true}>
@@ -68,10 +73,14 @@ const Modal = ({ show, size = 'small', children, onOpen, onClose }: ModalProps) 
           )
       )}
       {modalTransition.map(
-        ({ item: show, key, props }) =>
+        ({ item: show, key, props: animationProps }) =>
           show && (
-            <animated.div key={key} style={props} className="lubycon-modal__window-wrapper">
-              <ModalWindow size={size}>
+            <animated.div
+              key={key}
+              style={animationProps}
+              className="lubycon-modal__window-wrapper"
+            >
+              <ModalWindow size={size} className={className} {...props}>
                 {Children.map(children, (child) => {
                   return cloneElement(child, {
                     key: generateID('lubycon-modal__children'),
