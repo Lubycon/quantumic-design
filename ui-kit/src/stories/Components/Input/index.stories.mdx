@@ -1,0 +1,83 @@
+import { Input, Text, colors, Icon } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { TextInputType } from 'components/Input';
+import { types, covertToTitlecase } from './data';
+import { Preview, Error } from './Components';
+
+<Meta title="Components/Input" components={Input} />
+
+# Input
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Preview />
+  </Story>
+</Canvas>
+
+## Label
+
+<Canvas>
+  <Story name="Label">
+    <Input label="라벨이에요" />
+  </Story>
+</Canvas>
+
+## Placeholder
+
+<Canvas>
+  <Story name="Placeholder">
+    <Input label="라벨이에요" placeholder="텍스트를 입력하세요" />
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Input label="라벨이에요" placeholder="텍스트를 입력하세요" disabled={true} />
+  </Story>
+</Canvas>
+
+## Error
+
+<Canvas>
+  <Story name="Error">
+    <Error />
+  </Story>
+</Canvas>
+
+## Types
+
+<Canvas>
+  <Story name="InputTypes">
+    <Text>
+      모바일에서는 인풋의 타입에 따라 다른 키보드가 노출되니, 모바일 환경에서 확인해보시는 것을
+      추천합니다.
+    </Text>
+    <ul>
+      {types.map((type) => (
+        <li key={type}>
+          <Input label={covertToTitlecase(type)} type={type} />
+        </li>
+      ))}
+    </ul>
+  </Story>
+</Canvas>
+
+## Left and Right
+
+<Canvas>
+  <Story name="LeftAndRight">
+    <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 300 }}>
+      <Input label={'Left Area'} left={<Icon name="musical-note" type="filled" />} />
+      <Input label={'Right Area'} right={<Icon name="close-circle" type="filled" />} />
+      <Input
+        label={'Left And Right'}
+        left={<Icon name="musical-note" type="filled" />}
+        right={<Icon name="close-circle" type="filled" />}
+      />
+    </div>
+  </Story>
+</Canvas>
