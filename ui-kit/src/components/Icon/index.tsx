@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { colors } from 'src/constants/colors';
 import { CombineElementProps } from 'src/types/utils';
+import { IconName } from 'src/types/icon';
 
 const iconCache: Record<string, string> = {};
 
@@ -9,7 +10,7 @@ export type IconType = 'outline' | 'filled' | 'sharp';
 type Props = CombineElementProps<
   'span',
   {
-    name: string;
+    name: IconName;
     size?: number;
     type?: IconType;
     color?: string;
@@ -23,7 +24,7 @@ type Props = CombineElementProps<
 const Icon = ({
   name,
   size = 16,
-  type = 'filled',
+  type = 'outline',
   color = colors.gray100,
   className,
   ...rest
