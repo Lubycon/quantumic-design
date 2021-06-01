@@ -1,30 +1,13 @@
-import React from 'react';
-import { Button, List, ListItem, ListItemImage, colors } from 'src';
-import { Meta } from '@storybook/react/types-6-0';
-import Icon from 'src/components/Icon';
+import { Button, List, ListItem, ListItemImage, colors, Icon } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { DummyItem, DummyItemWithoutCaption, DummyItemWithoutTitle, noop } from './Components';
 
-export default {
-  title: 'Components/List',
-} as Meta;
+<Meta title="Components/List" components={List} />
 
-const DummyItem = ({ onClick }: { onClick?: () => void }) => (
-  <ListItem
-    title="리스트 제목"
-    content="여기에 내용이 들어갑니다"
-    caption="캡션입니다"
-    onClick={onClick}
-  />
-);
-const DummyItemWithoutCaption = () => (
-  <ListItem title="리스트 제목" content="여기에 내용이 들어갑니다" />
-);
-const DummyItemWithoutTitle = () => (
-  <ListItem content="여기에 내용이 들어갑니다" caption="캡션입니다" />
-);
-const noop = () => {};
+## Preview
 
-export const Default = () => {
-  return (
+<Canvas>
+  <Story name="Preview">
     <List>
       <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" caption="5일전" />
       <DummyItem />
@@ -32,11 +15,13 @@ export const Default = () => {
       <DummyItem />
       <DummyItem />
     </List>
-  );
-};
+  </Story>
+</Canvas>
 
-export const WithoutCaption = () => {
-  return (
+## Without Caption
+
+<Canvas>
+  <Story name="WithoutCaption">
     <List>
       <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" />
       <DummyItemWithoutCaption />
@@ -44,11 +29,13 @@ export const WithoutCaption = () => {
       <DummyItemWithoutCaption />
       <DummyItemWithoutCaption />
     </List>
-  );
-};
+  </Story>
+</Canvas>
 
-export const WithoutTitle = () => {
-  return (
+## Without Title
+
+<Canvas>
+  <Story name="WithoutTitle">
     <List>
       <ListItem content="리스트 컴포넌트" caption="5일전" />
       <DummyItemWithoutTitle />
@@ -56,11 +43,13 @@ export const WithoutTitle = () => {
       <DummyItemWithoutTitle />
       <DummyItemWithoutTitle />
     </List>
-  );
-};
+  </Story>
+</Canvas>
 
-export const LeftRight = () => {
-  return (
+## Left and Right
+
+<Canvas>
+  <Story name="LeftAndRight">
     <List>
       <ListItem
         left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
@@ -103,11 +92,13 @@ export const LeftRight = () => {
         onClick={noop}
       />
     </List>
-  );
-};
+  </Story>
+</Canvas>
 
-export const Clickable = () => {
-  return (
+## Clickable
+
+<Canvas>
+  <Story name="Clickable">
     <List>
       <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" caption="5일전" onClick={noop} />
       <DummyItem onClick={noop} />
@@ -115,11 +106,13 @@ export const Clickable = () => {
       <DummyItem onClick={noop} />
       <DummyItem onClick={noop} />
     </List>
-  );
-};
+  </Story>
+</Canvas>
 
-export const Multiline = () => {
-  return (
+## Multiline
+
+<Canvas>
+  <Story name="Multiline">
     <List style={{ maxWidth: 375 }}>
       <ListItem
         title="루비콘 UI Kit"
@@ -131,5 +124,5 @@ export const Multiline = () => {
       <DummyItem />
       <DummyItem />
     </List>
-  );
-};
+  </Story>
+</Canvas>

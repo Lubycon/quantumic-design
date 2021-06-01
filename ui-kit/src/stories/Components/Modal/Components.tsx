@@ -1,4 +1,3 @@
-import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalContent, ModalFooter } from 'src';
 import Button from 'components/Button';
@@ -33,12 +32,7 @@ const margin = {
   marginBottom: 32,
 };
 
-export default {
-  title: 'Components/Modal',
-  component: Modal,
-} as Meta;
-
-export const Default = () => {
+export const Preview = () => {
   const [showSmallModal, setShowSmallModal] = useState(false);
   const [showMediumModal, setShowMediumModal] = useState(false);
 

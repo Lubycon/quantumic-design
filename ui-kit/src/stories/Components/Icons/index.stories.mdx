@@ -1,0 +1,57 @@
+import { Icon, Text, colors, Row, Column } from 'src';
+import { IconType } from 'src/components/Icon';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ColorProperty } from 'src/constants/colors';
+import { Fragment } from 'react';
+import { commonIcons, logoIcons, colorsKeys, iconTypes } from './data';
+
+<Meta title="Components/Icon" components={Icon} />
+
+# Icon
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Row>
+      {commonIcons.map((icon) => (
+        <Column key={icon} xs={2}>
+          <Icon name={icon} size={50} />
+        </Column>
+      ))}
+      {logoIcons.map((icon) => (
+        <Column key={icon} xs={2}>
+          <Icon name={icon} size={50} type="filled" />
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+## Colors
+
+<Canvas>
+  <Story name="Icon with Color">
+    <Row>
+      {Object.keys(colors).map((colorKey) => (
+        <Column key={colorKey}>
+          <Icon name="accessibility" color={colors[colorKey]} size={50} />
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+## Types
+
+<Canvas>
+  <Story name="Types">
+    <Row>
+      {iconTypes.map((type) => (
+        <Column key={type}>
+          <Icon name="accessibility" size={50} color={colors.blue50} type={type} />
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
