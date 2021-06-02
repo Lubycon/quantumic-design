@@ -1,0 +1,35 @@
+import { Radio } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Radio" components={Radio} />
+
+# Radio
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Radio label="라디오1" name="radio" />
+    <Radio label="라디오2" name="radio" />
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Radio label="라디오1" name="radio" />
+    <Radio label="라디오2" name="radio" />
+    <Radio label="라디오3" name="radio" disabled />
+    <Radio label="라디오4" name="radio" defaultChecked={true} disabled />
+  </Story>
+</Canvas>
+
+## Inline
+
+<Canvas>
+  <Story name="Inline">
+    <Radio display="inline" label="라디오1" name="radio" style={{ marginRight: 16 }} />
+    <Radio display="inline" label="라디오2" name="radio" />
+  </Story>
+</Canvas>

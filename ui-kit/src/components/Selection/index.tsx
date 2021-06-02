@@ -54,6 +54,7 @@ const Selection = (
           onChange?.(e);
           setInnerValue(e.target.value ?? '');
         }}
+        disabled={disabled}
       >
         <option value="" hidden={true} className="lubycon-selection__placeholder">
           {placeholder}
