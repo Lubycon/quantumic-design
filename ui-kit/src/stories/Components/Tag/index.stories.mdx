@@ -1,0 +1,40 @@
+import { Tag } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { samples } from './data';
+
+<Meta title="Components/Tag" components={Tag} />
+
+# Tag
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <div style={{ display: 'flex' }}>
+      {samples.map(({ label, type }, index) => (
+        <Tag style={{ marginRight: 8 }} key={index} type={type}>
+          {label}
+        </Tag>
+      ))}
+    </div>
+  </Story>
+</Canvas>
+
+## With Delete Button
+
+<Canvas>
+  <Story name="With Delete Button">
+    <div style={{ display: 'flex' }}>
+      {samples.map(({ label, type }, index) => (
+        <Tag
+          style={{ marginRight: 8 }}
+          key={index}
+          type={type}
+          onDelete={(label) => console.log(`${label} is deleted`)}
+        >
+          {label}
+        </Tag>
+      ))}
+    </div>
+  </Story>
+</Canvas>
