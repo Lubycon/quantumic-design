@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Meta } from '@storybook/react/types-6-0';
 import { ProgressBar, Text } from 'src';
-import { ProgressBarLabelPosition } from 'src/components/ProgressBar';
+import { MAX_VALUE, labelPosition } from './data';
 
-export default {
-  title: 'Components/ProgressBar',
-} as Meta;
-
-const MAX_VALUE = 100;
 const getProgressValue = (value: number) => (value === MAX_VALUE ? 0 : value + 1);
 
-export const Default = () => {
+export const Preview = () => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -20,14 +14,9 @@ export const Default = () => {
     };
   }, []);
 
-  return (
-    <div>
-      <ProgressBar value={value} max={MAX_VALUE} />
-    </div>
-  );
+  return <ProgressBar value={value} max={MAX_VALUE} />;
 };
 
-const labelPosition: ProgressBarLabelPosition[] = ['top', 'bottom', 'left', 'right'];
 export const Label = () => {
   const [value, setValue] = useState(0);
 
