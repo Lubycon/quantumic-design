@@ -1,0 +1,70 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Snackbar } from 'src';
+import {
+  OpenSnackbar,
+  LongText,
+  AutoHide,
+  SnackbarHooks,
+  Aligns,
+  MultipleButton,
+} from './Components';
+
+<Meta title="Components/Snackbar" components={Snackbar} />
+
+# Snackbar
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Snackbar show={true} message="데이터 전송이 완료되었습니다." />
+  </Story>
+</Canvas>
+
+## Open
+
+<Canvas>
+  <Story name="Open Snackbar">
+    <OpenSnackbar />
+  </Story>
+</Canvas>
+
+## Long Text
+
+<Canvas>
+  <Story name="Long Text">
+    <LongText />
+  </Story>
+</Canvas>
+
+## Auto Hide
+
+<Canvas>
+  <Story name="Auto Hide">
+    <AutoHide />
+  </Story>
+</Canvas>
+
+## With Hooks
+
+<Canvas>
+  <Story name="With Hooks">
+    <SnackbarHooks />
+  </Story>
+</Canvas>
+
+## Aligns
+
+<Canvas>
+  <Story name="Aligns">
+    <Aligns />
+  </Story>
+</Canvas>
+
+## Multiple Buttons
+
+<Canvas>
+  <Story name="Multiple Buttons">
+    <MultipleButton />
+  </Story>
+</Canvas>
