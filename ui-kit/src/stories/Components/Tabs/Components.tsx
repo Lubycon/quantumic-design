@@ -1,45 +1,12 @@
 import React, { PropsWithChildren, useState } from 'react';
-import { Meta } from '@storybook/react/types-6-0';
-import { Tabs, TabsItem } from 'src';
-
-export default {
-  title: 'Components/Tabs',
-  component: Tabs,
-} as Meta;
-
-const tabs = [
-  {
-    value: 'first',
-    text: '첫번째 탭',
-    disabled: false,
-  },
-  {
-    value: 'second',
-    text: '두번째 태애애애애앱',
-    disabled: false,
-  },
-  {
-    value: 'third',
-    text: '세번째 탭',
-    disabled: false,
-  },
-  {
-    value: 'forth',
-    text: '네번째 탭',
-    disabled: true,
-  },
-  {
-    value: 'fifth',
-    text: '다섯번째 탭',
-    disabled: false,
-  },
-];
+import { TabsItem, Tabs } from 'src';
+import { tabs } from './data';
 
 const TabContent = ({ children }: PropsWithChildren<unknown>) => {
   return <div style={{ padding: 20 }}>{children}</div>;
 };
 
-export const Default = () => {
+export const Preview = () => {
   const [selectedTab, selectTab] = useState(tabs[0].value);
 
   return (
