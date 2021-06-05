@@ -4,9 +4,10 @@ import classnames from 'classnames';
 import Text from '../Text';
 import Icon from '../Icon';
 import { CombineElementProps } from 'src/types/utils';
+import { IconName } from 'src/types/icon';
 
 interface AlertIcon {
-  icon: string;
+  icon: IconName;
   color: string;
 }
 const alertIconMap: {
