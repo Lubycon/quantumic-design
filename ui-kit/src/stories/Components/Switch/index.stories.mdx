@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Text, Switch, colors } from 'src';
+
+<Meta title="Components/Switch" components={Switch} />
+
+# Switch
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Text as="h2" typography="h2" style={{ color: colors.gray100 }}>
+      스위치
+    </Text>
+    <div style={{ padding: 0 }}>
+      <Switch label={'Off'} style={{ marginBottom: '23.17px' }} />
+      <Switch defaultChecked={true} label={'On'} />
+    </div>
+  </Story>
+</Canvas>
+
+## Inline
+
+<Canvas>
+  <Story name="Inline">
+    <Switch display="inline" label="Off" style={{ marginRight: '20px' }} />
+    <Switch defaultChecked={true} display="inline" label="On" />
+  </Story>
+</Canvas>

@@ -1,17 +1,15 @@
-import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { Table, TableHead, TableBody, TableRow, TableCell } from 'src';
+import { header, contents, iterator } from './data';
 
-export default {
-  title: 'Components/Table',
-} as Meta;
+<Meta title="Components/Table" components={{ Table, TableHead, TableBody, TableRow, TableCell }} />
 
-const header = ['제목', '제목', '제목', '제목', '제목'];
-const contents = ['내용', '내용을 입력하세요', '내용', '내용을 입력하세요', '내용'];
-const iterator = [undefined, undefined, undefined, undefined, undefined, undefined];
+# Table
 
-export const Default = () => {
-  return (
+## Preview
+
+<Canvas>
+  <Story name="Preview">
     <Table>
       <TableHead>
         <TableRow>
@@ -30,5 +28,5 @@ export const Default = () => {
         ))}
       </TableBody>
     </Table>
-  );
-};
+  </Story>
+</Canvas>
