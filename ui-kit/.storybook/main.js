@@ -16,7 +16,7 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins.push(new TsconfigPathsPlugin({}));
 
-    const mdxRule = config.module.rules.find((rule) => rule.test?.test('.story.mdx'));
+    const mdxRule = config.module.rules.find((rule) => rule.test == null ? false : rule.test.test('.story.mdx'));
     const {
       options: { remarkPlugins },
     } = mdxRule.use.find(({ loader }) => loader === require.resolve('@mdx-js/loader'));
