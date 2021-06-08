@@ -1,0 +1,57 @@
+import { Text } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="components/Text" components={Text} />
+
+# Text
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Text>텍스트 컴포넌트 입니다</Text>
+  </Story>
+</Canvas>
+
+## Block
+
+<Canvas>
+  <Story name="Block">
+    <Text as="p">이 텍스트는 p태그로 렌더되며, display: block이 적용됩니다</Text>
+    <Text as="p">이 텍스트는 p태그로 렌더되며, display: block이 적용됩니다</Text>
+  </Story>
+</Canvas>
+
+## Font Weight
+
+<Canvas>
+  <Story name="Font Weight">
+    <Text as="p">폰트 굵기 보통</Text>
+    <Text as="p" fontWeight="bold">
+      폰트 굵기 굵게
+    </Text>
+  </Story>
+</Canvas>
+
+## Typography
+
+<Canvas>
+  <Story name="Typography">
+    <Text as="p">Lubycon UI Kit의 타이포그래피를 사용해보세요</Text>
+    <Text typography="h1" as="p">
+      타이포그래피는 h1이지만, 실제로는 p태그로 렌더됩니다{' '}
+    </Text>
+  </Story>
+</Canvas>
+
+## As
+
+<Canvas>
+  <Story name="As">
+    <Text as="a" href="https://github.com" target="blank">
+      앵커 태그를 사용해보자
+    </Text>
+    <Text as="h1">h1으로 렌더해도 기본적으로는 Typography: p1이 적용됩니다</Text>
+    <Text as="button">버튼도 가능하기는 함</Text>
+  </Story>
+</Canvas>
