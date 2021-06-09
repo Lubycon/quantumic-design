@@ -1,33 +1,7 @@
 import React, { useState } from 'react';
-import { Meta } from '@storybook/react/types-6-0';
 import { Tooltip, Button } from 'src';
 import { TooltipPosition } from 'src/components/Tooltip/types';
-
-export default {
-  title: 'Components/Tooltip',
-  component: Tooltip,
-} as Meta;
-
-const positions: TooltipPosition[] = [
-  'top-left',
-  'top-center',
-  'top-right',
-  'left',
-  'right',
-  'bottom-left',
-  'bottom-center',
-  'bottom-right',
-];
-
-export const Default = () => {
-  return (
-    <div style={{ paddingTop: 40 }}>
-      <Tooltip show={true} message="툴팁입니다.">
-        <Button type="informative">버튼입니다</Button>
-      </Tooltip>
-    </div>
-  );
-};
+import { positions } from './data';
 
 const TooltipButton = ({ children }: { children: TooltipPosition }) => {
   const [show, setShow] = useState(false);
@@ -44,7 +18,17 @@ const TooltipButton = ({ children }: { children: TooltipPosition }) => {
   );
 };
 
-export const Position = () => {
+export const Preview = () => {
+  return (
+    <div style={{ paddingTop: 40 }}>
+      <Tooltip show={true} message="툴팁입니다.">
+        <Button type="informative">버튼입니다</Button>
+      </Tooltip>
+    </div>
+  );
+};
+
+export const Positions = () => {
   return (
     <ul style={{ padding: 100, margin: 0 }}>
       {positions.map((p) => (
