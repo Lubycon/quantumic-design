@@ -17,38 +17,44 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 # Card
 
-## Preview
+- Card는 단일 주제에 대한 정보 전달을 목적으로 하는 컴포넌트입니다.
+- Card는 상세하고 디테일한 문서 내용을 전달하기에 앞서 진입점으로 사용되는 컴포넌트입니다.
+- 카드의 내용에 따라 자율적인 UI 변경이 가능합니다. Icon, UI controls, text를 추가할 수 있습니다.
+- 표현하고자 하는 내용에 따라 header/text/footer 레이아웃을 변경해 사용할 수 있습니다.
+- Default와 Image card 두 가지 형태를 제공합니다.
+
+## Default Card
+
+가장 기본적인 text type 카드입니다. 필요에 따라 커스텀해 사용할 수 있습니다.
 
 <Canvas>
-  <Story name="Preview">
-    <div style={{ width: 240 }}>
-      <Card>
-        <CardHeader>제목</CardHeader>
-        <CardContent>
-          <Text
-            style={{
-              color: colors.gray70,
-            }}
-          >
-            내용을 입력하세요.
-            <br />
-            내용을 입력하세요.
-            <br />
-            내용을 입력하세요.
-            <br />
-            내용을 입력하세요.
+  <Story name="Default Card">
+    <Card style={{ width: 240 }}>
+      <CardHeader>제목</CardHeader>
+      <CardContent>
+        <Text
+          style={{
+            color: colors.gray70,
+          }}
+        >
+          내용을 입력하세요.
+          <br />
+          내용을 입력하세요.
+          <br />
+          내용을 입력하세요.
+          <br />
+          내용을 입력하세요.
+        </Text>
+      </CardContent>
+      <CardFooter>
+        <span style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} role="button">
+          <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
+            더보기
           </Text>
-        </CardContent>
-        <CardFooter>
-          <span style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} role="button">
-            <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
-              더보기
-            </Text>
-            <Icon name="arrow-forward" type="outline" color={colors.gray60} />
-          </span>
-        </CardFooter>
-      </Card>
-    </div>
+          <Icon name="arrow-forward" type="outline" color={colors.gray60} />
+        </span>
+      </CardFooter>
+    </Card>
   </Story>
 </Canvas>
 
@@ -56,45 +62,17 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 <Canvas>
   <Story name="Image Card">
-    <Row style={{ width: 900 }}>
-      <Column>
-        <Card>
-          <CardHeader>제목</CardHeader>
-          <CardImageContent src="http://cogulmars.cafe24.com/img/04about_img01.png" alt="에비츄" />
-          <CardFooter>
-            <span
-              style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-              role="button"
-            >
-              <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
-                더보기
-              </Text>
-              <Icon name="arrow-forward" type="outline" color={colors.gray60} />
-            </span>
-          </CardFooter>
-        </Card>
-      </Column>
-      <Column>
-        <Card>
-          <CardHeader>춤추는 에비츄</CardHeader>
-          <CardImageContent
-            src="https://cdn.univ20.com/wp-content/uploads/2015/08/c4ca4238a0b923820dcc509a6f75849b.gif"
-            alt="춤추는 에비츄"
-          />
-          <CardFooter justifyContent="flex-end">
-            <Button size="small">더보기</Button>
-          </CardFooter>
-        </Card>
-      </Column>
-      <Column>
-        <Card>
-          <CardHeader>장보는 에비츄</CardHeader>
-          <CardImageContent
-            src="http://cogulmars.cafe24.com/img/04about_img04.png"
-            alt="장보는 에비츄"
-          />
-        </Card>
-      </Column>
-    </Row>
+    <Card style={{ width: 240 }}>
+      <CardHeader>제목</CardHeader>
+      <CardImageContent src="http://cogulmars.cafe24.com/img/04about_img01.png" alt="에비츄" />
+      <CardFooter>
+        <span style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} role="button">
+          <Text typography="caption" style={{ color: colors.gray60, marginRight: 5 }}>
+            더보기
+          </Text>
+          <Icon name="arrow-forward" type="outline" color={colors.gray60} />
+        </span>
+      </CardFooter>
+    </Card>
   </Story>
 </Canvas>
