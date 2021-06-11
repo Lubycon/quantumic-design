@@ -11,7 +11,21 @@ import { alerts } from './data';
 
 <Canvas>
   <Story name="Preview">
-    <Row style={{ marginBottom: 80, width: 1200 }}>
+    <Alert type="positive">메세지를 넣어주세요</Alert>
+  </Story>
+</Canvas>
+
+### Title
+
+특별히 강조하고 싶은 메세지가 있는 경우에는 `title` 프로퍼티를 사용할 수 있습니다. `title` 프로퍼티에 입력된 값은 `Alert` 의 왼쪽 부분에 진한 글씨로 강조되어 렌더됩니다.
+
+### Type
+
+`Alert` 컴포넌트는 Lubycon UI Kit에서 제공하는 4가지 시맨틱 컬러를 기반으로 한 타입을 가지고 있습니다. 기본적으로 아무 타입도 주지 않았을 때 `Alert` 컴포넌트는 `informative` 타입으로 렌더됩니다.
+
+<Canvas>
+  <Story name="Type">
+    <Row style={{ width: 1200 }}>
       {alerts.map(({ type, title }) => (
         <Column xs={6} key={type} style={{ marginBottom: 32 }}>
           <Alert style={{ marginBottom: 16 }} type={type} title={`${title} 메세지`}>

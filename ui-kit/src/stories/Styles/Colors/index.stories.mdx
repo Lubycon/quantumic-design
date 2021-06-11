@@ -7,9 +7,11 @@ import { grayScaleNames, semanticColorNames, indexMap } from './data';
 
 # 컬러 팔레트
 
-이 곳은 컬러 팔레트 입니다.
+컬러는 보편적으로 사용하는 시멘틱 컬러와 그레이 스케일로 나뉘어집니다. 각 컬러는 시각 장애가 있는 사람들도 명확하게 컬러를 인지할 수 있는 웹 접근성(WCAG 2.0)을 준수하기 위한 W3C AA 등급을 충족합니다.
 
 ## 그레이 스케일(Gray Scale)
+
+그레이 스케일은 총 10단계로 나뉘어지며 텍스트 컬러와 배경색에 적절하게 사용합니다.
 
 <Story name="Grey Scale">
   <ul
@@ -46,6 +48,8 @@ import { grayScaleNames, semanticColorNames, indexMap } from './data';
 </Story>
 
 ## 의미론적 색상(Semantic Color)
+
+시멘틱 컬러는 사용자에게 피드백을 주고 상태를 식별하거나 도움말을 찾는 등의 역할을 하며 상황에 맞는 적절한 컬러를 사용합니다.
 
 <Story name="Semantic Colors">
   <div style={{ display: 'grid', gap: '40px', gridTemplateColumns: 'repeat(2, 615px)' }}>
@@ -94,3 +98,19 @@ import { grayScaleNames, semanticColorNames, indexMap } from './data';
     ))}
   </div>
 </Story>
+
+### Positive
+
+확인, 성공과 같은 긍정적인 메세지를 명확하게 보여줄 때 사용합니다.
+
+### Informative
+
+사용자에게 정보를 제공할 때 사용합니다.
+
+### Negative
+
+오류, 주의, 실패와 같은 부정적인 메시지에 사용합니다.
+
+### Notice
+
+주의사항이나 진행이 지연되는 것을 알릴 때 사용합니다.
