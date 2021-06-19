@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { colors } from 'src/constants/colors';
 import { CombineElementProps } from 'src/types/utils';
 import { IconName } from 'src/types/icon';
+import { fetchIcon, getIconName, getIconType, getIconUrl } from './utils';
 
 const iconCache: Record<string, string> = {};
 
@@ -24,11 +25,12 @@ type Props = CombineElementProps<
 const Icon = ({
   name,
   size = 16,
-  type = 'outline',
+  type: propsType = 'outline',
   color = colors.gray100,
   className,
   ...rest
 }: Props) => {
+  const type = getIconType(name, propsType);
   const targetAttr = type === 'outline' ? 'stroke' : 'fill';
   const iconName = getIconName(name, type);
 
@@ -94,21 +96,3 @@ const Icon = ({
 };
 
 export default Icon;
-
-async function fetchIcon(name: string) {
-  const response = await fetch(getIconUrl(name));
-  const body = await response.text();
-  if (response.ok) {
-    return body;
-  } else {
-    throw new Error(body);
-  }
-}
-
-function getIconName(name: string, type: IconType) {
-  return type === 'filled' ? name : `${name}-${type}`;
-}
-
-function getIconUrl(name: string) {
-  return `https://icons.lubycon.io/${name}.svg`;
-}
