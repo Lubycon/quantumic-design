@@ -69,7 +69,8 @@ import { Checkbox, Text } from '@lubycon/ui-kit';
 function Diff() {
   const [state, setState] = useState(false);
   return (
-    <Checkbox label={'체크박스'} onChange={(e) => setState(e.target.checked)} checked={state} />
+    <Checkbox label={'Controlled'} onChange={(e) => setState(e.target.checked)} checked={state} />
+    <Checkbox label={'Uncontrolled'} onChange={(e) => setState(e.target.checked)}  />
     /* checked 상태의 관리 방법을 결정할 수 있습니다 */
   );
 }
