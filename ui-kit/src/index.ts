@@ -29,3 +29,5 @@ export { Portal } from './contexts/Portal';
 export { useSnackbar } from './contexts/Snackbar';
 export { colors } from './constants/colors';
 export { default as Icon } from './components/Icon';
+export { default as Shadow } from './components/Shadow';
+export { default as Spacing } from './components/Spacing';
