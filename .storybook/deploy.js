@@ -1,5 +1,6 @@
 const ghpages = require('gh-pages');
 const path = require('path');
+const fs = require('fs');
 const token = process.env.ACCESS_TOKEN;
 
 console.log('📦 개발용 스토리북 배포를 준비 중 입니다...');
@@ -13,7 +14,7 @@ console.log('🌱 CNAME 완성');
 ghpages.publish(path.join(__dirname, '../storybook-static'), {
   branch: 'master',
   remote: 'origin',
-  repo: 'https://${token}@github.com/Lubycon/${subdomain}.lubycon.io.git',
+  repo: `https://${token}@github.com/Lubycon/${subdomain}.lubycon.io.git`,
   message: '개발용 스토리북 배포',
 }, (err) => {
   if (err) {
