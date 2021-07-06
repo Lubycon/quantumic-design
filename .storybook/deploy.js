@@ -13,8 +13,8 @@ console.log('🌱 CNAME 완성');
 ghpages.publish(path.join(__dirname, '../storybook-static'), {
   branch: 'master',
   remote: 'origin',
-  repo: `https://${token}@github.com/Lubycon/${subdomain}.lubycon.io.git`,
-  message: `개발용 스토리북 배포`,
+  repo: 'https://${token}@github.com/Lubycon/${subdomain}.lubycon.io.git',
+  message: '개발용 스토리북 배포',
 }, (err) => {
   if (err) {
     throw err;
