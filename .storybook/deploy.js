@@ -2,10 +2,11 @@ const ghpages = require('gh-pages');
 const path = require('path');
 const fs = require('fs');
 const token = process.env.ACCESS_TOKEN;
+const env = process.ENV;
+const isProduction = env === 'live';
+const subdomain = isProduction ? 'ui-kit' : 'ui-kit.alpha';
 
 console.log('📦 개발용 스토리북 배포를 준비 중 입니다...');
-const isProduction = process.ENV === 'live';
-const subdomain = isProduction ? 'ui-kit' : 'ui-kit.alpha';
 
 console.log('🌱 CNAME 만드는 듕...');
 fs.renameSync(path.resolve(`./CNAME.${env}`), path.resolve('./storybook-static/CNAME'));
