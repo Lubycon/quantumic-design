@@ -1,8 +1,17 @@
 {
-  "name": "lubycon-ui-kit",
-  "description": "",
+  "name": "@lubycon/ui-kit",
+  "description": "Lubycon UI Kit for any projects 🖌",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.15"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "esm/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Lubycon/lubycon-ui-kit.git"
@@ -11,37 +20,93 @@
     "lubycon"
   ],
   "author": "Lubycon",
-  "dependencies": {},
-  "scripts": {},
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react-spring": "^8.0.27",
+    "resize-observer-polyfill": "^1.5.1"
+  },
+  "scripts": {
+    "dev": "yarn start",
+    "start": "start-storybook -p 6006 --no-dll --no-manager-cache",
+    "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.build.json",
+    "build-stories": "yarn build-storybook -o ./storybook-static -s ./public --docs",
+    "publish-stories": "node ./.storybook/deploy.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clean": "rm -rf dist && mkdir dist",
+    "copy": "ncp package.json dist/package.json",
+    "copy-sass": "ncp src/sass/modules dist/sass",
+    "copy-version": "ncp dist/package.json package.json",
+    "typecheck": "tsc --noEmit"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "sideEffects": false,
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@storybook/addon-a11y": "^6.2.9",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/node-logger": "^6.1.14",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.14",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.2.0",
     "@semantic-release/npm": "^7.0.8",
     "@semantic-release/release-notes-generator": "^9.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/classnames": "^2.2.11",
+    "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "autoprefixer": "^9.0.0",
+    "babel-loader": "^8.2.1",
+    "classnames": "^2.2.6",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
+    "gh-pages": "^3.1.0",
     "ncp": "^2.0.0",
     "postcss": "^7.0.2",
     "prettier": "^2.1.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.0",
+    "remark-codesandbox": "^0.10.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "sass": "^1.29.0",
     "semantic-release": "^17.2.4",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "^4.0.3"
-  },
-  "workspaces": [
-    "docs",
-    "ui-kit"
-  ]
+  }
 }
