@@ -31,7 +31,7 @@ jobs:
       - name: Build Storybook
         run: yarn build-stories
       - name: Publish
-        run: yarn workspace publish-docs
+        run: yarn publish-stories
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ENV: 'alpha'
