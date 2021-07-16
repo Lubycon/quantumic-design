@@ -4,22 +4,25 @@ const codesandbox = require('remark-codesandbox');
 const codesandboxTemplatePackageJSON = require('../src/template/codesandbox/package.json');
 
 module.exports = {
-  stories: ['../src/**/*.stories.(ts|tsx|mdx)', '../src/stories/**/*.mdx'],
+  stories: ['../src/**/*.stories.(tsx|mdx)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
+    '@storybook/addon-docs',
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
     '@storybook/addon-a11y',
-    '@storybook/addon-docs',
   ],
   webpackFinal: async (config) => {
     config.resolve.plugins.push(new TsconfigPathsPlugin({}));
 
     const mdxRule = config.module.rules.find((rule) => rule.test == null ? false : rule.test.test('.story.mdx'));
+
     const {
       options: { remarkPlugins },
     } = mdxRule.use.find(({ loader }) => loader === require.resolve('@mdx-js/loader'));
+
+    config.devtool = false;
 
     remarkPlugins.push([
       codesandbox,

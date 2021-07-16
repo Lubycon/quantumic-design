@@ -42,12 +42,6 @@ module.exports = {
         "prepareCmd": "yarn workspace @lubycon/ui-kit copy-version",
       }
     ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["package.json"]
-      }
-    ],
     "@semantic-release/github"
   ]
 }
