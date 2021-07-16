@@ -3,7 +3,7 @@ name: Release UI Kit
 on:
   push:
     branches:
-      - master
+      - main
       - alpha
       - beta
 
