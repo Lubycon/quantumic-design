@@ -56,7 +56,7 @@ import { DummyItem, DummyItemWithoutCaption, DummyItemWithoutTitle, noop } from 
 
 ## Left and Right
 
-리스트 컴포넌트를 사용하다보면 사용자의 프로필 사진과 같은 이미지나 클리커블한 리스트를 표현하기 위해 아이콘을 사용하고 싶을 수 있습니다.
+리스트 컴포넌트를 사용하다보면 사용자의 프로필 사진과 같은 이미지를 사용하거나 클릭이 가능한 요소라는 것을 표현하기 위해 아이콘을 사용하고 싶을 수 있습니다.
 
 그런 상황에서는 리스트 컴포넌트의 `left`나 `right` 프로퍼티를 통해 원하는 `ReactNode` 타입의 값을 주입하여 컴포넌트를 합성하면 됩니다.
 
@@ -109,9 +109,9 @@ import { DummyItem, DummyItemWithoutCaption, DummyItemWithoutTitle, noop } from 
 
 ## Clickable
 
-리스트 컴포넌트에 `onClick` 이벤트 핸들러를 주입하게 되면 리스트 컴포넌트는 스스로 클리커블한 UX를 표현합니다.
+리스트 컴포넌트에 `onClick` 이벤트 핸들러를 주입하게 되면 리스트 컴포넌트는 스스로 클릭이 가능한 요소의 UX를 표현합니다.
 
-`onClick` 이벤트 핸들러를 사용하면 리스트 컴포넌트에 마우스가 위치했을 때 `cursor: pointer` 스타일이 적용되고, 스타일을 변경하여 사용자에게 이 요소가 클리커블하다는 UX를 전달합니다.
+`onClick` 이벤트 핸들러를 사용하면 리스트 컴포넌트에 마우스가 위치했을 때 `cursor: pointer` 스타일이 적용되고, 스타일을 변경하여 사용자에게 이 요소가 클릭이 가능하다는 UX를 전달합니다.
 
 <Canvas>
   <Story name="Clickable">
