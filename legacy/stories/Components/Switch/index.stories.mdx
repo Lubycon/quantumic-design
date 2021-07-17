@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Text, Switch, colors } from 'src';
+
+<Meta title="Components/Switch" components={Switch} />
+
+# Switch
+
+## Preview
+
+항목을 켜거나 끄는 등 독립적으로 제어 할 수 있는 경우 라디오 버튼 대신 스위치를 사용해야합니다.
+
+<Canvas>
+  <Story name="Preview">
+    <div style={{ padding: 0 }}>
+      <Switch label={'Off'} style={{ marginBottom: '23.17px' }} />
+      <Switch defaultChecked={true} label={'On'} />
+    </div>
+  </Story>
+</Canvas>
+
+## Inline
+
+<Canvas>
+  <Story name="Inline">
+    <Switch display="inline" label="Off" style={{ marginRight: '20px' }} />
+    <Switch defaultChecked={true} display="inline" label="On" />
+  </Story>
+</Canvas>

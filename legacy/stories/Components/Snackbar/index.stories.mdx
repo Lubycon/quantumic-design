@@ -1,0 +1,94 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Snackbar, Button } from 'src';
+import {
+  OpenSnackbar,
+  LongText,
+  AutoHide,
+  SnackbarHooks,
+  Aligns,
+  MultipleButton,
+} from './Components';
+
+<Meta title="Components/Snackbar" components={Snackbar} />
+
+# Snackbar
+
+스낵바는 일종의 가이드 팝업입니다. 사용자에게 수행된 작업이 무엇인지 알려주거나, 어떤 것을 수행해야 하는지 알려주는데 활용할 수 있습니다.
+
+> 주의사항
+>
+> - '닫기' 또는 '취소'의 구현은 사용자의 선택 사항입니다
+> - 한 번에 하나의 스낵바만 표현됩니다
+> - 스낵바는 모달보다 우선순위가 낮습니다. 따라서 사용자의 경험을 방해하지 않는다는 원칙 하에 배치되며, 시간의 경과에 따라 자동으로 사라집니다
+> - 모바일에서 텍스트는 최대 두 줄까지 입력 가능합니다
+
+## Preview
+
+기본 형태입니다. 또한 스낵바 컴포넌트의 버튼에 이벤트를 할당할 수 있습니다. 해당 버튼 클릭시 별도의 가이드 팝업이 나오는 등 사용자가 원하는 인터렉션을 추가할 수 있습니다.
+
+<Canvas>
+  <Story name="Preview">
+    <Snackbar show={true} message="데이터 전송이 완료되었습니다." button="닫기" />
+    <Snackbar
+      show={true}
+      message="데이터 전송이 완료되었습니다."
+      button={<Button onClick={() => console.log('버튼이 클릭되었습니다')}>닫기</Button>}
+    />
+  </Story>
+</Canvas>
+
+## Open
+
+<Canvas>
+  <Story name="Open Snackbar">
+    <OpenSnackbar />
+  </Story>
+</Canvas>
+
+## Long Text
+
+<Canvas>
+  <Story name="Long Text">
+    <LongText />
+  </Story>
+</Canvas>
+
+## Auto Hide
+
+정해진 시간이 지나면 스낵바가 자동으로 사라지도록 만듭니다.
+
+<Canvas>
+  <Story name="Auto Hide">
+    <AutoHide />
+  </Story>
+</Canvas>
+
+## With Hooks
+
+스낵바 컴포넌트는 명령형으로 렌더하는 방법이 있습니다. 별도의 컨텍스트를 제공합니다. 명령형으로 렌더된 스낵바는 3초 뒤 자동으로 사라집니다
+
+<Canvas>
+  <Story name="With Hooks">
+    <SnackbarHooks />
+  </Story>
+</Canvas>
+
+## Aligns
+
+스낵바가 나타나는 위치를 결정할 수 있습니다. 기본적으로는 뷰포트의 왼쪽에 렌더됩니다
+
+<Canvas>
+  <Story name="Aligns">
+    <Aligns />
+  </Story>
+</Canvas>
+
+## Multiple Buttons
+
+스낵바 컴포넌트에 여러 개의 버튼을 할당할 수 있습니다
+
+<Canvas>
+  <Story name="Multiple Buttons">
+    <MultipleButton />
+  </Story>
+</Canvas>

@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Table, TableHead, TableBody, TableRow, TableCell } from 'src';
+import { header, contents, iterator } from './data';
+
+<Meta title="Components/Table" components={{ Table, TableHead, TableBody, TableRow, TableCell }} />
+
+# Table
+
+테이블 태그를 사용한 기본적인 테이블 컴포넌트를 제공합니다. 현재 별도의 기능은 추가되지 않은 상태입니다.
+
+## Preview
+
+column과 row 영역이 정의된 기본적인 테이블 형태입니다.
+
+<Canvas>
+  <Story name="Preview">
+    <Table>
+      <TableHead>
+        <TableRow>
+          {header.map((name, i) => (
+            <TableCell key={`th-${i}`}>{name}</TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {iterator.map((_, rowIdx) => (
+          <TableRow key={`tbody-row-${rowIdx}`}>
+            {contents.map((content, contentIdx) => (
+              <TableCell key={`td-${contentIdx}`}>{content}</TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </Story>
+</Canvas>

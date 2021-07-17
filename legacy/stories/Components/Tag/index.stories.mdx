@@ -1,0 +1,46 @@
+import { Tag } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { samples } from './data';
+
+<Meta title="Components/Tag" components={Tag} />
+
+# Tag
+
+태그는 콘텐츠를 정렬하기 쉽게 만들어야합니다.
+
+## Preview
+
+기본 상태의 태그는 지정된 내용을 선택하는데 사용합니다.
+
+<Canvas>
+  <Story name="Preview">
+    <div style={{ display: 'flex' }}>
+      {samples.map(({ label, type }, index) => (
+        <Tag style={{ marginRight: 8 }} key={index} type={type}>
+          {label}
+        </Tag>
+      ))}
+    </div>
+  </Story>
+</Canvas>
+
+## With Delete Button
+
+태그에는 삭제 버튼을 추가할 수도 있습니다. 이 경우 태그는 호버 스타일을 가지게 됩니다.
+
+<Canvas>
+  <Story name="With Delete Button">
+    <div style={{ display: 'flex' }}>
+      {samples.map(({ label, type }, index) => (
+        <Tag
+          style={{ marginRight: 8 }}
+          key={index}
+          type={type}
+          onDelete={(label) => console.log(`${label} is deleted`)}
+        >
+          {label}
+        </Tag>
+      ))}
+    </div>
+  </Story>
+</Canvas>

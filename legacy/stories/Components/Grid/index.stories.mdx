@@ -1,0 +1,125 @@
+import { Column, Row, Text, colors } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { columns, columnStyle } from './data';
+
+<Meta title="Components/Grid" components={{ Column, Row }} />
+
+# Grid
+
+그리드는 유연하게 레이아웃을 정의하면서도 시각적인 일관성을 만들어줍니다. Lubycon UI Kit 의 그리드는 12개의 컬럼을 기반으로 구성되어있습니다.
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Row>
+      {columns.map((column) => (
+        <Column key={column} style={columnStyle} xs={1}>
+          <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+            Column{column}
+          </Text>
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+## Stretched
+
+<Canvas>
+  <Story name="Stretched">
+    <Row>
+      {columns
+        .filter((v) => v % 2 === 0)
+        .map((column) => (
+          <Column key={column} style={columnStyle}>
+            <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+              Column{column}
+            </Text>
+          </Column>
+        ))}
+    </Row>
+  </Story>
+</Canvas>
+
+## Direction
+
+### Row
+
+<Canvas>
+  <Story name="Direction/Row">
+    <Row direction="row">
+      {columns.map((column) => (
+        <Column key={column} style={columnStyle}>
+          <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+            Column{column}
+          </Text>
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+### Column
+
+<Canvas>
+  <Story name="Direction/Column">
+    <Row direction="column">
+      {columns.map((column) => (
+        <Column key={column} style={columnStyle}>
+          <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+            Column{column}
+          </Text>
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+## Responsive
+
+<Canvas>
+  <Story name="Responsive">
+    <Row>
+      <Column lg={8} md={4} xs={2} style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          lg=8 md=4, xs=2
+        </Text>
+      </Column>
+      <Column style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          auto
+        </Text>
+      </Column>
+      <Column lg={1} md={5} xs={8} style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          lg=1, md=5, xs=8
+        </Text>
+      </Column>
+    </Row>
+  </Story>
+</Canvas>
+
+## VariableWidth
+
+<Canvas>
+  <Story name="Variable Width">
+    <Row>
+      <Column lg="auto" style={{ ...columnStyle, width: 40 }}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          width: 40px
+        </Text>
+      </Column>
+      <Column style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          Column
+        </Text>
+      </Column>
+      <Column style={columnStyle}>
+        <Text style={{ width: '100%', textAlign: 'center', backgroundColor: colors.blue60 }}>
+          Column
+        </Text>
+      </Column>
+    </Row>
+  </Story>
+</Canvas>

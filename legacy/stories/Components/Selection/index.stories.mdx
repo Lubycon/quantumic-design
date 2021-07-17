@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Selection, Text } from 'src';
+import { Preview } from './Components';
+
+<Meta title="Components/Selection" components={Selection} />
+
+# Selection
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Preview />
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Sizes">
+    <ul>
+      {['small', 'medium', 'large'].map((size) => (
+        <li key={size} style={{ marginBottom: 16, listStyle: ' none' }}>
+          <Selection placeholder={size} size={size}>
+            <option>옵션1</option>
+            <option>옵션2</option>
+            <option>옵션3</option>
+          </Selection>
+        </li>
+      ))}
+    </ul>
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Selection disabled>
+      <option>옵션1</option>
+      <option>옵션2</option>
+      <option>옵션3</option>
+    </Selection>
+  </Story>
+</Canvas>
+
+## Placeholder
+
+<Canvas>
+  <Story name="Placeholder">
+    <Selection placeholder="어느 곳에 사시나요?">
+      <option>서울</option>
+      <option>경기</option>
+      <option>인천</option>
+      <option>충남</option>
+    </Selection>
+  </Story>
+</Canvas>
