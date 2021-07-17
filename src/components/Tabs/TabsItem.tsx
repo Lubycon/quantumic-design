@@ -15,9 +15,8 @@ function TabItem(
   { children, disabled = false, value = String(children), className, onClick, ...props }: Props,
   forwardedRef: Ref<HTMLDivElement>
 ) {
-  const { selectedValue, onSelect, indicatorPosition, setIndicatorPosition } = useContext(
-    TabsContext
-  );
+  const { selectedValue, onSelect, indicatorPosition, setIndicatorPosition } =
+    useContext(TabsContext);
   const isSelected = selectedValue === value;
   const internalRef = useRef<HTMLDivElement | null>(null);
 

@@ -3,7 +3,7 @@ name: Publish Live Storybook
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   storybook-publish:
