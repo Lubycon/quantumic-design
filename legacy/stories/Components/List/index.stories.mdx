@@ -1,0 +1,148 @@
+import { Button, List, ListItem, ListItemImage, colors, Icon } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { DummyItem, DummyItemWithoutCaption, DummyItemWithoutTitle, noop } from './Components';
+
+<Meta title="Components/List" components={List} />
+
+# List
+
+리스트는 세로 방향으로 순차적으로 나열하고 싶은 데이터를 표현할 수 있는 컴포넌트입니다.
+
+리스트는 컴포지션보다는 프로퍼티를 통해 데이터를 받는 형태로 작성되어있는데, 이는 많은 정보가 좁은 공간 안에 표현되는 리스트 컴포넌트의 특성 상 각 정보의 위계를 고정하고 높은 가독성을 유지하기 위해서 입니다.
+
+## Preview
+
+리스트 컴포넌트는 기본적으로 `title`, `content`, `caption` 3가지의 위계를 사용하여 정보를 표현하며, `List`는 HTML의 `ul` 태그와, `ListItem`은 `li` 태그와 대응됩니다.
+
+<Canvas>
+  <Story name="Preview">
+    <List>
+      <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" caption="5일전" />
+      <DummyItem />
+      <DummyItem />
+      <DummyItem />
+      <DummyItem />
+    </List>
+  </Story>
+</Canvas>
+
+## Without Caption
+
+<Canvas>
+  <Story name="WithoutCaption">
+    <List>
+      <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" />
+      <DummyItemWithoutCaption />
+      <DummyItemWithoutCaption />
+      <DummyItemWithoutCaption />
+      <DummyItemWithoutCaption />
+    </List>
+  </Story>
+</Canvas>
+
+## Without Title
+
+<Canvas>
+  <Story name="WithoutTitle">
+    <List>
+      <ListItem content="리스트 컴포넌트" caption="5일전" />
+      <DummyItemWithoutTitle />
+      <DummyItemWithoutTitle />
+      <DummyItemWithoutTitle />
+      <DummyItemWithoutTitle />
+    </List>
+  </Story>
+</Canvas>
+
+## Left and Right
+
+리스트 컴포넌트를 사용하다보면 사용자의 프로필 사진과 같은 이미지를 사용하거나 클릭이 가능한 요소라는 것을 표현하기 위해 아이콘을 사용하고 싶을 수 있습니다.
+
+그런 상황에서는 리스트 컴포넌트의 `left`나 `right` 프로퍼티를 통해 원하는 `ReactNode` 타입의 값을 주입하여 컴포넌트를 합성하면 됩니다.
+
+<Canvas>
+  <Story name="LeftAndRight">
+    <List>
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 조합형"
+        content="UI Kit에서 제공되는 이미지 컴포넌트를 사용한 예시입니다"
+      />
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 조합형"
+        content="UI Kit에서 제공되는 이미지 컴포넌트를 사용한 예시입니다"
+        caption="5일전"
+      />
+      <ListItem
+        left={
+          <img
+            src="http://cogulmars.cafe24.com/img/04about_img01.png"
+            style={{ width: 48, borderRadius: 4 }}
+          />
+        }
+        title="썸네일 조합형"
+        content="일반 img 태그를 사용한 예시입니다"
+        caption="5일전"
+      />
+      <ListItem
+        title="버튼 조합형"
+        content="자세히 보려면 클릭하세요"
+        right={<Icon name="chevron-forward" type="outline" size={24} color={colors.gray60} />}
+        onClick={noop}
+      />
+      <ListItem
+        title="버튼 조합형 자유"
+        content="자세히 보려면 클릭하세요"
+        right={<Button size="small">보러가기</Button>}
+      />
+      <ListItem
+        left={<ListItemImage src="http://cogulmars.cafe24.com/img/04about_img01.png" />}
+        title="썸네일 + 버튼 조합형"
+        content="자세히 보려면 클릭하세요"
+        right={<Icon name="chevron-forward" type="outline" size={24} color={colors.gray60} />}
+        onClick={noop}
+      />
+    </List>
+  </Story>
+</Canvas>
+
+## Clickable
+
+리스트 컴포넌트에 `onClick` 이벤트 핸들러를 주입하게 되면 리스트 컴포넌트는 스스로 클릭이 가능한 요소의 UX를 표현합니다.
+
+`onClick` 이벤트 핸들러를 사용하면 리스트 컴포넌트에 마우스가 위치했을 때 `cursor: pointer` 스타일이 적용되고, 스타일을 변경하여 사용자에게 이 요소가 클릭이 가능하다는 UX를 전달합니다.
+
+<Canvas>
+  <Story name="Clickable">
+    <List>
+      <ListItem title="루비콘 UI Kit" content="리스트 컴포넌트" caption="5일전" onClick={noop} />
+      <DummyItem onClick={noop} />
+      <DummyItem onClick={noop} />
+      <DummyItem onClick={noop} />
+      <DummyItem onClick={noop} />
+    </List>
+  </Story>
+</Canvas>
+
+## Multiline
+
+기본적으로 리스트 컴포넌트는 많은 양의 정보를 표현하도록 설계되지 않았기 때문에, `content` 영역에 두 줄 이상의 텍스트가 표현된다면 자동으로 말줄임표를 삽압합니다.
+
+좁은 공간에 많은 정보가 표현되는 리스트 컴포넌트의 특성 상 긴 텍스트를 모두 보여주면 정보의 위계가 흩트려 질 수도 있기 때문에, 이런 경우에는 리스트에서 모든 정보를 보여주기 보다는 사용자가 리스트를 클릭했을 때 더 자세한 정보를 볼 수 있도록 만들어주세요.
+
+<Canvas>
+  <Story name="Multiline">
+    <List style={{ maxWidth: 375 }}>
+      <ListItem
+        title="루비콘 UI Kit"
+        content="리스트 컴포넌트의 내용이 두 줄이 넘어가면 말줄임으로 처리됩니다. 루비콘 UI kit 은 오픈소스로 배포되는 한국형 라이브러리입니다"
+        caption="5일전"
+      />
+      <DummyItem />
+      <DummyItem />
+      <DummyItem />
+      <DummyItem />
+    </List>
+  </Story>
+</Canvas>

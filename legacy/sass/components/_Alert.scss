@@ -1,0 +1,29 @@
+$alert-horizental-padding: 14px;
+
+.lubycon-alert {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 4px;
+  padding: 10px $alert-horizental-padding;
+
+  &--type-negative {
+    background-color: get-color('red40');
+  }
+  &--type-notice {
+    background-color: get-color('yellow40');
+  }
+  &--type-informative {
+    background-color: get-color('blue40');
+  }
+  &--type-positive {
+    background-color: get-color('green40');
+  }
+
+  &__title {
+    margin-right: 8px;
+  }
+  &__icon {
+    margin-right: $alert-horizental-padding;
+  }
+}

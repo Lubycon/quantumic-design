@@ -1,0 +1,29 @@
+.lubycon-icon {
+  display: inline-block;
+  &--outline {
+    path {
+      fill: transparent;
+    }
+  }
+  &--filled {
+    path {
+      stroke: transparent;
+    }
+  }
+  &__icon-body {
+    &--hide-origin-icon {
+      display: none;
+    }
+  }
+  &__fallback-icon {
+    display: none;
+    vertical-align: top;
+    &--show-fallback-icon {
+      display: inline-block;
+    }
+  }
+  svg {
+    width: 100%;
+    vertical-align: top;
+  }
+}

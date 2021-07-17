@@ -1,0 +1,25 @@
+.lubycon-grid__column {
+  position: relative;
+  padding-right: ($grid-gutter / 2);
+  padding-left: ($grid-gutter / 2);
+  flex-basis: 0;
+  flex-grow: 1;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@each $breakpoint, $size in $breakpoints {
+  .lubycon-grid__column--#{$breakpoint}--auto {
+    flex: 0 0 auto;
+  }
+
+  @for $i from 1 through $max-columns {
+    .lubycon-grid__column--#{$breakpoint}--#{$i} {
+      @include media-breakpoint($breakpoint) {
+        flex: 0 0 percentage($i / $max-columns);
+        width: percentage($i / $max-columns);
+      }
+    }
+  }
+}

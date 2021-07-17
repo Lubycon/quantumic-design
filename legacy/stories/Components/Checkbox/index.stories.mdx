@@ -1,0 +1,95 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Checkbox } from 'src';
+import { Controlled, Uncontrolled } from './Components';
+
+<Meta title="Components/Checkbox" components={Checkbox} />
+
+# Checkbox
+
+하나의 아이템이나 여러 개의 아이템을 선택하는 상황을 표현하는데 사용할 수 있습니다.
+
+`label`과 `display` 속성을 제공합니다.
+
+## Preview
+
+간단한 라벨 정의만으로 체크박스 컴포넌트를 사용할 수 있습니다.
+
+<Canvas>
+  <Story name="Preview">
+    <Checkbox label={'체크박스1'} />
+  </Story>
+</Canvas>
+
+## Inline
+
+필요에 따라 display 설정을 props로 조정할 수 있습니다.
+
+<Canvas>
+  <Story name="Inline">
+    <Checkbox label={'체크박스'} display="inline" style={{ marginRight: '20px' }} />
+    <Checkbox label={'체크박스2'} display="inline" />
+  </Story>
+</Canvas>
+
+## Block
+
+<Canvas>
+  <Story name="Block">
+    <Checkbox label={'체크박스'} display="block" />
+    <Checkbox label={'체크박스2'} display="block" />
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">
+    <Checkbox label={'체크박스'} />
+    <Checkbox label={'체크박스2'} />
+    <Checkbox label={'체크박스3'} disabled />
+    <Checkbox label={'체크박스4'} disabled defaultChecked={true} />
+  </Story>
+</Canvas>
+
+## Controlled vs Uncontrolled
+
+사용자의 의도에 따라 체크박스의 상태를 직접 관리할 수도 있고, DOM에게 맡길 수도 있습니다.
+
+<Canvas>
+  <Story name="Controlled vs Uncontrolled">
+    <Controlled />
+    <Uncontrolled />
+  </Story>
+</Canvas>
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, Text } from '@lubycon/ui-kit';
+
+function Diff() {
+  const [state, setState] = useState(false);
+  return (
+    <Checkbox label={'Controlled'} onChange={(e) => setState(e.target.checked)} checked={state} />
+    <Checkbox label={'Uncontrolled'} onChange={(e) => setState(e.target.checked)}  />
+    /* checked 상태의 관리 방법을 결정할 수 있습니다 */
+  );
+}
+```
+
+## Demo
+
+```tsx codesandbox=lubycon
+import '@lubycon/ui-kit/css/lubycon-ui-kit.min.css';
+import React from 'react';
+import { Checkbox } from '@lubycon/ui-kit';
+
+function App() {
+  return (
+    <div>
+      <Checkbox label={'체크박스'} />
+    </div>
+  );
+}
+
+export default App;
+```

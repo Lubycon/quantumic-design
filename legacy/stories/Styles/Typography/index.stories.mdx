@@ -1,0 +1,36 @@
+import { Text } from 'src';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { typographys, Typographys, FontWeights, fontWeights } from 'components/Text/types';
+import { typographyNames, fontWeightNames } from './data';
+
+<Meta title="Styles/Typography" components={Text} />
+
+# 타이포그래피
+
+PC와 모바일의 rem 기준 서체 크기는 16px을 사용합니다. 서체는 보편성을 위해 노토 산스를 사용합니다. 위계는 글자의 두께, 크기, 글줄 간격의 차이를 통해 전달합니다.
+
+헤딩은 화면에서 가장 큰 글자로, 짧고 중요한 문장에 사용합니다. 본문은 작은 글자 크기로, 긴 글쓰기에 사용합니다. 캡션은 가장 작은 글자입니다. 이미지에 주석을 달거나 footer 영역에서 사용됩니다.
+
+## 헤딩 (Heading)
+
+<Story name="Headings">
+  <ul>
+    {typographys.map((typography) => (
+      <li style={{ listStyle: 'none' }} key={typography}>
+        <Text typography={typography}>{typographyNames[typography]}</Text>
+      </li>
+    ))}
+  </ul>
+</Story>
+
+## 폰트 웨이트 (Font Weight)
+
+<Story name="Font Weight">
+  <ul>
+    {fontWeights.map((fontWeight) => (
+      <li style={{ listStyle: 'none' }} key={fontWeight}>
+        <Text fontWeight={fontWeight}>{fontWeightNames[fontWeight]}</Text>
+      </li>
+    ))}
+  </ul>
+</Story>

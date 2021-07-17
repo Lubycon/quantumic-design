@@ -1,0 +1,72 @@
+import { Button, Text, Column, Row } from 'src';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { SemanticColor } from 'src/constants/colors';
+import { sizeList, buttonText, semanticColors } from './data';
+
+<Meta title="Components/Button" components={Button} />
+
+# Button
+
+버튼 컴포넌트는 HTML의 button 엘리먼트를 기반으로 만들어졌기 때문에, Lubycon UI Kit이 제공하는 인터페이스 외에 기존 HTML의 button 엘리먼트가 제공하고 있던 기능도 모두 사용 가능합니다.
+
+## Preview
+
+<Canvas>
+  <Story name="Preview">
+    <Button>버튼입니다</Button>
+  </Story>
+</Canvas>
+
+### Size
+
+`Button` 컴포넌트는 `small` `medium` `large` 3가지의 사이즈를 가지고 있습니다.
+
+<Canvas>
+  <Story name="Size">
+    <Row direction="column">
+      <Column style={{ marginBottom: 8 }}>
+        <Button size="small" type="informative">
+          버튼 텍스트
+        </Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button size="medium" type="informative">
+          버튼 텍스트
+        </Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button size="large" type="informative">
+          버튼 텍스트
+        </Button>
+      </Column>
+    </Row>
+  </Story>
+</Canvas>
+
+### Types
+
+`Button` 컴포넌트는 Lubycon UI Kit에서 제공하는 4가지 시맨틱 컬러를 기반으로 한 타입을 가지고 있습니다.
+
+기본적으로 아무 타입도 주지 않았을 때 `Button` 컴포넌트는 배경색이 없는 투명 상태로 렌더됩니다.
+
+<Canvas>
+  <Story name="Types">
+    <Row direction="column">
+      <Column style={{ marginBottom: 8 }}>
+        <Button>기본 버튼</Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button type="informative">Informative</Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button type="positive">Positive</Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button type="negative">Negative</Button>
+      </Column>
+      <Column style={{ marginBottom: 8 }}>
+        <Button type="notice">Notice</Button>
+      </Column>
+    </Row>
+  </Story>
+</Canvas>

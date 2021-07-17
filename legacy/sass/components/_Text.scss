@@ -1,0 +1,7 @@
+.lubycon-text {
+  @each $name, $value in $font-weights {
+    &.lubycon-text--font-weight-#{$name} {
+      @include font-weight($name, map-get($font-weights, $name));
+    }
+  }
+}

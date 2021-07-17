@@ -1,0 +1,71 @@
+import { Icon, Text, colors, Row, Column } from 'src';
+import { IconType } from 'src/components/Icon';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ColorProperty } from 'src/constants/colors';
+import { Fragment } from 'react';
+
+<Meta title="Components/Icon" components={Icon} />
+
+# Icon
+
+Lubycon UI Kit은 ionicons를 기반으로 하는 `Icon` 컴포넌트를 제공하고 있습니다.
+
+이 아이콘 에셋들은 루비콘 팀의 CDN을 통해 서비스되고 있기 때문에 Lubycon UI Kit의 디펜던시에도 포함되어 있지 않고, 소스코드에는 포함되어있지 않아 최종 번들의 용량을 줄이는데 효과적입니다.
+
+## Preview
+
+`Icon` 컴포넌트에는 크기, 색상, 타입 3가지를 지정할 수 있습니다. 이 중 타입은 ionicons에서 제공하는 outline, filled, sharp 3가지 타입이 그대로 제공됩니다.
+아이콘에 따라 존재하지 않는 타입도 있을 수 있으니 <a href="https://ionic.io/ionicons" target="_blank" rel="noreferrer">ionicons 공식 홈페이지</a>를 참고하세요.
+
+`Icon` 컴포넌트는 기본적으로 SVG 포맷의 아이콘을 렌더하며, SVG를 사용할 수 없는 경우라면 자동으로 PNG 포맷의 아이콘을 Fallback으로 렌더합니다.
+이렇게 Fallback PNG 아이콘이 렌더된 경우에는 아이콘의 색상을 변경할 수 없기 때문에 `Black(#000000)` 색상으로 렌더됩니다.
+
+<Canvas>
+  <Story name="Preview">
+    <Icon name="add-circle" size={50} />
+    <Icon name="airplane" size={50} />
+    <Icon name="battery-charging" type="filled" size={50} />
+    <Icon name="logo-octocat" size={50} />
+    <Icon name="logo-npm" size={50} />
+  </Story>
+</Canvas>
+
+## Types
+
+ionicons는 `filled`, `outline`, `sharp` 총 3가지의 아이콘 타입을 제공하고 있습니다.
+
+단, `logo-*` 패턴의 이름을 가진 로고 아이콘의 경우 `filled` 타입밖에 존재하지 않기 때문에, 어떤 속성을 넘기더라도 `Icon` 컴포넌트 내부에서 타입이 `filled`로 치환됩니다.
+
+<Canvas>
+  <Story name="Icon Types">
+    <Icon name="accessibility" type="filled" size={50} />
+    <Icon name="accessibility" type="outline" size={50} />
+    <Icon name="accessibility" type="sharp" size={50} />
+  </Story>
+</Canvas>
+
+## Colors
+
+`color` 프로퍼티는 아이콘의 색상을 정할 수 있습니다. 만약 아이콘의 타입이 `outline` 이라면 여러분이 입력한 색상 값은 `stroke` CSS 속성으로 치환되며, 아이콘이 `filled`나 `sharp` 타입이라면 `fill` CSS 속성으로 치환됩니다.
+
+<Canvas>
+  <Story name="Icon Colors">
+    <Icon name="accessibility" color="#000000" size={50} />
+    <Icon name="accessibility" color="#ff0000" size={50} />
+    <Icon name="accessibility" color="#48cfad" size={50} />
+    <Icon name="accessibility" color={colors.blue50} size={50} />
+  </Story>
+</Canvas>
+
+## Sizes
+
+`size` 프로퍼티로는 아이콘의 크기를 정할 수 있습니다. 단위는 `px`이며 여러분이 입력한 사이즈는 아이콘 SVG, 또는 PNG파일의 `width`와 `height`로 치환됩니다.
+
+<Canvas>
+  <Story name="Icon Sizes">
+    <Icon name="accessibility" />
+    <Icon name="accessibility" size={24} />
+    <Icon name="accessibility" size={36} />
+    <Icon name="accessibility" size={52} />
+  </Story>
+</Canvas>
