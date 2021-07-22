@@ -29,3 +29,4 @@ export { default as Shadow } from './components/Shadow';
 export { default as Spacing } from './components/Spacing';
 export { default as useProgress } from './hooks/useProgress';
 export { default as useResizeObserver } from './hooks/useResizeObserver';
+export { useOverlay } from './contexts/Overlay';

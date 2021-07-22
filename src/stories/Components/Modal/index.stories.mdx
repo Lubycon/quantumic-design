@@ -1,6 +1,6 @@
 import { Modal, ModalHeader, ModalContent, ModalFooter } from 'src';
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { Preview, ModalHooks } from './Components';
+import { Preview, ModalHooks, OverlayModal } from './Components';
 
 <Meta title="Components/Modal" components={Modal} />
 
@@ -29,5 +29,13 @@ import { Preview, ModalHooks } from './Components';
 <Canvas>
   <Story name="With Hooks">
     <ModalHooks />
+  </Story>
+</Canvas>
+
+## Overlay
+
+<Canvas>
+  <Story name="Overlay Modal">
+    <OverlayModal />
   </Story>
 </Canvas>
