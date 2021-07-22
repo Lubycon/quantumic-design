@@ -1,7 +1,8 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import classnames from 'classnames';
 import { CombineElementProps } from 'src/types/utils';
 import Text from '../Text';
+import useProgress from 'src/hooks/useProgress';
 
 const noop = (value: number) => value;
 
@@ -9,7 +10,9 @@ export type ProgressBarLabelPosition = 'top' | 'bottom' | 'left' | 'right';
 type Props = CombineElementProps<
   'div',
   {
+    min: number;
     value: number;
+    valueMapper?: (value: number) => number;
     max: number;
     showLabel?: boolean;
     labelPosition?: ProgressBarLabelPosition;
@@ -17,14 +20,25 @@ type Props = CombineElementProps<
   }
 >;
 const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
-  { value, max, className, labelFormatter = noop, showLabel, labelPosition = 'top', ...props },
+  {
+    min,
+    value,
+    valueMapper,
+    max,
+    className,
+    labelFormatter = noop,
+    showLabel,
+    labelPosition = 'top',
+    ...props
+  },
   ref
 ) {
   const layoutDirection = ['top', 'bottom'].includes(labelPosition) ? 'column' : 'row';
-  const ratio = (value / max) * 100;
+  const ratio = useProgress({ min, value, max, valueMapper });
 
   return (
     <div
+      css={{ display: 'flex' }}
       ref={ref}
       className={classnames(
         'lubycon-progress-bar',

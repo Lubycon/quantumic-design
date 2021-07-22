@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProgressBar, Text } from 'src';
 import { MAX_VALUE, labelPosition } from './data';
 
@@ -14,7 +14,7 @@ export const Preview = () => {
     };
   }, []);
 
-  return <ProgressBar value={value} max={MAX_VALUE} />;
+  return <ProgressBar min={0} value={value} max={MAX_VALUE} />;
 };
 
 export const Label = () => {
@@ -32,7 +32,13 @@ export const Label = () => {
       {labelPosition.map((position) => (
         <li style={{ listStyle: 'none', marginBottom: 16 }} key={position}>
           <Text fontWeight="bold">{position}</Text>
-          <ProgressBar value={value} max={MAX_VALUE} showLabel={true} labelPosition={position} />
+          <ProgressBar
+            min={0}
+            value={value}
+            max={MAX_VALUE}
+            showLabel={true}
+            labelPosition={position}
+          />
         </li>
       ))}
     </ul>
@@ -52,6 +58,7 @@ export const LabelFormatter = () => {
   return (
     <>
       <ProgressBar
+        min={0}
         style={{ marginBottom: 16 }}
         value={value}
         max={MAX_VALUE}
@@ -59,6 +66,7 @@ export const LabelFormatter = () => {
         labelFormatter={(value) => `${value}/${100}`}
       />
       <ProgressBar
+        min={0}
         style={{ marginBottom: 16 }}
         value={value}
         max={MAX_VALUE}
@@ -68,6 +76,7 @@ export const LabelFormatter = () => {
         }
       />
       <ProgressBar
+        min={0}
         style={{ marginBottom: 16 }}
         value={value}
         max={MAX_VALUE}
