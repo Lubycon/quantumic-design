@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useRef } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-export function useResizeObserver(
+function useResizeObserver(
   ref: RefObject<HTMLElement>,
   resizeCallback: (arg: ResizeObserverEntry['contentRect']) => void
 ) {
@@ -21,3 +21,5 @@ export function useResizeObserver(
     return () => resizeObsesrverRef.current?.disconnect();
   }, [ref]);
 }
+
+export default useResizeObserver;

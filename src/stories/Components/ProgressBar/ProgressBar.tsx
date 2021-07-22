@@ -1,7 +1,7 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import { CombineElementProps } from 'src/types/utils';
-import Text from '../Text';
+import { Text } from 'src';
 import useProgress from 'src/hooks/useProgress';
 
 const noop = (value: number) => value;
@@ -38,7 +38,6 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
 
   return (
     <div
-      css={{ display: 'flex' }}
       ref={ref}
       className={classnames(
         'lubycon-progress-bar',

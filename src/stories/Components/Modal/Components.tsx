@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Modal, ModalHeader, ModalContent, ModalFooter } from 'src';
+import { Modal, ModalHeader, ModalContent, ModalFooter, useOverlay } from 'src';
 import Button from 'components/Button';
 import { useModal } from 'contexts/Modal';
 import { Column, Row } from 'src/components/Grid';
+import CustomModal from './CustomModal';
 
 interface FooterProps {
   size: 'small' | 'medium';
@@ -12,7 +13,7 @@ interface FooterProps {
 type ModalFn = (state: boolean) => void;
 
 const DefaultModalHeader = () => <ModalHeader>타이틀입니다</ModalHeader>;
-const DefaultModdalFooter = ({ size, showCancelBtn = true, closeModal }: FooterProps) => {
+const DefaultModalFooter = ({ size, showCancelBtn = true, closeModal }: FooterProps) => {
   return (
     <ModalFooter>
       {showCancelBtn ? (
@@ -30,6 +31,16 @@ const DefaultModdalFooter = ({ size, showCancelBtn = true, closeModal }: FooterP
 const margin = {
   marginRight: 16,
   marginBottom: 32,
+};
+
+export const OverlayModal = () => {
+  const { open, close } = useOverlay();
+
+  const handleClick = () => {
+    const id = open(<CustomModal show={true} onClose={() => close(id)} />);
+  };
+
+  return <Button onClick={handleClick}>모달 열기</Button>;
 };
 
 export const Preview = () => {
@@ -63,7 +74,7 @@ export const Preview = () => {
           <div>여기에 본문 텍스트가 들어갑니다</div>
           <div>여기에 본문 텍스트가 들어갑니다</div>
         </ModalContent>
-        <DefaultModdalFooter
+        <DefaultModalFooter
           size="small"
           closeModal={() => handleClose('Close small modal', setShowSmallModal)}
         />
@@ -86,7 +97,7 @@ export const Preview = () => {
           텍스트 내용이 많을 경우에는 중간 크기의 모달 사용을 권장합니다. 여기에 본문 텍스트를
           입력해 주세요.
         </ModalContent>
-        <DefaultModdalFooter
+        <DefaultModalFooter
           size="medium"
           closeModal={() => handleClose('Close medium modal', setShowMediumModal)}
         />
@@ -110,7 +121,7 @@ export const ModalHooks = () => {
                   본문 텍스트와 타이틀은 용도에 따라 별도로 구성이 가능합니다
                 </ModalContent>
               ),
-              footer: <DefaultModdalFooter size="small" closeModal={() => closeModal(modalId)} />,
+              footer: <DefaultModalFooter size="small" closeModal={() => closeModal(modalId)} />,
             });
           }}
         >
@@ -128,7 +139,7 @@ export const ModalHooks = () => {
                 </ModalContent>
               ),
               footer: (
-                <DefaultModdalFooter
+                <DefaultModalFooter
                   size="small"
                   showCancelBtn={false}
                   closeModal={() => closeModal(modalId)}
@@ -149,7 +160,7 @@ export const ModalHooks = () => {
                 </ModalContent>
               ),
               footer: (
-                <DefaultModdalFooter
+                <DefaultModalFooter
                   size="small"
                   showCancelBtn={false}
                   closeModal={() => closeModal(modalId)}
@@ -171,7 +182,7 @@ export const ModalHooks = () => {
                 </ModalContent>
               ),
               footer: (
-                <DefaultModdalFooter
+                <DefaultModalFooter
                   size="medium"
                   showCancelBtn={true}
                   closeModal={() => closeModal(modalId)}
@@ -195,7 +206,7 @@ export const ModalHooks = () => {
                 </ModalContent>
               ),
               footer: (
-                <DefaultModdalFooter
+                <DefaultModalFooter
                   size="medium"
                   showCancelBtn={false}
                   closeModal={() => closeModal(modalId)}
@@ -217,7 +228,7 @@ export const ModalHooks = () => {
                 </ModalContent>
               ),
               footer: (
-                <DefaultModdalFooter
+                <DefaultModalFooter
                   size="small"
                   showCancelBtn={false}
                   closeModal={() => closeModal(modalId)}

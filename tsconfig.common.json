@@ -21,6 +21,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
-    "jsxImportSource": "@emotion/react"
+    // "jsxImportSource": "@emotion/react"
   },
 }

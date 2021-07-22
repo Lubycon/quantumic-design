@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { ProgressBar, Text } from 'src';
+import React, { useEffect, useState } from 'react';
+import { Text } from 'src';
 import { MAX_VALUE, labelPosition } from './data';
+import ProgressBar from './ProgressBar';
 
 const getProgressValue = (value: number) => (value === MAX_VALUE ? 0 : value + 1);
 
