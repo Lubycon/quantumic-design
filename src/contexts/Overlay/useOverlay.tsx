@@ -8,14 +8,19 @@ import { OverlayController } from './types';
 
 /**
  * @example
- * const { open, close, createOverlayElement } = useOverlay();
- * const myModal = createOverlayElement((isOpen, close) =>
- *  <Modal show={isOpen} onClose={close} />
- * );
+ * function useMyModal () {
+ *   const { open, close, createOverlayElement } = useOverlay();
+ *   useEffect(() => {
+ *     // 오버레이 엘리먼트 등록
+ *     createOverlayElement((isOpen, close) =>
+ *       <Modal show={isOpen} onClose={close} />
+ *     );
+ *   }, []);
  *
- * return {
- *   open: myModal.open,
- *   close: myModal.close,
+ *   return {
+ *     openMyModal: open,
+ *     closeMyModal: close,
+ *   }
  * }
  */
 export function useOverlay() {
