@@ -3,7 +3,7 @@ import { useOverlay } from 'src';
 import Modal, { ModalContent } from './Modal';
 
 export function useOverlayModal() {
-  const { createOverlayElement, open, close, destory } = useOverlay();
+  const { createOverlayElement, open, close, destroy } = useOverlay();
   useEffect(() => {
     createOverlayElement(({ isOpen, close }) => {
       return (
@@ -14,9 +14,9 @@ export function useOverlayModal() {
     });
 
     return () => {
-      destory();
+      destroy();
     };
   }, []);
 
-  return { openModal: open, closeModal: close, destoryModal: destory };
+  return { openModal: open, closeModal: close, destroyModal: destroy };
 }

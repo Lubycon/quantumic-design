@@ -1,7 +1,7 @@
 import { forwardRef, useState, useCallback, useImperativeHandle } from 'react';
 import { OverlayController } from './types';
 
-export interface StateReacterAPI {
+export interface StateReacterControl {
   open: () => void;
   close: () => void;
 }

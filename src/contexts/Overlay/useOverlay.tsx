@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useMemo } from 'react';
 import { generateID } from 'src/utils';
 import { useOverlayArea } from './OverlayContext';
-import StateReacter, { StateReacterAPI } from './StateReacter';
+import StateReacter, { StateReacterControl } from './StateReacter';
 import { OverlayController } from './types';
 
 /**
@@ -25,7 +25,7 @@ import { OverlayController } from './types';
  */
 export function useOverlay() {
   const { addToArea, removeFromArea } = useOverlayArea();
-  const stateReacterRef = useRef<StateReacterAPI>(null);
+  const stateReacterRef = useRef<StateReacterControl>(null);
 
   const overlayId = useMemo(() => generateID('overlay'), []);
 
@@ -37,7 +37,7 @@ export function useOverlay() {
     addToArea(overlayId, <StateReacter ref={stateReacterRef} controller={controller} />);
   }, []);
 
-  const destory = useCallback(() => {
+  const destroy = useCallback(() => {
     removeFromArea(overlayId);
   }, []);
 
@@ -46,7 +46,7 @@ export function useOverlay() {
       open,
       close,
       createOverlayElement,
-      destory,
+      destroy,
     }),
     []
   );

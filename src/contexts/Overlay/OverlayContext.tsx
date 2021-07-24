@@ -15,7 +15,7 @@ interface OverlayValues {
   removeFromArea: (overlayId: string) => void;
 }
 const OverlayContext = createContext<OverlayValues>({
-  addToArea: () => '',
+  addToArea: () => {},
   removeFromArea: () => {},
 });
 
