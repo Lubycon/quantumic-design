@@ -34,7 +34,7 @@ export function useOverlay() {
   const close = useCallback(() => stateReacterRef.current?.close(), []);
 
   const createOverlayElement = useCallback((controller: OverlayController) => {
-    addToArea(overlayId, <StateReacter ref={stateReacterRef} controller={controller} />); // 클로저 떄문에 리렌더링이 안됨
+    addToArea(overlayId, <StateReacter ref={stateReacterRef} controller={controller} />);
   }, []);
 
   const destory = useCallback(() => {
