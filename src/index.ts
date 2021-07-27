@@ -3,7 +3,6 @@ export { default as Button } from './components/Button';
 export { default as Checkbox } from './components/Checkbox';
 export { Row, Column } from './components/Grid';
 export { default as Container } from './components/Container';
-export { default as Switch } from './components/Switch';
 export { default as Text } from './components/Text';
 export { default as LubyconUIKitProvider } from './components/LubyconUIKitProvider';
 export { default as Tooltip } from './components/Tooltip';
