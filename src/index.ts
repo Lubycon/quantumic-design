@@ -16,7 +16,6 @@ export {
 export { default as Snackbar } from './components/Snackbar';
 export { default as Input } from './components/Input';
 export { default as Accordion } from './components/Accordion';
-export { default as Tag } from './components/Tag';
 export { Portal } from './contexts/Portal';
 export { useSnackbar } from './contexts/Snackbar';
 export { colors } from './constants/colors';
