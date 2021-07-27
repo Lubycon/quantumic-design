@@ -6,7 +6,6 @@ export { default as Container } from './components/Container';
 export { default as Text } from './components/Text';
 export { default as LubyconUIKitProvider } from './components/LubyconUIKitProvider';
 export { default as Tooltip } from './components/Tooltip';
-export { default as Tabs, TabsItem } from './components/Tabs';
 export {
   default as Card,
   CardHeader,
