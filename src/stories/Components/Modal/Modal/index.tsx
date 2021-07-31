@@ -2,8 +2,8 @@ import React, { ReactElement, cloneElement, useRef, useCallback, useEffect, Chil
 import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
 import { generateID } from 'utils/index';
-import { animated, useTransition } from 'react-spring';
 import { CombineElementProps } from 'src/types/utils';
+import { TransitionMotion } from 'src';
 
 export type ModalProps = CombineElementProps<
   'div',
@@ -26,17 +26,6 @@ const Modal = ({
   ...props
 }: ModalProps) => {
   const backdropRef = useRef(null);
-  const backdropTransition = useTransition(show, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
-  const modalTransition = useTransition(show, null, {
-    from: { transform: 'translate(-50%, 100%)', opacity: 0 },
-    enter: { transform: 'translate(-50%, -50%)', opacity: 1 },
-    leave: { transform: 'translate(-50%, 100%)', opacity: 0 },
-    onDestroyed: () => onCloseTransitionEnd?.(),
-  });
 
   const handleBackdropClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
@@ -64,33 +53,31 @@ const Modal = ({
 
   return (
     <div className="lubycon-modal" tabIndex={-1} aria-hidden={true}>
-      {backdropTransition.map(
-        ({ item: show, key, props }) =>
-          show && (
-            <animated.div key={key} style={props}>
-              <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
-            </animated.div>
-          )
-      )}
-      {modalTransition.map(
-        ({ item: show, key, props: animationProps }) =>
-          show && (
-            <animated.div
-              key={key}
-              style={animationProps}
-              className="lubycon-modal__window-wrapper"
-            >
-              <ModalWindow size={size} className={className} {...props}>
-                {Children.map(children, (child) => {
-                  return cloneElement(child, {
-                    key: generateID('lubycon-modal__children'),
-                    size: size,
-                  });
-                })}
-              </ModalWindow>
-            </animated.div>
-          )
-      )}
+      <TransitionMotion
+        flag={show}
+        from={{ opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
+      >
+        <ModalBackdrop onClick={handleBackdropClick} ref={backdropRef} />
+      </TransitionMotion>
+      <TransitionMotion
+        flag={show}
+        className="lubycon-modal__window-wrapper"
+        from={{ transform: 'translate(-50%, 100%)', opacity: 0 }}
+        enter={{ transform: 'translate(-50%, -50%)', opacity: 1 }}
+        leave={{ transform: 'translate(-50%, 100%)', opacity: 0 }}
+        onDestroyed={() => onCloseTransitionEnd?.()}
+      >
+        <ModalWindow size={size} className={className} {...props}>
+          {Children.map(children, (child) => {
+            return cloneElement(child, {
+              key: generateID('lubycon-modal__children'),
+              size: size,
+            });
+          })}
+        </ModalWindow>
+      </TransitionMotion>
     </div>
   );
 };
