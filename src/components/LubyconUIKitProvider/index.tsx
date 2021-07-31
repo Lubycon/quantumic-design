@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { PortalProvider } from 'contexts/Portal';
-import { SnackbarProvider } from 'contexts/Snackbar';
 import { OverlayProvider } from 'contexts/Overlay';
 
 interface Props {
@@ -10,9 +9,7 @@ interface Props {
 function LubyconUIKitProvider({ children }: Props) {
   return (
     <PortalProvider>
-      <OverlayProvider>
-        <SnackbarProvider>{children}</SnackbarProvider>
-      </OverlayProvider>
+      <OverlayProvider>{children}</OverlayProvider>
     </PortalProvider>
   );
 }
