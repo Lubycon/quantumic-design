@@ -16,7 +16,10 @@
     "url": "https://github.com/Lubycon/lubycon-ui-kit.git"
   },
   "keywords": [
-    "lubycon"
+    "lubycon",
+    "ui",
+    "ui kit",
+    "design system"
   ],
   "author": "Lubycon",
   "dependencies": {
