@@ -3,7 +3,7 @@ import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';
 import Text from '../Text';
-import { useResizeObserver } from 'src/hooks/useResizeObserver';
+import { useResizeObserver } from 'src';
 import { colors } from 'src/constants/colors';
 
 type Props = CombineElementProps<
