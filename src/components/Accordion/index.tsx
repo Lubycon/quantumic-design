@@ -3,8 +3,8 @@ import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';
 import Text from '../Text';
-import { useResizeObserver } from 'src';
 import { colors } from 'src/constants/colors';
+import { useElementSize } from 'src';
 
 type Props = CombineElementProps<
   'div',
@@ -22,16 +22,11 @@ const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
 ) {
   const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [bodyHeight, setBodyHeight] = useState(0);
+  const { height: bodyHeight } = useElementSize(contentRef);
 
   const toggleContentOpen = () => {
     setOpen((state) => !state);
   };
-
-  const updateContentHeight = () =>
-    setBodyHeight(contentRef.current?.getBoundingClientRect().height ?? 0);
-
-  useResizeObserver(contentRef, updateContentHeight);
 
   useEffect(() => {
     onChange?.(open);
