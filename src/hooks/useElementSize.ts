@@ -1,8 +1,6 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useMemo } from 'react';
 
-type ElementSize = Omit<IntersectionObserverEntry['boundingClientRect'], 'toJSON'>;
-
-const DEFAULT_CASE: ElementSize = {
+const DEFAULT_CASE = {
   top: 0,
   left: 0,
   right: 0,
@@ -14,22 +12,12 @@ const DEFAULT_CASE: ElementSize = {
 };
 
 function useElementSize(ref: RefObject<HTMLElement>) {
-  const [elementSize, setElementSize] = useState<ElementSize>(DEFAULT_CASE);
-
-  useEffect(() => {
-    if (ref.current === null) {
-      return;
+  return useMemo(() => {
+    if (!ref.current) {
+      return DEFAULT_CASE;
     }
-    const resizeObserver = new IntersectionObserver((entries) => {
-      setElementSize(entries[0].boundingClientRect);
-    });
-    resizeObserver.observe(ref.current);
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [ref]);
-
-  return elementSize;
+    return ref.current?.getBoundingClientRect();
+  }, [ref.current]);
 }
 
 export default useElementSize;
