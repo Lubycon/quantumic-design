@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback } from 'react';
+import { useState } from 'react';
+import { useAnimationFrame } from 'src/hooks/useAnimationFrame';
 
 const gradientDegree = 90;
 
@@ -25,25 +27,13 @@ interface Options {
   backgroundColor: string;
 }
 export function useAnimateGradient({ foregroundColor, backgroundColor }: Options) {
-  const animateRequestRef = useRef<number>();
-
   const [progress, setProgress] = useState(-200);
 
-  useEffect(() => {
-    const animate = () => {
-      setProgress((prev) => (prev >= 200 ? -200 : prev + 3));
-
-      animateRequestRef.current = window.requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (animateRequestRef.current != null) {
-        window.cancelAnimationFrame(animateRequestRef.current);
-      }
-    };
+  const updateProgress = useCallback(() => {
+    setProgress((prev) => (prev >= 200 ? -200 : prev + 3));
   }, []);
+
+  useAnimationFrame(updateProgress);
 
   return calcGradient({
     foregroundColor,
