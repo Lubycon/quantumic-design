@@ -48,13 +48,6 @@
     "postpublish": "pinst --enable",
     "pre-commit": "lint-staged"
   },
-  "lint-staged": {
-    "./src/**/*.{ts,tsx}": [
-      "bash -c yarn typecheck",
-      "eslint",
-      "prettier --write"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
