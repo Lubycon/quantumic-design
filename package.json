@@ -64,8 +64,10 @@
   "sideEffects": false,
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@babel/preset-react": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/eslint-plugin": "^11.2.0",
     "@mdx-js/loader": "^1.6.22",
