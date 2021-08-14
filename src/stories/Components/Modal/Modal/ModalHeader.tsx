@@ -1,4 +1,4 @@
-import React, { ReactNode, isValidElement } from 'react';
+import { ReactNode, isValidElement } from 'react';
 import Text from 'components/Text';
 import { Typographys } from 'components/Text/types';
 import { CombineElementProps } from 'src/types/utils';

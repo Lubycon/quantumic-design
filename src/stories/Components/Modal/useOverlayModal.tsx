@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useOverlay } from 'src';
 import Modal, { ModalContent } from './Modal';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { colors } from 'src/constants/colors';
 import { CombineElementProps } from 'src/types/utils';

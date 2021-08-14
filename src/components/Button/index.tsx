@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef } from 'react';
+import { Ref, forwardRef } from 'react';
 import classnames from 'classnames';
 import { CombineElementProps } from 'src/types/utils';
 import Text from '../Text';

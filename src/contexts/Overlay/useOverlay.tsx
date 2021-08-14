@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useRef } from 'react';
 import { useMemo } from 'react';
 import { generateID } from 'src/utils';

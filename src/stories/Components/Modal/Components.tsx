@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'components/Button';
 import Modal, { ModalHeader, ModalContent, ModalFooter } from './Modal';
 import { Column } from 'src/components/Grid';

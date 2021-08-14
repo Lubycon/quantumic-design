@@ -1,4 +1,3 @@
-import React from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import { colors } from 'src/constants/colors';
 import { useAnimateGradient } from './useAnimateGradient';

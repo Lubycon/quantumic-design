@@ -1,4 +1,4 @@
-import React, { cloneElement, ReactElement, useState, useMemo, useCallback } from 'react';
+import { cloneElement, ReactElement, useState, useMemo, useCallback } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { Portal } from 'src/contexts/Portal';
 import { CombineElementProps } from 'src/types/utils';
