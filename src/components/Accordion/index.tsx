@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { CombineElementProps } from 'src/types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';

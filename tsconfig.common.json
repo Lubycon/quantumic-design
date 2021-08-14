@@ -2,12 +2,8 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
@@ -22,5 +18,5 @@
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "jsxImportSource": "@emotion/react"
-  },
+  }
 }

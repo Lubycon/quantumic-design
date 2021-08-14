@@ -1,4 +1,3 @@
-import React from 'react';
 import { CombineElementProps } from 'src/types/utils';
 
 type Props = Omit<

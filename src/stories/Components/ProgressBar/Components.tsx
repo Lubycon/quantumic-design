@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text } from 'src';
 import { MAX_VALUE, labelPosition } from './data';
 import ProgressBar from './ProgressBar';

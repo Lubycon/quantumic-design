@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Tooltip, Button } from 'src';
 import { TooltipPosition } from 'src/components/Tooltip/types';
 import { positions } from './data';

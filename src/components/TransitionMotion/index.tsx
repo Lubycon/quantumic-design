@@ -1,4 +1,4 @@
-import React, { CSSProperties, ElementType, PropsWithChildren } from 'react';
+import { CSSProperties, ElementType, PropsWithChildren } from 'react';
 import { TransitionKeyProps, useTransition, animated } from 'react-spring';
 import { OverridableProps } from 'src/types/OverridableProps';
 

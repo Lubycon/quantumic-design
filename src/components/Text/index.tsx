@@ -1,4 +1,4 @@
-import React, { ElementType, Ref, forwardRef } from 'react';
+import { ElementType, Ref, forwardRef } from 'react';
 import { DEFAULT_ELEMENT, FontWeights, Typographys } from './types';
 import { OverridableProps } from 'types/OverridableProps';
 import classnames from 'classnames';
