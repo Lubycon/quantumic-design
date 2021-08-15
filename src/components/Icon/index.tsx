@@ -25,7 +25,7 @@ type Props = CombineElementProps<
 const Icon = ({
   name,
   size = 16,
-  type: propsType = 'outline',
+  type: propsType = 'filled',
   color = colors.gray100,
   className,
   ...rest
