@@ -25,7 +25,7 @@ type Props = CombineElementProps<
 const Icon = ({
   name,
   size = 16,
-  type: propsType = 'outline',
+  type: propsType = 'filled',
   color = colors.gray100,
   className,
   ...rest
@@ -63,14 +63,7 @@ const Icon = ({
 
   return (
     <span
-      className={classnames(
-        'lubycon-icon',
-        {
-          'lubycon-icon--outline': type === 'outline',
-          'lubycon-icon--filled': type === 'filled',
-        },
-        className
-      )}
+      className={classnames('lubycon-icon', className)}
       style={{ width: size, height: size }}
       {...rest}
     >

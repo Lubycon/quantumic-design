@@ -4,6 +4,7 @@ import Icon, { IconType } from '../../../components/Icon';
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { colors, ColorProperty } from '../../../constants/colors';
 import { Fragment } from 'react';
+import { commonIcons, logoIcons } from './data';
 
 <Meta title="Components/Icon" components={Icon} />
 
@@ -22,12 +23,26 @@ Lubycon UI Kit은 ionicons를 기반으로 하는 `Icon` 컴포넌트를 제공�
 이렇게 Fallback PNG 아이콘이 렌더된 경우에는 아이콘의 색상을 변경할 수 없기 때문에 `Black(#000000)` 색상으로 렌더됩니다.
 
 <Canvas>
-  <Story name="Preview">
-    <Icon name="add-circle" size={50} />
-    <Icon name="airplane" size={50} />
-    <Icon name="battery-charging" type="filled" size={50} />
-    <Icon name="logo-octocat" size={50} />
-    <Icon name="logo-npm" size={50} />
+  <Story name="All Icons">
+    <Row>
+      {commonIcons.map((icon) => (
+        <Column xs={1} key={icon}>
+          <Icon name={icon} size={50} />
+        </Column>
+      ))}
+    </Row>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="All Logos">
+    <Row>
+      {logoIcons.map((icon) => (
+        <Column xs={1} key={icon}>
+          <Icon name={icon} size={50} />
+        </Column>
+      ))}
+    </Row>
   </Story>
 </Canvas>
 
@@ -55,6 +70,9 @@ ionicons는 `filled`, `outline`, `sharp` 총 3가지의 아이콘 타입을 제�
     <Icon name="accessibility" color="#ff0000" size={50} />
     <Icon name="accessibility" color="#48cfad" size={50} />
     <Icon name="accessibility" color={colors.blue50} size={50} />
+    <Icon name="car-sport" color={colors.blue50} type="outline" size={50} />
+    <Icon name="car-sport" color={colors.yellow50} type="filled" size={50} />
+    <Icon name="car-sport" color={colors.red50} type="sharp" size={50} />
   </Story>
 </Canvas>
 

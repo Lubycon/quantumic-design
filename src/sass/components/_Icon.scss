@@ -1,15 +1,7 @@
 .lubycon-icon {
   display: inline-block;
-  &--outline {
-    path {
-      fill: transparent;
-    }
-  }
-  &--filled {
-    path {
-      stroke: transparent;
-    }
-  }
+  fill: currentColor;
+
   &__icon-body {
     &--hide-origin-icon {
       display: none;
