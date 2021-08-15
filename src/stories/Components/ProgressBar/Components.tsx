@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Text } from 'src';
+import { useEffect, useState, Fragment } from 'react';
+import Text from '../../../components/Text';
 import { MAX_VALUE, labelPosition } from './data';
 import ProgressBar from './ProgressBar';
 
@@ -57,7 +57,7 @@ export const LabelFormatter = () => {
   }, []);
 
   return (
-    <>
+    <Fragment>
       <ProgressBar
         min={0}
         style={{ marginBottom: 16 }}
@@ -84,6 +84,6 @@ export const LabelFormatter = () => {
         showLabel={true}
         labelFormatter={(value) => `${Math.floor((value / MAX_VALUE) * 100)}%`}
       />
-    </>
+    </Fragment>
   );
 };

@@ -1,7 +1,7 @@
 import { ReactNode, isValidElement } from 'react';
-import Text from 'components/Text';
-import { Typographys } from 'components/Text/types';
-import { CombineElementProps } from 'src/types/utils';
+import Text from '../../../../components/Text';
+import { Typographys } from '../../../../components/Text/types';
+import { CombineElementProps } from '../../../../types/utils';
 import classnames from 'classnames';
 
 type ModalHeaderProps = CombineElementProps<

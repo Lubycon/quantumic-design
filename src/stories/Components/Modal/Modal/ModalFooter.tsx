@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../../../types/utils';
 import classnames from 'classnames';
 
 type ModalFooterProps = CombineElementProps<

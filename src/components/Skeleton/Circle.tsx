@@ -1,4 +1,4 @@
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../types/utils';
 
 type Props = Omit<
   CombineElementProps<

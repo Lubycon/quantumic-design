@@ -1,7 +1,5 @@
-import { useCallback } from 'react';
-import { useRef } from 'react';
-import { useMemo } from 'react';
-import { generateID } from 'src/utils';
+import { useCallback, useRef, useMemo } from 'react';
+import { generateID } from '../../utils';
 import { useOverlayArea } from './OverlayContext';
 import StateReacter, { StateReacterControl } from './StateReacter';
 import { OverlayController } from './types';

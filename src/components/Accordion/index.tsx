@@ -1,10 +1,10 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../types/utils';
 import classnames from 'classnames';
 import Icon from '../Icon';
 import Text from '../Text';
-import { colors } from 'src/constants/colors';
-import { useElementSize } from 'src';
+import { colors } from '../../constants/colors';
+import useElementSize from '../../hooks/useElementSize';
 
 type Props = CombineElementProps<
   'div',

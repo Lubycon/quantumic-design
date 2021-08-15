@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useOverlay } from 'src';
+import { useOverlay } from '../../../contexts/Overlay';
 import Modal, { ModalContent } from './Modal';
 
 export function useOverlayModal() {
