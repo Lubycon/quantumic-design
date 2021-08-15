@@ -41,7 +41,7 @@
     "copy": "ncp package.json dist/package.json",
     "copy-sass": "ncp src/sass/modules dist/sass",
     "copy-version": "ncp dist/package.json package.json",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit -p ./tsconfig.build.json"
   },
   "eslintConfig": {
     "extends": [
