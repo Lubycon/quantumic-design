@@ -1,9 +1,9 @@
 import React, { ReactElement, cloneElement, useRef, useCallback, useEffect, Children } from 'react';
 import ModalBackdrop from './ModalBackdrop';
 import ModalWindow from './ModalWindow';
-import { generateID } from 'utils/index';
-import { CombineElementProps } from 'src/types/utils';
-import { TransitionMotion } from 'src';
+import { generateID } from '../../../../utils/index';
+import { CombineElementProps } from '../../../../types/utils';
+import TransitionMotion from '../../../../components/TransitionMotion';
 
 export type ModalProps = CombineElementProps<
   'div',

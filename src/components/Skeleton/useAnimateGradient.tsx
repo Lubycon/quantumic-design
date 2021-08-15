@@ -1,6 +1,5 @@
-import { useCallback } from 'react';
-import { useState } from 'react';
-import { useAnimationFrame } from 'src/hooks/useAnimationFrame';
+import { useCallback, useState } from 'react';
+import { useAnimationFrame } from '../../hooks/useAnimationFrame';
 
 const gradientDegree = 90;
 

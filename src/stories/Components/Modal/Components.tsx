@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Button from 'components/Button';
+import Button from '../../../components/Button';
 import Modal, { ModalHeader, ModalContent, ModalFooter } from './Modal';
-import { Column } from 'src/components/Grid';
+import { Column } from '../../../components/Grid';
 import { useOverlayModal } from './useOverlayModal';
 
 interface FooterProps {

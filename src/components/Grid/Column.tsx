@@ -1,6 +1,6 @@
-import React, { ElementType, useMemo } from 'react';
+import { ElementType, useMemo, forwardRef } from 'react';
 import { ColumnSize, ColumnResponsive, DEFAULT_ELEMENT } from './types';
-import { OverridableProps } from 'types/OverridableProps';
+import { OverridableProps } from '../../types/OverridableProps';
 import classNames from 'classnames';
 
 const sizes: ColumnResponsive[] = ['xl', 'lg', 'md', 'sm', 'xs'];
@@ -39,4 +39,4 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   );
 };
 
-export default React.forwardRef(Column) as typeof Column;
+export default forwardRef(Column) as typeof Column;

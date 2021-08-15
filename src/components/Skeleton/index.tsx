@@ -1,5 +1,5 @@
-import { CombineElementProps } from 'src/types/utils';
-import { colors } from 'src/constants/colors';
+import { CombineElementProps } from '../../types/utils';
+import { colors } from '../../constants/colors';
 import { useAnimateGradient } from './useAnimateGradient';
 import Rect from './Rect';
 import Circle from './Circle';
