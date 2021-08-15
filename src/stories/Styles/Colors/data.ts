@@ -1,4 +1,4 @@
-import { ColorProperty, SemanticColor } from 'src/constants/colors';
+import { ColorProperty, SemanticColor } from '../../../constants/colors';
 
 export const grayScaleNames = [
   'gray100',

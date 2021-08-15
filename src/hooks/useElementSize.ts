@@ -11,7 +11,7 @@ const DEFAULT_CASE = {
   height: 0,
 };
 
-function useElementSize(ref: RefObject<HTMLElement>) {
+export function useElementSize(ref: RefObject<HTMLElement>) {
   return useMemo(() => {
     if (!ref.current) {
       return DEFAULT_CASE;

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { PortalProvider } from 'contexts/Portal';
-import { OverlayProvider } from 'contexts/Overlay';
+import { PortalProvider } from '../../contexts/Portal';
+import { OverlayProvider } from '../../contexts/Overlay';
 
 interface Props {
   children: ReactNode;

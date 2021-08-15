@@ -1,8 +1,8 @@
 import { Ref, forwardRef } from 'react';
 import classnames from 'classnames';
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../types/utils';
 import Text from '../Text';
-import { SemanticColor } from 'src/constants/colors';
+import { SemanticColor } from '../../constants/colors';
 
 interface ButtonBaseProps {
   size?: 'small' | 'medium' | 'large';
