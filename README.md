@@ -4,11 +4,6 @@
 
 <h1 align="center">Lubycon UI Kit</h1>
 
-<p align="center">
-  Lubycon UI Kit은 한국의 고유 문자인 한글을 기반으로 설계된 UI 라이브러리입니다.<br />
-  국내 디자이너와 개발자들이 동일한 도메인 언어로 커뮤니케이션하는 것을 지향하며, 이를 위해 FE 라이브러리와 Figma 플러그인을 동시에 제공합니다.<br />
-</p>
-
 <div align="center" style="margin-bottom: 8px;">
   <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/typescript-icon.svg" alt="Typescript" width="21px" height="21px"></a>
   <a href="https://reactjs.org/" title="React"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/react.svg" alt="React" width="21px" height="21px"></a>
@@ -51,53 +46,4 @@ import { LubyconUIKitProvider } from '@lubycon/ui-kit';
 function App({ children }: PropsWithChildren<{}>) {
   return <LubyconUIKitProvider>{children}</LubyconUIKitProvider>;
 }
-```
-
-### 선언적 렌더링 vs Hooks
-
-Lubycon UI Kit의 많은 컴포넌트들은 선언적 렌더링을 지원하지만, 간혹 선언적 렌더링만으로 처리하기에는 컴포넌트 렌더 트리가 장황하다고 느껴질 수도 있습니다.
-
-그래서 이런 경우 컴포넌트 렌더 트리에 영향을 받지 않는 몇몇 컴포넌트들에 한해 사용자가 선언적인 방법과 명령적인 방법을 선택해서 사용할 수 있도록 지원하고 있습니다.
-
-#### 선언적 렌더링
-
-```jsx
-import React, { useState } from 'react';
-import { Snackbar } from '@lubycon/ui-kit';
-
-function Foo() {
-  const [show, setShow] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setShow(true)}>스낵바 열기</Button>
-      <Snackbar show={show} message="스낵바입니다" />
-    </>
-  );
-}
-
-export default Foo;
-```
-
-#### Hooks
-
-```jsx
-import React from 'react';
-import { useSnackbar, Button } from '@lubycon/ui-kit';
-
-function Foo() {
-  const { openSnackbar } = useSnackbar();
-
-  return (
-    <Button onClick={() => {
-      openSnackbar({
-        message: '스낵바입니다',
-      });
-    }}>
-      스낵바 열기
-    </Button>
-  );
-}
-
-export default Foo;
 ```
