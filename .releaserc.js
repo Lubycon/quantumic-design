@@ -4,7 +4,7 @@
 module.exports = {
   branches: [
     {
-      "name": "master"
+      "name": "main"
     },
     {
       "name": "beta",
@@ -34,12 +34,12 @@ module.exports = {
     }],
     "@semantic-release/release-notes-generator",
     ["@semantic-release/npm", {
-      "pkgRoot": "./ui-kit/dist"
+      "pkgRoot": "./dist"
     }],
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "yarn workspace @lubycon/ui-kit copy-version",
+        "prepareCmd": "yarn copy-version",
       }
     ],
     "@semantic-release/github"
