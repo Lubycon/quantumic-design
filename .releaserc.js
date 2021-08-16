@@ -1,6 +1,3 @@
-/**
- * @desc UI Kit 시멘틱 릴리즈 설정 파일
- */
 module.exports = {
   branches: [
     {
@@ -40,6 +37,12 @@ module.exports = {
       "@semantic-release/exec",
       {
         "prepareCmd": "yarn copy-version",
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json"]
       }
     ],
     "@semantic-release/github"
