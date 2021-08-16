@@ -21,7 +21,7 @@ jobs:
       - name: Install depedencies
         run: yarn
       - name: Build
-        run: yarn workspace @lubycon/ui-kit build
+        run: yarn build
       - name: Publish
         id: publish
         uses: codfish/semantic-release-action@master
