@@ -6,3 +6,8 @@ config
 tasks
 .vscode
 .idea
+CNAME.*
+.prettier*
+.releaserc.js
+.editorconfig
+.eslint*
