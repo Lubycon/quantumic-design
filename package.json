@@ -36,11 +36,9 @@
     "build-stories": "yarn build-storybook -o ./storybook-static -s ./public --docs",
     "publish-stories": "node ./.storybook/deploy.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp package.json dist/package.json",
     "copy-sass": "ncp src/sass/modules dist/sass",
-    "copy-version": "ncp dist/package.json package.json",
     "typecheck": "tsc --noEmit -p ./tsconfig.json"
   },
   "eslintConfig": {
