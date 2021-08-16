@@ -1,6 +1,6 @@
-import { colors } from 'src';
-import { IconName, LogoIconName } from 'src/types/icon';
-import { IconType } from 'src/components/Icon';
+import { colors } from '../../../constants/colors';
+import { IconName, LogoIconName } from '../../../types/icon';
+import { IconType } from '../../../components/Icon';
 
 export const commonIcons: IconName[] = [
   'accessibility',

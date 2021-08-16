@@ -33,16 +33,15 @@
   "scripts": {
     "dev": "yarn start",
     "start": "start-storybook -p 6006 --no-dll --no-manager-cache",
-    "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.build.json",
+    "build": "yarn clean && rollup -c && yarn copy && tsc --emitDeclarationOnly -p ./tsconfig.json",
     "build-stories": "yarn build-storybook -o ./storybook-static -s ./public --docs",
     "publish-stories": "node ./.storybook/deploy.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "clean": "rm -rf dist && mkdir dist",
     "copy": "ncp package.json dist/package.json",
     "copy-sass": "ncp src/sass/modules dist/sass",
     "copy-version": "ncp dist/package.json package.json",
-    "typecheck": "yarn pnpify tsc --noEmit",
+    "typecheck": "tsc --noEmit -p ./tsconfig.json",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
@@ -69,8 +68,10 @@
   "sideEffects": false,
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@babel/preset-react": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/eslint-plugin": "^11.2.0",
     "@mdx-js/loader": "^1.6.22",
@@ -126,7 +127,7 @@
     "rollup-plugin-typescript2": "^0.29.0",
     "sass": "^1.29.0",
     "semantic-release": "^17.2.4",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.0.3",
     "webpack-hot-middleware": "^2.25.0"
   }

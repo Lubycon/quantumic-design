@@ -1,8 +1,8 @@
-import React, { ReactNode, isValidElement } from 'react';
+import { ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
-import Text from 'components/Text';
-import { Typographys } from 'components/Text/types';
-import { CombineElementProps } from 'types/utils';
+import Text from '../../../../components/Text';
+import { Typographys } from '../../../../components/Text/types';
+import { CombineElementProps } from '../../../../types/utils';
 
 type ModalContentProps = CombineElementProps<
   'div',

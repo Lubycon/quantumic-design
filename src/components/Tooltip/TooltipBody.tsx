@@ -1,7 +1,7 @@
-import React, { forwardRef, Ref } from 'react';
+import { forwardRef, Ref } from 'react';
 import classnames from 'classnames';
 import Text from '../Text';
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../types/utils';
 
 export type TooltipArrowDirection =
   | 'top-left'

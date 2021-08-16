@@ -1,6 +1,6 @@
-import React, { CSSProperties, ElementType, PropsWithChildren } from 'react';
+import { Fragment, CSSProperties, ElementType, PropsWithChildren } from 'react';
 import { TransitionKeyProps, useTransition, animated } from 'react-spring';
-import { OverridableProps } from 'src/types/OverridableProps';
+import { OverridableProps } from '../../types/OverridableProps';
 
 type Props<E extends ElementType = 'div'> = OverridableProps<
   E,
@@ -37,7 +37,7 @@ const TransitionMotion = ({
   const Component = animated[as ?? 'div'];
 
   return (
-    <>
+    <Fragment>
       {transitions.map(({ item, key, props }) => {
         return item ? (
           <Component key={key} {...rest} style={{ ...style, ...props }}>
@@ -45,7 +45,7 @@ const TransitionMotion = ({
           </Component>
         ) : null;
       })}
-    </>
+    </Fragment>
   );
 };
 

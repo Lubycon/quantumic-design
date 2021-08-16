@@ -1,4 +1,4 @@
-import { TooltipPosition } from 'src/components/Tooltip/types';
+import { TooltipPosition } from '../../../components/Tooltip/types';
 
 export const positions: TooltipPosition[] = [
   'top-left',

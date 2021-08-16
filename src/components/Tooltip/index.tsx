@@ -1,7 +1,7 @@
-import React, { cloneElement, ReactElement, useState, useMemo, useCallback } from 'react';
+import { Fragment, cloneElement, ReactElement, useState, useMemo, useCallback } from 'react';
 import { animated, useSpring } from 'react-spring';
-import { Portal } from 'src/contexts/Portal';
-import { CombineElementProps } from 'src/types/utils';
+import { Portal } from '../../contexts/Portal';
+import { CombineElementProps } from '../../types/utils';
 import TooltipBody from './TooltipBody';
 import { OffsetPosition, TooltipElementSize, TooltipPosition } from './types';
 import { getArrowDirection, getTooltipPosition } from './utils';
@@ -48,7 +48,7 @@ const Tooltip = ({ show, children, message, position = 'top-center', ...props }:
   });
 
   return (
-    <>
+    <Fragment>
       {cloneElement(children, {
         ref: childRef,
       })}
@@ -62,7 +62,7 @@ const Tooltip = ({ show, children, message, position = 'top-center', ...props }:
           </TooltipBody>
         </animated.div>
       </Portal>
-    </>
+    </Fragment>
   );
 };
 

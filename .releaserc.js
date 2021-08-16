@@ -1,10 +1,7 @@
-/**
- * @desc UI Kit 시멘틱 릴리즈 설정 파일
- */
 module.exports = {
   branches: [
     {
-      "name": "master"
+      "name": "main"
     },
     {
       "name": "beta",
@@ -33,13 +30,11 @@ module.exports = {
       }
     }],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/npm", {
-      "pkgRoot": "./ui-kit/dist"
-    }],
+    "@semantic-release/npm",
     [
-      "@semantic-release/exec",
+      "@semantic-release/git",
       {
-        "prepareCmd": "yarn workspace @lubycon/ui-kit copy-version",
+        "assets": ["package.json"]
       }
     ],
     "@semantic-release/github"

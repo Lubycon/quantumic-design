@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import classnames from 'classnames';
-import { CombineElementProps } from 'src/types/utils';
-import { Text } from 'src';
-import useProgress from 'src/hooks/useProgress';
+import { CombineElementProps } from '../../../types/utils';
+import Text from '../../../components/Text';
+import useProgress from '../../../hooks/useProgress';
 
 const noop = (value: number) => value;
 

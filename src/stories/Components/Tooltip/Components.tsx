@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Tooltip, Button } from 'src';
-import { TooltipPosition } from 'src/components/Tooltip/types';
+import { useState } from 'react';
+import Tooltip from '../../../components/Tooltip';
+import Button from '../../../components/Button';
+import { TooltipPosition } from '../../../components/Tooltip/types';
 import { positions } from './data';
 
 const TooltipButton = ({ children }: { children: TooltipPosition }) => {

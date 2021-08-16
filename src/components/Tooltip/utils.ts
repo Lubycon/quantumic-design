@@ -1,4 +1,4 @@
-import { getAbsoluteOffset } from 'utils/dom';
+import { getAbsoluteOffset } from '../../utils/dom';
 import { TooltipArrowDirection } from './TooltipBody';
 import { OffsetPosition, TooltipElementSize, TooltipPosition } from './types';
 

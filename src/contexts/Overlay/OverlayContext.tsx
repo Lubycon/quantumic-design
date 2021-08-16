@@ -1,4 +1,4 @@
-import React, {
+import {
   ReactNode,
   useState,
   useCallback,
@@ -8,7 +8,7 @@ import React, {
   useMemo,
 } from 'react';
 import { useContext } from 'react';
-import { Portal } from 'src';
+import { Portal } from '../Portal';
 
 interface OverlayValues {
   addToArea: (overlayId: string, element: ReactNode) => void;

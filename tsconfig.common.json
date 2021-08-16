@@ -1,14 +1,16 @@
 {
+  "include": ["./src/**/*"],
+  "exclude": [
+    "./node_modules",
+    "./legacy"
+  ],
   "compilerOptions": {
     "target": "es2019",
     "module": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
     "moduleResolution": "node",
+    "declarationDir": "./dist",
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -21,6 +23,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
-    // "jsxImportSource": "@emotion/react"
-  },
+    "jsxImportSource": "@emotion/react"
+  }
 }

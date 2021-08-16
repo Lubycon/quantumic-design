@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import classnames from 'classnames';
-import { CombineElementProps } from 'src/types/utils';
+import { CombineElementProps } from '../../../../types/utils';
 
 type ModalWindowProps = CombineElementProps<
   'div',

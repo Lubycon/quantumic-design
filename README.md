@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="150" src="https://d2x9jxyr47nlkc.cloudfront.net/logo/symbol-color.svg" alt="Lubycon logo">
+  <img width="150" src="https://assets.lubycon.io/logo/symbol-color.svg" alt="Lubycon logo">
 </p>
 
 <h1 align="center">Lubycon UI Kit</h1>
