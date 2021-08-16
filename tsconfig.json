@@ -10,5 +10,6 @@
       "utils/*": ["./src/utils/*"],
       "contexts/*": ["./src/contexts/*"]
     }
-  }
+  },
+  "exclude": [".yarn/*"]
 }
