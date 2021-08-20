@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useState, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 
 export const PortalContext = createContext<HTMLDivElement | null>(null);
@@ -30,7 +30,7 @@ export function PortalProvider({ children }: PortalProviderProps) {
 interface PortalConsumerProps {
   children: ReactNode;
 }
-export function Portal({ children }: PortalConsumerProps) {
+export function Portal({ children }: PortalConsumerProps): ReactPortal | null {
   const portalRef = useContext(PortalContext);
   return portalRef == null ? null : createPortal(children, portalRef);
 }

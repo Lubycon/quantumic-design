@@ -6,8 +6,8 @@ import {
   createContext,
   PropsWithChildren,
   useMemo,
+  useContext,
 } from 'react';
-import { useContext } from 'react';
 import { Portal } from '../Portal';
 
 interface OverlayValues {
