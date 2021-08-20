@@ -4,6 +4,7 @@ import { colors } from '../../constants/colors';
 import { CombineElementProps } from '../../types/utils';
 import { IconName } from '../../types/icon';
 import { fetchIcon, getIconName, getIconType, getIconUrl } from './utils';
+import { useBooleanState, useImpression } from '@lubycon/react';
 
 const iconCache: Record<string, string> = {};
 
@@ -35,10 +36,11 @@ const Icon = ({
   const iconName = getIconName(name, type);
 
   const [iconHTML, setIconHTML] = useState<string | undefined>(iconCache[iconName]);
-  const [showFallbackIcon, setShowFallbackIcon] = useState(false);
+  const [needShowFallbackIcon, showFallbackIcon] = useBooleanState(false);
+  const [isVisible, visible] = useBooleanState(false);
 
   useEffect(() => {
-    if (iconHTML != null) {
+    if (iconHTML != null || isVisible === false) {
       return;
     }
 
@@ -52,25 +54,30 @@ const Icon = ({
           iconCache[iconName] = data;
         }
       } catch {
-        setShowFallbackIcon(true);
+        showFallbackIcon();
       }
     })();
 
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [isVisible, iconHTML]);
+
+  const impressionRef = useImpression({
+    onImpressionStart: visible,
+  });
 
   return (
     <span
       className={classnames('lubycon-icon', className)}
       style={{ width: size, height: size }}
+      ref={impressionRef}
       {...rest}
     >
       <span
         style={{ width: size, height: size, [targetAttr]: color, color }}
         className={classnames('lubycon-icon__icon-body', {
-          'lubycon-icon__icon-body--hide-origin-icon': showFallbackIcon,
+          'lubycon-icon__icon-body--hide-origin-icon': needShowFallbackIcon,
         })}
         aria-label={name}
         aria-hidden={iconHTML == null}
@@ -80,7 +87,7 @@ const Icon = ({
       <img
         src={getIconUrl(iconName)}
         className={classnames('lubycon-icon__fallback-icon', {
-          'lubycon-icon__fallback-icon--show-fallback-icon': showFallbackIcon,
+          'lubycon-icon__fallback-icon--show-fallback-icon': needShowFallbackIcon,
         })}
         alt={name}
       />
