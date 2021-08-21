@@ -1,7 +1,7 @@
 import { ElementType, Ref, forwardRef } from 'react';
 import { DEFAULT_ELEMENT } from './types';
-import classnames from 'classnames';
 import { OverridableProps } from '../../types/OverridableProps';
+import { gridGutter } from './constants';
 
 type BaseAlign = 'flex-start' | 'center' | 'flex-end';
 interface RowBaseProps {
@@ -17,7 +17,6 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     direction = 'row',
     justify = 'flex-start',
     alignItems = 'flex-start',
-    className,
     ...props
   }: RowProps<T>,
   ref: Ref<any>
@@ -27,13 +26,15 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      className={classnames(
-        'lubycon-grid__row',
-        `lubycon-grid__row--direction-${direction}`,
-        `lubycon-grid__row--justify-${justify}`,
-        `lubycon-grid__row--align-items-${alignItems}`,
-        className
-      )}
+      css={{
+        display: 'flex',
+        flexDirection: direction,
+        justifyContent: justify,
+        alignItems: alignItems,
+        margin: `0 ${gridGutter / 2}px`,
+        flexWrap: 'wrap',
+        boxSizing: 'border-box',
+      }}
       {...props}
     />
   );
