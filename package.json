@@ -24,12 +24,12 @@
   "author": "Lubycon",
   "dependencies": {
     "@emotion/react": "^11.4.0",
+    "@lubycon/react": "^1.15.1",
     "@yarnpkg/pnpify": "^3.0.0-rc.10",
     "classnames": "^2.2.6",
     "react-spring": "^8.0.27",
     "resize-observer-polyfill": "^1.5.1"
   },
-  "private": false,
   "scripts": {
     "dev": "yarn start",
     "start": "start-storybook -p 6006 --no-dll --no-manager-cache",
