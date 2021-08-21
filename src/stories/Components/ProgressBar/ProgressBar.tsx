@@ -1,12 +1,36 @@
 import { forwardRef } from 'react';
-import classnames from 'classnames';
 import { CombineElementProps } from '../../../types/utils';
 import Text from '../../../components/Text';
 import useProgress from '../../../hooks/useProgress';
+import { colors } from '../../../constants/colors';
 
 const noop = (value: number) => value;
 
 export type ProgressBarLabelPosition = 'top' | 'bottom' | 'left' | 'right';
+const getLabelPositionStyle = (position: ProgressBarLabelPosition) => {
+  switch (position) {
+    case 'top':
+      return {
+        marginBottom: 4,
+        order: 0,
+      };
+    case 'bottom':
+      return {
+        marginTop: 4,
+        order: 0,
+      };
+    case 'right':
+      return {
+        marginLeft: 12,
+        order: 2,
+      };
+    case 'left':
+      return {
+        marginRight: 12,
+        order: 0,
+      };
+  }
+};
 type Props = CombineElementProps<
   'div',
   {
@@ -25,7 +49,6 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
     value,
     valueMapper,
     max,
-    className,
     labelFormatter = noop,
     showLabel,
     labelPosition = 'top',
@@ -38,27 +61,44 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
 
   return (
     <div
+      css={{
+        display: 'flex',
+        flexDirection: layoutDirection,
+        alignItems: layoutDirection === 'row' ? 'center' : undefined,
+      }}
       ref={ref}
-      className={classnames(
-        'lubycon-progress-bar',
-        `lubycon-progress-bar--direction-${layoutDirection}`,
-        className
-      )}
       {...props}
     >
       {showLabel === true ? (
         <Text
-          className={classnames(
-            'lubycon-progress-bar__label',
-            `lubycon-progress-bar__label--position-${labelPosition}`
-          )}
+          css={{
+            textAlign: 'center',
+            ...getLabelPositionStyle(labelPosition),
+          }}
           typography="caption"
         >
           {labelFormatter(value)}
         </Text>
       ) : null}
-      <div className="lubycon-progress-bar__bar">
-        <div className="lubycon-progress-bar__bar__fill" style={{ width: `${ratio}%` }} />
+      <div
+        css={{
+          display: 'flex',
+          flexGrow: 1,
+          order: 1,
+          width: '100%',
+          backgroundColor: colors.gray30,
+          height: 4,
+          borderRadius: 100,
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          css={{
+            width: `${ratio}%`,
+            transition: 'width 0.3s ease-out',
+            backgroundColor: colors.blue50,
+          }}
+        />
       </div>
     </div>
   );
