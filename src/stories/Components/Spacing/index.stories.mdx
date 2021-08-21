@@ -1,0 +1,24 @@
+import Spacing from '../../../components/Spacing';
+import { Box } from './Components';
+import { colors } from '../../../constants/colors';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="components/Spacing" components={Spacing} />
+
+# Spacing
+
+Spacing 컴포넌트는 요소와 요소 사이에 간격을 만듭니다.
+
+특정 요소와 요소 사이의 간격이 명확하게 특정 컴포넌트 관심사가 아니라고 판단되는 경우, 각 컴포넌트에서 간격에 대한 관심사를 Spacing 컴포넌트에게 위임하세요.
+
+<Canvas>
+  <Story name="Spacing">
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Box color={colors.red50} />
+      <Spacing size={10} />
+      <Box color={colors.green50} />
+      <Spacing size={10} />
+      <Box color={colors.blue50} />
+    </div>
+  </Story>
+</Canvas>

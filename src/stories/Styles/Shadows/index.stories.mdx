@@ -19,40 +19,28 @@ import { Box } from './components';
 
 <Canvas>
   <Story name="Shadows">
-    <Box className="lubycon-shadow--0">0px</Box>
+    <Shadow level={0}>
+      <Box>0px</Box>
+    </Shadow>
     <Spacing size={30} />
-    <Box className="lubycon-shadow--1">2px 드랍다운</Box>
-    <Spacing size={30} />
-    <Box className="lubycon-shadow--2">3px 버튼, 카드</Box>
-    <Spacing size={30} />
-    <Box className="lubycon-shadow--3">6px 토스트</Box>
-    <Spacing size={30} />
-    <Box className="lubycon-shadow--4">8px 탭</Box>
-    <Spacing size={30} />
-    <Box className="lubycon-shadow--5">24px 모달 팝업</Box>
-  </Story>
-</Canvas>
-
-# Shadow With Class
-
-기본적인 루비콘의 그림자 시스템은 별도의 컴포넌트가 아니기 때문에, 클래스를 직접 입력하여 사용하게 됩니다.
-
-<Canvas>
-  <Story name="Shadow Class">
-    <div class="lubycon-shadow--1" style={{ padding: 8 }}>
-      1단계 그림자입니다
-    </div>
-  </Story>
-</Canvas>
-
-# Shadow With Component
-
-이렇게 클래스를 사용하여 그림자를 정의하는 것이 여러분의 어플리케이션 규칙에 맞지 않다면, Lubycon UI Kit이 제공하고 있는 `Shadow` 컴포넌트를 사용할 수도 있습니다.
-
-<Canvas>
-  <Story name="Shadow With Component">
     <Shadow level={1}>
-      <div>test</div>
+      <Box>2px 드랍다운</Box>
+    </Shadow>
+    <Spacing size={30} />
+    <Shadow level={2}>
+      <Box>3px 버튼, 카드</Box>
+    </Shadow>
+    <Spacing size={30} />
+    <Shadow level={3}>
+      <Box>6px 토스트</Box>
+    </Shadow>
+    <Spacing size={30} />
+    <Shadow level={4}>
+      <Box>8px 탭</Box>
+    </Shadow>
+    <Spacing size={30} />
+    <Shadow level={5}>
+      <Box>24px 모달 팝업</Box>
     </Shadow>
   </Story>
 </Canvas>

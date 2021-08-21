@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Tooltip from '../../../components/Tooltip';
-import Button from '../../../components/Button';
 import { TooltipPosition } from '../../../components/Tooltip/types';
 import { positions } from './data';
 
@@ -8,13 +7,9 @@ const TooltipButton = ({ children }: { children: TooltipPosition }) => {
   const [show, setShow] = useState(false);
   return (
     <Tooltip show={show} message="툴팁입니다." position={children}>
-      <Button
-        type="informative"
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
-      >
+      <button onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
         {children}
-      </Button>
+      </button>
     </Tooltip>
   );
 };
@@ -23,7 +18,7 @@ export const Preview = () => {
   return (
     <div style={{ paddingTop: 40 }}>
       <Tooltip show={true} message="툴팁입니다.">
-        <Button type="informative">버튼입니다</Button>
+        <button>버튼입니다</button>
       </Tooltip>
     </div>
   );
@@ -46,7 +41,7 @@ export const AbsolutePositionTest = () => {
     <div style={{ position: 'absolute', top: 500, left: 500 }}>
       <div style={{ position: 'relative' }}>
         <Tooltip show={true} message="툴팁입니다.">
-          <Button>버튼입니다</Button>
+          <button>버튼입니다</button>
         </Tooltip>
       </div>
     </div>
