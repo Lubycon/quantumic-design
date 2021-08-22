@@ -13,3 +13,4 @@ export { default as useResizeObserver } from './hooks/useResizeObserver';
 export { useOverlay } from './contexts/Overlay';
 export { default as TransitionMotion } from './components/TransitionMotion';
 export { default as useElementSize } from './hooks/useElementSize';
+export { useAnimationFrame } from './hooks/useAnimationFrame';

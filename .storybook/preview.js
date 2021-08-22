@@ -1,4 +1,3 @@
-import '../src/sass/index.scss';
 import React from 'react';
 import { LubyconUIKitProvider, Container } from 'src';
 

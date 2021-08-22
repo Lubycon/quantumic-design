@@ -1,7 +1,13 @@
 import { ElementType, Ref, forwardRef } from 'react';
-import { DEFAULT_ELEMENT, FontWeights, Typographys } from './types';
 import { OverridableProps } from '../../types/OverridableProps';
-import classnames from 'classnames';
+import {
+  getFontWeightCss,
+  getTypographyCss,
+  FontWeights,
+  Typographys,
+} from '../../utils/typography';
+
+export const DEFAULT_ELEMENT = 'span' as const;
 
 interface TextBaseProps {
   typography?: Typographys;
@@ -18,14 +24,10 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      className={classnames(
-        'lubycon-text',
-        {
-          [`lubycon-typography-${typography}`]: typography != null,
-          [`lubycon-text--font-weight-${fontWeight}`]: fontWeight != null,
-        },
-        className
-      )}
+      css={{
+        ...getFontWeightCss(fontWeight),
+        ...getTypographyCss(typography),
+      }}
       {...props}
     />
   );
