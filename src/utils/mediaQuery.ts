@@ -1,3 +1,5 @@
+import { CSSObject } from '@emotion/react';
+
 const breakpoints = {
   xs: 0,
   sm: 576,
@@ -32,4 +34,12 @@ export function isMatchedLG() {
 }
 export function isMatchedXL() {
   return !isMatchMinWidth('xs');
+}
+
+export function mediaQuery(size: MediaQueryKeys, style: CSSObject): CSSObject {
+  return {
+    [`@media screen and (min-width: ${breakpoints[size]}px)`]: {
+      ...style,
+    },
+  };
 }
