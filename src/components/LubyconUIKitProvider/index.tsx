@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { PortalProvider } from '../../contexts/Portal';
 import { OverlayProvider } from '../../contexts/Overlay';
 import { css, Global } from '@emotion/react';
@@ -9,7 +9,7 @@ interface Props {
 
 function LubyconUIKitProvider({ children }: Props) {
   return (
-    <>
+    <Fragment>
       <Global
         styles={css`
           body {
@@ -21,7 +21,7 @@ function LubyconUIKitProvider({ children }: Props) {
       <PortalProvider>
         <OverlayProvider>{children}</OverlayProvider>
       </PortalProvider>
-    </>
+    </Fragment>
   );
 }
 

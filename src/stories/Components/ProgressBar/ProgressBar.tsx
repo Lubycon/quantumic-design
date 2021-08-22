@@ -17,7 +17,7 @@ const getLabelPositionStyle = (position: ProgressBarLabelPosition) => {
     case 'bottom':
       return {
         marginTop: 4,
-        order: 0,
+        order: 2,
       };
     case 'right':
       return {
