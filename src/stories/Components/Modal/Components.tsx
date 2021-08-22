@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Button from '../../../components/Button';
 import Modal, { ModalHeader, ModalContent, ModalFooter } from './Modal';
 import { Column } from '../../../components/Grid';
 import { useOverlayModal } from './useOverlayModal';
@@ -12,17 +11,11 @@ interface FooterProps {
 type ModalFn = (state: boolean) => void;
 
 const DefaultModalHeader = () => <ModalHeader>타이틀입니다</ModalHeader>;
-const DefaultModalFooter = ({ size, showCancelBtn = true, closeModal }: FooterProps) => {
+const DefaultModalFooter = ({ showCancelBtn = true, closeModal }: FooterProps) => {
   return (
     <ModalFooter>
-      {showCancelBtn ? (
-        <Button size={size} onClick={closeModal}>
-          취소
-        </Button>
-      ) : null}
-      <Button size={size} type="informative" onClick={closeModal}>
-        저장하기
-      </Button>
+      {showCancelBtn ? <button onClick={closeModal}>취소</button> : null}
+      <button onClick={closeModal}>저장하기</button>
     </ModalFooter>
   );
 };
@@ -39,7 +32,7 @@ export const OverlayModal = () => {
     openModal();
   };
 
-  return <Button onClick={handleClick}>모달 열기</Button>;
+  return <button onClick={handleClick}>모달 열기</button>;
 };
 
 export const Preview = () => {
@@ -57,13 +50,9 @@ export const Preview = () => {
 
   return (
     <Column xs={6} style={{ marginBottom: 32 }}>
-      <Button
-        type="informative"
-        onClick={() => handleOpen('Open small modal', setShowSmallModal)}
-        style={margin}
-      >
+      <button onClick={() => handleOpen('Open small modal', setShowSmallModal)} style={margin}>
         Small 사이즈 모달 열기
-      </Button>
+      </button>
       <Modal
         show={showSmallModal}
         onClose={() => handleClose('Close small modal', setShowSmallModal)}
@@ -79,13 +68,9 @@ export const Preview = () => {
         />
       </Modal>
 
-      <Button
-        size="medium"
-        type="informative"
-        onClick={() => handleOpen('Open medium modal', setShowMediumModal)}
-      >
+      <button onClick={() => handleOpen('Open medium modal', setShowMediumModal)}>
         Medium 사이즈 모달 열기
-      </Button>
+      </button>
       <Modal
         size="medium"
         show={showMediumModal}

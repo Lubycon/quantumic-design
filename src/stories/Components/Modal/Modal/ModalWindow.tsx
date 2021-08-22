@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import classnames from 'classnames';
 import { CombineElementProps } from '../../../../types/utils';
+import { css } from '@emotion/react';
+import { colors } from '../../../../constants/colors';
 
 type ModalWindowProps = CombineElementProps<
   'div',
@@ -10,10 +11,16 @@ type ModalWindowProps = CombineElementProps<
   }
 >;
 
-const ModalWindow = ({ children, size, className, ...props }: ModalWindowProps) => {
+const ModalWindow = ({ children, size, ...props }: ModalWindowProps) => {
   return (
     <div
-      className={classnames('lubycon-modal__window', `lubycon-modal__window--${size}`, className)}
+      css={css`
+        background-color: ${colors.gray10};
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: ${size === 'small' ? 280 : 400}px;
+        padding: ${size === 'small' ? '16px 20px' : '20px 24px'};
+      `}
       {...props}
     >
       {children}

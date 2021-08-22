@@ -1,7 +1,8 @@
 import { ElementType, useMemo, forwardRef } from 'react';
 import { ColumnSize, ColumnResponsive, DEFAULT_ELEMENT } from './types';
 import { OverridableProps } from '../../types/OverridableProps';
-import classNames from 'classnames';
+import { gridGutter, maxColumns } from './constants';
+import { mediaQuery } from '../../utils/mediaQuery';
 
 const sizes: ColumnResponsive[] = ['xl', 'lg', 'md', 'sm', 'xs'];
 
@@ -15,14 +16,29 @@ type ColumnProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridablePr
 >;
 
 const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
-  { as, className, ...props }: ColumnProps<T>,
+  { as, ...props }: ColumnProps<T>,
   ref: React.Ref<any>
 ) => {
-  const spanClasses = useMemo(
+  const spanStyles = useMemo(
     () =>
       sizes.map((size) => {
         const { [size]: sizeValue } = props;
-        return sizeValue ? `lubycon-grid__column--${size}--${sizeValue}` : '';
+
+        if (sizeValue == null) {
+          return {};
+        }
+
+        return mediaQuery(
+          size,
+          sizeValue === 'auto'
+            ? {
+                flex: '0 0 auto',
+              }
+            : {
+                flex: `0 0 ${(sizeValue / maxColumns) * 100}%`,
+                width: `${(sizeValue / maxColumns) * 100}%`,
+              }
+        );
       }),
     []
   );
@@ -33,7 +49,19 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      className={classNames(`lubycon-grid__column`, className, ...spanClasses)}
+      css={[
+        {
+          position: 'relative',
+          paddingRight: gridGutter / 2,
+          paddingLeft: gridGutter / 2,
+          flexBasis: 0,
+          flexGrow: 1,
+          minWidth: 0,
+          maxWidth: '100%',
+          boxSizing: 'border-box',
+        },
+        ...spanStyles,
+      ]}
       {...props}
     />
   );

@@ -1,4 +1,4 @@
-import { Typographys, FontWeights } from '../../../components/Text/types';
+import { Typographys, FontWeights } from '../../../utils/typography';
 
 export const typographyNames: { [key in Typographys]: string } = {
   h1: '머릿말 1',

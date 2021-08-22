@@ -4,6 +4,7 @@ import ModalWindow from './ModalWindow';
 import { generateID } from '../../../../utils/index';
 import { CombineElementProps } from '../../../../types/utils';
 import TransitionMotion from '../../../../components/TransitionMotion';
+import { css } from '@emotion/react';
 
 export type ModalProps = CombineElementProps<
   'div',
@@ -22,7 +23,6 @@ const Modal = ({
   children,
   onClose,
   onCloseTransitionEnd,
-  className,
   ...props
 }: ModalProps) => {
   const backdropRef = useRef(null);
@@ -52,7 +52,7 @@ const Modal = ({
   }, []);
 
   return (
-    <div className="lubycon-modal" tabIndex={-1} aria-hidden={true}>
+    <div tabIndex={-1} aria-hidden={true}>
       <TransitionMotion
         flag={show}
         from={{ opacity: 0 }}
@@ -63,13 +63,18 @@ const Modal = ({
       </TransitionMotion>
       <TransitionMotion
         flag={show}
-        className="lubycon-modal__window-wrapper"
+        css={css`
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          z-index: 1001;
+        `}
         from={{ transform: 'translate(-50%, 100%)', opacity: 0 }}
         enter={{ transform: 'translate(-50%, -50%)', opacity: 1 }}
         leave={{ transform: 'translate(-50%, 100%)', opacity: 0 }}
         onDestroyed={() => onCloseTransitionEnd?.()}
       >
-        <ModalWindow size={size} className={className} {...props}>
+        <ModalWindow size={size} {...props}>
           {Children.map(children, (child) => {
             return cloneElement(child, {
               key: generateID('lubycon-modal__children'),

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { CombineElementProps } from '../../../../types/utils';
-import classnames from 'classnames';
+import { css } from '@emotion/react';
 
 type ModalFooterProps = CombineElementProps<
   'div',
@@ -9,9 +9,16 @@ type ModalFooterProps = CombineElementProps<
   }
 >;
 
-const ModalFooter = ({ children, className, ...props }: ModalFooterProps) => {
+const ModalFooter = ({ children, ...props }: ModalFooterProps) => {
   return (
-    <div className={classnames('lubycon-modal__footer', className)} {...props}>
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      `}
+      {...props}
+    >
       {children}
     </div>
   );

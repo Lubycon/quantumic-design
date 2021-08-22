@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import classnames from 'classnames';
+import { css } from '@emotion/react';
+import { colors } from '../../../../constants/colors';
 
 interface ModalBackdropProps {
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -12,7 +13,16 @@ const ModalBackdrop = forwardRef<HTMLDivElement, ModalBackdropProps>(function Mo
   return (
     <div
       ref={ref}
-      className={classnames('lubycon-modal', 'lubycon-modal__overlay')}
+      css={css`
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: ${colors.gray100};
+        opacity: 0.5;
+        z-index: 1000;
+      `}
       aria-hidden={true}
       tabIndex={-1}
       onClick={onClick}

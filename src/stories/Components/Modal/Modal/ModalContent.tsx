@@ -1,8 +1,9 @@
 import { ReactNode, isValidElement } from 'react';
-import classnames from 'classnames';
 import Text from '../../../../components/Text';
-import { Typographys } from '../../../../components/Text/types';
+import { Typographys } from '../../../../utils/typography';
 import { CombineElementProps } from '../../../../types/utils';
+import { css } from '@emotion/react';
+import { colors } from '../../../../constants/colors';
 
 type ModalContentProps = CombineElementProps<
   'div',
@@ -12,11 +13,18 @@ type ModalContentProps = CombineElementProps<
   }
 >;
 
-const ModalContent = ({ children, size, className, ...props }: ModalContentProps) => {
+const ModalContent = ({ children, size, ...props }: ModalContentProps) => {
   const typography: Typographys = size === 'small' ? 'p2' : 'p1';
 
   return (
-    <div className={classnames('lubycon-modal__content', className)} {...props}>
+    <div
+      css={css`
+        color: ${colors.gray70};
+        margin-bottom: 24px;
+        white-space: pre-wrap;
+      `}
+      {...props}
+    >
       {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
     </div>
   );

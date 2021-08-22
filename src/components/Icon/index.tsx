@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import classnames from 'classnames';
 import { colors } from '../../constants/colors';
 import { CombineElementProps } from '../../types/utils';
 import { IconName } from '../../types/icon';
@@ -16,7 +15,6 @@ type Props = CombineElementProps<
     size?: number;
     type?: IconType;
     color?: string;
-    className?: string;
   }
 >;
 
@@ -28,7 +26,6 @@ const Icon = ({
   size = 16,
   type: propsType = 'filled',
   color = colors.gray100,
-  className,
   ...rest
 }: Props) => {
   const type = getIconType(name, propsType);
@@ -69,16 +66,28 @@ const Icon = ({
 
   return (
     <span
-      className={classnames('lubycon-icon', className)}
       style={{ width: size, height: size }}
       ref={impressionRef}
+      css={{
+        width: size,
+        height: size,
+        display: 'inline-block',
+        fill: 'currentColor',
+        '& svg': {
+          width: '100%',
+          verticalAlign: 'top',
+        },
+      }}
       {...rest}
     >
       <span
-        style={{ width: size, height: size, [targetAttr]: color, color }}
-        className={classnames('lubycon-icon__icon-body', {
-          'lubycon-icon__icon-body--hide-origin-icon': needShowFallbackIcon,
-        })}
+        css={{
+          display: needShowFallbackIcon ? 'none' : 'inline-block',
+          width: size,
+          height: size,
+          [targetAttr]: color,
+          color,
+        }}
         aria-label={name}
         aria-hidden={iconHTML == null}
         dangerouslySetInnerHTML={iconHTML ? { __html: iconHTML } : undefined}
@@ -86,9 +95,10 @@ const Icon = ({
       />
       <img
         src={getIconUrl(iconName)}
-        className={classnames('lubycon-icon__fallback-icon', {
-          'lubycon-icon__fallback-icon--show-fallback-icon': needShowFallbackIcon,
-        })}
+        css={{
+          display: needShowFallbackIcon ? 'inline-block' : 'none',
+          verticalAlign: 'top',
+        }}
         alt={name}
       />
     </span>

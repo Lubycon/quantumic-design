@@ -2,7 +2,15 @@ interface Props {
   size: number;
 }
 const Spacing = ({ size }: Props) => {
-  return <div className="lubycon-spacing" style={{ height: size }} />;
+  return (
+    <div
+      css={{
+        width: 0,
+        display: 'inline-block',
+        height: size,
+      }}
+    />
+  );
 };
 
 export default Spacing;

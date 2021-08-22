@@ -15,7 +15,7 @@ type Props = Omit<
 const Circle = ({ width, height, backgroundStyle, style, ...rest }: Props) => {
   return (
     <div
-      style={{
+      css={{
         display: 'inline-block',
         width: `${width}px`,
         height: `${height}px`,

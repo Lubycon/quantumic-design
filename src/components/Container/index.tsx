@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { isMatchedSM } from 'src/utils/mediaQuery';
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
 }
@@ -7,18 +7,17 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 export default function Container({
   children,
   fluid = false,
-  className,
   ...props
 }: ContainerProps): JSX.Element {
+  const maxWidth = isMatchedSM() ? '1200px' : fluid ? 'auto' : 'none';
+
   return (
     <div
-      className={classnames(
-        'lubycon-container',
-        {
-          'lubycon-container--fluid': fluid === true,
-        },
-        className
-      )}
+      css={{
+        width: '100%',
+        maxWidth,
+        margin: '0 auto',
+      }}
       {...props}
     >
       {children}
