@@ -66,7 +66,6 @@ const Icon = ({
 
   return (
     <span
-      style={{ width: size, height: size }}
       ref={impressionRef}
       css={{
         width: size,
