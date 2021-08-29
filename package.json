@@ -111,6 +111,7 @@
     "eslint-plugin-react": "^7.21.5",
     "gh-pages": "^3.1.0",
     "husky": "^7.0.0",
+    "jest": "^27.1.0",
     "lint-staged": "^11.1.2",
     "ncp": "^2.0.0",
     "pinst": "^2.0.0",
