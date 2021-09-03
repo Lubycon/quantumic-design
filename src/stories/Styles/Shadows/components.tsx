@@ -1,11 +1,11 @@
 import { ComponentProps } from 'react';
+import Flex from '../../../components/Flex';
 
 export const Box = ({ children, ...rest }: ComponentProps<'div'>) => {
   return (
-    <div
+    <Flex
+      direction="column"
       style={{
-        display: 'flex',
-        alignItems: 'flex-end',
         height: 80,
         borderRadius: 8,
         backgroundColor: '#fcfcfd',
@@ -14,6 +14,6 @@ export const Box = ({ children, ...rest }: ComponentProps<'div'>) => {
       {...rest}
     >
       {children}
-    </div>
+    </Flex>
   );
 };
