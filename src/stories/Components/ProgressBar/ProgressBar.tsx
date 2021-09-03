@@ -3,6 +3,7 @@ import { CombineElementProps } from '../../../types/utils';
 import Text from '../../../components/Text';
 import useProgress from '../../../hooks/useProgress';
 import { colors } from '../../../constants/colors';
+import Flex from '../../../components/Flex';
 
 const noop = (value: number) => value;
 
@@ -60,12 +61,9 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
   const ratio = useProgress({ min, value, max, valueMapper });
 
   return (
-    <div
-      css={{
-        display: 'flex',
-        flexDirection: layoutDirection,
-        alignItems: layoutDirection === 'row' ? 'center' : undefined,
-      }}
+    <Flex
+      direction={layoutDirection}
+      align={layoutDirection === 'row' ? 'center' : undefined}
       ref={ref}
       {...props}
     >
@@ -100,7 +98,7 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
           }}
         />
       </div>
-    </div>
+    </Flex>
   );
 });
 

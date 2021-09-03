@@ -15,7 +15,7 @@ PC와 모바일의 rem 기준 서체 크기는 16px을 사용합니다. 서체�
 
 <Story name="Headings">
   <ul>
-    {typographys.map((typography) => (
+    {Object.keys(typographys).map((typography) => (
       <li style={{ listStyle: 'none' }} key={typography}>
         <Text typography={typography}>{typographyNames[typography]}</Text>
       </li>
@@ -27,7 +27,7 @@ PC와 모바일의 rem 기준 서체 크기는 16px을 사용합니다. 서체�
 
 <Story name="Font Weight">
   <ul>
-    {fontWeights.map((fontWeight) => (
+    {Object.keys(fontWeights).map((fontWeight) => (
       <li style={{ listStyle: 'none' }} key={fontWeight}>
         <Text fontWeight={fontWeight}>{fontWeightNames[fontWeight]}</Text>
       </li>
