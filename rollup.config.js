@@ -19,11 +19,7 @@ function buildJS(input, output, format) {
       }),
       resolve({ extensions }),
       babel({ exclude: 'node_modules/**' }),
-      commonjs({
-        namedExports: {
-          'prop-types': ['node', 'bool', 'string', 'any', 'arrayOf', 'oneOfType', 'object', 'func'],
-        },
-      }),
+      commonjs(),
     ],
   };
 }
