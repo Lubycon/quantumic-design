@@ -14,7 +14,7 @@ type Props<E extends ElementType = 'div'> = OverridableProps<
     onDestroyed?: () => void;
   }
 >;
-const TransitionMotion = ({
+const TransitionMotion = <T extends ElementType = 'div'>({
   flag,
   keys = null,
   from,
@@ -26,7 +26,7 @@ const TransitionMotion = ({
   as,
   style,
   ...rest
-}: PropsWithChildren<Props>) => {
+}: PropsWithChildren<Props<T>>) => {
   const transitions = useTransition(flag, keys, {
     from,
     enter,
@@ -34,7 +34,8 @@ const TransitionMotion = ({
     onStart,
     onDestroyed,
   });
-  const Component = animated[as ?? 'div'];
+  const componentKey = as as keyof JSX.IntrinsicElements;
+  const Component = animated[componentKey];
 
   return (
     <Fragment>
