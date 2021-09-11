@@ -1,35 +1,49 @@
-import path from 'path';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
+import resolve from 'rollup-plugin-pnp-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
-import babel from '@rollup/plugin-babel';
+import json from 'rollup-plugin-json';
+import packageJSON from './package.json';
+
+const external = (pkg) => {
+  const externals = Object.keys({
+    ...packageJSON.dependencies,
+    ...packageJSON.peerDependencies,
+  });
+
+  return externals.some((externalPkg) => {
+    return pkg.startsWith(externalPkg);
+  });
+};
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-
-export default [buildCJS('src/index.ts'), buildESM('src/index.ts')];
 
 function buildJS(input, output, format) {
   return {
     input,
-    external: ['react', 'react-dom'],
-    output: [{ file: output, format, sourcemap: true }],
+    external,
+    output: [
+      {
+        format,
+        file: output,
+      },
+    ],
     plugins: [
-      typescript({
-        tsconfig: 'tsconfig.json',
-      }),
+      json(),
+      typescript({ useTsconfigDeclarationDir: true }),
       resolve({ extensions }),
-      babel({ exclude: 'node_modules/**' }),
-      commonjs(),
+      commonjs({
+        include: 'node_modules/**',
+      }),
     ],
   };
 }
 
 function buildCJS(input) {
-  const filename = path.parse(input).name;
-  return buildJS(input, `dist/${filename}.js`, 'cjs');
+  return buildJS(input, packageJSON.main, 'cjs');
 }
 
 function buildESM(input) {
-  const filename = path.parse(input).name;
-  return buildJS(input, `dist/esm/${filename}.js`, 'es');
+  return buildJS(input, packageJSON.module, 'es');
 }
+
+export default [buildCJS('src/index.ts'), buildESM('src/index.ts')];
