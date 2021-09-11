@@ -25,9 +25,9 @@
   
 </div>
 
-Quantum Design is a UI Kit that consists of some very small components and functions. 
+Quantum Design is a UI Kit that consists of some very small components and functions.
 
-Most of components in quantum design is designed that have single responsbility. So you can assemble these quantum components to make your own design system. Or just use these are.
+Most of components in Quantumic Design is designed that have single responsibility. So you can assemble these quantumic components to make your own design system more faster. Or just use these are.
 
 Please enjoy! ☺️
 
@@ -44,6 +44,7 @@ $ npm install quantumic-design
 // or
 $ yarn add quantumic-design
 ```
+
 ```jsx
 // App.tsx
 
@@ -56,4 +57,5 @@ function App({ children }: PropsWithChildren<{}>) {
 ```
 
 ## Docs
-Check this [Storybook](https://ui-kit.lubycon.io/?path=/docs/quantumic-design-welcome--page)
+
+Check out our [Storybook](https://ui-kit.lubycon.io/?path=/docs/quantumic-design-welcome--page)

@@ -4,10 +4,39 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Quantumic Design
 
-Quantumic Design은 한글 타이포그래피를 바탕으로 만들어진 UI KIT으로 총 16개의 컴포넌트를 한글에 최적화된 형태로 제공합니다.
+Quantumic Design is a [React](https://reactjs.org/) based UI Kit that consists of some tiny components, functions and react hooks.
 
-### Quantumic Design Principle
+Most of components in Quantumic Design is designed that have single responsibility. So you can assemble these quantumic components to make your own design system more faster. Or just use these are.
 
-- **보편적인 디자인:** 어느 플랫폼에서도 보편적으로 사용할 수 있으며 사용자가 자신의 것으로 만들 수 있도록 기본에 충실합니다.
-- **실용적인 디자인:** 한글의 특성을 반영한 컴포넌트를 통해 개발자와 디자이너가 소통하면서 불필요한 리소스를 줄일 수 있습니다.
-- **명확한 디자인:** 다양한 해상도를 고려한 4px 그리드와 웹 접근성을 준수하는 명확한 컬러, 아토믹 컴포넌트로 명확한 시각적 위계를 만들어냅니다.
+## Quick start
+
+Quantumic Design package is published on npm registry. So you can install this with `npm` or `yarn`.
+
+```bash
+$ npm install quantumic-design
+// or
+$ yarn add quantumic-design
+```
+
+And add Quantumic Design Context to your application.
+
+```tsx
+// App.tsx
+
+import React, { PropsWithChildren } from 'react';
+import { QDProvider } from 'quantumic-design';
+
+function App({ children }: PropsWithChildren<{}>) {
+  return <QDProvider>{children}</QDProvider>;
+}
+```
+
+Quantumic Design never affect anything already implemented in your application.
+
+Even if `QDProvider` is added to your app, Quantumic Design never affect anything already implemented in your application.
+
+In other words, it does not include features to normalize or initialize like `normalize.css`, `reset.css` or polyfills. If you need to do these things, you have to implement these on yourself.
+
+## With TypeScript
+
+Quantumic Design is TypeScript and React based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
