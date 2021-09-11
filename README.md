@@ -32,7 +32,7 @@ Please enjoy! ☺️
 
 ## With Typescript
 
-As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so there is no need to install additional packages like `@types/quantumic-design`.
+As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
 
 ## Quick start
 
