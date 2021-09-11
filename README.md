@@ -9,7 +9,6 @@
   <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/typescript-icon.svg" alt="Typescript" width="21px" height="21px"></a>
   <a href="https://reactjs.org/" title="React"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/react.svg" alt="React" width="21px" height="21px"></a>
   <a href="https://www.w3.org/TR/html5/" title="HTML5"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/html-5.svg" alt="HTML5" width="21px" height="21px"></a>
-  <a href="https://sass-lang.com/" title="Sass"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/sass.svg" alt="Sass" width="21px" height="21px"></a>
   <a href="https://rollupjs.org/" title="rollup.js"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/rollup.svg" alt="rollup.js" width="21px" height="21px"></a>
   <a href="https://yarnpkg.com/" title="Yarn"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/yarn.svg" alt="Yarn" width="21px" height="21px"></a>
   <a href="https://www.npmjs.com/" title="NPM"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/npm.svg" alt="NPM" width="21px" height="21px"></a>
@@ -31,10 +30,6 @@ Most of components in Quantumic Design is designed that have single responsibili
 
 Please enjoy! ☺️
 
-## With Typescript
-
-As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so there is no need to install additional packages like `@types/quantumic-design`.
-
 ## Quick start
 
 Install Quantumic Design and Emotion. and add Quantumic Design Context to your application.
@@ -55,6 +50,10 @@ function App({ children }: PropsWithChildren<{}>) {
   return <QDProvider>{children}</QDProvider>;
 }
 ```
+
+## With TypeScript
+
+As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
 
 ## Docs
 
