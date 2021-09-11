@@ -1,4 +1,4 @@
-name: Release UI Kit
+name: Release Library
 
 on:
   push:
