@@ -30,10 +30,6 @@ Most of components in Quantumic Design is designed that have single responsbilit
 
 Please enjoy! ☺️
 
-## With Typescript
-
-As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
-
 ## Quick start
 
 Install Quantumic Design and Emotion. and add Quantumic Design Context to your application.
@@ -53,6 +49,10 @@ function App({ children }: PropsWithChildren<{}>) {
   return <QDProvider>{children}</QDProvider>;
 }
 ```
+
+## With TypeScript
+
+As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
 
 ## Docs
 Check this [Storybook](https://ui-kit.lubycon.io/?path=/docs/quantumic-design-welcome--page)
