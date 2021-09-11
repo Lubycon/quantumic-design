@@ -24,7 +24,7 @@
   
 </div>
 
-Quantum Design is a UI Kit that consists of some very small components and functions. 
+Quantum Design is a UI Kit that consists of some tiny components, functions and react hooks. 
 
 Most of components in quantum design is designed that have single responsbility. So you can assemble these quantum components to make your own design system. Or just use these are.
 
