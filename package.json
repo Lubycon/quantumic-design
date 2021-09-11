@@ -1,6 +1,6 @@
 {
   "name": "quantumic-design",
-  "description": "Lubycon UI Kit for any projects 🖌",
+  "description": "Design Library for any projects 🖌",
   "version": "1.0.0",
   "license": "MIT",
   "engines": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lubycon/lubycon-ui-kit.git"
+    "url": "https://github.com/Lubycon/quantumic-design.git"
   },
   "keywords": [
     "lubycon",

@@ -17,9 +17,9 @@
 <div align="center">
   
   [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mui-org/material-ui/blob/master/LICENSE)
-  [![node version](https://badgen.net/npm/node/quantumic-design)](https://github.com/Lubycon/lubycon-ui-kit/blob/master/package.json#L7)
-  [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Release%20Library/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)
-  [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Publish%20Dev%20Storybook/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)  
+  [![node version](https://badgen.net/npm/node/quantumic-design)](https://github.com/Lubycon/quantumic-design/blob/master/package.json#L7)
+  [![workflow](https://github.com/Lubycon/quantumic-design/workflows/Release%20Library/badge.svg)](https://github.com/Lubycon/quantumic-design)
+  [![workflow](https://github.com/Lubycon/quantumic-design/workflows/Publish%20Dev%20Storybook/badge.svg)](https://github.com/Lubycon/quantumic-design)  
   [![npm latest package](https://img.shields.io/npm/v/quantumic-design/latest.svg)](https://www.npmjs.com/package/quantumic-design)
   [![npm downloads](https://img.shields.io/npm/dm/quantumic-design.svg)](https://www.npmjs.com/package/quantumic-design)
   
@@ -35,15 +35,15 @@ $ yarn add quantumic-design
 
 ## Usage
 
-Lubycon UI Kit 내부의 몇몇 컴포넌트는 컴포넌트 트리와 분리된 상태와 렌더 트리를 가지고 있기 때문에 `LubyconUIKitProvider`을 필요로 합니다.
+Quantumic Design 내부의 몇몇 컴포넌트는 컴포넌트 트리와 분리된 상태와 렌더 트리를 가지고 있기 때문에 `QDProvider`를 필요로 합니다.
 
 ```jsx
 // App.tsx
 
 import React, { PropsWithChildren } from 'react';
-import { LubyconUIKitProvider } from '@lubycon/ui-kit';
+import { QDProvider } from 'quantumic-design';
 
 function App({ children }: PropsWithChildren<{}>) {
-  return <LubyconUIKitProvider>{children}</LubyconUIKitProvider>;
+  return <QDProvider>{children}</QDProvider>;
 }
 ```

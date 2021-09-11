@@ -1,19 +1,19 @@
 import React from 'react';
-import { LubyconUIKitProvider, Container } from 'src';
+import { QDProvider, Container } from 'src';
 
 export const decorators = [(Story => (
-  <LubyconUIKitProvider>
+  <QDProvider>
     <Container>
       <Story />
     </Container>
-  </LubyconUIKitProvider>
+  </QDProvider>
 ))];
 
 export const parameters = {
   options: {
     storySort: {
       method: '',
-      order: ['Lubycon UI Kit',['Welcome', 'Getting Started', 'Usage'], 'Styles', 'Components'], 
+      order: ['Quantumic Design',['Welcome', 'Getting Started', 'Usage'], 'Styles', 'Components'], 
       locales: '', 
     },
   },

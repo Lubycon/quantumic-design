@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-function LubyconUIKitProvider({ children }: Props) {
+function QDProvider({ children }: Props) {
   return (
     <Fragment>
       <Global
@@ -25,4 +25,4 @@ function LubyconUIKitProvider({ children }: Props) {
   );
 }
 
-export default LubyconUIKitProvider;
+export default QDProvider;
