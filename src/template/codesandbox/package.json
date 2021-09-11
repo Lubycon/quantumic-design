@@ -7,7 +7,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "4.0.0",
-    "@lubycon/ui-kit": "latest"
+    "scaffolder": "latest"
   },
   "devDependencies": {
     "typescript": "latest"
