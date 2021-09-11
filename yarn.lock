@@ -20694,6 +20694,85 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"quantumic-design@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "quantumic-design@workspace:."
+  dependencies:
+    "@babel/core": ^7.15.0
+    "@babel/plugin-transform-react-jsx": ^7.14.9
+    "@babel/preset-env": ^7.15.0
+    "@babel/preset-react": ^7.14.5
+    "@babel/preset-typescript": ^7.15.0
+    "@emotion/babel-plugin": ^11.3.0
+    "@emotion/babel-plugin-jsx-pragmatic": ^0.1.5
+    "@emotion/babel-preset-css-prop": ^11.2.0
+    "@emotion/eslint-plugin": ^11.2.0
+    "@emotion/react": ^11.4.0
+    "@lubycon/react": ^1.18.3
+    "@mdx-js/loader": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+    "@rollup/plugin-babel": ^5.3.0
+    "@rollup/plugin-node-resolve": ^10.0.0
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/exec": ^5.0.0
+    "@semantic-release/git": ^9.0.0
+    "@semantic-release/github": ^7.2.0
+    "@semantic-release/npm": ^7.0.8
+    "@semantic-release/release-notes-generator": ^9.0.1
+    "@storybook/addon-a11y": ^6.2.9
+    "@storybook/addon-actions": ^6.1.14
+    "@storybook/addon-docs": ^6.3.4
+    "@storybook/addon-essentials": ^6.1.14
+    "@storybook/addon-links": ^6.2.9
+    "@storybook/node-logger": ^6.1.14
+    "@storybook/preset-create-react-app": ^3.1.5
+    "@storybook/react": ^6.1.14
+    "@testing-library/jest-dom": ^5.11.4
+    "@testing-library/react": ^11.1.0
+    "@testing-library/user-event": ^12.1.10
+    "@types/classnames": ^2.2.11
+    "@types/jest": ^26.0.15
+    "@types/node": ^12.0.0
+    "@types/react": ^16.9.53
+    "@types/react-dom": ^16.9.8
+    "@typescript-eslint/eslint-plugin": ^4.6.1
+    "@typescript-eslint/parser": ^4.6.1
+    "@yarnpkg/pnpify": ^3.0.0-rc.10
+    babel-jest: ^27.1.0
+    babel-loader: ^8.2.1
+    classnames: ^2.2.6
+    eslint: ^7.14.0
+    eslint-config-prettier: ^6.15.0
+    eslint-plugin-prettier: ^3.1.4
+    eslint-plugin-react: ^7.21.5
+    gh-pages: ^3.1.0
+    husky: ^7.0.0
+    jest: ^27.1.0
+    lint-staged: ^11.1.2
+    ncp: ^2.0.0
+    pinst: ^2.0.0
+    postcss: ^7.0.2
+    prettier: ^2.1.2
+    react: ^17.0.1
+    react-dom: ^17.0.1
+    react-scripts: 4.0.0
+    react-spring: ^8.0.27
+    remark-codesandbox: ^0.10.0
+    resize-observer-polyfill: ^1.5.1
+    rollup: ^2.38.5
+    rollup-plugin-commonjs: ^10.1.0
+    rollup-plugin-json: ^3.1.0
+    rollup-plugin-pnp-resolve: ^2.0.0
+    rollup-plugin-sourcemaps: ^0.4.2
+    rollup-plugin-typescript2: ^0.30.0
+    sass: ^1.29.0
+    semantic-release: ^17.2.4
+    tsconfig-paths-webpack-plugin: ^3.5.1
+    typescript: ^4.3.2
+    webpack-hot-middleware: ^2.25.0
+  languageName: unknown
+  linkType: soft
+
 "query-string@npm:5":
   version: 5.1.1
   resolution: "query-string@npm:5.1.1"
@@ -22326,85 +22405,6 @@ resolve@^2.0.0-next.3:
   checksum: 5636b55cf15f7cf0baa73f2797bf992bdcf75d1b39d82c0aa4608555c774368f6ac321cb641fd5f3d3ceb87805122cd47540da6a7b5960fe0dbdb8f8c263f000
   languageName: node
   linkType: hard
-
-"scaffolder@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "scaffolder@workspace:."
-  dependencies:
-    "@babel/core": ^7.15.0
-    "@babel/plugin-transform-react-jsx": ^7.14.9
-    "@babel/preset-env": ^7.15.0
-    "@babel/preset-react": ^7.14.5
-    "@babel/preset-typescript": ^7.15.0
-    "@emotion/babel-plugin": ^11.3.0
-    "@emotion/babel-plugin-jsx-pragmatic": ^0.1.5
-    "@emotion/babel-preset-css-prop": ^11.2.0
-    "@emotion/eslint-plugin": ^11.2.0
-    "@emotion/react": ^11.4.0
-    "@lubycon/react": ^1.18.3
-    "@mdx-js/loader": ^1.6.22
-    "@mdx-js/react": ^1.6.22
-    "@rollup/plugin-babel": ^5.3.0
-    "@rollup/plugin-node-resolve": ^10.0.0
-    "@semantic-release/commit-analyzer": ^8.0.1
-    "@semantic-release/exec": ^5.0.0
-    "@semantic-release/git": ^9.0.0
-    "@semantic-release/github": ^7.2.0
-    "@semantic-release/npm": ^7.0.8
-    "@semantic-release/release-notes-generator": ^9.0.1
-    "@storybook/addon-a11y": ^6.2.9
-    "@storybook/addon-actions": ^6.1.14
-    "@storybook/addon-docs": ^6.3.4
-    "@storybook/addon-essentials": ^6.1.14
-    "@storybook/addon-links": ^6.2.9
-    "@storybook/node-logger": ^6.1.14
-    "@storybook/preset-create-react-app": ^3.1.5
-    "@storybook/react": ^6.1.14
-    "@testing-library/jest-dom": ^5.11.4
-    "@testing-library/react": ^11.1.0
-    "@testing-library/user-event": ^12.1.10
-    "@types/classnames": ^2.2.11
-    "@types/jest": ^26.0.15
-    "@types/node": ^12.0.0
-    "@types/react": ^16.9.53
-    "@types/react-dom": ^16.9.8
-    "@typescript-eslint/eslint-plugin": ^4.6.1
-    "@typescript-eslint/parser": ^4.6.1
-    "@yarnpkg/pnpify": ^3.0.0-rc.10
-    babel-jest: ^27.1.0
-    babel-loader: ^8.2.1
-    classnames: ^2.2.6
-    eslint: ^7.14.0
-    eslint-config-prettier: ^6.15.0
-    eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.5
-    gh-pages: ^3.1.0
-    husky: ^7.0.0
-    jest: ^27.1.0
-    lint-staged: ^11.1.2
-    ncp: ^2.0.0
-    pinst: ^2.0.0
-    postcss: ^7.0.2
-    prettier: ^2.1.2
-    react: ^17.0.1
-    react-dom: ^17.0.1
-    react-scripts: 4.0.0
-    react-spring: ^8.0.27
-    remark-codesandbox: ^0.10.0
-    resize-observer-polyfill: ^1.5.1
-    rollup: ^2.38.5
-    rollup-plugin-commonjs: ^10.1.0
-    rollup-plugin-json: ^3.1.0
-    rollup-plugin-pnp-resolve: ^2.0.0
-    rollup-plugin-sourcemaps: ^0.4.2
-    rollup-plugin-typescript2: ^0.30.0
-    sass: ^1.29.0
-    semantic-release: ^17.2.4
-    tsconfig-paths-webpack-plugin: ^3.5.1
-    typescript: ^4.3.2
-    webpack-hot-middleware: ^2.25.0
-  languageName: unknown
-  linkType: soft
 
 "scheduler@npm:^0.20.2":
   version: 0.20.2

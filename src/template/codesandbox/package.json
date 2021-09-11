@@ -7,7 +7,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "4.0.0",
-    "scaffolder": "latest"
+    "quantumic-design": "latest"
   },
   "devDependencies": {
     "typescript": "latest"
