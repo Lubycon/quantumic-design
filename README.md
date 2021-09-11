@@ -2,7 +2,7 @@
   <img width="150" src="https://assets.lubycon.io/logo/symbol-color.svg" alt="Lubycon logo">
 </p>
 
-<h1 align="center">Lubycon UI Kit</h1>
+<h1 align="center">Quantumic Design</h1>
 
 <div align="center" style="margin-bottom: 8px;">
   <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/typescript-icon.svg" alt="Typescript" width="21px" height="21px"></a>
@@ -17,20 +17,20 @@
 <div align="center">
   
   [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mui-org/material-ui/blob/master/LICENSE)
-  [![node version](https://badgen.net/npm/node/@lubycon/ui-kit)](https://github.com/Lubycon/lubycon-ui-kit/blob/master/ui-kit/package.json#L8)
-  [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Release%20UI%20Kit/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)
+  [![node version](https://badgen.net/npm/node/quantumic-design)](https://github.com/Lubycon/lubycon-ui-kit/blob/master/package.json#L7)
+  [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Release%20Library/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)
   [![workflow](https://github.com/Lubycon/lubycon-ui-kit/workflows/Publish%20Dev%20Storybook/badge.svg)](https://github.com/Lubycon/lubycon-ui-kit)  
-  [![npm latest package](https://img.shields.io/npm/v/@lubycon/ui-kit/latest.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)
-  [![npm downloads](https://img.shields.io/npm/dm/@lubycon/ui-kit.svg)](https://www.npmjs.com/package/@lubycon/ui-kit)
+  [![npm latest package](https://img.shields.io/npm/v/quantumic-design/latest.svg)](https://www.npmjs.com/package/quantumic-design)
+  [![npm downloads](https://img.shields.io/npm/dm/quantumic-design.svg)](https://www.npmjs.com/package/quantumic-design)
   
 </div>
 
 ## Installation
 
 ```bash
-$ npm install @lubycon/ui-kit
+$ npm install quantumic-design
 // or
-$ yarn add @lubycon/ui-kit
+$ yarn add quantumic-design
 ```
 
 ## Usage
