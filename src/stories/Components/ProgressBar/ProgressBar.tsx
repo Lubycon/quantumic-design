@@ -4,6 +4,7 @@ import Text from '../../../components/Text';
 import useProgress from '../../../hooks/useProgress';
 import { colors } from '../../../constants/colors';
 import Flex from '../../../components/Flex';
+import { getTypographyCss } from 'src/utils/typography';
 
 const noop = (value: number) => value;
 
@@ -59,6 +60,7 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
 ) {
   const layoutDirection = ['top', 'bottom'].includes(labelPosition) ? 'column' : 'row';
   const ratio = useProgress({ min, value, max, valueMapper });
+  const labelStyle = getTypographyCss('caption');
 
   return (
     <Flex
@@ -73,7 +75,8 @@ const ProgressBar = forwardRef<HTMLDivElement, Props>(function ProgressBar(
             textAlign: 'center',
             ...getLabelPositionStyle(labelPosition),
           }}
-          typography="caption"
+          size={labelStyle.fontSize}
+          lineHeight={labelStyle.lineHeight}
         >
           {labelFormatter(value)}
         </Text>

@@ -1,6 +1,6 @@
 import { ReactNode, isValidElement } from 'react';
 import Text from '../../../../components/Text';
-import { Typographys } from '../../../../utils/typography';
+import { getTypographyCss } from '../../../../utils/typography';
 import { CombineElementProps } from '../../../../types/utils';
 import { css } from '@emotion/react';
 import { colors } from '../../../../constants/colors';
@@ -14,7 +14,7 @@ type ModalContentProps = CombineElementProps<
 >;
 
 const ModalContent = ({ children, size, ...props }: ModalContentProps) => {
-  const typography: Typographys = size === 'small' ? 'p2' : 'p1';
+  const { fontSize, lineHeight } = getTypographyCss(size === 'small' ? 'p2' : 'p1');
 
   return (
     <div
@@ -25,7 +25,13 @@ const ModalContent = ({ children, size, ...props }: ModalContentProps) => {
       `}
       {...props}
     >
-      {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
+      {isValidElement(children) ? (
+        children
+      ) : (
+        <Text size={fontSize} lineHeight={lineHeight}>
+          {children}
+        </Text>
+      )}
     </div>
   );
 };

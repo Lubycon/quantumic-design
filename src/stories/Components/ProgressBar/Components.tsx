@@ -32,7 +32,7 @@ export const Label = () => {
     <ul style={{ margin: 0, padding: 0 }}>
       {labelPosition.map((position) => (
         <li style={{ listStyle: 'none', marginBottom: 16 }} key={position}>
-          <Text fontWeight="bold">{position}</Text>
+          <Text weight="bold">{position}</Text>
           <ProgressBar
             min={0}
             value={value}

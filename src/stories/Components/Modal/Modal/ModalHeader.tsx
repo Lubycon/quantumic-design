@@ -1,6 +1,6 @@
 import { ReactNode, isValidElement } from 'react';
 import Text from '../../../../components/Text';
-import { Typographys } from '../../../../utils/typography';
+import { getTypographyCss } from '../../../../utils/typography';
 import { CombineElementProps } from '../../../../types/utils';
 import { css } from '@emotion/react';
 import { colors } from '../../../../constants/colors';
@@ -14,7 +14,7 @@ type ModalHeaderProps = CombineElementProps<
 >;
 
 const ModalHeader = ({ size, children, ...props }: ModalHeaderProps) => {
-  const typography: Typographys = size === 'small' ? 'subtitle' : 'h6';
+  const { fontSize, lineHeight } = getTypographyCss(size === 'small' ? 'subtitle' : 'h6');
 
   return (
     <header
@@ -25,7 +25,13 @@ const ModalHeader = ({ size, children, ...props }: ModalHeaderProps) => {
       `}
       {...props}
     >
-      {isValidElement(children) ? children : <Text typography={typography}>{children}</Text>}
+      {isValidElement(children) ? (
+        children
+      ) : (
+        <Text size={fontSize} lineHeight={lineHeight}>
+          {children}
+        </Text>
+      )}
     </header>
   );
 };

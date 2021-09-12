@@ -16,29 +16,12 @@ Text 컴포넌트는 별도의 속성 설정 없이 간단하게 사용해볼 �
 
 ```tsx
 import React from 'react';
-import { Text } from '@lubycon/ui-kit';
+import { Text } from 'quantumic-design';
 
 function Preview() {
   return <Text>내용을 입력해주세요.</Text>;
 }
 ```
-
-## Typography
-
-Text 컴포넌트는 Quantumic Design의 Typography 속성을 기반으로 만들어져 있습니다.<br />
-Quantumic Design의 디자인 가이드를 바탕으로 폰트 사이즈를 지정할 수 있습니다.
-
-<Canvas>
-  <Story name="Typography">
-    <Text typography="h1">타이포그래피를 사용해보세요</Text>
-    <Text typography="subtitle" as="p">
-      타이포그래피 subtitle
-    </Text>
-    <Text typography="caption" as="p">
-      타이포그래피 caption
-    </Text>
-  </Story>
-</Canvas>
 
 ## Font Weight
 
@@ -46,14 +29,14 @@ Quantumic Design의 디자인 가이드를 바탕으로 폰트 사이즈를 지�
 
 <Canvas>
   <Story name="Font Weight">
-    <Text as="p" fontWeight="light">
+    <Text as="p" weight={200}>
       폰트 굵기 얇게
     </Text>
     <Text as="p">폰트 굵기 보통</Text>
-    <Text as="p" fontWeight="bold">
+    <Text as="p" weight={600}>
       폰트 굵기 굵게
     </Text>
-    <Text as="p" fontWeight="black">
+    <Text as="p" weight={800}>
       폰트 굵기 매우 굵게
     </Text>
   </Story>
@@ -92,7 +75,7 @@ Text 컴포넌트는 기본적으로 `span` 태그로 렌더되지만,
 
 ```tsx codesandbox=lubycon
 import React from 'react';
-import { Text } from '@lubycon/ui-kit';
+import { Text } from 'quantumic-design';
 
 function App() {
   return <Text>내용을 입력해주세요.</Text>;

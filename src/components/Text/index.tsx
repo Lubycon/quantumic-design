@@ -1,22 +1,20 @@
+import { CSSProperties } from '@emotion/react/node_modules/@emotion/serialize';
 import { ElementType, Ref, forwardRef } from 'react';
 import { OverridableProps } from '../../types/OverridableProps';
-import {
-  getFontWeightCss,
-  getTypographyCss,
-  FontWeights,
-  Typographys,
-} from '../../utils/typography';
 
 export const DEFAULT_ELEMENT = 'span' as const;
 
 interface TextBaseProps {
-  typography?: Typographys;
-  fontWeight?: FontWeights;
+  lineHeight?: CSSProperties['lineHeight'];
+  weight?: CSSProperties['fontWeight'];
+  size?: CSSProperties['fontSize'];
+  color?: CSSProperties['color'];
+  align?: CSSProperties['textAlign'];
 }
 type TextProps<T extends ElementType = typeof DEFAULT_ELEMENT> = OverridableProps<T, TextBaseProps>;
 
 const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
-  { typography = 'p1', fontWeight = 'regular', as, ...props }: TextProps<T>,
+  { lineHeight, fontWeight, size, color, align, as, children, ...props }: TextProps<T>,
   ref: Ref<any>
 ) => {
   const target = as ?? DEFAULT_ELEMENT;
@@ -24,12 +22,18 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
+      role="text"
       css={{
-        ...getFontWeightCss(fontWeight),
-        ...getTypographyCss(typography),
+        fontWeight,
+        lineHeight,
+        fontSize: size,
+        color,
+        textAlign: align,
       }}
       {...props}
-    />
+    >
+      {children}
+    </Component>
   );
 };
 
