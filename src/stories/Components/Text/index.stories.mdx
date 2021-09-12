@@ -44,7 +44,7 @@ function Preview() {
 
 ## As
 
-Text 컴포넌트는 기본적으로 `span` 태그로 렌더되지만,
+Text 컴포넌트는 기본적으로 `p` 태그로 렌더되지만,
 사용자의 의도에 따라 다양한 엘리먼트로 렌더하는게 가능합니다.
 
 <Canvas>
@@ -66,8 +66,8 @@ Text 컴포넌트는 기본적으로 `span` 태그로 렌더되지만,
 <Canvas>
   <Story name="Block">
     <Text as="div">이 텍스트는 div태그로 렌더되며, display: block이 적용됩니다</Text>
-    <Text as="p">이 텍스트는 p태그로 렌더되며, display: block이 적용됩니다</Text>
-    <Text>이 텍스트는 span태그로 렌더되며, display: inline이 적용됩니다</Text>
+    <Text>이 텍스트는 p태그로 렌더되며, display: block이 적용됩니다</Text>
+    <Text as="span">이 텍스트는 span태그로 렌더되며, display: inline이 적용됩니다</Text>
   </Story>
 </Canvas>
 
