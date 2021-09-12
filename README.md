@@ -24,9 +24,9 @@
   
 </div>
 
-Quantumic Design is a UI Kit that consists of some tiny components, functions and react hooks. 
+Quantum Design is a UI Kit that consists of some very small components and functions.
 
-Most of components in Quantumic Design is designed that have single responsbility. So you can assemble these quantumic components to make your own design system. Or just use these are.
+Most of components in Quantumic Design is designed that have single responsibility. So you can assemble these quantumic components to make your own design system more faster. Or just use these are.
 
 Please enjoy! ☺️
 
@@ -39,6 +39,7 @@ $ npm install quantumic-design
 // or
 $ yarn add quantumic-design
 ```
+
 ```jsx
 // App.tsx
 
@@ -55,4 +56,5 @@ function App({ children }: PropsWithChildren<{}>) {
 As you can see, Quantumic Design is TypeScript based library. Therefore, Quantumic Design provides its own type declarations, so you don't need to install additional typing packages like `@types/quantumic-design`.
 
 ## Docs
-Check this [Storybook](https://ui-kit.lubycon.io/?path=/docs/quantumic-design-welcome--page)
+
+Check out our [Storybook](https://ui-kit.lubycon.io/?path=/docs/quantumic-design-welcome--page)
