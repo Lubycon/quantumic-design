@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 import Text from '../../../components/Text';
+import Spacing from '../../../components/Spacing';
 import { colors, ColorProperty, SemanticColor } from '../../../constants/colors';
 import { grayScaleNames, semanticColorNames, indexMap } from './data';
 
@@ -16,7 +17,7 @@ import { grayScaleNames, semanticColorNames, indexMap } from './data';
 <Story name="Grey Scale">
   <ul
     style={{
-      margin: '0 0 120px 0',
+      margin: 0,
       padding: 0,
       display: 'grid',
       gap: '10px',
@@ -35,16 +36,14 @@ import { grayScaleNames, semanticColorNames, indexMap } from './data';
             boxSizing: 'border-box',
           }}
         >
-          <Text
-            typography="subtitle"
-            style={{ color: `var(--lubycon-gray${index > 4 ? '100' : '10'})` }}
-          >
+          <Text style={{ color: `var(--lubycon-gray${index > 4 ? '100' : '10'})` }}>
             {name.replace(/gray/g, 'gray ')}
           </Text>
         </div>
       </li>
     ))}
   </ul>
+  <Spacing size={120} />
 </Story>
 
 ## 의미론적 색상(Semantic Color)

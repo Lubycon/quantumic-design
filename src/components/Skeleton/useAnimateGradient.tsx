@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useAnimationFrame } from '../../hooks/useAnimationFrame';
+import { useAnimationFrame } from '@lubycon/react';
 
 const gradientDegree = 90;
 
