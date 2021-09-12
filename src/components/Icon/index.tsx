@@ -18,7 +18,9 @@ type Props = CombineElementProps<
   }
 >;
 
-/** ionicons의 아이콘을 사용합니다
+/**
+ * @deprecated
+ * ionicons의 아이콘을 사용합니다
  *  https://ionicons.com/
  */
 const Icon = ({

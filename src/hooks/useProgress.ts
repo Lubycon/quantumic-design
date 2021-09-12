@@ -6,6 +6,7 @@ interface ProgressOptions {
 }
 
 /**
+ * @deprecated
  * value와 max간 퍼센테이지를 계산합니다. valueMapper 함수를 사용하여 value의 상승폭을 변경할 수 있습니다.
  *
  * ex)

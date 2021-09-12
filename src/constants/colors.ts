@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const colors = {
   green40: '#dff6e7',
   green50: '#13bc4c',
