@@ -1,6 +1,10 @@
 import { RefObject, useEffect, useRef } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
+/**
+ * @deprecated
+ * \@lubycon/react의 useResizeObserver를 사용하세요
+ */
 function useResizeObserver(
   ref: RefObject<HTMLElement>,
   resizeCallback: (arg: ResizeObserverEntry['contentRect']) => void
