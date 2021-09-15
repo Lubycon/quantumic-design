@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { cloneElement, ReactElement } from 'react';
 
 type ShadowLevel = 0 | 1 | 2 | 3 | 4 | 5;
@@ -17,12 +16,8 @@ interface Props {
   children: ReactElement;
 }
 const Shadow = ({ level = 1, children }: Props) => {
-  const shadow = css`
-    box-shadow: ${shadows[level]};
-  `;
-
   return cloneElement(children, {
-    css: shadow,
+    css: [children.props.css, { boxShadow: shadows[level] }],
   });
 };
 

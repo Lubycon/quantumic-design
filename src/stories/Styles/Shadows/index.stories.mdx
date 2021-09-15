@@ -7,40 +7,42 @@ import { Box } from './components';
 
 <Meta title="Styles/Shadows" />
 
-# 그림자 (Shadows)
+# Shadow
 
-각 컴포넌트에는 높이값이 있습니다. 특정 컴포넌트는 다른 컴포넌트보다 높은 고도에 배치되어 모든 화면에서 일관된 위계를 설정합니다.
+You can use `Shadow` component when you want to express z-axis in 2D screen.
 
-예를 들어, 모달 팝업은 항상 가장 위에 배치됩니다. 높이값은 표면과의 거리를 나타냅니다. 한 표면의 앞면에서 다른 표면의 앞면까지의 거리는 피그마 Drop Shadow의 Y값으로 측정되며 픽셀을 사용합니다.
+Humans recognize the height of objects according to the shape and outline of the shadow. If shadow is more clearly or smaller, you feel that object is in a low height.
+
+`Shadow` component provides a 5 level shadow style according to this principle.
+
+We recommend to use these predefined shadow levels to create a consistent height hierarchy in all parts of the application.
 
 # Preview
-
-그림자는 컴포넌트 간의 높이 차이를 감지 할 수 있게 합니다. 작고 선명한 그림자는 더 크고 부드러운 그림자보다 높이가 낮음을 나타냅니다. 크고 부드러운 그림자는 더 중요한 콘텐츠를 포함하거나 팝업과 같은 주의 집중을 위해 사용합니다.
 
 <Canvas>
   <Story name="Shadows">
     <Shadow level={0}>
-      <Box>0px</Box>
+      <Box>Level 0</Box>
     </Shadow>
     <Spacing size={30} />
     <Shadow level={1}>
-      <Box>2px 드랍다운</Box>
+      <Box>Level 1</Box>
     </Shadow>
     <Spacing size={30} />
     <Shadow level={2}>
-      <Box>3px 버튼, 카드</Box>
+      <Box>Level 2</Box>
     </Shadow>
     <Spacing size={30} />
     <Shadow level={3}>
-      <Box>6px 토스트</Box>
+      <Box>Level 3</Box>
     </Shadow>
     <Spacing size={30} />
     <Shadow level={4}>
-      <Box>8px 탭</Box>
+      <Box>Level 4</Box>
     </Shadow>
     <Spacing size={30} />
     <Shadow level={5}>
-      <Box>24px 모달 팝업</Box>
+      <Box>Level 5</Box>
     </Shadow>
   </Story>
 </Canvas>
