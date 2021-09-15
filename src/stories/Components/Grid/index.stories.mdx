@@ -1,6 +1,5 @@
 import { Column, Row } from '../../../components/Grid';
 import Text from '../../../components/Text';
-import { colors } from '../../../constants/colors';
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { columns, columnStyle } from './data';
 
@@ -17,7 +16,7 @@ import { columns, columnStyle } from './data';
     <Row>
       {columns.map((column) => (
         <Column key={column} style={columnStyle} xs={1}>
-          <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+          <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
             Column{column}
           </Text>
         </Column>
@@ -35,7 +34,7 @@ import { columns, columnStyle } from './data';
         .filter((v) => v % 2 === 0)
         .map((column) => (
           <Column key={column} style={columnStyle}>
-            <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+            <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
               Column{column}
             </Text>
           </Column>
@@ -53,7 +52,7 @@ import { columns, columnStyle } from './data';
     <Row direction="row">
       {columns.map((column) => (
         <Column key={column} style={columnStyle}>
-          <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+          <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
             Column{column}
           </Text>
         </Column>
@@ -69,7 +68,7 @@ import { columns, columnStyle } from './data';
     <Row direction="column">
       {columns.map((column) => (
         <Column key={column} style={columnStyle}>
-          <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+          <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
             Column{column}
           </Text>
         </Column>
@@ -84,17 +83,17 @@ import { columns, columnStyle } from './data';
   <Story name="Responsive">
     <Row>
       <Column lg={8} md={4} xs={2} style={columnStyle}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           lg=8 md=4, xs=2
         </Text>
       </Column>
       <Column style={columnStyle}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           auto
         </Text>
       </Column>
       <Column lg={1} md={5} xs={8} style={columnStyle}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           lg=1, md=5, xs=8
         </Text>
       </Column>
@@ -108,17 +107,17 @@ import { columns, columnStyle } from './data';
   <Story name="Variable Width">
     <Row>
       <Column lg="auto" style={{ ...columnStyle, width: 40 }}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           width: 40px
         </Text>
       </Column>
       <Column style={columnStyle}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           Column
         </Text>
       </Column>
       <Column style={columnStyle}>
-        <Text align="center" style={{ width: '100%', backgroundColor: colors.blue60 }}>
+        <Text align="center" style={{ width: '100%', backgroundColor: '#1864ab' }}>
           Column
         </Text>
       </Column>
