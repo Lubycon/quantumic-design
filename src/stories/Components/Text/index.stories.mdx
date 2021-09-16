@@ -9,8 +9,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 ## Quick Start
 
-Text 컴포넌트는 별도의 속성 설정 없이 간단하게 사용해볼 수 있습니다. <br />
-별도의 설정이 없는 경우 `typography`는 `p1`, `fontWeight`는 `regular`가 기본적으로 적용되며 `span` 엘리먼트로 렌더됩니다.
+You can use the `Text` component without any additional properties.
 
 ```tsx
 import React from 'react';
@@ -21,51 +20,56 @@ function Preview() {
 }
 ```
 
-## Font Weight
-
-`fontWeight`는 `regular`가 기본입니다. 사용자는 4가지 속성을 의도에 따라 적용할 수 있습니다.
+Properties of `Text` component help you avoid declaring a font-related boilerplate CSS styles multiple times like below.
 
 <Canvas>
-  <Story name="Font Weight">
-    <Text as="p" weight={200}>
-      폰트 굵기 얇게
-    </Text>
-    <Text as="p">폰트 굵기 보통</Text>
-    <Text as="p" weight={600}>
-      폰트 굵기 굵게
-    </Text>
-    <Text as="p" weight={800}>
-      폰트 굵기 매우 굵게
-    </Text>
+  <Story name="Preview">
+    <Text display="inline">display: Inline</Text>
+    <Text size={24}>font-size: 24px</Text>
+    <Text color="#48cfad">color: #48cfad</Text>
   </Story>
 </Canvas>
 
-## As
+As you can see, Text component doesn't have any CSS styles associated with the font. Therefore, It will inherit and use CSS styles declared at the root of your application.
 
-Text 컴포넌트는 기본적으로 `p` 태그로 렌더되지만,
-사용자의 의도에 따라 다양한 엘리먼트로 렌더하는게 가능합니다.
+## Examples
+
+### Display
+
+<Canvas>
+  <Story name="Display">
+    <Text>display: block</Text>
+    <div>
+      <Text display="inline">display: Inline</Text>
+      <Text display="inline">/</Text>
+      <Text display="inline">display: Inline</Text>
+    </div>
+  </Story>
+</Canvas>
+
+### Font Weight
+
+<Canvas>
+  <Story name="Font Weight">
+    <Text weight="lighter">font-weight: lighter</Text>
+    <Text weight={200}>font-weight: 200</Text>
+    <Text weight={600}>font-weight: 600</Text>
+    <Text weight={800}>font-weight: 800</Text>
+    <Text weight="bolder">font-weight: bolder</Text>
+  </Story>
+</Canvas>
+
+### As
+
+`Text` component will be rendered as p elements by default. but if you want to render it as other elements, you can use `as` props.
 
 <Canvas>
   <Story name="As">
     <Text as="a" href="https://github.com" target="blank">
-      앵커 태그입니다
+      Anchor
     </Text>
-    <Text as="h1">
-      h1 태그로 렌더해도 typography 속성을 별도 지정해주지 않으면 typography는 p1이 적용됩니다
-    </Text>
-    <Text as="button">버튼으로 렌더하는 것도 가능하기는 합니다</Text>
-  </Story>
-</Canvas>
-
-## Block
-
-각 엘리먼트는 고유의 속성을 그대로 상속받습니다. block 레벨 엘리먼트는 `block` 속성을 가지고 있습니다.
-
-<Canvas>
-  <Story name="Block">
-    <Text as="div">이 텍스트는 div태그로 렌더되며, display: block이 적용됩니다</Text>
-    <Text>이 텍스트는 p태그로 렌더되며, display: block이 적용됩니다</Text>
-    <Text as="span">이 텍스트는 span태그로 렌더되며, display: inline이 적용됩니다</Text>
+    <Text as="h1">h1</Text>
+    <Text as="button">Button</Text>
   </Story>
 </Canvas>
 
