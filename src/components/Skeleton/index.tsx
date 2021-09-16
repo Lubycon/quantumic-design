@@ -1,5 +1,4 @@
 import { CombineElementProps } from '../../types/utils';
-import { colors } from '../../constants/colors';
 import { useAnimateGradient } from './useAnimateGradient';
 import Rect from './Rect';
 import Circle from './Circle';
@@ -22,8 +21,8 @@ const Skeleton = ({
   type = 'rect',
   width,
   height,
-  backgroundColor = colors.gray30,
-  foregroundColor = colors.gray20,
+  backgroundColor = '#e9ecef',
+  foregroundColor = '#f1f3f5',
   ...rest
 }: Props) => {
   const gradientStyle = useAnimateGradient({

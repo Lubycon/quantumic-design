@@ -38,6 +38,6 @@ export function useAnimateGradient({ foregroundColor, backgroundColor }: Options
     foregroundColor,
     backgroundColor,
     progress,
-    width: 20,
+    width: 30,
   });
 }
