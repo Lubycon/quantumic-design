@@ -6,9 +6,19 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 # Spacing
 
-Spacing 컴포넌트는 요소와 요소 사이에 간격을 만듭니다.
+`Spacing` component is used when you want to create margins between elements.
 
-특정 요소와 요소 사이의 간격이 명확하게 특정 컴포넌트 관심사가 아니라고 판단되는 경우, 각 컴포넌트에서 간격에 대한 관심사를 Spacing 컴포넌트에게 위임하세요.
+Maybe your components would have designed to focus to control some business related states, and render it. In this cases, spacing is not the responsibility of your component.
+
+Now you can delegate this responsibility to `Spacing` component and your custom components can just focus to handle states.
+
+```tsx
+<div />
+<Spacing size={10} />
+<div />
+<Spacing size={10} />
+<div />
+```
 
 <Canvas>
   <Story name="Spacing">

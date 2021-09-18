@@ -7,7 +7,11 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 # Skeleton
 
-Skeleton 컴포넌트는
+`Skeleton` screens are blank pages that are progressively populated with content, such as text and images, as they become available.
+
+`Skeleton` components provide a nice user experience while the application is initially loaded. Because users can predict the layout of your application through the `Skeleton` while the content is loading.
+
+`Skeleton` in Quantumic Design is using pure CSS not SVG, so you can customize easily your own skeleton component with CSS.
 
 <Canvas>
   <Story name="Skeleton">
@@ -18,3 +22,9 @@ Skeleton 컴포넌트는
     </Flex>
   </Story>
 </Canvas>
+
+```tsx
+<Skeleton width={50} height={50} type="circle" />
+<Spacing size={10} />
+<Skeleton width={100} height={20} />
+```

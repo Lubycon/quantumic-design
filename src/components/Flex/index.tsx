@@ -9,7 +9,7 @@ interface FlexBaseProps {
 
 type Props<T extends ElementType = 'div'> = OverridableProps<T, FlexBaseProps>;
 const Flex = <T extends ElementType = 'div'>(
-  { direction = 'row', align = 'flex-start', justify = 'flex-start', children }: Props<T>,
+  { direction = 'row', align = 'flex-start', justify = 'flex-start', children, ...rest }: Props<T>,
   ref: Ref<any>
 ) => {
   return (
@@ -21,6 +21,7 @@ const Flex = <T extends ElementType = 'div'>(
         alignItems: align,
         justifyContent: justify,
       }}
+      {...rest}
     >
       {children}
     </div>
