@@ -6,14 +6,14 @@
   "engines": {
     "node": ">=12.18"
   },
-  "typings": "dist/types/index.d.ts",
+  "typings": "dist/index.d.ts",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "publishConfig": {
     "access": "public",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
-    "typings": "dist/types/index.d.ts"
+    "typings": "dist/index.d.ts"
   },
   "repository": {
     "type": "git",
