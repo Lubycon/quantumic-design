@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-function QDProvider({ children }: Props) {
+export function QDProvider({ children }: Props) {
   return (
     <Fragment>
       <Global
@@ -24,5 +24,3 @@ function QDProvider({ children }: Props) {
     </Fragment>
   );
 }
-
-export default QDProvider;

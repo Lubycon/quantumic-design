@@ -15,10 +15,8 @@ interface Props {
   level: ShadowLevel;
   children: ReactElement;
 }
-const Shadow = ({ level = 1, children }: Props) => {
+export const Shadow = ({ level = 1, children }: Props) => {
   return cloneElement(children, {
     css: [children.props.css, { boxShadow: shadows[level] }],
   });
 };
-
-export default Shadow;

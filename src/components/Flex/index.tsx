@@ -1,5 +1,5 @@
 import { CSSProperties, ElementType, forwardRef, PropsWithRef, Ref } from 'react';
-import { OverridableProps } from 'src/types/OverridableProps';
+import { OverridableProps } from '../../types/OverridableProps';
 
 interface FlexBaseProps {
   direction?: CSSProperties['flexDirection'];

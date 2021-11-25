@@ -1,7 +1,7 @@
 interface Props {
   size: number;
 }
-const Spacing = ({ size }: Props) => {
+export const Spacing = ({ size }: Props) => {
   return (
     <div
       css={{
@@ -12,5 +12,3 @@ const Spacing = ({ size }: Props) => {
     />
   );
 };
-
-export default Spacing;

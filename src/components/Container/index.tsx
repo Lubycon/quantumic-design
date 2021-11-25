@@ -1,14 +1,10 @@
 import { HTMLAttributes } from 'react';
-import { isMatchedSM } from 'src/utils/mediaQuery';
+import { isMatchedSM } from '../../utils/mediaQuery';
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
 }
 
-export default function Container({
-  children,
-  fluid = false,
-  ...props
-}: ContainerProps): JSX.Element {
+export function Container({ children, fluid = false, ...props }: ContainerProps): JSX.Element {
   const maxWidth = isMatchedSM() ? '1200px' : fluid ? 'auto' : 'none';
 
   return (
