@@ -8,6 +8,7 @@ export { Spacing } from './components/Spacing';
 export { default as Skeleton } from './components/Skeleton';
 export { useOverlay } from './contexts/Overlay';
 export { default as Flex } from './components/Flex';
+export { default as Stack } from './components/Stack';
 export { CombineElementProps, Combine } from './types/utils';
 export { OverridableProps } from './types/OverridableProps';
 export * from './utils';

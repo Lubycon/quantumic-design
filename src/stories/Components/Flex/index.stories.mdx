@@ -1,0 +1,42 @@
+import Flex from '../../../components/Flex';
+import { Box } from './Components';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="components/Flex" components={Flex} />
+
+# Flex
+
+`Flex` component
+
+## Direction
+
+<Canvas>
+  <Story name="Flex/Row">
+    <Flex>
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Flex>
+  </Story>
+  <Story name="Flex/Row Reverse">
+    <Flex gutter={20} direction="row-reverse">
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Flex>
+  </Story>
+  <Story name="Flex/Column">
+    <Flex gutter={20} direction="column">
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Flex>
+  </Story>
+  <Story name="Flex/Column Reverse">
+    <Flex gutter={20} direction="column-reverse">
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Flex>
+  </Story>
+</Canvas>
