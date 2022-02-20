@@ -1,0 +1,26 @@
+import Stack from '../../../components/Stack';
+import { Box } from './Components';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="components/Stack" components={Stack} />
+
+# Stack
+
+`Stack` component
+
+<Canvas>
+  <Story name="Stack/Horizontal">
+    <Stack gutter={20}>
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Stack>
+  </Story>
+  <Story name="Stack/Vertical">
+    <Stack gutter={20} direction="column">
+      <Box color="#f783ac" />
+      <Box color="#da77f2" />
+      <Box color="#9775fa" />
+    </Stack>
+  </Story>
+</Canvas>
