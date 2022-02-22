@@ -43,8 +43,7 @@ const Column = <T extends React.ElementType = typeof DEFAULT_ELEMENT>(
     []
   );
 
-  const target = as ?? DEFAULT_ELEMENT;
-  const Component = target;
+  const Component = as ?? DEFAULT_ELEMENT;
 
   return (
     <Component

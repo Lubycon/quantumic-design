@@ -7,13 +7,24 @@ export interface FlexBaseProps {
   justify?: CSSProperties['justifyContent'];
 }
 
+export const DEFAULT_ELEMENT = 'div' as const;
+
 type Props<T extends ElementType = 'div'> = OverridableProps<T, FlexBaseProps>;
 const Flex = <T extends ElementType = 'div'>(
-  { direction = 'row', align = 'flex-start', justify = 'flex-start', children, ...rest }: Props<T>,
+  {
+    direction = 'row',
+    align = 'flex-start',
+    justify = 'flex-start',
+    children,
+    as,
+    ...rest
+  }: Props<T>,
   ref: Ref<any>
 ) => {
+  const Component = as ?? DEFAULT_ELEMENT;
+
   return (
-    <div
+    <Component
       ref={ref}
       css={{
         display: 'flex',
@@ -24,7 +35,7 @@ const Flex = <T extends ElementType = 'div'>(
       {...rest}
     >
       {children}
-    </div>
+    </Component>
   );
 };
 
