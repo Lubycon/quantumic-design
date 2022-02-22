@@ -21,8 +21,7 @@ const Flex = <T extends ElementType = 'div'>(
   }: Props<T>,
   ref: Ref<any>
 ) => {
-  const target = as ?? DEFAULT_ELEMENT;
-  const Component = target;
+  const Component = as ?? DEFAULT_ELEMENT;
 
   return (
     <Component
