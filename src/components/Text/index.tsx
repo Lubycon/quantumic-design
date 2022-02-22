@@ -18,8 +18,7 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   { display, lineHeight, weight, size, color, align, as, children, ...props }: TextProps<T>,
   ref: Ref<any>
 ) => {
-  const target = as ?? DEFAULT_ELEMENT;
-  const Component = target;
+  const Component = as ?? DEFAULT_ELEMENT;
 
   return (
     <Component
