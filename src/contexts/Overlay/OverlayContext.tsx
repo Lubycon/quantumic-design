@@ -43,7 +43,7 @@ function OverlayProvider({ children }: PropsWithChildren<unknown>) {
       addToArea,
       removeFromArea,
     }),
-    [open, close]
+    [addToArea, removeFromArea]
   );
 
   return (
