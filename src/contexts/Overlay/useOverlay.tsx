@@ -1,50 +1,63 @@
-import { useCallback, useRef, useMemo } from 'react';
-import { generateID } from '../../utils';
+import { useCallback, useRef, useMemo, useEffect } from 'react';
+import { generateID } from 'src/utils/generateID';
 import { useOverlayArea } from './OverlayContext';
 import StateReacter, { StateReacterControl } from './StateReacter';
 import { OverlayController } from './types';
 
 /**
- * @example
- * function useMyModal () {
- *   const { open, close, createOverlayElement } = useOverlay();
- *   useEffect(() => {
- *     // 오버레이 엘리먼트 등록
- *     createOverlayElement((isOpen, close) =>
- *       <Modal show={isOpen} onClose={close} />
- *     );
- *   }, []);
+ * 선언적으로 사용해야하는 컴포넌트를 open, close와 같은 함수로 열고 닫을 수 있도록 도와주는 유틸성 Hooks입니다.
+ * 하나의 useOverlay는 고유한 ID를 가진 오버레이를 생성하고, open 함수에 인자로 받은 컴포넌트를 이 오버레이에 렌더합니다.
  *
- *   return {
- *     openMyModal: open,
- *     closeMyModal: close,
- *   }
+ * @example
+ * ```tsx
+ * function MyComponent() {
+ *   const { open } = useOverlay();
+ *
+ *   const openMyModal = () => {
+ *     open(({ isOpen, close }) => (
+ *       <MyModal open={isOpen} onClose={close} />
+ *     ))
+ *   };
+ *
+ *   return <button onClick={openMyModal}>모달열기</button>
  * }
+ * ```
+ *
  */
 export function useOverlay() {
-  const { addToArea, removeFromArea } = useOverlayArea();
+  const context = useOverlayArea();
+  if (context == null) {
+    throw new Error('useOverlay는 OverlayProvider 안에서만 사용 가능합니다.');
+  }
+
+  const { addToArea, removeFromArea } = context;
   const stateReacterRef = useRef<StateReacterControl>(null);
 
   const overlayId = useMemo(() => generateID('overlay'), []);
 
-  const open = useCallback(() => stateReacterRef.current?.open(), []);
+  const open = useCallback((controller: OverlayController) => {
+    if (stateReacterRef.current != null) {
+      stateReacterRef.current?.close();
+    }
 
-  const close = useCallback(() => stateReacterRef.current?.close(), []);
-
-  const createOverlayElement = useCallback((controller: OverlayController) => {
     addToArea(overlayId, <StateReacter ref={stateReacterRef} controller={controller} />);
+    stateReacterRef.current?.open();
   }, []);
 
-  const destroy = useCallback(() => {
-    removeFromArea(overlayId);
+  const close = useCallback(() => {
+    stateReacterRef.current?.close();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      removeFromArea(overlayId);
+    };
   }, []);
 
   return useMemo(
     () => ({
       open,
       close,
-      createOverlayElement,
-      destroy,
     }),
     []
   );

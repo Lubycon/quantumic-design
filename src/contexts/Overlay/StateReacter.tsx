@@ -9,7 +9,7 @@ const StateReacter = forwardRef<any, { controller: OverlayController }>(function
   { controller },
   ref
 ) {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
   const open = useCallback(() => setOpen(true), []);
   const close = useCallback(() => setOpen(false), []);
 

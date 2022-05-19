@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { OverlayStory } from './components';
+import { OverlayStory, OverlayWithPromiseStory } from './components';
 
 <Meta title="Hooks/Overlay" />
 
@@ -12,5 +12,13 @@ import { OverlayStory } from './components';
 <Canvas>
   <Story name="useOverlay">
     <OverlayStory />
+  </Story>
+</Canvas>
+
+# With Promise
+
+<Canvas>
+  <Story name="useOverlay With Promise">
+    <OverlayWithPromiseStory />
   </Story>
 </Canvas>
