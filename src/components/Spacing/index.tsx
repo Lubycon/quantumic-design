@@ -6,7 +6,7 @@ export const Spacing = ({ size }: Props) => {
     <div
       css={{
         width: 0,
-        display: 'inline-block',
+        display: 'block',
         height: size,
       }}
     />
