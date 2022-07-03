@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { CSSProperties } from '@emotion/react/node_modules/@emotion/serialize';
 import { ElementType, Ref, forwardRef } from 'react';
 import { OverridableProps } from '../../types/OverridableProps';
@@ -24,14 +25,14 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
     <Component
       ref={ref}
       role="text"
-      css={{
-        display,
-        fontWeight: weight,
-        lineHeight,
-        fontSize: size,
-        color,
-        textAlign: align,
-      }}
+      css={css`
+        display: ${display};
+        font-weight: ${weight};
+        line-height: ${lineHeight};
+        font-size: ${size};
+        color: ${color};
+        text-align: ${align};
+      `}
       {...props}
     >
       {children}

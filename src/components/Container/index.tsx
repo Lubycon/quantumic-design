@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { HTMLAttributes } from 'react';
 import { isMatchedSM } from '../../utils/mediaQuery';
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
@@ -9,11 +10,11 @@ export function Container({ children, fluid = false, ...props }: ContainerProps)
 
   return (
     <div
-      css={{
-        width: '100%',
-        maxWidth,
-        margin: '0 auto',
-      }}
+      css={css`
+        width: 100%;
+        max-width: ${maxWidth};
+        margin: 0 auto;
+      `}
       {...props}
     >
       {children}
