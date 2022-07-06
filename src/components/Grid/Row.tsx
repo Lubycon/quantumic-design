@@ -2,6 +2,7 @@ import { ElementType, Ref, forwardRef } from 'react';
 import { DEFAULT_ELEMENT } from './types';
 import { OverridableProps } from '../../types/OverridableProps';
 import { gridGutter } from './constants';
+import { css } from '@emotion/react';
 
 type BaseAlign = 'flex-start' | 'center' | 'flex-end';
 interface RowBaseProps {
@@ -26,15 +27,15 @@ const Row = <T extends ElementType = typeof DEFAULT_ELEMENT>(
   return (
     <Component
       ref={ref}
-      css={{
-        display: 'flex',
-        flexDirection: direction,
-        justifyContent: justify,
-        alignItems: alignItems,
-        margin: `0 ${gridGutter / 2}px`,
-        flexWrap: 'wrap',
-        boxSizing: 'border-box',
-      }}
+      css={css`
+        display: flex;
+        flex-direction: ${direction};
+        justify-content: ${justify};
+        align-items: ${alignItems};
+        margin: 0 ${gridGutter} 2px;
+        flex-wrap: wrap;
+        box-sizing: 'border-box';
+      `}
       {...props}
     />
   );

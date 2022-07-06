@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { CombineElementProps } from '../../types/utils';
 
 type Props = Omit<
@@ -16,10 +17,12 @@ const Rect = ({ width, height, backgroundStyle, style, ...rest }: Props) => {
   return (
     <div
       css={{
-        display: 'inline-block',
-        width: `${width}px`,
-        height: `${height}px`,
-        background: backgroundStyle,
+        ...css`
+          display: inline-block;
+          width: ${width}px;
+          height: ${height}px;
+          background: ${backgroundStyle};
+        `,
         ...style,
       }}
       role="img"
