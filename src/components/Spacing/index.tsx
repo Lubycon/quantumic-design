@@ -7,8 +7,6 @@ export const Spacing = ({ size }: Props) => {
   return (
     <div
       css={css`
-        width: 0;
-        display: 'block';
         height: ${size};
       `}
     />
