@@ -3032,34 +3032,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lubycon/logger@npm:^1.8.17":
-  version: 1.8.17
-  resolution: "@lubycon/logger@npm:1.8.17"
+"@juggle/resize-observer@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "@juggle/resize-observer@npm:3.3.1"
+  checksum: ddabc4044276a2cb57d469c4917206c7e39f2463aa8e3430e33e4eda554412afe29c22afa40e6708b49dad5d56768dc83acd68a704b1dcd49a0906bb96b991b2
+  languageName: node
+  linkType: hard
+
+"@lubycon/logger@npm:^1.11.14":
+  version: 1.11.14
+  resolution: "@lubycon/logger@npm:1.11.14"
   dependencies:
     amplitude-js: ^8.3.1
+    browser-toolkit: ^1.2.11
     firebase: ^8.8.1
-  checksum: ba57d47cd93177d6cf1202118931e4554d3be343fe4e8c095e0f3284d3f82f4e3d53cf0851ff29d522a95de596ce3fb28770f0520606b56ad7b287b7223b0d4d
+    temen: ^1.36.0
+  checksum: e023b77921ae705f3c5df2a404d0674f90c48f50ccbc228cfcdbc2816245965e90dfc80403eb5f278792aacedcf0167ac2d3896e70622521c0d9a9974d409791
   languageName: node
   linkType: hard
 
-"@lubycon/react@npm:^1.18.3":
-  version: 1.18.3
-  resolution: "@lubycon/react@npm:1.18.3"
+"@lubycon/react@npm:^1.26.2":
+  version: 1.26.2
+  resolution: "@lubycon/react@npm:1.26.2"
   dependencies:
-    "@lubycon/logger": ^1.8.17
-    "@lubycon/utils": ^1.12.0
+    "@juggle/resize-observer": ^3.3.1
+    "@lubycon/logger": ^1.11.14
+    browser-toolkit: ^1.2.11
+    temen: ^1.36.0
   peerDependencies:
-    react: ^17.0.2
-  checksum: d072e3975185795b3d05576f5be8e88da47d4a85bfc8092d3ec6e759d54bc6d29a2d5d5f6513d1e92d122213090885da65291168bb4d55ccd906931e4bfe0945
-  languageName: node
-  linkType: hard
-
-"@lubycon/utils@npm:^1.12.0":
-  version: 1.12.0
-  resolution: "@lubycon/utils@npm:1.12.0"
-  dependencies:
-    date-fns: ^2.22.1
-  checksum: 7500048a5068175b1a05e35336dab0402b47ad75eb951a4ce4db5b4675de1db4b9bea46b29a230432f460277bb9bb1e70b391c8edf4f6a4b041a798d349fa9b3
+    react: "*"
+    react-dom: "*"
+  checksum: c58f3f595deaaf99fe26c0c77a37bab09ae3e155bd5d76c880680cc48e9e79025f440340c54a43e3510440dd81cf22346163170ea3bb1fd1fd90c3617ec123e0
   languageName: node
   linkType: hard
 
@@ -7747,6 +7750,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-toolkit@npm:^1.2.11":
+  version: 1.2.11
+  resolution: "browser-toolkit@npm:1.2.11"
+  dependencies:
+    cross-fetch: ^3.1.4
+    date-fns: ^2.22.1
+    temen: ^1.36.0
+  checksum: 70f22c7af72975977c53f9c3da5ad123ec436a0457a0566be42c457e250f7e16755bb0e7c4ae48142e1e0988d0ff51603aa27836094817cb50cfc00a40291d23
+  languageName: node
+  linkType: hard
+
 "browserify-aes@npm:^1.0.0, browserify-aes@npm:^1.0.4":
   version: 1.2.0
   resolution: "browserify-aes@npm:1.2.0"
@@ -9382,6 +9396,15 @@ __metadata:
     prop-types: ^15.0.0
     react: ^0.14.0 || ^15.0.0 || ^16.0.0
   checksum: e59b7a65671e59f5b11e06f67faadf0733ab6c33247d5631331aeb05450d180b8ae44d73817b9c02f1527654ba490ea3d3dd7320f8d6debb36776f10b0ae6a47
+  languageName: node
+  linkType: hard
+
+"cross-fetch@npm:^3.1.4":
+  version: 3.1.5
+  resolution: "cross-fetch@npm:3.1.5"
+  dependencies:
+    node-fetch: 2.6.7
+  checksum: f6b8c6ee3ef993ace6277fd789c71b6acf1b504fd5f5c7128df4ef2f125a429e29cd62dc8c127523f04a5f2fa4771ed80e3f3d9695617f441425045f505cf3bb
   languageName: node
   linkType: hard
 
@@ -17842,6 +17865,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:2.6.7":
+  version: 2.6.7
+  resolution: "node-fetch@npm:2.6.7"
+  dependencies:
+    whatwg-url: ^5.0.0
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
+  languageName: node
+  linkType: hard
+
 "node-fetch@npm:^1.0.1":
   version: 1.7.3
   resolution: "node-fetch@npm:1.7.3"
@@ -20708,7 +20745,7 @@ fsevents@^1.2.7:
     "@emotion/babel-preset-css-prop": ^11.2.0
     "@emotion/eslint-plugin": ^11.2.0
     "@emotion/react": ^11.4.0
-    "@lubycon/react": ^1.18.3
+    "@lubycon/react": ^1.26.2
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@rollup/plugin-babel": ^5.3.0
@@ -23895,6 +23932,16 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"temen@npm:^1.36.0":
+  version: 1.36.0
+  resolution: "temen@npm:1.36.0"
+  dependencies:
+    cross-fetch: ^3.1.4
+    date-fns: ^2.22.1
+  checksum: 20ffb6a697c1630f2efe617332e4881ba0aa7e476c4d86190ec904c0bb4ae882e9f26c9f70a5122a935c57897fc68e37c8422ac8ed9b92464caa38d94b2df2b3
+  languageName: node
+  linkType: hard
+
 "temp-dir@npm:^1.0.0":
   version: 1.0.0
   resolution: "temp-dir@npm:1.0.0"
@@ -24276,6 +24323,13 @@ resolve@^2.0.0-next.3:
   dependencies:
     punycode: ^2.1.1
   checksum: ffe6049b9dca3ae329b059aada7f515b0f0064c611b39b51ff6b53897e954650f6f63d9319c6c008d36ead477c7b55e5f64c9dc60588ddc91ff720d64eb710b3
+  languageName: node
+  linkType: hard
+
+"tr46@npm:~0.0.3":
+  version: 0.0.3
+  resolution: "tr46@npm:0.0.3"
+  checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
   languageName: node
   linkType: hard
 
@@ -25294,6 +25348,13 @@ typescript@^4.3.2:
   languageName: node
   linkType: hard
 
+"webidl-conversions@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "webidl-conversions@npm:3.0.1"
+  checksum: c92a0a6ab95314bde9c32e1d0a6dfac83b578f8fa5f21e675bc2706ed6981bc26b7eb7e6a1fab158e5ce4adf9caa4a0aee49a52505d4d13c7be545f15021b17c
+  languageName: node
+  linkType: hard
+
 "webidl-conversions@npm:^5.0.0":
   version: 5.0.0
   resolution: "webidl-conversions@npm:5.0.0"
@@ -25575,6 +25636,16 @@ typescript@^4.3.2:
   version: 2.3.0
   resolution: "whatwg-mimetype@npm:2.3.0"
   checksum: 23eb885940bcbcca4ff841c40a78e9cbb893ec42743993a42bf7aed16085b048b44b06f3402018931687153550f9a32d259dfa524e4f03577ab898b6965e5383
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "whatwg-url@npm:5.0.0"
+  dependencies:
+    tr46: ~0.0.3
+    webidl-conversions: ^3.0.0
+  checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
   languageName: node
   linkType: hard
 

@@ -1,4 +1,4 @@
-import { useOverlay } from 'src';
+import { useOverlay } from '@lubycon/react';
 
 export function OverlayStory() {
   const { open } = useOverlay();

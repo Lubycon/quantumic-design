@@ -28,7 +28,7 @@
   "author": "Lubycon",
   "dependencies": {
     "@emotion/react": "^11.4.0",
-    "@lubycon/react": "^1.18.3",
+    "@lubycon/react": "^1.26.2",
     "@yarnpkg/pnpify": "^3.0.0-rc.10",
     "classnames": "^2.2.6",
     "resize-observer-polyfill": "^1.5.1"

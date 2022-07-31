@@ -1,6 +1,4 @@
 import { Fragment, ReactNode } from 'react';
-import { PortalProvider } from '../../contexts/Portal';
-import { OverlayProvider } from '../../contexts/Overlay';
 import { css, Global } from '@emotion/react';
 
 interface Props {
@@ -18,9 +16,7 @@ export function QDProvider({ children }: Props) {
           }
         `}
       />
-      <PortalProvider>
-        <OverlayProvider>{children}</OverlayProvider>
-      </PortalProvider>
+      {children}
     </Fragment>
   );
 }
