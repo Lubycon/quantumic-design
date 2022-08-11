@@ -29,7 +29,7 @@ const Text = <T extends ElementType = typeof DEFAULT_ELEMENT>(
         display: ${display};
         font-weight: ${weight};
         line-height: ${lineHeight};
-        font-size: ${size};
+        font-size: ${typeof size === 'string' ? size : `${size}px`};
         color: ${color};
         text-align: ${align};
       `}
