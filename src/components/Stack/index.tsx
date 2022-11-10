@@ -1,8 +1,7 @@
+import { css } from '@emotion/react';
 import { ElementType, forwardRef, PropsWithRef, Ref } from 'react';
 import { OverridableProps } from '../../types/OverridableProps';
-
 import Flex, { FlexBaseProps } from '../Flex';
-import { css } from '@emotion/react';
 
 interface StackProps extends FlexBaseProps {
   gutter: number;
