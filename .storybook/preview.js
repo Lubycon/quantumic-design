@@ -1,16 +1,13 @@
 import React from 'react';
-import { OverlayProvider } from '@lubycon/react';
 import { QDProvider, Container } from 'src';
 
 export const decorators = [
   (Story) => (
-    <OverlayProvider>
-      <QDProvider>
-        <Container>
-          <Story />
-        </Container>
-      </QDProvider>
-    </OverlayProvider>
+    <QDProvider>
+      <Container>
+        <Story />
+      </Container>
+    </QDProvider>
   ),
 ];
 
