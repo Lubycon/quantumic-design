@@ -2,24 +2,20 @@ import { ElementType, forwardRef, PropsWithRef, Ref } from 'react';
 import { OverridableProps } from '../../types/OverridableProps';
 
 import Flex, { FlexBaseProps } from '../Flex';
-import { gutter, convertFlexDirectionToGutterDirection } from '../../utils/gutter';
+import { css } from '@emotion/react';
 
 interface StackProps extends FlexBaseProps {
   gutter: number;
-  selector?: string;
 }
 
 type Props<T extends ElementType = 'div'> = OverridableProps<T, StackProps>;
-const Stack = <T extends ElementType = 'div'>(
-  { direction = 'row', gutter: gutterSpace, selector, ...rest }: Props<T>,
-  ref: Ref<any>
-) => {
-  const gutterDirection = convertFlexDirectionToGutterDirection(direction);
+const Stack = <T extends ElementType = 'div'>({ gutter, ...rest }: Props<T>, ref: Ref<any>) => {
   return (
     <Flex
       ref={ref}
-      css={gutter({ direction: gutterDirection, space: gutterSpace, selector })}
-      direction={direction}
+      css={css`
+        gap: ${gutter}px;
+      `}
       {...rest}
     />
   );
