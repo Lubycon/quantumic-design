@@ -1,7 +1,7 @@
 {
   "name": "quantumic-design",
   "description": "Design Library for any projects 🖌",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "license": "MIT",
   "engines": {
     "node": ">=12.18"
