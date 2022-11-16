@@ -4,22 +4,17 @@ import { OverridableProps } from '../../types/OverridableProps';
 import Flex, { FlexBaseProps } from '../Flex';
 
 interface StackProps extends FlexBaseProps {
-  gutter: number;
-  selector?: string;
+  gap: number;
 }
 
 type Props<T extends ElementType = 'div'> = OverridableProps<T, StackProps>;
-const Stack = <T extends ElementType = 'div'>(
-  { direction = 'row', gutter: gutterSpace, selector, ...rest }: Props<T>,
-  ref: Ref<any>
-) => {
+const Stack = <T extends ElementType = 'div'>({ gap, ...rest }: Props<T>, ref: Ref<any>) => {
   return (
     <Flex
       ref={ref}
       css={css`
-        gap: ${gutterSpace}px;
+        gap: ${gap}px;
       `}
-      direction={direction}
       {...rest}
     />
   );
